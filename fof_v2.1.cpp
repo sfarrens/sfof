@@ -11,6 +11,7 @@
 //***Contact Details: farrens@ieec.uab.es, fba@star.ucl.ac.uk, cypriano@astro.iag.usp.br       ***//
 //************************************************************************************************//
 
+#include "./include.hpp"  //*Include C++ packages and cosmology routines*//
 
 #include "./fof.hpp"
 
