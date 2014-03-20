@@ -11,7 +11,6 @@
 //***Contact Details: farrens@ieec.uab.es, fba@star.ucl.ac.uk, cypriano@astro.iag.usp.br       ***//
 //************************************************************************************************//
 
-#include "/Users/Rowen/Documents/Library/fits.hpp" //*Include FITSIO packages*//
 
 #include "./fof.hpp"
 
