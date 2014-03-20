@@ -1,5 +1,5 @@
 #################
-# PYMERGE V.1.0 #
+# PYMERGE V.1.1 #
 #################
 
 import math, optparse, numpy as np
@@ -8,6 +8,9 @@ import astro, errors, interface
 # Classes:
 
 class Cluster:
+    '''
+    Class for storing cluster members and deriving properties from those members.
+    '''
     def __init__(self, c_id):
         self.c_id = c_id
         self.g_id = []
@@ -26,9 +29,6 @@ class Cluster:
     def flag(self, c_id):
         self.match_flags.extend(c_id)
     def props(self, bg_expect):
-        #self.c_ra = np.mean(self.g_ra)
-        #self.c_dec = np.mean(self.g_dec)
-        #self.c_z = np.mean(self.g_z)
         self.c_ra = np.median(self.g_ra)
         self.c_dec = np.median(self.g_dec)
         self.c_z = np.median(self.g_z)
@@ -193,7 +193,6 @@ gal_out = open(gal_file,'w')
 print>> clt_out, '#C_ID        C_RA    C_DEC   C_Z   C_NGAL C_SN   C_AREA C_SIZE'
 print>> gal_out, '#C_ID        C_NGAL G_ID         G_RA    G_DEC  G_Z'
 
-#for i in range(len(clusters)):
 for i in index:
     print>> clt_out, '%012d' % clusters[i].c_id,'%07.3f' % clusters[i].c_ra,
     print>> clt_out, '%+07.3f' % clusters[i].c_dec, '%05.3f' % clusters[i].c_z,
