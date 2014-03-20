@@ -12,6 +12,7 @@
 //************************************************************************************************//
 
 #include "./include.hpp"  //*Include C++ packages and cosmology routines*//
+#include "./fits.hpp" //*Include FITSIO packages*//
 
 #include "./fof.hpp"
 
