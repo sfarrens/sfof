@@ -2,15 +2,20 @@
 # PYMERGE V.1.1 #
 #################
 
+"""@file pycatcut.v.1.1
+@brief Code that merges cluster catalogues into a single catalogue.
+@author Samuel Farrens
+"""
+
 import math, optparse, numpy as np
 import astro, errors, interface
 
 # Classes:
 
 class Cluster:
-    '''
+    """
     Class for storing cluster members and deriving properties from those members.
-    '''
+    """
     def __init__(self, c_id):
         self.c_id = c_id
         self.g_id = []
@@ -50,9 +55,9 @@ class Cluster:
 # Functions:
 
 def read_file(file):
-    '''
+    """
     Function that reads a "galaxies" file and extracts the relevant fields. 
-    '''
+    """
     data = np.genfromtxt(file, dtype="S", unpack = True)
     c_id = data[0,:]
     g_id = data[3,:]
@@ -62,18 +67,18 @@ def read_file(file):
     return c_id, g_id, g_ra, g_dec, g_z
 
 def gal_count(clusters):
-    '''
+    """
     Function that computes the total number of galaxies in clusters.
-    '''
+    """
     sum = 0
     for x in clusters:
         sum += x.ngal
     return sum
 
 def find_matches(clusters):
-    '''
+    """
     Function that finds clusters with galaxies in common.
-    '''
+    """
     ra_dec_lim = 0.5
     z_lim = 0.2
     matches = []
@@ -97,15 +102,15 @@ def find_matches(clusters):
     return matches
 
 def merge(cluster1, cluster2):
-    '''
+    """
     Fuction that merges two clusters.
-    '''
+    """
     cluster1.extend(cluster2.g_id, cluster2.g_ra, cluster2.g_dec, cluster2.g_z)
 
 def merge_and_clean(clusters, matches):
-    '''
+    """
     Function that merges all matched clusters and deletes the redundant structures.
-    '''
+    """
     if len(matches > 0):
         x = matches[:, 0]
         y = matches[:, 1]

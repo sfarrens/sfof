@@ -4,6 +4,11 @@
 # Samuel Farrens 2014 #
 #######################
 
+"""@file pycatcut.v.2.0
+@brief Code that divides a galaxy catalogue into overlapping pieces.
+@author Samuel Farrens
+"""
+
 import math, optparse, numpy as np, pycatcut_help as pch
 import astro, errors, interface
 
