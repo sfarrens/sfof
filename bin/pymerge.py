@@ -19,6 +19,9 @@ class Cluster:
     Class for storing cluster members and deriving properties from those members.
     """
     def __init__(self, c_id):
+        """
+        Function that initialises a Cluster class.
+        """
         self.c_id = c_id
         self.g_id = []
         self.g_ra = []
@@ -26,16 +29,28 @@ class Cluster:
         self.g_z = []
         self.match_flags = []
     def clean(self, c_id):
+        """
+        Function that resets the cluster ID and empties the match flags.
+        """
         self.c_id = c_id
         self.match_flags = []
     def extend(self, g_id, g_ra, g_dec, g_z):
+        """
+        Function that adds galaxy properties to Cluster.
+        """
         self.g_id.extend(g_id)
         self.g_ra.extend(g_ra)
         self.g_dec.extend(g_dec)
         self.g_z.extend(g_z)
     def flag(self, c_id):
+        """
+        Function that adds Cluster ID to list of match flags.
+        """
         self.match_flags.extend(c_id)
     def props(self, bg_expect):
+        """
+        Function that sets Cluster properties.
+        """
         self.c_ra = np.median(self.g_ra)
         self.c_dec = np.median(self.g_dec)
         self.c_z = np.median(self.g_z)
@@ -48,6 +63,9 @@ class Cluster:
         self.area = self.size ** 2 * math.pi
         self.sn = (self.ngal) / ((self.area * bg_expect) ** 0.5)
     def unique(self):
+        """
+        Function that removes duplicate galaxies from Cluster.
+        """
         unique_ids, index = np.unique(self.g_id, return_index = True)
         self.g_id = list(unique_ids)
         self.g_ra = list(np.array(self.g_ra)[index])
