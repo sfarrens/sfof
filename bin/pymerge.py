@@ -91,10 +91,12 @@ def find_matches(clusters):
         zs.append(clusters[i].c_z)
     for i in range(len(clusters)):
         interface.progress_bar(i, len(clusters))
-        index = np.where((np.fabs(clusters[i].c_ra - ras) <= ra_dec_lim) & (np.fabs(clusters[i].c_dec - decs) <= ra_dec_lim) &
-                        (np.fabs(clusters[i].c_z - zs) <= z_lim))[0]
+        index = np.where((np.fabs(clusters[i].c_ra - ras) <= ra_dec_lim) &
+                         (np.fabs(clusters[i].c_dec - decs) <= ra_dec_lim) &
+                         (np.fabs(clusters[i].c_z - zs) <= z_lim))[0]
         for j in index:
-            if((j not in clusters[i].match_flags) & (np.any(np.in1d(clusters[i].g_id, clusters[j].g_id))) & (i != j)):
+            if((j not in clusters[i].match_flags) &
+               (np.any(np.in1d(clusters[i].g_id, clusters[j].g_id))) & (i != j)):
                 matches.append([i, j])
                 clusters[j].flag([clusters[i].c_id])
     matches = np.array(matches)
