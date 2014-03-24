@@ -1,8 +1,9 @@
 # Compilers
-GPP      = clang++
-GCC      = gcc
-GPP_FLAG = -O3 -std=c++11 -stdlib=libc++ -w
-GFLAGS   = -O3 -c
+CLANG      = clang++
+CLANG_FLAG = -O3 -std=c++11 -stdlib=libc++ -w
+GCC      = /usr/local/bin/g++
+GCC_FLAG = -O3 -std=c++11
+OMP_FLAG = -fopenmp
 
 # Libraries
 
@@ -15,13 +16,14 @@ each: fof
 
 # New Friends-of-Friends
 
-FOF_OBJ = fof_v2.1.o
+FOF_OBJ = fof_omp_v2.1.o
 
 fof: $(FOF_OBJ)
 
 $(FOF_OBJ):
-	$(GPP) -c $(GPP_FLAG) ./$*.cpp -o ./$*.o $(FITS_INC)
-	$(GPP) -g $(GPP_FLAG) ./$*.o -o ./$* $(FITS_LIB)
+	$(GCC) -c $(GCC_FLAG) $(OMP_FLAG) ./$*.cpp -o ./$*.o $(FITS_INC)
+	$(GCC) -g $(GCC_FLAG) $(OMP_FLAG) ./$*.o -o ./$* $(FITS_LIB)
+	mv ./$* ./bin
 
 clean: 
 	-rm -f ./*.o ./*~

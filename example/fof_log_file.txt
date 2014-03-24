@@ -1,0 +1,18 @@
+#----------------------------------------------------------------------------------------------#
+#---   FOF LOG FILE CREATED 24/03/2014 AT 18:00:41    -----------------------------------------#
+#----------------------------------------------------------------------------------------------#
+ FoF Mode: [SPECTROSCOPIC]
+ FoF Linking Parameters: [R(0.5)=0.86] [z0=0.009] [DYNAMIC]
+ Reading ASCII file with 6 columns and 13133 rows:	Done
+   - Using only the 13133 objects between z=0.01 and z=1.45
+ Calculating linking length for redshift range:		Done
+   - R_friend at z=0.500:	0.860000 Mpc/h
+   - v at z=0.500:		1798.740016 km/s
+ Making kdtree:						Done
+ Creating Protoclusters:				Done
+ Merging protoclusters into clusters:			Done
+		- Number of Clusters:			389
+		- Number of Galaxies in Clusters:	1473
+		- Number of Protoclusters:		389
+ Determining cluster properties:			Done
+ Outputting files:					Done

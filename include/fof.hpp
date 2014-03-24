@@ -3,7 +3,7 @@
 double proj_dist(double ra1,double ra2,double sin_dec1,double sin_dec2,double cos_dec1,double cos_dec2){
   double dist;
   dist=acos(sin_dec1*sin_dec2+cos_dec1*cos_dec2*cos(ra1-ra2));
-  if(isnan(dist)) dist=0;
+  if(std::isnan(dist)) dist=0;
   return dist;
 }
 
@@ -19,7 +19,8 @@ void d_h_m_s(double time){
   fracpart2=modf(fracpart1*fdays,&intpart2);
   fracpart3=modf(fracpart2*fhours,&intpart3);
   fracpart4=modf(fracpart3*fminutes,&intpart4);
-  std::cout<<" Time Elapsed: ["<<(int)intpart1<<" days | "<<(int)intpart2<<" h | "<<(int)intpart3<<" m | "<<(int)intpart4<<" s"<<"] \n"<<std::flush;
+  std::cout<<" Time Elapsed: ["<<(int)intpart1<<" days | "<<(int)intpart2<<" h | "
+	   <<(int)intpart3<<" m | "<<(int)intpart4<<" s"<<"] \n"<<std::flush;
 }
 
 /*ERROR MESSAGES*/
