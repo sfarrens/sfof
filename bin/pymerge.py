@@ -20,7 +20,7 @@ class Cluster:
     """
     def __init__(self, c_id):
         """
-        Function that initialises a Cluster class.
+        Function that initialises a Cluster instance.
         """
         self.c_id = c_id
         self.g_id = []
