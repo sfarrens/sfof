@@ -1,6 +1,8 @@
-#################
-# PYMERGE V.1.1 #
-#################
+#######################
+#    PYMERGE V.1.1    #
+#######################
+# Samuel Farrens 2014 #
+#######################
 
 """@file pycatcut.v.1.1
 @brief Code that merges cluster catalogues into a single catalogue.
