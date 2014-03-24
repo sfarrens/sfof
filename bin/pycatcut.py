@@ -17,16 +17,20 @@ import astro, errors, interface
 parser = optparse.OptionParser()
 parser.add_option("-f", "--list", dest = "file_name", help = "Name of input file.")
 parser.add_option("-o", "--output", dest = "output", help = "Name for output files.")
-parser.add_option("--ra_col", dest = "ra_col", type = "int", default = 2, help = "RA column number. [default: %default]")
-parser.add_option("--dec_col", dest = "dec_col", type = "int", default = 3, help = "Dec column number. [default: %default]")
+parser.add_option("--ra_col", dest = "ra_col", type = "int", default = 2,
+                  help = "RA column number. [default: %default]")
+parser.add_option("--dec_col", dest = "dec_col", type = "int", default = 3,
+                  help = "Dec column number. [default: %default]")
 parser.add_option("--ra_lower", dest = "ra_lower", type = "float", help = "Lower limit on RA.")
 parser.add_option("--ra_upper", dest = "ra_upper", type = "float", help = "Upper limit on RA.")
 parser.add_option("--dec_lower", dest = "dec_lower", type = "float", help = "Lower limit on Dec.")
 parser.add_option("--dec_upper", dest = "dec_upper", type = "float", help = "Upper limit on Dec.")
 parser.add_option("-r", "--ra_bin", dest = "ra_bin", type = "int", help = "Number of RA bins.")
 parser.add_option("-d", "--dec_bin", dest = "dec_bin", type = "int", help = "Number of Dec bins.")
-parser.add_option("--ra_overlap", dest = "ra_overlap", type = "float", default = 1.0, help = "Overlap between RA bins. [default: %default]")
-parser.add_option("--dec_overlap", dest = "dec_overlap", type = "float", default = 1.0, help = "Overlap between Dec bins. [default: %default]")
+parser.add_option("--ra_overlap", dest = "ra_overlap", type = "float", default = 1.0,
+                  help = "Overlap between RA bins. [default: %default]")
+parser.add_option("--dec_overlap", dest = "dec_overlap", type = "float", default = 1.0,
+                  help = "Overlap between Dec bins. [default: %default]")
 
 (opts, args) = parser.parse_args()
 
