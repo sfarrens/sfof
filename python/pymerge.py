@@ -110,7 +110,7 @@ def find_matches(clusters):
         decs.append(clusters[i].c_dec)
         zs.append(clusters[i].c_z)
     for i in range(len(clusters)):
-        interface.progress_bar(i, len(clusters))
+        if opts.progress: interface.progress_bar(i, len(clusters))
         index = np.where((np.fabs(clusters[i].c_ra - ras) <= ra_dec_lim) &
                          (np.fabs(clusters[i].c_dec - decs) <= ra_dec_lim) &
                          (np.fabs(clusters[i].c_z - zs) <= z_lim))[0]
@@ -120,7 +120,7 @@ def find_matches(clusters):
                 matches.append([i, j])
                 clusters[j].flag([clusters[i].c_id])
     matches = np.array(matches)
-    print ""
+    if opts.progress: print ""
     return matches
 
 def merge(cluster1, cluster2):
@@ -149,25 +149,30 @@ def merge_and_clean(clusters, matches):
 # Read Arguments:
 
 parser = optparse.OptionParser()
+parser.add_option("-i", "--input", action = "append", dest = "files", help = "List of file names.")
 parser.add_option("-l", "--list", dest = "file_list", help = "List of file names.")
 parser.add_option("-o", "--output", dest = "out_file_name", help = "Name for output files.")
 parser.add_option("-b", "--bg_expect", dest = "bg_expect", type = "float",
                    help = "Expected number of background galaxies per arcminute.")
+parser.add_option("-p", "--progress", action = "store_true", dest = "progress",
+                   help = "Display progress bar in terminal.")
 (opts, args) = parser.parse_args()
 
-if not opts.file_list:
-    parser.error('Input filename not provided.')
+if not opts.files and not opts.file_list:
+    parser.error('Input filename(s) not provided.')
 if not opts.out_file_name:
     parser.error('Output filename not provided.')
 if not opts.bg_expect:
     parser.error('Expected background density not provided.')
 
-errors.file_name_error(opts.file_list)             
-
 # Read List of Files:
- 
-file_list = np.genfromtxt(opts.file_list, dtype="S", unpack = True)
 
+if opts.file_list:
+    errors.file_name_error(opts.file_list)             
+    file_list = np.genfromtxt(opts.file_list, dtype="S", unpack = True)
+elif opts.files:
+    file_list = opts.files
+    
 # Read Files and Store Elements in Clusters:
 
 clusters = []

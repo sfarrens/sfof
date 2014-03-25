@@ -9,13 +9,13 @@
 @author Samuel Farrens
 """
 
-import math, optparse, numpy as np, pycatcut_help as pch
+import math, optparse, numpy as np
 import astro, errors, interface
 
 # Read Arguments and Set Defaults:
 
 parser = optparse.OptionParser()
-parser.add_option("-f", "--list", dest = "file_name", help = "Name of input file.")
+parser.add_option("-i", "--input", dest = "file_name", help = "Name of input file.")
 parser.add_option("-o", "--output", dest = "output", help = "Name for output files.")
 parser.add_option("--ra_col", dest = "ra_col", type = "int", default = 2,
                   help = "RA column number. [default: %default]")
