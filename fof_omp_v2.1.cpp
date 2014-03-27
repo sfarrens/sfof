@@ -519,11 +519,14 @@ void cluster_finder::create_protoclusters_kdtree(){  //! Loop over photometric r
   int number_of_loops;
   if(!strcmp(type.c_str(),"spec")) number_of_loops=1;
   else if(!strcmp(type.c_str(),"phot")) number_of_loops=Nslices;
+omp_set_dynamic(0);     
+omp_set_num_threads(1);
 #pragma omp parallel 
   {
-    int nts = omp_get_num_threads();
+    int nts=omp_get_num_threads();
     int tid=omp_get_thread_num();
-    if(tid == 0) std::cout<<" OMP: Using "<<nts<<" threads.\n"<<std::flush;
+#pragma omp master
+    std::cout<<" OMP: Using "<<nts<<" threads.\n"<<std::flush;
 #pragma omp for
     for(int j=0;j<number_of_loops;j++) create_protoclusters(j, tid);
   }
@@ -624,10 +627,9 @@ void cluster_finder::create_protoclusters(int o, int tid){  //! Find protocluste
 			prtclt[k].zmem.push_back(gal[jj].z);
 			prtclt[k].ramem.push_back(gal[jj].ra);
 			prtclt[k].decmem.push_back(gal[jj].dec);
-			  //	}
-		      }  
-		    }
-		  } 
+		      }
+		    }  
+		  }
 		} /*End of loop over node members*/
 	      }
 	    } /*End of loop over kd-tree nodes*/
@@ -641,16 +643,16 @@ void cluster_finder::create_protoclusters(int o, int tid){  //! Find protocluste
       }
     } /*End of field flag skip*/
     if(!strcmp(progress.c_str(),"yes") && !strcmp(type.c_str(),"spec")) std::cout<<"!Creating Protoclusters: "<<std::fixed<<std::setprecision(3)
-										 <<((double)(i+1)/gal.size())*100.0<<" %\r"<<std::flush;
+    										 <<((double)(i+1)/gal.size())*100.0<<" %\r"<<std::flush;
   }/*End of the loop over all  i galaxies*/
   end_f=time(NULL);
   int ngalprtclt=0;
   for(int i=0;i<prtclt.size();i++) ngalprtclt+=prtclt[i].member_num.size();
   if(!strcmp(type.c_str(),"phot")){ 
-    std::cout<<" ID: "<<tid<<" Creating Protoclusters:\t z = "<<std::fixed<<std::setprecision(2)<<std::setw(4)<<std::left<<std::setfill('0')
-	     <<z_sliced[o]<<std::resetiosflags(std::ios::fixed)<<"\tNprtclt = "<<std::setw(6)<<std::right
-	     <<std::setfill('0')<<prtclt.size()<<"  Ngalprtclt = "<<std::setw(7)<<std::right<<std::setfill('0')
-	     <<ngalprtclt<<"\tTime: "<<(end_f-start_f)<<" s\n"<<std::flush;
+  std::cout<<" ID: "<<tid<<" Creating Protoclusters:\t z = "<<std::fixed<<std::setprecision(2)<<std::setw(4)<<std::left<<std::setfill('0')
+	   <<z_sliced[o]<<std::resetiosflags(std::ios::fixed)<<"\tNprtclt = "<<std::setw(6)<<std::right
+	   <<std::setfill('0')<<prtclt.size()<<"  Ngalprtclt = "<<std::setw(7)<<std::right<<std::setfill('0')
+	   <<ngalprtclt<<"\tTime: "<<(end_f-start_f)<<" s\n"<<std::flush;
   }
   if(!strcmp(log_file.c_str(),"yes")){
     std::ofstream outlogfile;
@@ -936,10 +938,10 @@ int main (int argc, char *argv[]){
   test_file2.close();
   data_phot.make_kdtree("x","tag_cluster");
   data_phot.create_protoclusters_kdtree();
-  data_phot.merge_protoclusters();
-  data_phot.cluster_properties();  
-  if(!strcmp(data_phot.out_cat.c_str(),"yes") && data_phot.clt.size()>0) data_phot.output_files();
-  else if(data_phot.clt.size()<=0) std::cout<<" [***NO CLUSTERS FOUND!***]\n"<<std::flush;
+  //data_phot.merge_protoclusters();
+  //data_phot.cluster_properties();  
+  //if(!strcmp(data_phot.out_cat.c_str(),"yes") && data_phot.clt.size()>0) data_phot.output_files();
+  //else if(data_phot.clt.size()<=0) std::cout<<" [***NO CLUSTERS FOUND!***]\n"<<std::flush;
   end=time(NULL);
   d_h_m_s(double(end-start));
   std::cout<<"[:::::::::::::::::::::::FRIENDS-OF-FRIENDS COMPLETE:::::::::::::::::::::::]\n"<<std::flush;    
