@@ -95,7 +95,7 @@ public:
   void read_fits(const std::string &fname);
   void selection_link();
   void create_protoclusters_kdtree();
-  void create_protoclusters(int o);
+  void create_protoclusters(int o, int tid);
   double check_node(int gali, int node_nb);
   void communicate();
   void communicate(int i,int j);
@@ -523,12 +523,13 @@ void cluster_finder::create_protoclusters_kdtree(){  //! Loop over photometric r
   {
     int nts = omp_get_num_threads();
     int tid=omp_get_thread_num();
+    if(tid == 0) std::cout<<" OMP: Using "<<nts<<" threads.\n"<<std::flush;
 #pragma omp for
-    for(int j=0;j<number_of_loops;j++) create_protoclusters(j);
+    for(int j=0;j<number_of_loops;j++) create_protoclusters(j, tid);
   }
 }
 
-void cluster_finder::create_protoclusters(int o){  //! Find protoclusters in spectroscopic mode
+void cluster_finder::create_protoclusters(int o, int tid){  //! Find protoclusters in spectroscopic mode
   time_t start_f,end_f;
   start_f=time(NULL);
   int oint,z_oint,count=0;
@@ -646,7 +647,7 @@ void cluster_finder::create_protoclusters(int o){  //! Find protoclusters in spe
   int ngalprtclt=0;
   for(int i=0;i<prtclt.size();i++) ngalprtclt+=prtclt[i].member_num.size();
   if(!strcmp(type.c_str(),"phot")){ 
-    std::cout<<" Creating Protoclusters:\t z = "<<std::fixed<<std::setprecision(2)<<std::setw(4)<<std::left<<std::setfill('0')
+    std::cout<<" ID: "<<tid<<" Creating Protoclusters:\t z = "<<std::fixed<<std::setprecision(2)<<std::setw(4)<<std::left<<std::setfill('0')
 	     <<z_sliced[o]<<std::resetiosflags(std::ios::fixed)<<"\tNprtclt = "<<std::setw(6)<<std::right
 	     <<std::setfill('0')<<prtclt.size()<<"  Ngalprtclt = "<<std::setw(7)<<std::right<<std::setfill('0')
 	     <<ngalprtclt<<"\tTime: "<<(end_f-start_f)<<" s\n"<<std::flush;
