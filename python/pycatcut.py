@@ -10,31 +10,17 @@
 """
 
 import math, optparse, numpy as np
-import astro, errors, interface
+from functions import astro, errors, fileio, interface, options
 
 # Read Arguments and Set Defaults:
 
 parser = optparse.OptionParser()
-parser.add_option("-i", "--input", dest = "file_name", help = "Name of input file.")
-parser.add_option("-o", "--output", dest = "output", help = "Name for output files.")
-parser.add_option("--ra_col", dest = "ra_col", type = "int", default = 2,
-                  help = "RA column number. [default: %default]")
-parser.add_option("--dec_col", dest = "dec_col", type = "int", default = 3,
-                  help = "Dec column number. [default: %default]")
-parser.add_option("--ra_lower", dest = "ra_lower", type = "float", help = "Lower limit on RA.")
-parser.add_option("--ra_upper", dest = "ra_upper", type = "float", help = "Upper limit on RA.")
-parser.add_option("--dec_lower", dest = "dec_lower", type = "float", help = "Lower limit on Dec.")
-parser.add_option("--dec_upper", dest = "dec_upper", type = "float", help = "Upper limit on Dec.")
-parser.add_option("-r", "--ra_bin", dest = "ra_bin", type = "int", help = "Number of RA bins.")
-parser.add_option("-d", "--dec_bin", dest = "dec_bin", type = "int", help = "Number of Dec bins.")
-parser.add_option("--ra_overlap", dest = "ra_overlap", type = "float", default = 1.0,
-                  help = "Overlap between RA bins. [default: %default]")
-parser.add_option("--dec_overlap", dest = "dec_overlap", type = "float", default = 1.0,
-                  help = "Overlap between Dec bins. [default: %default]")
-
+options.single_input(parser)
+options.single_output(parser)
+options.catcut(parser)
 (opts, args) = parser.parse_args()
 
-if not opts.file_name:
+if not opts.input_file:
     parser.error('Input filename not provided.')
 if (not opts.ra_bin) or (not opts.dec_bin):
     parser.error('Number of RA or Dec bins not provided.')
@@ -43,15 +29,22 @@ if (opts.ra_bin == 1) and (opts.dec_bin == 1):
     
 #Check for errors
 
-errors.file_name_error(opts.file_name)                                                       
+errors.file_name_error(opts.input_file)                                                       
             
 #Read catalogue
     
-print 'Reading data from ' + opts.file_name
-catalogue = np.genfromtxt(opts.file_name, dtype="S", unpack = True)
+print 'Reading data from ' + opts.input_file
+if opts.input_type == 'fits':
+    catalogue = fileio.read_fits(opts.input_file)
+else:
+    catalogue = fileio.read_ascii(opts.input_file)
 
+id = np.array(catalogue[opts.id_col - 1, :])
 ra = np.array(catalogue[opts.ra_col - 1, :], dtype="float")
 dec = np.array(catalogue[opts.dec_col - 1, :], dtype="float")
+z = np.array(catalogue[opts.z_col - 1, :], dtype="float")
+if opts.mode == 'phot':
+    dz = np.array(catalogue[opts.dz_col - 1, :], dtype="float")
 
 #Set bin sizes
 
@@ -78,13 +71,26 @@ for i in range(opts.ra_bin):
         dec_index_1 = (dec >= dec_bin_limit_lower)
         dec_index_2 = (dec < dec_bin_limit_upper)
         index = (ra_index_1 & ra_index_2 & dec_index_1 & dec_index_2)
-        if opts.output == None:
-            out_file_name = opts.file_name + '_piece_' + ('%02d' % piece_num) + '.dat'
+        if opts.output_file == None:
+            opts.output_file = opts.input_file
+        if opts.output_type == 'ascii':
+            out_file_name = opts.output_file + '_piece_' + ('%02d' % piece_num) + '.dat'
             out_file = open(out_file_name, 'w')
         else:
-            out_file_name = opts.output + '_piece_' + ('%02d' % piece_num) + '.dat'
-            out_file = open(out_file_name, 'a')
+            out_file_name = opts.output_file + '_piece_' + ('%02d' % piece_num) + '.fits'
         print 'Printing data to ' + out_file_name + ' (' + str(np.sum(index)) + ')'
-        for k in np.transpose(catalogue[:, index]):
-            print>> out_file, ' '.join(k)
+        if opts.output_type == 'ascii':
+            for k in np.transpose(catalogue[:, index]):
+                print>> out_file, ' '.join(k)
+        else:
+            from astropy.io import fits
+            tbhdu = fits.new_table(fits.ColDefs([fits.Column(name='id', format='8A', array = id[index]),
+                                                 fits.Column(name='ra', format='D', array = ra[index]),
+                                                 fits.Column(name='dec', format='D', array = dec[index]),
+                                                 fits.Column(name='z', format='D', array = z[index]),
+                                                 fits.Column(name='dz', format='D', array = dz[index])]))
+            n = np.arange(100.0)
+            hdu = fits.PrimaryHDU(n)
+            thdulist = fits.HDUList([hdu, tbhdu])
+            thdulist.writeto(out_file_name)
         piece_num += 1

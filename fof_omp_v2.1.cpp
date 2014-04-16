@@ -938,10 +938,10 @@ int main (int argc, char *argv[]){
   test_file2.close();
   data_phot.make_kdtree("x","tag_cluster");
   data_phot.create_protoclusters_kdtree();
-  //data_phot.merge_protoclusters();
-  //data_phot.cluster_properties();  
-  //if(!strcmp(data_phot.out_cat.c_str(),"yes") && data_phot.clt.size()>0) data_phot.output_files();
-  //else if(data_phot.clt.size()<=0) std::cout<<" [***NO CLUSTERS FOUND!***]\n"<<std::flush;
+  data_phot.merge_protoclusters();
+  data_phot.cluster_properties();  
+  if(!strcmp(data_phot.out_cat.c_str(),"yes") && data_phot.clt.size()>0) data_phot.output_files();
+  else if(data_phot.clt.size()<=0) std::cout<<" [***NO CLUSTERS FOUND!***]\n"<<std::flush;
   end=time(NULL);
   d_h_m_s(double(end-start));
   std::cout<<"[:::::::::::::::::::::::FRIENDS-OF-FRIENDS COMPLETE:::::::::::::::::::::::]\n"<<std::flush;    

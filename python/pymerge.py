@@ -10,67 +10,9 @@
 """
 
 import math, optparse, numpy as np
-import astro, errors, interface
-
-# Classes:
-
-class Cluster:
-    """
-    Class for storing cluster members and deriving properties from those members.
-    """
-    def __init__(self, c_id):
-        """
-        Function that initialises a Cluster instance.
-        """
-        self.c_id = c_id
-        self.g_id = []
-        self.g_ra = []
-        self.g_dec = []
-        self.g_z = []
-        self.match_flags = []
-    def clean(self, c_id):
-        """
-        Function that resets the cluster ID and empties the match flags.
-        """
-        self.c_id = c_id
-        self.match_flags = []
-    def extend(self, g_id, g_ra, g_dec, g_z):
-        """
-        Function that adds galaxy properties to Cluster.
-        """
-        self.g_id.extend(g_id)
-        self.g_ra.extend(g_ra)
-        self.g_dec.extend(g_dec)
-        self.g_z.extend(g_z)
-    def flag(self, c_id):
-        """
-        Function that adds Cluster ID to list of match flags.
-        """
-        self.match_flags.extend(c_id)
-    def props(self, bg_expect):
-        """
-        Function that sets Cluster properties.
-        """
-        self.c_ra = np.median(self.g_ra)
-        self.c_dec = np.median(self.g_dec)
-        self.c_z = np.median(self.g_z)
-        self.ngal = len(self.g_id)
-        distances = []        
-        for i in range(self.ngal):
-            distances.extend([astro.projected_distance(self.g_ra[i], self.c_ra,
-                                                       self.g_dec[i], self.c_dec)])
-        self.size = np.mean(distances)
-        self.area = self.size ** 2 * math.pi
-        self.sn = (self.ngal) / ((self.area * bg_expect) ** 0.5)
-    def unique(self):
-        """
-        Function that removes duplicate galaxies from Cluster.
-        """
-        unique_ids, index = np.unique(self.g_id, return_index = True)
-        self.g_id = list(unique_ids)
-        self.g_ra = list(np.array(self.g_ra)[index])
-        self.g_dec = list(np.array(self.g_dec)[index])
-        self.g_z = list(np.array(self.g_z)[index])
+import errors
+from classes.cluster import Cluster
+from functions import merge, options
         
 # Functions:
 
@@ -78,13 +20,17 @@ def read_file(file):
     """
     Function that reads a "galaxies" file and extracts the relevant fields. 
     """
-    data = np.genfromtxt(file, dtype="S", unpack = True)
+    if opts.input_type == 'fits':
+        data = fileio.read_fits(file)
+    else:
+        data = fileio.read_ascii(file)
     c_id = data[0,:]
+    g_num = np.array(range(len(c_id)), dtype = 'int')
     g_id = data[3,:]
-    g_ra = np.array(data[4,:], dtype = 'f')
-    g_dec = np.array(data[5,:], dtype = 'f')
-    g_z = np.array(data[6,:], dtype = 'f')
-    return c_id, g_id, g_ra, g_dec, g_z
+    g_ra = np.array(data[4,:], dtype = 'float')
+    g_dec = np.array(data[5,:], dtype = 'float')
+    g_z = np.array(data[6,:], dtype = 'float')
+    return c_id, g_num, g_id, g_ra, g_dec, g_z
 
 def gal_count(clusters):
     """
@@ -95,83 +41,28 @@ def gal_count(clusters):
         sum += x.ngal
     return sum
 
-def find_matches(clusters):
-    """
-    Function that finds clusters with galaxies in common.
-    """
-    ra_dec_lim = 0.5
-    z_lim = 0.2
-    matches = []
-    ras = []
-    decs = []
-    zs = []
-    for i in range(len(clusters)):
-        ras.append(clusters[i].c_ra)
-        decs.append(clusters[i].c_dec)
-        zs.append(clusters[i].c_z)
-    for i in range(len(clusters)):
-        if opts.progress: interface.progress_bar(i, len(clusters))
-        index = np.where((np.fabs(clusters[i].c_ra - ras) <= ra_dec_lim) &
-                         (np.fabs(clusters[i].c_dec - decs) <= ra_dec_lim) &
-                         (np.fabs(clusters[i].c_z - zs) <= z_lim))[0]
-        for j in index:
-            if((j not in clusters[i].match_flags) &
-               (np.any(np.in1d(clusters[i].g_id, clusters[j].g_id))) & (i != j)):
-                matches.append([i, j])
-                clusters[j].flag([clusters[i].c_id])
-    matches = np.array(matches)
-    if opts.progress: print ""
-    return matches
-
-def merge(cluster1, cluster2):
-    """
-    Fuction that merges two clusters.
-    """
-    cluster1.extend(cluster2.g_id, cluster2.g_ra, cluster2.g_dec, cluster2.g_z)
-
-def merge_and_clean(clusters, matches):
-    """
-    Function that merges all matched clusters and deletes the redundant structures.
-    """
-    if len(matches > 0):
-        x = matches[:, 0]
-        y = matches[:, 1]
-        z = np.unique(y)
-        for i in range(len(matches)):
-            merge(clusters[x[i]], clusters[y[i]])
-        for i in range(len(z) - 1, -1, -1):
-            del clusters[z[i]]
-    for i in range(len(clusters)):
-        clusters[i].unique()
-        clusters[i].props(opts.bg_expect)
-        clusters[i].clean(i)
-    
 # Read Arguments:
 
 parser = optparse.OptionParser()
-parser.add_option("-i", "--input", action = "append", dest = "files", help = "List of file names.")
-parser.add_option("-l", "--list", dest = "file_list", help = "List of file names.")
-parser.add_option("-o", "--output", dest = "out_file_name", help = "Name for output files.")
-parser.add_option("-b", "--bg_expect", dest = "bg_expect", type = "float",
-                   help = "Expected number of background galaxies per arcminute.")
-parser.add_option("-p", "--progress", action = "store_true", dest = "progress",
-                   help = "Display progress bar in terminal.")
+options.multiple_input(parser)
+options.single_output(parser)
+options.merge(parser)
 (opts, args) = parser.parse_args()
-
-if not opts.files and not opts.file_list:
+ 
+if not opts.input_files and not opts.input_file_list:
     parser.error('Input filename(s) not provided.')
-if not opts.out_file_name:
+if not opts.output_file:
     parser.error('Output filename not provided.')
 if not opts.bg_expect:
     parser.error('Expected background density not provided.')
 
 # Read List of Files:
 
-if opts.file_list:
-    errors.file_name_error(opts.file_list)             
-    file_list = np.genfromtxt(opts.file_list, dtype="S", unpack = True)
-elif opts.files:
-    file_list = opts.files
+if opts.input_file_list:
+    errors.file_name_error(opts.input_file_list)             
+    file_list = np.genfromtxt(opts.input_file_list, dtype="S", unpack = True)
+elif opts.input_files:
+    file_list = opts.input_files
     
 # Read Files and Store Elements in Clusters:
 
@@ -181,12 +72,12 @@ cluster_count = 0
 for file in file_list:
     errors.file_name_error(file)
     print 'Reading: ', file             
-    c_id, g_id, g_ra, g_dec, g_z = read_file(file)
+    c_id, g_num, g_id, g_ra, g_dec, g_z = read_file(file)
     cluster_list = np.unique(c_id)
     for clt in cluster_list:
         index = (c_id == clt)
         clusters.append(Cluster(cluster_count))
-        clusters[cluster_count].extend(g_id[index], g_ra[index], g_dec[index], g_z[index])
+        clusters[cluster_count].extend(g_num[index], g_id[index], g_ra[index], g_dec[index], g_z[index])
         clusters[cluster_count].props(opts.bg_expect)
         cluster_count += 1
 
@@ -195,16 +86,9 @@ for file in file_list:
 print 'Original number of clusters:', len(clusters)
 print 'Original number of cluster members:', gal_count(clusters)
 print 'Finding cluster matches and merging:'
-    
-matches = [None]
-sweep = 1
-    
-while len(matches) > 0:
-    print ' >> Sweep:', sweep
-    matches = find_matches(clusters)
-    merge_and_clean(clusters, matches)
-    sweep += 1
-
+        
+merge.merge_clusters(clusters, opts.progress, opts.bg_expect, 0.5, 0.2)
+        
 print 'Final number of merged clusters:', len(clusters)
 print 'Final number of merged cluster members:', gal_count(clusters)
 
@@ -215,22 +99,74 @@ for i in range(len(clusters)):
     ngals.append(clusters[i].ngal)
 ngals = np.array(ngals)
 index = ngals.argsort()[::-1]
-    
-clt_file = opts.out_file_name + '_clusters.dat'
-gal_file = opts.out_file_name + '_galaxies.dat'
 
-clt_out = open(clt_file,'w')
-gal_out = open(gal_file,'w')
-
-print>> clt_out, '#C_ID        C_RA    C_DEC   C_Z   C_NGAL C_SN   C_AREA C_SIZE'
-print>> gal_out, '#C_ID        C_NGAL G_ID         G_RA    G_DEC  G_Z'
-
-for i in index:
-    print>> clt_out, '%012d' % clusters[i].c_id,'%07.3f' % clusters[i].c_ra,
-    print>> clt_out, '%+07.3f' % clusters[i].c_dec, '%05.3f' % clusters[i].c_z,
-    print>> clt_out, '%06d' % clusters[i].ngal, '%06.3f' % clusters[i].sn,
-    print>> clt_out, '%06.3f' % clusters[i].area, '%06.3f' % clusters[i].size
-    for j in range(clusters[i].ngal):
-        print>> gal_out, '%012d' % clusters[i].c_id,'%06d' % clusters[i].ngal,
-        print>> gal_out, '%12s' % clusters[i].g_id[j],'%07.3f' % clusters[i].g_ra[j],
-        print>> gal_out, '%+07.3f' % clusters[i].g_dec[j], '%05.3f' % clusters[i].g_z[j]
+if opts.output_type == 'ascii':
+    clt_file = opts.output_file + '_clusters.dat'
+    gal_file = opts.output_file + '_galaxies.dat'
+    clt_out = open(clt_file,'w')
+    gal_out = open(gal_file,'w')
+    print>> clt_out, '#C_ID        C_RA    C_DEC   C_Z   C_NGAL C_SN   C_AREA C_SIZE'
+    print>> gal_out, '#C_ID        C_NGAL G_ID         G_RA    G_DEC  G_Z'
+    for i in index:
+        print>> clt_out, '%012d' % clusters[i].id,'%07.3f' % clusters[i].ra,
+        print>> clt_out, '%+07.3f' % clusters[i].dec, '%05.3f' % clusters[i].z,
+        print>> clt_out, '%06d' % clusters[i].ngal, '%06.3f' % clusters[i].sn,
+        print>> clt_out, '%06.3f' % clusters[i].area, '%06.3f' % clusters[i].size
+        for j in range(clusters[i].ngal):
+            print>> gal_out, '%012d' % clusters[i].id,'%06d' % clusters[i].ngal,
+            print>> gal_out, '%12s' % clusters[i].g_id[j],'%07.3f' % clusters[i].g_ra[j],
+            print>> gal_out, '%+07.3f' % clusters[i].g_dec[j], '%05.3f' % clusters[i].g_z[j]
+else:
+    clt_file = opts.output_file + '_clusters.fits'
+    gal_file = opts.output_file + '_galaxies.fits'
+    c_id = []
+    c_ra = []
+    c_dec = []
+    c_z = []
+    c_ngal = []
+    c_sn = []
+    c_area = []
+    c_size = []
+    c_id2 = []
+    c_ngal2 = []
+    g_id = []
+    g_ra = []
+    g_dec = []
+    g_z = []
+    for i in index:
+        c_id.append(clusters[i].id)
+        c_ra.append(clusters[i].ra)
+        c_dec.append(clusters[i].dec)
+        c_z.append(clusters[i].z)
+        c_ngal.append(clusters[i].ngal)
+        c_sn.append(clusters[i].sn)
+        c_area.append(clusters[i].area)
+        c_size.append(clusters[i].size)
+        for j in range(clusters[i].ngal):
+            c_id2.append(clusters[i].id)
+            c_ngal2.append(clusters[i].ngal)
+            g_id.append(clusters[i].g_id[j])
+            g_ra.append(clusters[i].g_ra[j])
+            g_dec.append(clusters[i].g_dec[j])
+            g_z.append(clusters[i].g_z[j])
+    from astropy.io import fits
+    tbhdu1 = fits.new_table(fits.ColDefs([fits.Column(name='c_id', format='8A', array = c_id),
+                                          fits.Column(name='c_ra', format='D', array = c_ra),
+                                          fits.Column(name='c_dec', format='D', array = c_dec),
+                                          fits.Column(name='c_z', format='D', array = c_z),
+                                          fits.Column(name='c_ngal', format='V', array = c_ngal),
+                                          fits.Column(name='c_sn', format='D', array = c_sn),
+                                          fits.Column(name='c_area', format='D', array = c_area),
+                                          fits.Column(name='c_size', format='D', array = c_size)]))
+    tbhdu2 = fits.new_table(fits.ColDefs([fits.Column(name='c_id', format='8A', array = c_id2),
+                                          fits.Column(name='c_ngal', format='V', array = c_ngal2),
+                                          fits.Column(name='g_id', format='8A', array = g_id),
+                                          fits.Column(name='g_ra', format='D', array = g_ra),
+                                          fits.Column(name='g_dec', format='D', array = g_dec),
+                                          fits.Column(name='g_z', format='D', array = g_z)]))
+    n = np.arange(100.0)
+    hdu = fits.PrimaryHDU(n)
+    thdulist1 = fits.HDUList([hdu, tbhdu1])
+    thdulist2 = fits.HDUList([hdu, tbhdu2])
+    thdulist1.writeto(clt_file)
+    thdulist2.writeto(gal_file)

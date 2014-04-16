@@ -18,6 +18,14 @@ def rad2deg(angle):
    deg_angle = angle * 180.0 / math.pi 
    return deg_angle
 
+def radec2xy(ra, dec, r):
+    """
+    Function that converts RA and DEC to X and Y.
+    """
+    x = math.sin(deg2rad(90 - dec)) * math.cos(deg2rad(ra)) * r
+    y = math.sin(deg2rad(90 - dec)) * math.sin(deg2rad(ra)) * r
+    return x, y
+
 def projected_distance(ra1, ra2, dec1, dec2):
    """
    Function that returns the projected distance (in arcminutes) between two points.
