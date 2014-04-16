@@ -299,12 +299,6 @@ index = np.array(ngal_list).argsort()[::-1]
 
 clusters = np.array(clusters)[index]
 
-#output = open(opts.output_file, 'w')
-
-#for x in clusters:
-#    for y in range(x.ngal):
-#        print>> output, x.id, x.ngal, x.g_id[y], x.g_ra[y], x.g_dec[y], x.g_z[y]
-
 if opts.output_type == 'ascii':
     clt_file = opts.output_file + '_clusters.dat'
     gal_file = opts.output_file + '_galaxies.dat'
@@ -354,6 +348,20 @@ else:
             g_ra.append(clusters[i].g_ra[j])
             g_dec.append(clusters[i].g_dec[j])
             g_z.append(clusters[i].g_z[j])
+    c_id = np.array(c_id)
+    c_ra = np.array(c_ra, dtype = 'float')
+    c_dec = np.array(c_dec, dtype = 'float')
+    c_z = np.array(c_z, dtype = 'float')
+    c_ngal = np.array(c_ngal, dtype = 'float')
+    c_sn = np.array(c_sn, dtype = 'float')
+    c_area = np.array(c_area, dtype = 'float')
+    c_size =np.array(c_size, dtype = 'float')
+    c_id2 = np.array(c_id2)
+    c_ngal2 = np.array(c_ngal2, dtype = 'float')
+    g_id = np.array(g_id)
+    g_ra = np.array(g_ra, dtype = 'float')
+    g_dec = np.array(g_dec, dtype = 'float')
+    g_z = np.array(g_z, dtype = 'float')
     from astropy.io import fits
     tbhdu1 = fits.new_table(fits.ColDefs([fits.Column(name='c_id', format='8A', array = c_id),
                                           fits.Column(name='c_ra', format='D', array = c_ra),

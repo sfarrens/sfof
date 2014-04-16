@@ -149,6 +149,20 @@ else:
             g_ra.append(clusters[i].g_ra[j])
             g_dec.append(clusters[i].g_dec[j])
             g_z.append(clusters[i].g_z[j])
+    c_id = np.array(c_id)
+    c_ra = np.array(c_ra, dtype = 'float')
+    c_dec = np.array(c_dec, dtype = 'float')
+    c_z = np.array(c_z, dtype = 'float')
+    c_ngal = np.array(c_ngal, dtype = 'float')
+    c_sn = np.array(c_sn, dtype = 'float')
+    c_area = np.array(c_area, dtype = 'float')
+    c_size =np.array(c_size, dtype = 'float')
+    c_id2 = np.array(c_id2)
+    c_ngal2 = np.array(c_ngal2, dtype = 'float')
+    g_id = np.array(g_id)
+    g_ra = np.array(g_ra, dtype = 'float')
+    g_dec = np.array(g_dec, dtype = 'float')
+    g_z = np.array(g_z, dtype = 'float')
     from astropy.io import fits
     tbhdu1 = fits.new_table(fits.ColDefs([fits.Column(name='c_id', format='8A', array = c_id),
                                           fits.Column(name='c_ra', format='D', array = c_ra),
