@@ -41,12 +41,12 @@ public:
   friend bool operator< (const Galaxy &gal1, const Galaxy &gal2);
 };
 
-bool operator== (const Galaxy &gal1, const Galaxy &gal2) {
+inline bool operator== (const Galaxy &gal1, const Galaxy &gal2) {
   //! Bool == operator for Galaxy class.
   return gal1.num == gal2.num;
 }
 
-bool operator< (const Galaxy& gal1, const Galaxy& gal2) {
+inline bool operator< (const Galaxy& gal1, const Galaxy& gal2) {
   //! Bool < operator for Galaxy class.
   return gal1.num < gal2.num;
 }

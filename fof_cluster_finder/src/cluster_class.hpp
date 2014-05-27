@@ -27,7 +27,7 @@ public:
   friend bool operator< (const Cluster& clt1, const Cluster& clt2);
 }; 
 
-bool operator< (const Cluster& clt1, const Cluster& clt2) {
+inline bool operator< (const Cluster& clt1, const Cluster& clt2) {
   //! Bool < operator for Cluster class.
   return clt1.ngal < clt2.ngal;
 }

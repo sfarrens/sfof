@@ -3,7 +3,7 @@
 #ifndef FILEIO_CLASS_H
 #define FILEIO_CLASS_H
 
-#include "../include/fits.hpp" //*Include FITSIO packages*//
+#include <fitsio.h> //*Include FITSIO packages*//
 
 #include <fstream>
 #include <iomanip>

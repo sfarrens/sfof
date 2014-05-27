@@ -2,6 +2,7 @@
 
 #include <math.h>
 #include "zbin_class.hpp"
+#include "dh.h"
 
 void Zbin::assign_dist (double c, double H0, double Omega_M, double Omega_L) {
   //! Calculate the angular diameter distance and the differential comoving 

@@ -6,17 +6,17 @@
 #include <iostream>
 #include <vector>
 
-#include "../include/dh.c"
+//#include "../include/dh.c"
 
-#include "astro.cpp"
-#include "cluster_class.cpp"
-#include "fileio_class.cpp"
-#include "fof_class.cpp"
-#include "galaxy_class.cpp"
-#include "kdtree_class.cpp"
-#include "merge_class.cpp"
-#include "option_class.cpp"
-#include "zbin_class.cpp"
+#include "astro.hpp"
+#include "cluster_class.hpp"
+#include "fileio_class.hpp"
+#include "fof_class.hpp"
+#include "galaxy_class.hpp"
+#include "kdtree_class.hpp"
+#include "merge_class.hpp"
+#include "option_class.hpp"
+#include "zbin_class.hpp"
 
 class Main { //! Class structure for Main.
 private:

@@ -2,6 +2,7 @@
 
 #include <math.h>
 #include "galaxy_class.hpp"
+#include "dh.h"
 
 void Galaxy::assign_dist (double c, double H0, double Omega_M, double Omega_L) {
   //! Calculate angular diameter distance for Galaxy instance;

@@ -37,6 +37,7 @@ double lookback(double z,double OmegaM,double OmegaL);
 double optdepth(double z,double OmegaM,double OmegaL);
 double propmotdis(double z,double OmegaM,double OmegaL);
 
+#include <stdlib.h>
 #include <math.h>
 #include<stdio.h>
 #define PI       (3.141592653589793238462643)

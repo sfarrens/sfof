@@ -1,5 +1,5 @@
-#include "fileio_class.cpp"
-#include "option_class.cpp"
+#include "fileio_class.hpp"
+#include "option_class.hpp"
 
 #include <iostream>
 #include <sstream>
