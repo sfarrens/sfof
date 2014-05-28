@@ -1,7 +1,8 @@
 cmake_minimum_required(VERSION 2.6)
 project(fof_cluster_finder)
 
-#set(CMAKE_CXX_COMPILER clang++)
+set(CMAKE_CXX_FLAGS "-O3")
+set(CMAKE_C_FLAGS "-O3")
 
 set(CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH} "${CMAKE_CURRENT_SOURCE_DIR}/aux/")
 
