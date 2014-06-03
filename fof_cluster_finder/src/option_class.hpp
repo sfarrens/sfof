@@ -15,7 +15,7 @@ private:
 public:
   int kdtree_depth, min_ngal;
   double link_r, link_z, z_bin_size, z_min, z_max;
-  double z_ref, c, H0, omega_m, omega_l;
+  double z_ref, dz_max, c, H0, omega_m, omega_l;
   std::string input_file, fof_mode;
   std::string input_mode, output_mode;
   void read_opts (int, char *[]);

@@ -6,8 +6,6 @@
 #include <iostream>
 #include <vector>
 
-//#include "../include/dh.c"
-
 #include "astro.hpp"
 #include "cluster_class.hpp"
 #include "fileio_class.hpp"

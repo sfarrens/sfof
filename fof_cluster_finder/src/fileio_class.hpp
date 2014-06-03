@@ -22,10 +22,10 @@ private:
 public:
   void split (const std::string &, std::vector<std::string> &, 
 	      const std::string &);
-  void read_ascii (const std::string &, const std::string &, 
-		   std::vector<Galaxy> &);
-  void read_fits (const std::string &, const std::string &, 
-		  std::vector<Galaxy> &);
+  void read_ascii (const std::string &, const std::string &, double, 
+		   double, double, std::vector<Galaxy> &);
+  void read_fits (const std::string &, const std::string &, double, 
+		  double, double, std::vector<Galaxy> &);
   void output_file_names (const std::string &, const std::string &,
 			  const std::string &, double, double);
   void write_ascii (const std::vector<Cluster> &);

@@ -15,37 +15,50 @@ void Fileio::split (const std::string &str, std::vector<std::string> &tokens,
   }
 }
 
-void Fileio::read_ascii (const std::string &fname, const std::string &mode, 
-			 std::vector<Galaxy> &gals) { 
+void Fileio::read_ascii (const std::string &fname, const std::string &mode, double z_min, 
+			 double z_max, double dz_max, std::vector<Galaxy> &gals) { 
   //! Function to read in an ASCII file and store the contents in a vector of Galaxy instances.
   int count = 0; /* line count */
-  std::string line; /* line string */
-  std::vector<std::string> cols; /* column vector */
+  double ra, dec, z, dz;
+  std::string id, line;
+  std::vector<std::string> cols; 
   std::ifstream read_file(fname.c_str()); /* open file */
   while(!read_file.eof()) { /* while not the end of the file */
     std::getline(read_file, line); /* read each line */
     if(line.length() >= 1 && 
        line.find("#") == std::string::npos) { /* skip empty lines and lines starting with # */
       split(line, cols, " "); /* split line into columns */
-      if(mode == "spec") {
-	Galaxy spec_gal(count, cols[0], atof(cols[1].c_str()), atof(cols[2].c_str()), 
-			atof(cols[3].c_str())); /* intialise spec Galaxy */
-	gals.push_back(spec_gal); /* store spec Galaxy instance in vector */
-      }
-      else {
-	Galaxy phot_gal(count, cols[0], atof(cols[1].c_str()), atof(cols[2].c_str()), 
-			atof(cols[3].c_str()), atof(cols[4].c_str())); /* intialise phot Galaxy */
-	gals.push_back(phot_gal); /* store phot Galaxy instance in vector */
+      id = cols[0];
+      ra = atof(cols[1].c_str());
+      dec = atof(cols[2].c_str());
+      z = atof(cols[3].c_str());
+      if (z >= z_min && z <= z_max) { /* check if galaxy is within redshift limits*/
+	if(mode == "spec") {
+	  Galaxy spec_gal(count, id, ra, dec, z); /* intialise spec Galaxy */
+	  gals.push_back(spec_gal); /* store spec Galaxy instance in vector */
+	  count++; /* increase line count */
+	}
+	else {
+	  dz = atof(cols[4].c_str());
+	  if (dz <= z_max) { /* check if photo-z error is below accepted threshold */
+	    Galaxy phot_gal(count, id, ra, dec, z, dz); /* intialise phot Galaxy */
+	    gals.push_back(phot_gal); /* store phot Galaxy instance in vector */
+	    count++; /* increase line count */
+	  }
+	}
       }
       cols.clear(); /* clear column vector */
-      count++; /* increase line count */
     }
   }
   read_file.close(); /* close file */
+  std::cout<<"Reading ASCII file with "<<gals.size()<<" galaxies."<<std::endl;
+  std::cout<<" * only accepting galaxies with:"<<std::endl;
+  std::cout<<"   - ("<<z_min<<" <= z <= "<<z_max<<")"<<std::endl;
+  if(mode == "phot") std::cout<<"   - (dz <= "<<dz_max<<")"<<std::endl;
 }
 
-void Fileio::read_fits (const std::string &fname, const std::string &mode,
-			std::vector<Galaxy> &gals) { 
+void Fileio::read_fits (const std::string &fname, const std::string &mode, double z_min,
+			double z_max, double dz_max, std::vector<Galaxy> &gals) { 
   //! Function to read in an FITS file and store the contents in a vector of Galaxy instances.
   fitsfile *fptr;
   int n_cols, status=0, hdunum, hdutype, anynul, typecode;
@@ -57,7 +70,7 @@ void Fileio::read_fits (const std::string &fname, const std::string &mode,
     if(fits_get_hdu_num(fptr, &hdunum) == 1) fits_movabs_hdu(fptr, 2, &hdutype, &status);
     else fits_get_hdu_type(fptr, &hdutype, &status);
     if(hdutype == IMAGE_HDU) /* check if the FITS file contains an image */
-      std::cout<<"Error: this program only displays tables, not images.\n"<<std::flush;
+      std::cout<<"Error: this program only displays tables, not images."<<std::endl;
     else{
       fits_get_num_rows(fptr, &n_rows, &status); /* get number of rows in FITS table */
       fits_get_num_cols(fptr, &n_cols, &status); /* get number of columns in FITS table */
@@ -83,6 +96,7 @@ void Fileio::read_fits (const std::string &fname, const std::string &mode,
       }      
     }
   }
+  std::cout<<"Reading FITS file with "<<gals.size()<<" objects."<<std::endl;
 }
 
 void Fileio::output_file_names (const std::string &fname, const std::string &mode, 
@@ -99,6 +113,8 @@ void Fileio::output_file_names (const std::string &fname, const std::string &mod
   }
   cluster_file_name = cluster_file_stream.str();
   member_file_name = member_file_stream.str();
+  std::cout<<"Cluster properties being written to: "<<cluster_file_name<<std::endl;
+  std::cout<<"Cluster member properties being written to: "<<member_file_name<<std::endl;
 }
 
 void Fileio::write_ascii (const std::vector<Cluster> &cluster_list) {
@@ -152,7 +168,7 @@ void Fileio::write_fits (const std::vector<Cluster> &cluster_list) {
   fits_create_file(&fptr1, cluster_file_name.c_str(), &status); /*create new FITS file*/
   fits_create_file(&fptr2, member_file_name.c_str(), &status); /*create new FITS file*/
   if(status != 0){
-    std::cout<<"Error! Cannot create FITS file.\n"<<std::flush;
+    std::cout<<"Error! Cannot create FITS file."<<std::endl;
     exit(-1);
   }
   fits_create_tbl(fptr1, BINARY_TBL, 0, cluster_fields, cluster_types, cluster_forms, NULL, NULL, &status); /*create new FITS table*/ 

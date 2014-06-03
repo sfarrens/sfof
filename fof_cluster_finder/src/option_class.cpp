@@ -4,20 +4,20 @@
 
 void Option::help() {
   //! Function that prints help information.
-  std::cout<<"Help!\n"<<std::flush;
+  std::cout<<"Help!"<<std::endl;
   exit(0);
 }
 
 void Option::version() {
   //! Function that prints current code version.
-  std::cout<<"Version: 3.0\n"<<std::flush;
+  std::cout<<"Version: 3.0"<<std::endl;
 }
 
 void Option::read_opts(int argc, char *argv[]) {
   //! Function that reads code arguments.
   int index, iarg = 0;
   const char *option_tags;
-  option_tags = "hv:f:t:i:o:r:z:k:n:a:b:s:d:c:e:m:l:";
+  option_tags = "hv:f:t:i:o:r:z:k:n:a:b:s:d:g:c:e:m:l:";
   const struct option longopts[] = {
       {"help", no_argument, 0, 'h'},
       {"version", no_argument, 0, 'v'},
@@ -33,6 +33,7 @@ void Option::read_opts(int argc, char *argv[]) {
       {"z_max", required_argument, 0, 'b'},
       {"z_bin_size", required_argument, 0, 's'},
       {"z_ref", required_argument, 0, 'd'},
+      {"dz_max", required_argument, 0, 'g'},
       {"c", required_argument, 0, 'c'},
       {"H0", required_argument, 0, 'e'},
       {"omega_m", required_argument, 0, 'm'},
@@ -70,6 +71,8 @@ void Option::read_opts(int argc, char *argv[]) {
       z_bin_size = atof(optarg);
     case 'd':
       z_ref = atof(optarg);
+    case 'g':
+      dz_max = atof(optarg);
     case 'c':
       c = atof(optarg);
     case 'e':
@@ -88,7 +91,7 @@ void Option::read_param_file(const std::string &file_name) {
   std::vector<std::string> values; /* values vector */
   std::ifstream read_file(file_name.c_str()); /* open file */
   if(read_file.good()){ /* make sure file exits */
-    std::cout<<"Reading Parameter Values from: "<<file_name<<"\n"<<std::flush;
+    std::cout<<"Reading Parameter Values from: "<<file_name<<std::endl;
     while(!read_file.eof()) { /* while not the end of the file */
       std::getline(read_file, line);
       if(line.length() >= 1 && 
