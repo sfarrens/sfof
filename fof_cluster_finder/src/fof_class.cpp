@@ -82,7 +82,7 @@ void FoF::find_friends_of_friends (const Zbin &zbin, Cluster &cluster, double rf
 }
 
 void FoF::friends_of_friends (int bin_num) {
-  //! Funciton find friends-of-friends in a given redshift bin.
+  //! Funciton that find friends-of-friends in a given redshift bin.
   cluster_count = -1;
   Zbin zbin = zbin_list[bin_num];
   double rfriend = zbin.rfriend;

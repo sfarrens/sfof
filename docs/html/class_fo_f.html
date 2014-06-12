@@ -57,8 +57,8 @@
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:a270faa79dbc416ea74c1ea51691e6f70"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_fo_f.html#a270faa79dbc416ea74c1ea51691e6f70">FoF</a> (double link_r_val, double link_z_val, std::string mode_val)</td></tr>
-<tr class="separator:a270faa79dbc416ea74c1ea51691e6f70"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a40ca7bf140fb9b6c714d4737edaa2b7b"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_fo_f.html#a40ca7bf140fb9b6c714d4737edaa2b7b">FoF</a> (double link_r_val, double link_z_val, std::string mode_val, const <a class="el" href="class_kdtree.html">Kdtree</a> &amp;tree_val, const std::vector&lt; <a class="el" href="class_zbin.html">Zbin</a> &gt; &amp;zbin_val, std::vector&lt; <a class="el" href="class_galaxy.html">Galaxy</a> &gt; &amp;gal_val)</td></tr>
+<tr class="separator:a40ca7bf140fb9b6c714d4737edaa2b7b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ae8d3a3f04fae117e01bd6617ecadbd20"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_fo_f.html#ae8d3a3f04fae117e01bd6617ecadbd20">bin_check</a> (const <a class="el" href="class_zbin.html">Zbin</a> &amp;, const <a class="el" href="class_galaxy.html">Galaxy</a> &amp;)</td></tr>
 <tr class="separator:ae8d3a3f04fae117e01bd6617ecadbd20"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aca12fed9c211c8c81c2bacf5827f7bcc"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_fo_f.html#aca12fed9c211c8c81c2bacf5827f7bcc">node_check</a> (const <a class="el" href="class_galaxy.html">Galaxy</a> &amp;, const <a class="el" href="class_kdtree_1_1_kdtree__node.html">Kdtree::Kdtree_node</a> &amp;, double)</td></tr>
@@ -67,22 +67,24 @@ Public Member Functions</h2></td></tr>
 <tr class="separator:aadc96488b7394c363cc38fce47841bc2"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:afc35e53b3f914095ca7fc65887bcb330"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_fo_f.html#afc35e53b3f914095ca7fc65887bcb330">remove</a> (int)</td></tr>
 <tr class="separator:afc35e53b3f914095ca7fc65887bcb330"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:af13bec2fac4c5dedc3c878897925e649"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_fo_f.html#af13bec2fac4c5dedc3c878897925e649">friends_of_friends</a> (const <a class="el" href="class_kdtree.html">Kdtree</a> &amp;, const <a class="el" href="class_zbin.html">Zbin</a> &amp;, std::vector&lt; <a class="el" href="class_galaxy.html">Galaxy</a> &gt; &amp;)</td></tr>
-<tr class="separator:af13bec2fac4c5dedc3c878897925e649"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5eef5b0fd13c7f9e9029714d283c9582"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_fo_f.html#a5eef5b0fd13c7f9e9029714d283c9582">new_cluster</a> (const <a class="el" href="class_zbin.html">Zbin</a> &amp;, <a class="el" href="class_galaxy.html">Galaxy</a> &amp;, <a class="el" href="class_galaxy.html">Galaxy</a> &amp;)</td></tr>
+<tr class="separator:a5eef5b0fd13c7f9e9029714d283c9582"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:afd890fe25b302db883c0d6694736b5d7"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_fo_f.html#afd890fe25b302db883c0d6694736b5d7">add_member</a> (const <a class="el" href="class_zbin.html">Zbin</a> &amp;, <a class="el" href="class_galaxy.html">Galaxy</a> &amp;, <a class="el" href="class_cluster.html">Cluster</a> &amp;)</td></tr>
+<tr class="separator:afd890fe25b302db883c0d6694736b5d7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a89a5417feafc3621fc057cdbd1895410"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_fo_f.html#a89a5417feafc3621fc057cdbd1895410">find_friends</a> (const <a class="el" href="class_zbin.html">Zbin</a> &amp;, <a class="el" href="class_galaxy.html">Galaxy</a> &amp;, double)</td></tr>
+<tr class="separator:a89a5417feafc3621fc057cdbd1895410"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:adc9b1ea55e1bd10100b60014e44cd2c7"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_fo_f.html#adc9b1ea55e1bd10100b60014e44cd2c7">find_friends_of_friends</a> (const <a class="el" href="class_zbin.html">Zbin</a> &amp;, <a class="el" href="class_cluster.html">Cluster</a> &amp;, double)</td></tr>
+<tr class="separator:adc9b1ea55e1bd10100b60014e44cd2c7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae5cf48e66c76193df9ae9b27a08a5086"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_fo_f.html#ae5cf48e66c76193df9ae9b27a08a5086">friends_of_friends</a> (int)</td></tr>
+<tr class="separator:ae5cf48e66c76193df9ae9b27a08a5086"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-attribs"></a>
 Public Attributes</h2></td></tr>
-<tr class="memitem:abc58c3c24c76861e3dd705fa0816f3d2"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_fo_f.html#abc58c3c24c76861e3dd705fa0816f3d2">link_r</a></td></tr>
-<tr class="separator:abc58c3c24c76861e3dd705fa0816f3d2"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aa7427f0098db9a5a9cd16512d04e3fe7"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_fo_f.html#aa7427f0098db9a5a9cd16512d04e3fe7">link_z</a></td></tr>
-<tr class="separator:aa7427f0098db9a5a9cd16512d04e3fe7"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:af9163dfd2f251084a0de74553852b687"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_fo_f.html#af9163dfd2f251084a0de74553852b687">mode</a></td></tr>
-<tr class="separator:af9163dfd2f251084a0de74553852b687"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ac6eb8b7e045e596fc088d7b78a44e184"><td class="memItemLeft" align="right" valign="top">std::vector&lt; <a class="el" href="class_cluster.html">Cluster</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_fo_f.html#ac6eb8b7e045e596fc088d7b78a44e184">list_of_clusters</a></td></tr>
 <tr class="separator:ac6eb8b7e045e596fc088d7b78a44e184"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
-<a class="anchor" id="a270faa79dbc416ea74c1ea51691e6f70"></a>
+<a class="anchor" id="a40ca7bf140fb9b6c714d4737edaa2b7b"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
@@ -102,7 +104,25 @@ Public Attributes</h2></td></tr>
           <td class="paramkey"></td>
           <td></td>
           <td class="paramtype">std::string&#160;</td>
-          <td class="paramname"><em>mode_val</em>&#160;</td>
+          <td class="paramname"><em>mode_val</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="el" href="class_kdtree.html">Kdtree</a> &amp;&#160;</td>
+          <td class="paramname"><em>tree_val</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const std::vector&lt; <a class="el" href="class_zbin.html">Zbin</a> &gt; &amp;&#160;</td>
+          <td class="paramname"><em>zbin_val</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">std::vector&lt; <a class="el" href="class_galaxy.html">Galaxy</a> &gt; &amp;&#160;</td>
+          <td class="paramname"><em>gal_val</em>&#160;</td>
         </tr>
         <tr>
           <td></td>
@@ -116,6 +136,39 @@ Public Attributes</h2></td></tr>
 </div>
 </div>
 <h2 class="groupheader">Member Function Documentation</h2>
+<a class="anchor" id="afd890fe25b302db883c0d6694736b5d7"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void FoF::add_member </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="class_zbin.html">Zbin</a> &amp;&#160;</td>
+          <td class="paramname"><em>zbin</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="class_galaxy.html">Galaxy</a> &amp;&#160;</td>
+          <td class="paramname"><em>gal</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="class_cluster.html">Cluster</a> &amp;&#160;</td>
+          <td class="paramname"><em>cluster</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Function to add a new member to an existing cluster. </p>
+
+</div>
+</div>
 <a class="anchor" id="ae8d3a3f04fae117e01bd6617ecadbd20"></a>
 <div class="memitem">
 <div class="memproto">
@@ -143,27 +196,27 @@ Public Attributes</h2></td></tr>
 
 </div>
 </div>
-<a class="anchor" id="af13bec2fac4c5dedc3c878897925e649"></a>
+<a class="anchor" id="a89a5417feafc3621fc057cdbd1895410"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">void FoF::friends_of_friends </td>
+          <td class="memname">void FoF::find_friends </td>
           <td>(</td>
-          <td class="paramtype">const <a class="el" href="class_kdtree.html">Kdtree</a> &amp;&#160;</td>
-          <td class="paramname"><em>tree</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
           <td class="paramtype">const <a class="el" href="class_zbin.html">Zbin</a> &amp;&#160;</td>
           <td class="paramname"><em>zbin</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">std::vector&lt; <a class="el" href="class_galaxy.html">Galaxy</a> &gt; &amp;&#160;</td>
-          <td class="paramname"><em>gal_list</em>&#160;</td>
+          <td class="paramtype"><a class="el" href="class_galaxy.html">Galaxy</a> &amp;&#160;</td>
+          <td class="paramname"><em>gal</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">double&#160;</td>
+          <td class="paramname"><em>rfriend</em>&#160;</td>
         </tr>
         <tr>
           <td></td>
@@ -172,9 +225,67 @@ Public Attributes</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+<p>Function to find galaxies linked to the galaxy in question.</p>
+<p>&lt; Loop through kd-tree nodes</p>
+<p>&lt; Check if galaxy is compatible with kd-tree node</p>
+<p>&lt; Loop through node members</p>
+<p>&lt; Check if galaxies are friends</p>
+<p>&lt; Create new cluster</p>
+<p>&lt; Add new member to existing cluster </p>
+
+</div>
+</div>
+<a class="anchor" id="adc9b1ea55e1bd10100b60014e44cd2c7"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void FoF::find_friends_of_friends </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="class_zbin.html">Zbin</a> &amp;&#160;</td>
+          <td class="paramname"><em>zbin</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="class_cluster.html">Cluster</a> &amp;&#160;</td>
+          <td class="paramname"><em>cluster</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">double&#160;</td>
+          <td class="paramname"><em>rfriend</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Function to find the galaxies linked to existing cluster members.</p>
+<p>&lt; Loop through cluster members </p>
+
+</div>
+</div>
+<a class="anchor" id="ae5cf48e66c76193df9ae9b27a08a5086"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void FoF::friends_of_friends </td>
+          <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>bin_num</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
 <p>Funciton find friends-of-friends in a given redshift bin.</p>
+<p>&lt; Loop through galaxies</p>
+<p>&lt; Modify rfriend for spectroscopic mode</p>
 <p>&lt; Check if galaxy is already in a cluster (f-loop)</p>
-<p>&lt; Check if galaxy is compatible with zbin</p>
 <p>&lt; Check if galaxy is now in a cluster (fof-loop) </p>
 
 </div>
@@ -215,6 +326,39 @@ Public Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 <p>Function that checks if two galaxies are friends in a given redshift bin. </p>
+
+</div>
+</div>
+<a class="anchor" id="a5eef5b0fd13c7f9e9029714d283c9582"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void FoF::new_cluster </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="class_zbin.html">Zbin</a> &amp;&#160;</td>
+          <td class="paramname"><em>zbin</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="class_galaxy.html">Galaxy</a> &amp;&#160;</td>
+          <td class="paramname"><em>gal1</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="class_galaxy.html">Galaxy</a> &amp;&#160;</td>
+          <td class="paramname"><em>gal2</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Function to create a new cluster. </p>
 
 </div>
 </div>
@@ -264,35 +408,13 @@ Public Attributes</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>Function that removes clusters that have too few members. </p>
+<p>Function that removes clusters that have too few members.</p>
+<p>&lt; Loop through clusters</p>
+<p>&lt; Check if cluster has less than the minimum number of members </p>
 
 </div>
 </div>
 <h2 class="groupheader">Member Data Documentation</h2>
-<a class="anchor" id="abc58c3c24c76861e3dd705fa0816f3d2"></a>
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">double FoF::link_r</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-</div>
-</div>
-<a class="anchor" id="aa7427f0098db9a5a9cd16512d04e3fe7"></a>
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">double FoF::link_z</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-</div>
-</div>
 <a class="anchor" id="ac6eb8b7e045e596fc088d7b78a44e184"></a>
 <div class="memitem">
 <div class="memproto">
@@ -305,26 +427,14 @@ Public Attributes</h2></td></tr>
 
 </div>
 </div>
-<a class="anchor" id="af9163dfd2f251084a0de74553852b687"></a>
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">std::string FoF::mode</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-</div>
-</div>
 <hr/>The documentation for this class was generated from the following files:<ul>
-<li>/Users/Rowen/Documents/Codes/github/fof_cluster_finder/src/<a class="el" href="fof__class_8hpp_source.html">fof_class.hpp</a></li>
-<li>/Users/Rowen/Documents/Codes/github/fof_cluster_finder/src/<a class="el" href="fof__class_8cpp.html">fof_class.cpp</a></li>
+<li>/Users/Rowen/Documents/Codes/github/fof_cluster_finder/fof_cluster_finder/src/<a class="el" href="fof__class_8hpp_source.html">fof_class.hpp</a></li>
+<li>/Users/Rowen/Documents/Codes/github/fof_cluster_finder/fof_cluster_finder/src/<a class="el" href="fof__class_8cpp.html">fof_class.cpp</a></li>
 </ul>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Mon May 26 2014 18:53:43 for fof_cluster_finder by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Tue Jun 3 2014 17:37:37 for fof_cluster_finder by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.6
 </small></address>

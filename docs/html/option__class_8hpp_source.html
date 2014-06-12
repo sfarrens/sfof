@@ -4,7 +4,7 @@
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.6"/>
-<title>fof_cluster_finder: /Users/Rowen/Documents/Codes/github/fof_cluster_finder/src/option_class.hpp Source File</title>
+<title>fof_cluster_finder: /Users/Rowen/Documents/Codes/github/fof_cluster_finder/fof_cluster_finder/src/option_class.hpp Source File</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -43,7 +43,7 @@
   </div>
 <div id="nav-path" class="navpath">
   <ul>
-<li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li>  </ul>
+<li class="navelem"><a class="el" href="dir_7988ead8939267ad465d2fa9ce9f29a6.html">fof_cluster_finder</a></li><li class="navelem"><a class="el" href="dir_943685f923a14f2339507fc05fb8bb8c.html">src</a></li>  </ul>
 </div>
 </div><!-- top -->
 <div class="header">
@@ -68,7 +68,7 @@
 <div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;<span class="keyword">public</span>:</div>
 <div class="line"><a name="l00016"></a><span class="lineno"><a class="line" href="class_option.html#a4c5690da3ce3410f1851dd56d700eafc">   16</a></span>&#160;  <span class="keywordtype">int</span> <a class="code" href="class_option.html#aa3d6993ca7888f4128972f3008c39647">kdtree_depth</a>, <a class="code" href="class_option.html#a4c5690da3ce3410f1851dd56d700eafc">min_ngal</a>;</div>
 <div class="line"><a name="l00017"></a><span class="lineno"><a class="line" href="class_option.html#a5498865fac7b11cf001f228c393980d1">   17</a></span>&#160;  <span class="keywordtype">double</span> <a class="code" href="class_option.html#a7200681c925acfb9d84cd16417a95366">link_r</a>, <a class="code" href="class_option.html#af1e1b55a614df2dc7ce3f3ed606ee945">link_z</a>, <a class="code" href="class_option.html#aa0a9e3c3cb98e6abe1ba25e68d78d50d">z_bin_size</a>, <a class="code" href="class_option.html#a5498865fac7b11cf001f228c393980d1">z_min</a>, <a class="code" href="class_option.html#a243f2bb78c61c4d3e1154890e334cded">z_max</a>;</div>
-<div class="line"><a name="l00018"></a><span class="lineno"><a class="line" href="class_option.html#a71b4a5b1b342fdbb9f2ebf3a9fb16d44">   18</a></span>&#160;  <span class="keywordtype">double</span> <a class="code" href="class_option.html#a71b4a5b1b342fdbb9f2ebf3a9fb16d44">z_ref</a>, <a class="code" href="class_option.html#a3298a1c755568d9efc9bb02accd1d653">c</a>, <a class="code" href="class_option.html#ac029f626b9ea0137cb841fc405428fd9">H0</a>, <a class="code" href="class_option.html#ae4a2e379c971c6005a058d0e1ada4640">omega_m</a>, <a class="code" href="class_option.html#a7573969b62482d10a7eca3ff9fe97f91">omega_l</a>;</div>
+<div class="line"><a name="l00018"></a><span class="lineno"><a class="line" href="class_option.html#a71b4a5b1b342fdbb9f2ebf3a9fb16d44">   18</a></span>&#160;  <span class="keywordtype">double</span> <a class="code" href="class_option.html#a71b4a5b1b342fdbb9f2ebf3a9fb16d44">z_ref</a>, <a class="code" href="class_option.html#aaf3682331e159d4e6b40327644724fda">dz_max</a>, <a class="code" href="class_option.html#a3298a1c755568d9efc9bb02accd1d653">c</a>, <a class="code" href="class_option.html#ac029f626b9ea0137cb841fc405428fd9">H0</a>, <a class="code" href="class_option.html#ae4a2e379c971c6005a058d0e1ada4640">omega_m</a>, <a class="code" href="class_option.html#a7573969b62482d10a7eca3ff9fe97f91">omega_l</a>;</div>
 <div class="line"><a name="l00019"></a><span class="lineno"><a class="line" href="class_option.html#a02e699d6ff62d05cfa953746b687e05c">   19</a></span>&#160;  std::string <a class="code" href="class_option.html#a02e699d6ff62d05cfa953746b687e05c">input_file</a>, <a class="code" href="class_option.html#aed55a86672bcebf59ebe3ada9a879458">fof_mode</a>;</div>
 <div class="line"><a name="l00020"></a><span class="lineno"><a class="line" href="class_option.html#aa1c7d2ebc0d610802fa4ee346c6fa3e3">   20</a></span>&#160;  std::string <a class="code" href="class_option.html#a20d2ffcf4297b406d45387bef1e64639">input_mode</a>, <a class="code" href="class_option.html#aa1c7d2ebc0d610802fa4ee346c6fa3e3">output_mode</a>;</div>
 <div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;  <span class="keywordtype">void</span> <a class="code" href="class_option.html#a11b09a2472acbf9a7e38b3ea5e99b7d3">read_opts</a> (<span class="keywordtype">int</span>, <span class="keywordtype">char</span> *[]);</div>
@@ -79,7 +79,7 @@
 <div class="ttc" id="class_option_html_a3298a1c755568d9efc9bb02accd1d653"><div class="ttname"><a href="class_option.html#a3298a1c755568d9efc9bb02accd1d653">Option::c</a></div><div class="ttdeci">double c</div><div class="ttdef"><b>Definition:</b> option_class.hpp:18</div></div>
 <div class="ttc" id="class_option_html_ae4a2e379c971c6005a058d0e1ada4640"><div class="ttname"><a href="class_option.html#ae4a2e379c971c6005a058d0e1ada4640">Option::omega_m</a></div><div class="ttdeci">double omega_m</div><div class="ttdef"><b>Definition:</b> option_class.hpp:18</div></div>
 <div class="ttc" id="class_option_html_ac029f626b9ea0137cb841fc405428fd9"><div class="ttname"><a href="class_option.html#ac029f626b9ea0137cb841fc405428fd9">Option::H0</a></div><div class="ttdeci">double H0</div><div class="ttdef"><b>Definition:</b> option_class.hpp:18</div></div>
-<div class="ttc" id="class_option_html_a037cb3a13462f81cba08834f70c1324f"><div class="ttname"><a href="class_option.html#a037cb3a13462f81cba08834f70c1324f">Option::read_param_file</a></div><div class="ttdeci">void read_param_file(const std::string &amp;)</div><div class="ttdef"><b>Definition:</b> option_class.cpp:85</div></div>
+<div class="ttc" id="class_option_html_a037cb3a13462f81cba08834f70c1324f"><div class="ttname"><a href="class_option.html#a037cb3a13462f81cba08834f70c1324f">Option::read_param_file</a></div><div class="ttdeci">void read_param_file(const std::string &amp;)</div><div class="ttdef"><b>Definition:</b> option_class.cpp:88</div></div>
 <div class="ttc" id="class_fileio_html"><div class="ttname"><a href="class_fileio.html">Fileio</a></div><div class="ttdef"><b>Definition:</b> fileio_class.hpp:19</div></div>
 <div class="ttc" id="class_option_html_a4c5690da3ce3410f1851dd56d700eafc"><div class="ttname"><a href="class_option.html#a4c5690da3ce3410f1851dd56d700eafc">Option::min_ngal</a></div><div class="ttdeci">int min_ngal</div><div class="ttdef"><b>Definition:</b> option_class.hpp:16</div></div>
 <div class="ttc" id="fileio__class_8hpp_html"><div class="ttname"><a href="fileio__class_8hpp.html">fileio_class.hpp</a></div></div>
@@ -88,6 +88,7 @@
 <div class="ttc" id="class_option_html_a7200681c925acfb9d84cd16417a95366"><div class="ttname"><a href="class_option.html#a7200681c925acfb9d84cd16417a95366">Option::link_r</a></div><div class="ttdeci">double link_r</div><div class="ttdef"><b>Definition:</b> option_class.hpp:17</div></div>
 <div class="ttc" id="class_option_html_af1e1b55a614df2dc7ce3f3ed606ee945"><div class="ttname"><a href="class_option.html#af1e1b55a614df2dc7ce3f3ed606ee945">Option::link_z</a></div><div class="ttdeci">double link_z</div><div class="ttdef"><b>Definition:</b> option_class.hpp:17</div></div>
 <div class="ttc" id="class_option_html_aa1c7d2ebc0d610802fa4ee346c6fa3e3"><div class="ttname"><a href="class_option.html#aa1c7d2ebc0d610802fa4ee346c6fa3e3">Option::output_mode</a></div><div class="ttdeci">std::string output_mode</div><div class="ttdef"><b>Definition:</b> option_class.hpp:20</div></div>
+<div class="ttc" id="class_option_html_aaf3682331e159d4e6b40327644724fda"><div class="ttname"><a href="class_option.html#aaf3682331e159d4e6b40327644724fda">Option::dz_max</a></div><div class="ttdeci">double dz_max</div><div class="ttdef"><b>Definition:</b> option_class.hpp:18</div></div>
 <div class="ttc" id="class_option_html_a02e699d6ff62d05cfa953746b687e05c"><div class="ttname"><a href="class_option.html#a02e699d6ff62d05cfa953746b687e05c">Option::input_file</a></div><div class="ttdeci">std::string input_file</div><div class="ttdef"><b>Definition:</b> option_class.hpp:19</div></div>
 <div class="ttc" id="class_option_html_aa3d6993ca7888f4128972f3008c39647"><div class="ttname"><a href="class_option.html#aa3d6993ca7888f4128972f3008c39647">Option::kdtree_depth</a></div><div class="ttdeci">int kdtree_depth</div><div class="ttdef"><b>Definition:</b> option_class.hpp:16</div></div>
 <div class="ttc" id="class_option_html_a243f2bb78c61c4d3e1154890e334cded"><div class="ttname"><a href="class_option.html#a243f2bb78c61c4d3e1154890e334cded">Option::z_max</a></div><div class="ttdeci">double z_max</div><div class="ttdef"><b>Definition:</b> option_class.hpp:17</div></div>
@@ -100,7 +101,7 @@
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Mon May 26 2014 18:53:43 for fof_cluster_finder by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Tue Jun 3 2014 17:37:37 for fof_cluster_finder by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.6
 </small></address>
