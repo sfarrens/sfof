@@ -2,6 +2,23 @@
 
 #include "fileio_class.hpp"
 
+void Fileio::set_up (int id_col_val, int ra_col_val, int dec_col_val, 
+		     int z_col_val) {
+  id_col = id_col_val - 1;
+  ra_col = ra_col_val - 1;
+  dec_col = dec_col_val - 1;
+  z_col = z_col_val - 1;
+}
+
+void Fileio::set_up (int id_col_val, int ra_col_val, int dec_col_val, 
+		     int z_col_val, int dz_col_val) {
+  id_col = id_col_val - 1;
+  ra_col = ra_col_val - 1;
+  dec_col = dec_col_val - 1;
+  z_col = z_col_val - 1;
+  dz_col = dz_col_val - 1;
+}
+
 void Fileio::split (const std::string &str, std::vector<std::string> &tokens, 
 		    const std::string &delimiter) {
   //! Function to split a string read in from a file into columns.
@@ -18,9 +35,10 @@ void Fileio::split (const std::string &str, std::vector<std::string> &tokens,
 void Fileio::read_ascii (const std::string &fname, const std::string &mode, double z_min, 
 			 double z_max, double dz_max, std::vector<Galaxy> &gals) { 
   //! Function to read in an ASCII file and store the contents in a vector of Galaxy instances.
-  int count = 0; /* line count */
+  int count = 0;
+  unsigned long id;
   double ra, dec, z, dz;
-  std::string id, line;
+  std::string line;
   std::vector<std::string> cols; 
   std::ifstream read_file(fname.c_str()); /* open file */
   while(!read_file.eof()) { /* while not the end of the file */
@@ -28,22 +46,22 @@ void Fileio::read_ascii (const std::string &fname, const std::string &mode, doub
     if(line.length() >= 1 && 
        line.find("#") == std::string::npos) { /* skip empty lines and lines starting with # */
       split(line, cols, " "); /* split line into columns */
-      id = cols[0];
-      ra = atof(cols[1].c_str());
-      dec = atof(cols[2].c_str());
-      z = atof(cols[3].c_str());
+      id = strtoul(cols[id_col].c_str(), NULL, 0);
+      ra = atof(cols[ra_col].c_str());
+      dec = atof(cols[dec_col].c_str());
+      z = atof(cols[z_col].c_str());
       if (z >= z_min && z <= z_max) { /* check if galaxy is within redshift limits*/
 	if(mode == "spec") {
 	  Galaxy spec_gal(count, id, ra, dec, z); /* intialise spec Galaxy */
 	  gals.push_back(spec_gal); /* store spec Galaxy instance in vector */
-	  count++; /* increase line count */
+	  count++;
 	}
 	else {
-	  dz = atof(cols[4].c_str());
+	  dz = atof(cols[dz_col].c_str());
 	  if (dz <= z_max) { /* check if photo-z error is below accepted threshold */
 	    Galaxy phot_gal(count, id, ra, dec, z, dz); /* intialise phot Galaxy */
 	    gals.push_back(phot_gal); /* store phot Galaxy instance in vector */
-	    count++; /* increase line count */
+	    count++;
 	  }
 	}
       }
@@ -83,13 +101,15 @@ void Fileio::read_fits (const std::string &fname, const std::string &mode, doubl
 	  }
 	}
 	if(mode == "spec") {
-	  Galaxy spec_gal(i - 1, cols[0], atof(cols[1].c_str()), atof(cols[2].c_str()), 
-			  atof(cols[3].c_str())); /* intialise spec Galaxy */
+	  Galaxy spec_gal(i - 1, strtoul(cols[id_col].c_str(), NULL, 0), 
+			  atof(cols[ra_col].c_str()), atof(cols[dec_col].c_str()), 
+			  atof(cols[z_col].c_str())); /* intialise spec Galaxy */
 	  gals.push_back(spec_gal); /* store spec Galaxy instance in vector */
 	}
 	else {
-	  Galaxy phot_gal(i - 1, cols[0], atof(cols[1].c_str()), atof(cols[2].c_str()), 
-			  atof(cols[3].c_str()), atof(cols[4].c_str())); /* intialise phot Galaxy */
+	  Galaxy phot_gal(i - 1, strtoul(cols[id_col].c_str(), NULL, 0), 
+			  atof(cols[ra_col].c_str()), atof(cols[dec_col].c_str()), 
+			  atof(cols[z_col].c_str()), atof(cols[dz_col].c_str())); /* intialise phot Galaxy */
 	  gals.push_back(phot_gal); /* store phot Galaxy instance in vector */
 	}
 	cols.clear(); /* clear column vector */
@@ -100,7 +120,8 @@ void Fileio::read_fits (const std::string &fname, const std::string &mode, doubl
 }
 
 void Fileio::output_file_names (const std::string &fname, const std::string &mode, 
-				const std::string &output, double link_r, double link_z) {
+				const std::string &output, double link_r, double link_z,
+				std::string &cluster_file_name, std::string &member_file_name) {
   //! Function to set up output file names.
   std::stringstream cluster_file_stream, member_file_stream;
   if(output == "ascii") {
@@ -117,7 +138,8 @@ void Fileio::output_file_names (const std::string &fname, const std::string &mod
   std::cout<<"Cluster member properties being written to: "<<member_file_name<<std::endl;
 }
 
-void Fileio::write_ascii (const std::vector<Cluster> &cluster_list) {
+void Fileio::write_ascii (const std::vector<Cluster> &cluster_list, const std::string &cluster_file_name, 
+			  const std::string &member_file_name) {
   //! Funtion to output Cluster intances to an ASCII file.
   std::ofstream write_clusters (cluster_file_name.c_str());
   std::ofstream write_members (member_file_name.c_str());
@@ -144,14 +166,16 @@ void Fileio::write_ascii (const std::vector<Cluster> &cluster_list) {
   write_members.close();
 }
 
-void Fileio::write_fits (const std::vector<Cluster> &cluster_list) {
+void Fileio::write_fits (const std::vector<Cluster> &cluster_list, const std::string &cluster_file_name, 
+			  const std::string &member_file_name) {
   //! Funtion to output Cluster intances to an FITS file.
   fitsfile *fptr1, *fptr2;
   int tint, current_pos = 0, status = 0;
+  unsigned long tlong;
   double tdouble;
   const int cluster_fields = 7, member_fields = 6;
   char *cluster_types[cluster_fields], *member_types[member_fields];
-  char *cluster_forms[cluster_fields], *member_forms[member_fields], *tstring;
+  char *cluster_forms[cluster_fields], *member_forms[member_fields];
   cluster_types[0] = const_cast<char *>("NUM");   cluster_forms[0] = const_cast<char *>("J");
   cluster_types[1] = const_cast<char *>("NGAL");  cluster_forms[1] = const_cast<char *>("J");
   cluster_types[2] = const_cast<char *>("RA");    cluster_forms[2] = const_cast<char *>("E");
@@ -161,7 +185,7 @@ void Fileio::write_fits (const std::vector<Cluster> &cluster_list) {
   cluster_types[6] = const_cast<char *>("AREA");  cluster_forms[6] = const_cast<char *>("E");
   member_types[0] = const_cast<char *>("C_NUM");  member_forms[0] = const_cast<char *>("J");
   member_types[1] = const_cast<char *>("C_NGAL"); member_forms[1] = const_cast<char *>("J");
-  member_types[2] = const_cast<char *>("G_ID");   member_forms[2] = const_cast<char *>("12A");
+  member_types[2] = const_cast<char *>("G_ID");   member_forms[2] = const_cast<char *>("J");
   member_types[3] = const_cast<char *>("G_RA");   member_forms[3] = const_cast<char *>("E");
   member_types[4] = const_cast<char *>("G_DEC");  member_forms[4] = const_cast<char *>("E");
   member_types[5] = const_cast<char *>("G_Z");    member_forms[5] = const_cast<char *>("E");
@@ -171,8 +195,10 @@ void Fileio::write_fits (const std::vector<Cluster> &cluster_list) {
     std::cout<<"Error! Cannot create FITS file."<<std::endl;
     exit(-1);
   }
-  fits_create_tbl(fptr1, BINARY_TBL, 0, cluster_fields, cluster_types, cluster_forms, NULL, NULL, &status); /*create new FITS table*/ 
-  fits_create_tbl(fptr2, BINARY_TBL, 0, member_fields, member_types, member_forms, NULL, NULL, &status); /*create new FITS table*/ 
+  fits_create_tbl(fptr1, BINARY_TBL, 0, cluster_fields, cluster_types, 
+		  cluster_forms, NULL, NULL, &status); /*create new FITS table*/ 
+  fits_create_tbl(fptr2, BINARY_TBL, 0, member_fields, member_types, 
+		  member_forms, NULL, NULL, &status); /*create new FITS table*/ 
   for(int i = 1; i <= cluster_list.size(); i++) {
     tint = cluster_list[i - 1].num;
     fits_write_col(fptr1, TUINT, 1, i, 1, 1, &tint, &status);
@@ -194,8 +220,8 @@ void Fileio::write_fits (const std::vector<Cluster> &cluster_list) {
       fits_write_col(fptr2, TUINT, 1, current_pos, 1, 1, &tint, &status);
       tint = cluster_list[i - 1].ngal;
       fits_write_col(fptr2, TUINT, 2, current_pos, 1, 1, &tint, &status);
-      tstring = const_cast<char *>(cluster_list[i - 1].mem[j - 1].id.c_str());
-      fits_write_col(fptr2, TSTRING, 3, current_pos, 1, 1, &tstring, &status); 
+      tlong = cluster_list[i - 1].mem[j - 1].id;
+      fits_write_col(fptr2, TULONG, 3, current_pos, 1, 1, &tlong, &status); 
       tdouble = cluster_list[i - 1].mem[j - 1].ra;
       fits_write_col(fptr2, TDOUBLE, 4, current_pos, 1, 1, &tdouble, &status);
       tdouble = cluster_list[i - 1].mem[j - 1].dec;

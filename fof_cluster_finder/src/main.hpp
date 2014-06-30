@@ -4,9 +4,11 @@
 #define MAIN_CLASS_H
 
 #include <iostream>
+#include <omp.h>
 #include <vector>
 
 #include "astro.hpp"
+#include "comp.hpp"
 #include "cluster_class.hpp"
 #include "fileio_class.hpp"
 #include "fof_class.hpp"
@@ -28,6 +30,7 @@ private:
   std::vector<Galaxy> galaxies;
   std::vector<Cluster> clusters;
 public:
+  Comp comp;
   void read_options (int, char *[]);
   void read_data ();
   void set_up_zbins ();

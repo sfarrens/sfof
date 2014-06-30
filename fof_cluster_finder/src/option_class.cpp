@@ -8,16 +8,18 @@ void Option::help() {
   exit(0);
 }
 
-void Option::version() {
+void Option::version(double version_number) {
   //! Function that prints current code version.
-  std::cout<<"Version: 3.0"<<std::endl;
+  std::cout<<"Version: "<<std::fixed<<std::setprecision(1)
+	   <<version_number<<std::endl;
+  exit(0);
 }
 
-void Option::read_opts(int argc, char *argv[]) {
+void Option::read_opts(int argc, char *argv[], double version_number) {
   //! Function that reads code arguments.
-  int index, iarg = 0;
+  int index = 0, opt = 0;
   const char *option_tags;
-  option_tags = "hv:f:t:i:o:r:z:k:n:a:b:s:d:g:c:e:m:l:";
+  option_tags = "hvf:t:i:o:r:z:k:n:a:b:s:d:g:c:e:m:l:";
   const struct option longopts[] = {
       {"help", no_argument, 0, 'h'},
       {"version", no_argument, 0, 'v'},
@@ -38,49 +40,139 @@ void Option::read_opts(int argc, char *argv[]) {
       {"H0", required_argument, 0, 'e'},
       {"omega_m", required_argument, 0, 'm'},
       {"omega_l", required_argument, 0, 'l'},
-      {0, 0, 0, 0},
+      {0, 0, 0, 0}
     };  
-  while(iarg != -1) {
-    iarg = getopt_long(argc, argv, option_tags, longopts, &index);
-    switch (iarg) {
-    case 'h':
-      help();
-    case 'v':
-      version();
-    case 'f':
-      input_file = optarg;
-    case 't':
-      fof_mode = optarg;
-    case 'i':
-      input_mode = optarg;
-    case 'o':
-      output_mode = optarg;
-    case 'r':
-      link_r = atof(optarg);
-    case 'z':
-      link_z = atof(optarg);
-    case 'k':
-      kdtree_depth = atoi(optarg);
-    case 'n':
-      min_ngal = atoi(optarg);
-    case 'a':
-      z_min = atof(optarg);
-    case 'b':
-      z_max = atof(optarg);
-    case 's':
-      z_bin_size = atof(optarg);
-    case 'd':
-      z_ref = atof(optarg);
-    case 'g':
-      dz_max = atof(optarg);
-    case 'c':
-      c = atof(optarg);
-    case 'e':
-      H0 = atof(optarg);
-    case 'm':
-      omega_m = atof(optarg);
-    case 'l':
-      omega_l = atof(optarg);
+  while(opt != -1) {
+    opt = getopt_long(argc, argv, option_tags, longopts, &index);
+    switch (opt) {
+    case 'h': help();
+      break;
+    case 'v': version(version_number);
+      break;
+    case 'f': input_file = optarg;
+      break;
+    case 't': fof_mode = optarg;
+      break;
+    case 'i': input_mode = optarg;
+      break;
+    case 'o': output_mode = optarg;
+      break;
+    case 'r': link_r = atof(optarg);
+      break;
+    case 'z': link_z = atof(optarg);
+      break;
+    case 'k': kdtree_depth = atoi(optarg);
+      break;
+    case 'n': min_ngal = atoi(optarg);
+      break;
+    case 'a': z_min = atof(optarg);
+      break;
+    case 'b': z_max = atof(optarg);
+      break;
+    case 's': z_bin_size = atof(optarg);
+      break;
+    case 'd': z_ref = atof(optarg);
+      break;
+    case 'g': dz_max = atof(optarg);
+      break;
+    case 'c': c = atof(optarg);
+      break;
+    case 'e': H0 = atof(optarg);
+      break;
+    case 'm': omega_m = atof(optarg);
+      break;
+    case 'l': omega_l = atof(optarg);
+      break;
+    }
+  }
+}
+
+void Option::read_merge_opts(int argc, char *argv[], double version_number) {
+  //! Function that reads code arguments.
+  //**SET DEFUALTS **//
+  input_mode = "fits";
+  output_mode = "fits";
+  output_file = "cat_merge_output";
+  //*****************//
+  int index = 0, opt = 0;
+  const char *option_tags;
+  option_tags = "hvf:d:i:o:";
+  const struct option longopts[] = {
+      {"help", no_argument, 0, 'h'},
+      {"version", no_argument, 0, 'v'},
+      {"input_file", required_argument, 0, 'f'},
+      {"output_file", required_argument, 0, 'd'},
+      {"input_mode", required_argument, 0, 'i'},
+      {"output_mode", required_argument, 0, 'o'},
+      {0, 0, 0, 0}
+    };  
+  while(opt != -1) {
+    opt = getopt_long(argc, argv, option_tags, longopts, &index);
+    switch (opt) {
+    case 'h': help();
+      break;
+    case 'v': version(version_number);
+      break;
+    case 'f': input_file = optarg;
+      break;
+    case 'd': output_file = optarg;
+      break;
+    case 'i': input_mode = optarg;
+      break;
+    case 'o': output_mode = optarg;
+      break;
+    }
+  }
+}
+
+void Option::read_split_opts(int argc, char *argv[], double version_number) {
+  //! Function that reads code arguments.
+  //**SET DEFUALTS **//
+  ra_overlap = 0.5;
+  dec_overlap = 0.5;
+  //*****************//
+  int index = 0, opt = 0;
+  const char *option_tags;
+  option_tags = "hvf:a:b:c:e:g:i:r:d:";
+  const struct option longopts[] = {
+      {"help", no_argument, 0, 'h'},
+      {"version", no_argument, 0, 'v'},
+      {"input_file", required_argument, 0, 'f'},
+      {"ra_lower", required_argument, 0, 'a'},
+      {"ra_upper", required_argument, 0, 'b'},
+      {"dec_lower", required_argument, 0, 'c'},
+      {"dec_upper", required_argument, 0, 'e'},
+      {"ra_overlap", required_argument, 0, 'g'},
+      {"dec_overlap", required_argument, 0, 'i'},
+      {"n_ra_bins", required_argument, 0, 'r'},
+      {"n_dec_bins", required_argument, 0, 'd'},
+      {0, 0, 0, 0}
+    };  
+  while(opt != -1) {
+    opt = getopt_long(argc, argv, option_tags, longopts, &index);
+    switch (opt) {
+    case 'h': help();
+      break;
+    case 'v': version(version_number);
+      break;
+    case 'f': input_file = optarg;
+      break;
+    case 'a': ra_lower = atof(optarg);
+      break;
+    case 'b': ra_upper = atof(optarg);
+      break;
+    case 'c': dec_lower = atof(optarg);
+      break;
+    case 'e': dec_upper = atof(optarg);
+      break;
+    case 'g': ra_overlap = atof(optarg);
+      break;
+    case 'i': dec_overlap = atof(optarg);
+      break;
+    case 'r': n_ra_bins = atoi(optarg);
+      break;
+    case 'd': n_dec_bins = atoi(optarg);
+      break;
     }
   }
 }

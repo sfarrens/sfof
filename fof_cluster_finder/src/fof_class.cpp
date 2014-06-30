@@ -2,6 +2,13 @@
 
 #include "fof_class.hpp"
 
+void FoF::setup (double link_r_val, double link_z_val, const std::string &mode_val) { 
+  //! Function to set-up a FoF instance.
+  link_r = link_r_val;
+  link_z = link_z_val;
+  mode = mode_val;
+}
+
 bool FoF::bin_check (const Zbin &zbin, const Galaxy &gal) {
   //! Function that checks if a galaxy is compatible with a given redshift bin.
   if (mode == "spec")
@@ -50,7 +57,9 @@ void FoF::add_member (const Zbin &zbin, Galaxy &gal, Cluster &cluster) {
   cluster.add_gal(gal);
 }
 
-void FoF::find_friends (const Zbin &zbin, Galaxy &gal, double rfriend) {
+void FoF::find_friends (const Zbin &zbin, Galaxy &gal, 
+			double rfriend, std::vector<Galaxy> &gal_list,
+			const Kdtree &tree) {
   //! Function to find galaxies linked to the galaxy in question.
   /**< Loop through kd-tree nodes */
   for(int j = 0; j < tree.node_list.size(); j++) {
@@ -73,16 +82,19 @@ void FoF::find_friends (const Zbin &zbin, Galaxy &gal, double rfriend) {
   } // end of node loop
 }
 
-void FoF::find_friends_of_friends (const Zbin &zbin, Cluster &cluster, double rfriend){
+void FoF::find_friends_of_friends (const Zbin &zbin, Cluster &cluster, 
+				   double rfriend, std::vector<Galaxy> &gal_list, 
+				   const Kdtree &tree){
   //! Function to find the galaxies linked to existing cluster members.
   /**< Loop through cluster members */
   for(int i = 0; i < cluster.mem.size(); i++) {
-    find_friends(zbin, gal_list[cluster.mem[i].num], rfriend);
+    find_friends(zbin, gal_list[cluster.mem[i].num], rfriend, gal_list, tree);
   } // end of cluster member loop
 }
 
-void FoF::friends_of_friends (int bin_num) {
-  //! Funciton that find friends-of-friends in a given redshift bin.
+void FoF::friends_of_friends (int bin_num, const std::vector<Zbin> &zbin_list, 
+			      std::vector<Galaxy> &gal_list, const Kdtree &tree) {
+  //! Funciton find friends-of-friends in a given redshift bin.
   cluster_count = -1;
   Zbin zbin = zbin_list[bin_num];
   double rfriend = zbin.rfriend;
@@ -92,10 +104,10 @@ void FoF::friends_of_friends (int bin_num) {
     if (mode == "spec") rfriend = zbin_list[gal_list[i].bin].link_r / gal_list[i].da;
     /**< Check if galaxy is already in a cluster (f-loop)*/
     if(!gal_list[i].in_cluster[zbin.num] && bin_check(zbin, gal_list[i])) { 
-      find_friends(zbin, gal_list[i], rfriend);
+      find_friends(zbin, gal_list[i], rfriend, gal_list, tree);
       /**< Check if galaxy is now in a cluster (fof-loop)*/
       if(gal_list[i].in_cluster[zbin.num])
-	find_friends_of_friends(zbin, list_of_clusters[cluster_count], rfriend);
+	find_friends_of_friends(zbin, list_of_clusters[cluster_count], rfriend, gal_list, tree);
     }
   } //end of galaxy loop
 }

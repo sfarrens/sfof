@@ -4,14 +4,19 @@
 
 void Main::read_options (int argc, char *argv[]) {
   //! Function to read code options.
+  double version_number = 3.0;
   param_file = "param_file.ini";
   opt.read_param_file(param_file);
-  opt.read_opts(argc, argv);
+  opt.read_opts(argc, argv, version_number);
 }
 
 void Main::read_data () {
   //! Function to read input file.
-  if(opt.input_mode == "fits")
+  if (opt.fof_mode == "spec")
+    fileio.set_up(1, 2, 3, 4);
+  else
+    fileio.set_up(1, 2, 3, 4, 5);
+  if(opt.input_mode == "fits") 
     fileio.read_fits(opt.input_file, opt.fof_mode, opt.z_min, 
 		     opt.z_max, opt.dz_max, galaxies);
   else if(opt.input_mode == "ascii")
@@ -46,12 +51,12 @@ void Main::assign_linking_param () {
   double r_ref = pow(double(zbins[z_ref_index].count) 
 		     / (opt.z_bin_size * zbins[z_ref_index].dvdz), 0.5) * opt.link_r;
   for(int i = 0; i < num_bins; i++)
-    zbins[i].assign_rfriend(r_ref);  
+    zbins[i].assign_rfriend(r_ref); 
 }
 
 void Main::make_kdtree () {
   //! Function to split data into kd-tree.
-  std::cout<<"Building kd-tree to depth of "<<max_depth_val<<std::endl;
+  std::cout<<"Building kd-tree to depth of "<<opt.kdtree_depth<<std::endl;
   tree.set_kdtree(galaxies, opt.kdtree_depth);
 }
 
@@ -59,14 +64,28 @@ void Main::find_friends () {
   //! Function that implements the friends-of-friends.
   std::cout<<"Performing FoF in "<<opt.fof_mode<<" mode."<<std::endl;
   int nbins = num_bins, cluster_count = 0;
-  std::vector<FoF> fof_list;
   if(opt.fof_mode == "spec") nbins = 1;
+  std::vector<FoF> fof_list;
   for (int i = 0; i < nbins; i++) {
-    FoF fof_bin(opt.link_r, opt.link_z, opt.fof_mode, tree, zbins, galaxies);
-    fof_bin.friends_of_friends(i);
-    fof_bin.remove(opt.min_ngal);
+    FoF fof_bin;
     fof_list.push_back(fof_bin);
   }
+  //Start OMP//
+#pragma omp parallel 
+  {
+    int nts=omp_get_num_threads();
+    int tid=omp_get_thread_num();
+#pragma omp master
+    std::cout<<" OMP: Using "<<nts<<" threads."<<std::endl;
+#pragma omp for
+    for (int i = 0; i < nbins; i++) {
+      std::cout<<"ID: "<<tid<<" finding clusters at z = "<<zbins[i].z<<std::endl;
+      fof_list[i].setup(opt.link_r, opt.link_z, opt.fof_mode);
+      fof_list[i].friends_of_friends(i, zbins, galaxies, tree);
+      fof_list[i].remove(opt.min_ngal);
+    }
+  }
+  //End OMP//
   for (int i = 0; i < nbins; i++) 
     for (int j = 0; j < fof_list[i].list_of_clusters.size(); j++) {
       fof_list[i].list_of_clusters[j].rename(cluster_count);
@@ -99,16 +118,19 @@ void Main::assign_cluster_props () {
 
 void Main::output_results () {
   //! Function that outputs detected clusters.
+  std::string cluster_file_name, member_file_name;
   fileio.output_file_names(opt.input_file, opt.fof_mode, 
-			   opt.output_mode, opt.link_r, opt.link_z);
+			   opt.output_mode, opt.link_r, opt.link_z, 
+			   cluster_file_name, member_file_name);
   if(opt.output_mode == "fits") 
-    fileio.write_fits(clusters);
+    fileio.write_fits(clusters, cluster_file_name, member_file_name);
   else if(opt.output_mode == "ascii") 
-    fileio.write_ascii(clusters);  
+    fileio.write_ascii(clusters, cluster_file_name, member_file_name);  
 }
 
 int main (int argc, char *argv[]) {
   Main run_code;
+  run_code.comp.start_time();
   run_code.read_options(argc, argv);
   run_code.read_data();
   run_code.set_up_zbins();
@@ -118,4 +140,6 @@ int main (int argc, char *argv[]) {
   run_code.merge_clusters();
   run_code.assign_cluster_props();
   run_code.output_results();
+  run_code.comp.end_time();
+  run_code.comp.print_time();
 }

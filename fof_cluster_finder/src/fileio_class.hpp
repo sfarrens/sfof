@@ -18,8 +18,11 @@
 
 class Fileio { //! Class structure for file input and output
 private:
-  std::string cluster_file_name, member_file_name;
+  int num_col, id_col, ra_col, dec_col, z_col, dz_col;
+  //std::string cluster_file_name, member_file_name;
 public:
+  void set_up (int, int, int, int);
+  void set_up (int, int, int, int, int);
   void split (const std::string &, std::vector<std::string> &, 
 	      const std::string &);
   void read_ascii (const std::string &, const std::string &, double, 
@@ -27,9 +30,12 @@ public:
   void read_fits (const std::string &, const std::string &, double, 
 		  double, double, std::vector<Galaxy> &);
   void output_file_names (const std::string &, const std::string &,
-			  const std::string &, double, double);
-  void write_ascii (const std::vector<Cluster> &);
-  void write_fits (const std::vector<Cluster> &);
+			  const std::string &, double, double, 
+			  std::string &, std::string &);
+  void write_ascii (const std::vector<Cluster> &, const std::string &, 
+		    const std::string &);
+  void write_fits (const std::vector<Cluster> &, const std::string &, 
+		   const std::string &);
 };
 
 #endif /* FILEIO_CLASS_H */
