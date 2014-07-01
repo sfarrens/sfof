@@ -32,12 +32,36 @@ public:
       dec = astro.mean(dec_list);
       radius = std::max(astro.angsep(ra, dec, astro.min(ra_list), astro.min(dec_list)), 
 			astro.angsep(ra, dec, astro.max(ra_list), astro.max(dec_list)));
-    };
+    }
+    Kdtree_node (std::vector<Galaxy*>::iterator begin,  std::vector<Galaxy*>::iterator end){
+      /**< Initialise kdtree_node instance. */
+      size = end-begin;
+      members.reserve(size);
+      while(begin != end){
+          members.push_back(*(*begin));
+          ++begin;
+      }
+      std::vector<double> ra_list, dec_list;
+      for (int i = 0; i < size; i++) {
+    ra_list.push_back(members[i].ra);
+    dec_list.push_back(members[i].dec);
+      }
+      ra = astro.mean(ra_list);
+      dec = astro.mean(dec_list);
+      radius = std::max(astro.angsep(ra, dec, astro.min(ra_list), astro.min(dec_list)),
+            astro.angsep(ra, dec, astro.max(ra_list), astro.max(dec_list)));
+    }
+
   }; /*End of Kdtree_node nested class*/
   int max_depth;
   std::vector<Kdtree_node> node_list; 
-  void set_kdtree (const std::vector<Galaxy> &, int);
+  std::vector<Galaxy*> gaps_ptrs;
+  void set_kdtree (std::vector<Galaxy>&, int);
   void build_kdtree (const std::vector<Galaxy> &, int);
+  void build_kdtree2 (
+          std::vector<Galaxy*>::iterator begin,
+          std::vector<Galaxy*>::iterator end,
+          int depth);
 };
 
 #endif /* KDTREE_CLASS_H */
