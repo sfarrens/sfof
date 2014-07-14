@@ -14,21 +14,23 @@
 class FoF { //! Class for friends-of-friends functions
 private:
   Astro astro;
-public:
+  int cluster_count;
   double link_r, link_z;
   std::string mode;
+public:
   std::vector<Cluster> list_of_clusters;
-  FoF (double link_r_val, double link_z_val, std::string mode_val) { 
-    /**< Initialise FoF instance. */
-    link_r = link_r_val;
-    link_z = link_z_val;
-    mode = mode_val;
-  };
-  bool bin_check (const Zbin&, const Galaxy&);
-  bool node_check (const Galaxy&, const Kdtree::Kdtree_node&, double);
-  bool friendship (const Zbin&, const Galaxy&, const Galaxy&, double);
+  void setup (double, double, const std::string &);
+  bool bin_check (const Zbin &, const Galaxy &);
+  bool node_check (const Galaxy &, const Kdtree::Kdtree_node &, double);
+  bool friendship (const Zbin &, const Galaxy &, const Galaxy &, double);
   void remove (int);
-  void friends_of_friends (const Kdtree&, const Zbin&, std::vector<Galaxy>&);
+  void new_cluster (const Zbin &, Galaxy &, Galaxy &);
+  void add_member (const Zbin &, Galaxy &, Cluster &);
+  void find_friends (const Zbin &, Galaxy &, double, std::vector<Galaxy> &, const Kdtree &);
+  void find_friends_of_friends (const Zbin &, Cluster &, double,
+				std::vector<Galaxy> &, const Kdtree &);
+  void friends_of_friends (int, const std::vector<Zbin> &, std::vector<Galaxy> &,
+			   const Kdtree &);
 };
 
 #endif /* FOF_CLASS_H */

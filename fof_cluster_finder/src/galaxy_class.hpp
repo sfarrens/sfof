@@ -12,9 +12,9 @@ private:
 public:
   int num, bin;
   double ra, dec, z, dz, da, v;
-  std::string id;
+  unsigned long id;
   std::vector<bool> in_cluster;
-  Galaxy(int num_val, const std::string &id_val, double ra_val, double dec_val, 
+  Galaxy(int num_val, unsigned long id_val, double ra_val, double dec_val, 
 	 double z_val) { 
     /**< Initialise Galaxy instance in spec mode */
     num = num_val;
@@ -24,7 +24,7 @@ public:
     z = z_val;
     v = z / (1 + z);
   };
-  Galaxy(int num_val, const std::string &id_val, double ra_val, double dec_val, 
+  Galaxy(int num_val,  unsigned long id_val, double ra_val, double dec_val, 
 	 double z_val, double dz_val) { 
     /**< Initialise Galaxy instance in phot mode */
     num = num_val;
@@ -43,12 +43,12 @@ public:
 
 inline bool operator== (const Galaxy &gal1, const Galaxy &gal2) {
   //! Bool == operator for Galaxy class.
-  return gal1.num == gal2.num;
+  return gal1.id == gal2.id;
 }
 
 inline bool operator< (const Galaxy& gal1, const Galaxy& gal2) {
   //! Bool < operator for Galaxy class.
-  return gal1.num < gal2.num;
+  return gal1.id < gal2.id;
 }
 
 #endif /* GALAXY_CLASS_H */

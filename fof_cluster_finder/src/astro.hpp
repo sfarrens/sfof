@@ -18,6 +18,10 @@ public:
   double angsep (double, double, double, double);
   double mean (const std::vector<double> &);
   double median (std::vector<double>);
+  double variance (const std::vector<double> &);
+  double stdev (const std::vector<double> &);
+  double stderr (const std::vector<double> &);
+  double stderr_median (const std::vector<double> &);
   double min (const std::vector<double> &);
   double max (const std::vector<double> &);
 };

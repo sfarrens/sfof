@@ -3,7 +3,9 @@
 #ifndef CLUSTER_CLASS_H
 #define CLUSTER_CLASS_H
 
+#include <math.h>
 #include <vector>
+
 #include "astro.hpp"
 #include "galaxy_class.hpp"
 
@@ -12,13 +14,14 @@ private:
   Astro astro;
 public:
   int num, ngal;
-  double ra, dec, z, size, area, sn;
+  double ra, ra_err, dec, dec_err, z, z_err, size, area, sn, da;
   std::vector<Galaxy> mem;
   Cluster (int num_val) { 
     /**< Initialise Cluster instance. */
     num = num_val;
   };
   void add_gal (const Galaxy &);
+  void assign_dist (double, double, double, double);
   void assign_props ();
   void assign_sn (double);
   void clear ();
