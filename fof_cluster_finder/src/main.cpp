@@ -65,6 +65,7 @@ void Main::find_friends () {
   std::cout<<"Performing FoF in "<<opt.fof_mode<<" mode."<<std::endl;
   int nbins = num_bins, cluster_count = 0;
   if(opt.fof_mode == "spec") nbins = 1;
+  std::cout<<"   - using "<<num_bins<<" redshift bins."<<std::endl;
   std::vector<FoF> fof_list;
   for (int i = 0; i < nbins; i++) {
     FoF fof_bin;

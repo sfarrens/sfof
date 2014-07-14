@@ -19,7 +19,6 @@
 class Fileio { //! Class structure for file input and output
 private:
   int num_col, id_col, ra_col, dec_col, z_col, dz_col;
-  //std::string cluster_file_name, member_file_name;
 public:
   void set_up (int, int, int, int);
   void set_up (int, int, int, int, int);

@@ -78,6 +78,8 @@ void Fileio::read_ascii (const std::string &fname, const std::string &mode, doub
 void Fileio::read_fits (const std::string &fname, const std::string &mode, double z_min,
 			double z_max, double dz_max, std::vector<Galaxy> &gals) { 
   //! Function to read in an FITS file and store the contents in a vector of Galaxy instances.
+  unsigned long id;
+  double ra, dec, z, dz;
   fitsfile *fptr;
   int n_cols, status=0, hdunum, hdutype, anynul, typecode;
   long n_rows, repeat, width;
@@ -100,23 +102,31 @@ void Fileio::read_fits (const std::string &fname, const std::string &mode, doubl
 	    cols.push_back(val);
 	  }
 	}
-	if(mode == "spec") {
-	  Galaxy spec_gal(i - 1, strtoul(cols[id_col].c_str(), NULL, 0), 
-			  atof(cols[ra_col].c_str()), atof(cols[dec_col].c_str()), 
-			  atof(cols[z_col].c_str())); /* intialise spec Galaxy */
-	  gals.push_back(spec_gal); /* store spec Galaxy instance in vector */
-	}
-	else {
-	  Galaxy phot_gal(i - 1, strtoul(cols[id_col].c_str(), NULL, 0), 
-			  atof(cols[ra_col].c_str()), atof(cols[dec_col].c_str()), 
-			  atof(cols[z_col].c_str()), atof(cols[dz_col].c_str())); /* intialise phot Galaxy */
-	  gals.push_back(phot_gal); /* store phot Galaxy instance in vector */
+	id = strtoul(cols[id_col].c_str(), NULL, 0);
+	ra = atof(cols[ra_col].c_str());
+	dec = atof(cols[dec_col].c_str());
+	z = atof(cols[z_col].c_str());
+	if (z >= z_min && z <= z_max) { /* check if galaxy is within redshift limits*/
+	  if(mode == "spec") {
+	    Galaxy spec_gal(i - 1, id, ra, dec, z); /* intialise spec Galaxy */
+	    gals.push_back(spec_gal); /* store spec Galaxy instance in vector */
+	  }
+	  else {
+	    dz = atof(cols[dz_col].c_str());
+	    if (dz <= z_max) { /* check if photo-z error is below accepted threshold */
+	      Galaxy phot_gal(i - 1, id, ra, dec, z, dz); /* intialise phot Galaxy */
+	      gals.push_back(phot_gal); /* store phot Galaxy instance in vector */
+	    }
+	  }
 	}
 	cols.clear(); /* clear column vector */
       }      
     }
   }
   std::cout<<"Reading FITS file with "<<gals.size()<<" objects."<<std::endl;
+  std::cout<<" * only accepting galaxies with:"<<std::endl;
+  std::cout<<"   - ("<<z_min<<" <= z <= "<<z_max<<")"<<std::endl;
+  if(mode == "phot") std::cout<<"   - (dz <= "<<dz_max<<")"<<std::endl;
 }
 
 void Fileio::output_file_names (const std::string &fname, const std::string &mode, 
