@@ -7,11 +7,8 @@ set(CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH} "${CMAKE_CURRENT_SOURCE_DIR}/aux/")
 find_package(CFITSIO REQUIRED)
 find_package(OpenMP REQUIRED)
 
-<<<<<<< HEAD
-set(CMAKE_CXX_FLAGS "-O3 ${OpenMP_CXX_FLAGS}")
-=======
+
 set(CMAKE_CXX_FLAGS "-std=c++0x -O3 ${OpenMP_CXX_FLAGS}")
->>>>>>> updated
 set(CMAKE_C_FLAGS "-O3 ${OpenMP_C_FLAGS}")
 
 set(CPP_SOURCE_DIR ${CMAKE_CURRENT_SOURCE_DIR}/src)
