@@ -11,10 +11,12 @@ class Option { //! Class for code options
 private:
   Fileio fileio;
   void help();
+  void merge_help();
+  void split_help();
   void version(double);
 public:
   int kdtree_depth, min_ngal, n_ra_bins, n_dec_bins;
-  double link_r, link_z, z_bin_size, z_min, z_max;
+  double link_r, link_z, z_bin_size, z_min, z_max, bg_expect;
   double z_ref, dz_max, c, H0, omega_m, omega_l;
   double ra_lower, ra_upper, dec_lower, dec_upper;
   double ra_overlap, dec_overlap;

@@ -57,6 +57,32 @@ double Astro::median (std::vector<double> elements) {
   return median;
 }
 
+double Astro::variance (const std::vector<double> &elements) {
+  //! Function that computes the variance of a vector of doubles.
+  double sum = 0;
+  double mean_val = mean(elements);
+  for (int i = 0; i < elements.size(); i++)
+    sum += pow((elements[i] - mean_val), 2);
+  return sum / double(elements.size());
+}
+
+double Astro::stdev (const std::vector<double> &elements) {
+  //! Function that computes the standard deviation of a vector of doubles.
+  return pow(variance(elements), 0.5);
+}
+
+double Astro::stderr (const std::vector<double> &elements) {
+  //! Function that computes the standard error of the mean
+  //! of a vector of doubles.
+  return stdev(elements) / pow(double(elements.size()), 0.5);
+}
+
+double Astro::stderr_median (const std::vector<double> &elements) {
+  //! Function that computes the standard error of the median of a 
+  //! vector of doubles.
+  return 1.253 * stderr(elements);
+}
+
 double Astro::min (const std::vector<double> &elements) {
   //! Function that computes the minimum value of a vector of doubles.
   return *std::min_element(elements.begin(), elements.end());

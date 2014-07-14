@@ -27,6 +27,7 @@ void Cat_Merge::assign_cluster_props () {
     clusters[i].unique();
     /**< Assing properties */
     clusters[i].assign_props();
+    clusters[i].assign_sn(opt.bg_expect);
   }
   /**< Sort clusters by number of members */
   std::sort(clusters.begin(), clusters.end());

@@ -8,6 +8,18 @@ void Option::help() {
   exit(0);
 }
 
+void Option::merge_help() {
+  //! Function that prints help information.
+  std::cout<<"Merge Help!"<<std::endl;
+  exit(0);
+}
+
+void Option::split_help() {
+  //! Function that prints help information.
+  std::cout<<"Split Help!"<<std::endl;
+  exit(0);
+}
+
 void Option::version(double version_number) {
   //! Function that prints current code version.
   std::cout<<"Version: "<<std::fixed<<std::setprecision(1)
@@ -19,7 +31,7 @@ void Option::read_opts(int argc, char *argv[], double version_number) {
   //! Function that reads code arguments.
   int index = 0, opt = 0;
   const char *option_tags;
-  option_tags = "hvf:t:i:o:r:z:k:n:a:b:s:d:g:c:e:m:l:";
+  option_tags = "hvf:t:i:o:r:z:k:n:a:b:s:d:g:c:e:m:l:p:";
   const struct option longopts[] = {
       {"help", no_argument, 0, 'h'},
       {"version", no_argument, 0, 'v'},
@@ -40,6 +52,7 @@ void Option::read_opts(int argc, char *argv[], double version_number) {
       {"H0", required_argument, 0, 'e'},
       {"omega_m", required_argument, 0, 'm'},
       {"omega_l", required_argument, 0, 'l'},
+      {"bg_expect", required_argument, 0, 'p'},
       {0, 0, 0, 0}
     };  
   while(opt != -1) {
@@ -83,6 +96,8 @@ void Option::read_opts(int argc, char *argv[], double version_number) {
       break;
     case 'l': omega_l = atof(optarg);
       break;
+    case 'p': bg_expect = atof(optarg);
+      break;
     }
   }
 }
@@ -93,10 +108,11 @@ void Option::read_merge_opts(int argc, char *argv[], double version_number) {
   input_mode = "fits";
   output_mode = "fits";
   output_file = "cat_merge_output";
+  bg_expect = 0;
   //*****************//
   int index = 0, opt = 0;
   const char *option_tags;
-  option_tags = "hvf:d:i:o:";
+  option_tags = "hvf:d:i:o:b:";
   const struct option longopts[] = {
       {"help", no_argument, 0, 'h'},
       {"version", no_argument, 0, 'v'},
@@ -104,12 +120,13 @@ void Option::read_merge_opts(int argc, char *argv[], double version_number) {
       {"output_file", required_argument, 0, 'd'},
       {"input_mode", required_argument, 0, 'i'},
       {"output_mode", required_argument, 0, 'o'},
+      {"bg_expect", required_argument, 0, 'b'},
       {0, 0, 0, 0}
     };  
   while(opt != -1) {
     opt = getopt_long(argc, argv, option_tags, longopts, &index);
     switch (opt) {
-    case 'h': help();
+    case 'h': merge_help();
       break;
     case 'v': version(version_number);
       break;
@@ -120,6 +137,8 @@ void Option::read_merge_opts(int argc, char *argv[], double version_number) {
     case 'i': input_mode = optarg;
       break;
     case 'o': output_mode = optarg;
+      break;
+    case 'b': bg_expect = atof(optarg);
       break;
     }
   }
@@ -151,7 +170,7 @@ void Option::read_split_opts(int argc, char *argv[], double version_number) {
   while(opt != -1) {
     opt = getopt_long(argc, argv, option_tags, longopts, &index);
     switch (opt) {
-    case 'h': help();
+    case 'h': split_help();
       break;
     case 'v': version(version_number);
       break;
@@ -178,6 +197,21 @@ void Option::read_split_opts(int argc, char *argv[], double version_number) {
 }
 
 void Option::read_param_file(const std::string &file_name) {
+  //**SET DEFUALTS **//
+  fof_mode = "phot";
+  input_mode = "fits";
+  output_mode = "fits";
+  z_min = 0.0;
+  z_max = 3.0;
+  dz_max = 0.06;
+  z_bin_size = 0.01;
+  z_ref = 0.5;
+  c = 2.997e5;
+  H0 = 100;
+  omega_m = 0.3;
+  omega_l = 0.7;
+  bg_expect = 0;
+  //*****************//
   //! Function to read parameter file values.
   std::string line; /* line string */
   std::vector<std::string> values; /* values vector */

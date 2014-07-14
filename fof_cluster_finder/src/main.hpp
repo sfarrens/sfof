@@ -19,8 +19,7 @@
 #include "zbin_class.hpp"
 
 class Main { //! Class structure for Main.
-//DBG private:
-public: //NDBG
+private:
   Astro astro;
   Fileio fileio;
   Kdtree tree;
