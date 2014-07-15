@@ -6,12 +6,15 @@ set(CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH} "${CMAKE_CURRENT_SOURCE_DIR}/aux/")
 
 find_package(CFITSIO REQUIRED)
 find_package(OpenMP REQUIRED)
+find_package(Boost COMPONENTS system filesystem unit_test_framework REQUIRED)
 
+set(CMAKE_CXX_FLAGS "-std=c++0x -O0 ${OpenMP_CXX_FLAGS} -fprofile-arcs -ftest-coverage")
+set(CMAKE_C_FLAGS "-O0 ${OpenMP_C_FLAGS} -fprofile-arcs -ftest-coverage")
 
-set(CMAKE_CXX_FLAGS "-std=c++0x -O3 ${OpenMP_CXX_FLAGS}")
-set(CMAKE_C_FLAGS "-O3 ${OpenMP_C_FLAGS}")
+set(CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH} "${CMAKE_CURRENT_SOURCE_DIR}/aux/")
 
 set(CPP_SOURCE_DIR ${CMAKE_CURRENT_SOURCE_DIR}/src)
+set(CPP_UNITTEST_SOURCE_DIR ${CMAKE_CURRENT_SOURCE_DIR}/tests/unit)
 
 set(CPP_SRC
 	${CPP_SOURCE_DIR}/dh.c
@@ -35,3 +38,9 @@ target_link_libraries(main ${CFITSIO_LIBRARIES})
 add_executable(test_code ${CPP_SRC} ${CPP_SOURCE_DIR}/test_code.cpp)
 target_link_libraries(test_code ${CFITSIO_LIBRARIES})
 
+enable_testing()
+
+add_executable(unit_test ${CPP_SRC} ${CPP_UNITTEST_SOURCE_DIR}/unit_tests.cpp)
+target_link_libraries( unit_test ${CFITSIO_LIBRARIES} boost_unit_test_framework)
+
+add_test(unit_test unit_test)

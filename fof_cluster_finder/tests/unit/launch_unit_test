@@ -1,0 +1,1 @@
+./unit_test --input_file test_phot.dat --fof_mode phot --link_r 0.86 --link_z 0.1 --z_bin_size 0.01 --min_ngal 3 --z_min 0 --z_max 3.0 --z_ref 0.5
