@@ -72,7 +72,6 @@ void Main::assign_linking_param () {
 void Main::make_kdtree () {
   //! Function to split data into kd-tree.
   std::cout<<"Building kd-tree to depth of "<<opt.kdtree_depth<<std::endl;
-  std::cout<<galaxies.size()<<std::endl;
   tree.set_kdtree(galaxies, opt.kdtree_depth);
 }
 
