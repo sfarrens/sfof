@@ -31,7 +31,7 @@ void Option::read_opts(int argc, char *argv[], double version_number) {
   //! Function that reads code arguments.
   int index = 0, opt = 0;
   const char *option_tags;
-  option_tags = "hvf:t:i:o:r:z:k:n:a:b:s:d:g:c:e:m:l:p:";
+  option_tags = "hvf:t:i:o:l:p:r:z:k:n:a:b:s:d:g:c:e:m:q:j:";
   const struct option longopts[] = {
       {"help", no_argument, 0, 'h'},
       {"version", no_argument, 0, 'v'},
@@ -39,6 +39,8 @@ void Option::read_opts(int argc, char *argv[], double version_number) {
       {"fof_mode", required_argument, 0, 't'},
       {"input_mode", required_argument, 0, 'i'},
       {"output_mode", required_argument, 0, 'o'},
+      {"link_mode", required_argument, 0, 'l'},
+      {"print_bin_data", required_argument, 0, 'p'},
       {"link_r", required_argument, 0, 'r'},
       {"link_z", required_argument, 0, 'z'},
       {"kdtree_depth", required_argument, 0, 'k'},
@@ -51,7 +53,7 @@ void Option::read_opts(int argc, char *argv[], double version_number) {
       {"c", required_argument, 0, 'c'},
       {"H0", required_argument, 0, 'e'},
       {"omega_m", required_argument, 0, 'm'},
-      {"omega_l", required_argument, 0, 'l'},
+      {"omega_l", required_argument, 0, 'q'},
       {"bg_expect", required_argument, 0, 'p'},
       {0, 0, 0, 0}
     };  
@@ -201,6 +203,8 @@ void Option::read_param_file(const std::string &file_name) {
   fof_mode = "phot";
   input_mode = "fits";
   output_mode = "fits";
+  link_mode = "dynamic";
+  print_bin_data = "no";
   z_min = 0.0;
   z_max = 3.0;
   dz_max = 0.06;
@@ -228,6 +232,8 @@ void Option::read_param_file(const std::string &file_name) {
 	if(values[0] == "fof_mode") fof_mode = values[1];
 	if(values[0] == "input_mode") input_mode = values[1];
 	if(values[0] == "output_mode") output_mode = values[1];
+	if(values[0] == "link_mode") link_mode = values[1];
+	if(values[0] == "print_bin_data") print_bin_data = values[1];
 	if(values[0] == "link_r") link_r = atof(values[1].c_str());
 	if(values[0] == "link_z") link_z = atof(values[1].c_str());
 	if(values[0] == "kdtree_depth") kdtree_depth = atoi(values[1].c_str());

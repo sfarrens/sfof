@@ -47,16 +47,32 @@ void Main::set_up_zbins () {
 void Main::assign_linking_param () {
   //! Function to assign linking parameter values to redshift bins.
   //! A reference value is defined in order to ensure uniformity.
-  int z_ref_index = astro.find_bin(opt.z_ref, opt.z_min, opt.z_bin_size);
-  double r_ref = pow(double(zbins[z_ref_index].count) 
-		     / (opt.z_bin_size * zbins[z_ref_index].dvdz), 0.5) * opt.link_r;
-  for(int i = 0; i < num_bins; i++)
-    zbins[i].assign_rfriend(r_ref); 
+  if(opt.link_mode == "fixed")
+    for(int i = 0; i < num_bins; i++)
+      zbins[i].assign_fixed_rfriend(opt.link_r); 
+  else {
+    int z_ref_index = astro.find_bin(opt.z_ref, opt.z_min, opt.z_bin_size);
+    double r_ref = pow(double(zbins[z_ref_index].count) 
+		       / (opt.z_bin_size * zbins[z_ref_index].dvdz), 0.5) * opt.link_r;
+    for(int i = 0; i < num_bins; i++)
+      zbins[i].assign_rfriend(r_ref); 
+  }
+  if(opt.print_bin_data == "yes") {
+    std::string z_bin_data = "z_bin_data.dat";
+    std::cout<<"Printing redshift bin data to "<<z_bin_data<<"."<<std::endl;
+    std::ofstream zbin_out(z_bin_data);
+    zbin_out<<"#Num[1] Z[2] Link_R[3] R_Friend[4] Count[5]"<<std::endl;
+    for(int i = 0; i < num_bins; i++) 
+      zbin_out<<zbins[i].num<<" "<<zbins[i].z<<" "<<zbins[i].link_r<<" "
+	       <<zbins[i].rfriend<<" "<<zbins[i].count<<std::endl;
+    zbin_out.close();
+  }
 }
 
 void Main::make_kdtree () {
   //! Function to split data into kd-tree.
   std::cout<<"Building kd-tree to depth of "<<opt.kdtree_depth<<std::endl;
+  std::cout<<galaxies.size()<<std::endl;
   tree.set_kdtree(galaxies, opt.kdtree_depth);
 }
 
@@ -72,13 +88,13 @@ void Main::find_friends () {
     fof_list.push_back(fof_bin);
   }
   //Start OMP//
-#pragma omp parallel 
+#pragma omp parallel
   {
     int nts=omp_get_num_threads();
     int tid=omp_get_thread_num();
 #pragma omp master
     std::cout<<" OMP: Using "<<nts<<" threads."<<std::endl;
-#pragma omp for
+#pragma omp for 
     for (int i = 0; i < nbins; i++) {
       std::cout<<"ID: "<<tid<<" finding clusters at z = "<<zbins[i].z<<std::endl;
       fof_list[i].setup(opt.link_r, opt.link_z, opt.fof_mode);

@@ -41,32 +41,37 @@ void Fileio::read_ascii (const std::string &fname, const std::string &mode, doub
   std::string line;
   std::vector<std::string> cols; 
   std::ifstream read_file(fname.c_str()); /* open file */
-  while(!read_file.eof()) { /* while not the end of the file */
-    std::getline(read_file, line); /* read each line */
-    if(line.length() >= 1 && 
-       line.find("#") == std::string::npos) { /* skip empty lines and lines starting with # */
-      split(line, cols, " "); /* split line into columns */
-      id = strtoul(cols[id_col].c_str(), NULL, 0);
-      ra = atof(cols[ra_col].c_str());
-      dec = atof(cols[dec_col].c_str());
-      z = atof(cols[z_col].c_str());
-      if (z >= z_min && z <= z_max) { /* check if galaxy is within redshift limits*/
-	if(mode == "spec") {
-	  Galaxy spec_gal(count, id, ra, dec, z); /* intialise spec Galaxy */
-	  gals.push_back(spec_gal); /* store spec Galaxy instance in vector */
-	  count++;
-	}
-	else {
-	  dz = atof(cols[dz_col].c_str());
-	  if (dz <= z_max) { /* check if photo-z error is below accepted threshold */
-	    Galaxy phot_gal(count, id, ra, dec, z, dz); /* intialise phot Galaxy */
-	    gals.push_back(phot_gal); /* store phot Galaxy instance in vector */
+  if(read_file.good()) 
+    while(!read_file.eof()) { /* while not the end of the file */
+      std::getline(read_file, line); /* read each line */
+      if(line.length() >= 1 && 
+	 line.find("#") == std::string::npos) { /* skip empty lines and lines starting with # */
+	split(line, cols, " "); /* split line into columns */
+	id = strtoul(cols[id_col].c_str(), NULL, 0);
+	ra = atof(cols[ra_col].c_str());
+	dec = atof(cols[dec_col].c_str());
+	z = atof(cols[z_col].c_str());
+	if (z >= z_min && z <= z_max) { /* check if galaxy is within redshift limits*/
+	  if(mode == "spec") {
+	    Galaxy spec_gal(count, id, ra, dec, z); /* intialise spec Galaxy */
+	    gals.push_back(spec_gal); /* store spec Galaxy instance in vector */
 	    count++;
 	  }
+	  else {
+	    dz = atof(cols[dz_col].c_str());
+	    if (dz <= z_max) { /* check if photo-z error is below accepted threshold */
+	      Galaxy phot_gal(count, id, ra, dec, z, dz); /* intialise phot Galaxy */
+	      gals.push_back(phot_gal); /* store phot Galaxy instance in vector */
+	      count++;
+	    }
+	  }
 	}
+	cols.clear(); /* clear column vector */
       }
-      cols.clear(); /* clear column vector */
     }
+  else {
+    std::cout<<"ERROR! Problem reading file: "<<fname<<std::endl;
+    exit(-1);
   }
   read_file.close(); /* close file */
   std::cout<<"Reading ASCII file with "<<gals.size()<<" galaxies."<<std::endl;

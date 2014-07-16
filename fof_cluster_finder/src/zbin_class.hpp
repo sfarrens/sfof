@@ -16,6 +16,7 @@ public:
   };
   void assign_dist (double, double, double, double);
   void assign_rfriend (double);
+  void assign_fixed_rfriend (double);
 };
 
 #endif /* ZBIN_CLASS_H */

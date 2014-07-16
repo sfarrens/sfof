@@ -20,8 +20,8 @@ public:
   double z_ref, dz_max, c, H0, omega_m, omega_l;
   double ra_lower, ra_upper, dec_lower, dec_upper;
   double ra_overlap, dec_overlap;
-  std::string input_file, output_file, fof_mode;
-  std::string input_mode, output_mode;
+  std::string input_file, output_file, print_bin_data;
+  std::string input_mode, output_mode, fof_mode, link_mode;
   void read_opts (int, char *[], double);
   void read_merge_opts (int, char *[], double);
   void read_split_opts (int, char *[], double);

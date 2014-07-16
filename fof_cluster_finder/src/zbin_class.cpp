@@ -12,12 +12,18 @@ void Zbin::assign_dist (double c, double H0, double Omega_M, double Omega_L) {
 }
 
 void Zbin::assign_rfriend (double r_ref) {
-  //! Assign redshift bin to Galaxy instance.
+  //! Scale linking length to redshift bin.
   dndz = double(count) / dz;
   dndv = dndz / dvdz;
   if(dndv > 0)
     link_r = pow(dndv, -0.5) * r_ref;
   else
     link_r = 0.0;
+  rfriend = link_r / da;
+}
+
+void Zbin::assign_fixed_rfriend (double link_r_val) {
+  //! Assign fixed linking length value.
+  link_r = link_r_val;
   rfriend = link_r / da;
 }
