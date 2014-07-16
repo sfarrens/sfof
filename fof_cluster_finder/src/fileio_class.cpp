@@ -81,7 +81,7 @@ void Fileio::read_fits (const std::string &fname, const std::string &mode, doubl
   unsigned long id;
   double ra, dec, z, dz;
   fitsfile *fptr;
-  int n_cols, status=0, hdunum, hdutype, anynul, typecode;
+  int count = 0, n_cols, status = 0, hdunum, hdutype, anynul, typecode;
   long n_rows, repeat, width;
   char *val, nullstr[] = "*";
   std::vector<std::string> cols; /* column vector */
@@ -108,21 +108,25 @@ void Fileio::read_fits (const std::string &fname, const std::string &mode, doubl
 	z = atof(cols[z_col].c_str());
 	if (z >= z_min && z <= z_max) { /* check if galaxy is within redshift limits*/
 	  if(mode == "spec") {
-	    Galaxy spec_gal(i - 1, id, ra, dec, z); /* intialise spec Galaxy */
+	    Galaxy spec_gal(count, id, ra, dec, z); /* intialise spec Galaxy */
 	    gals.push_back(spec_gal); /* store spec Galaxy instance in vector */
+	    count++;
 	  }
 	  else {
 	    dz = atof(cols[dz_col].c_str());
 	    if (dz <= z_max) { /* check if photo-z error is below accepted threshold */
-	      Galaxy phot_gal(i - 1, id, ra, dec, z, dz); /* intialise phot Galaxy */
+	      Galaxy phot_gal(count, id, ra, dec, z, dz); /* intialise phot Galaxy */
 	      gals.push_back(phot_gal); /* store phot Galaxy instance in vector */
+	      count++;
 	    }
 	  }
 	}
 	cols.clear(); /* clear column vector */
       }      
     }
+    fits_close_file(fptr, &status); /* close FITS file */
   }
+  if(status) fits_report_error(stderr, status); /*print any error message*/
   std::cout<<"Reading FITS file with "<<gals.size()<<" objects."<<std::endl;
   std::cout<<" * only accepting galaxies with:"<<std::endl;
   std::cout<<"   - ("<<z_min<<" <= z <= "<<z_max<<")"<<std::endl;
