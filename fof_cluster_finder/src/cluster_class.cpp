@@ -4,17 +4,17 @@
 #include "cluster_class.hpp"
 
 void Cluster::add_gal (const Galaxy &gal) {
-  //! Add galaxy properties to Cluster instance.
+  // Add galaxy properties to Cluster instance.
   mem.push_back(gal);
 }
 
 void Cluster::assign_dist (double c, double H0, double Omega_M, double Omega_L) {
-  //! Calculate angular diameter distance for Cluster instance;
+  // Calculate angular diameter distance for Cluster instance;
   da = ((c / H0) * angdidis(z, Omega_M, Omega_L));
 }
 
 void Cluster::assign_props () {
-  //! Assign properties to Cluster instance.
+  // Assign properties to Cluster instance.
   double sum = 0.0;
   std::vector<double> g_ra, g_dec, g_z;
   ngal = mem.size();
@@ -38,8 +38,8 @@ void Cluster::assign_props () {
 }
 
 void Cluster::assign_sn (double bg_expect) {
-  //! Assign singal-to-noise to Cluster instance
-  //! given the expected background counts.
+  // Assign singal-to-noise to Cluster instance
+  // given the expected background counts.
   if(bg_expect == 0) 
     sn = -1.0;
   else
@@ -47,17 +47,17 @@ void Cluster::assign_sn (double bg_expect) {
 }
 
 void Cluster::clear () {
-  //! Clear all members from Cluster instance.
+  // Clear all members from Cluster instance.
   mem.clear();
 }
 
 void Cluster::rename (int num_val) {
-  //! Reset Cluster instance number.
+  // Reset Cluster instance number.
   num = num_val;
 }
 
 void Cluster::unique () {
-  //! Remove duplicate elements from a cluster instance.
+  // Remove duplicate elements from a cluster instance.
   std::sort(mem.begin(), mem.end());
   mem.erase(std::unique(mem.begin(), mem.end()), mem.end()); 
 }
