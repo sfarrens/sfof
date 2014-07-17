@@ -42,8 +42,7 @@ void Fileio::read_ascii (const std::string &fname, const std::string &mode, doub
   std::vector<std::string> cols; 
   std::ifstream read_file(fname.c_str()); /* open file */
   if(read_file.good()) 
-    while(!read_file.eof()) { /* while not the end of the file */
-      std::getline(read_file, line); /* read each line */
+    while (std::getline(read_file, line)) { /* read each line */
       if(line.length() >= 1 && 
 	 line.find("#") == std::string::npos) { /* skip empty lines and lines starting with # */
 	split(line, cols, " "); /* split line into columns */
