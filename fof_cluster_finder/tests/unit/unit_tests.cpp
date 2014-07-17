@@ -45,13 +45,13 @@ BOOST_AUTO_TEST_CASE( test_Options_and_Galaxies )
   int i;
   Option opt;
   std::vector<Galaxy> gals;
-  std::string param_file_name = "../examples/param_file.ini";
+  std::string param_file_name = "../examples/param_file.unit_test.ini";
 
   double version_number = 1.0;
   
   BOOST_TEST_MESSAGE("entering case for Options and Galaxy");
   opt.read_param_file(param_file_name);
-  opt.read_opts(framework::master_test_suite().argc, framework::master_test_suite().argv, version_number);
+  //opt.read_opts(framework::master_test_suite().argc, framework::master_test_suite().argv, version_number);
 
   BOOST_CHECK( opt.link_r != 0);
   BOOST_CHECK( opt.fof_mode == "phot");
