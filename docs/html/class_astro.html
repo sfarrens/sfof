@@ -73,6 +73,14 @@ Public Member Functions</h2></td></tr>
 <tr class="separator:a23af84033ac1948d7a6d131e730f80e7"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ab39b6fa100f8e7fe1fe484d36a1879b6"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_astro.html#ab39b6fa100f8e7fe1fe484d36a1879b6">median</a> (std::vector&lt; double &gt;)</td></tr>
 <tr class="separator:ab39b6fa100f8e7fe1fe484d36a1879b6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a41676e4368f264f4bb5b9c32306df340"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_astro.html#a41676e4368f264f4bb5b9c32306df340">variance</a> (const std::vector&lt; double &gt; &amp;)</td></tr>
+<tr class="separator:a41676e4368f264f4bb5b9c32306df340"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a72fd29923bcd8e1768e1b6c178961234"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_astro.html#a72fd29923bcd8e1768e1b6c178961234">stdev</a> (const std::vector&lt; double &gt; &amp;)</td></tr>
+<tr class="separator:a72fd29923bcd8e1768e1b6c178961234"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a997b1cd7626666cdf8afb7f3bcba86cd"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_astro.html#a997b1cd7626666cdf8afb7f3bcba86cd">stderr</a> (const std::vector&lt; double &gt; &amp;)</td></tr>
+<tr class="separator:a997b1cd7626666cdf8afb7f3bcba86cd"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0b055d4411ca874bcbe589202df6cd36"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_astro.html#a0b055d4411ca874bcbe589202df6cd36">stderr_median</a> (const std::vector&lt; double &gt; &amp;)</td></tr>
+<tr class="separator:a0b055d4411ca874bcbe589202df6cd36"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a30af2c9b148d8d49bf2262839fb7aa39"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_astro.html#a30af2c9b148d8d49bf2262839fb7aa39">min</a> (const std::vector&lt; double &gt; &amp;)</td></tr>
 <tr class="separator:a30af2c9b148d8d49bf2262839fb7aa39"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a289600fa81c0070355a640fabd61210e"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_astro.html#a289600fa81c0070355a640fabd61210e">max</a> (const std::vector&lt; double &gt; &amp;)</td></tr>
@@ -288,6 +296,74 @@ Public Member Functions</h2></td></tr>
 
 </div>
 </div>
+<a class="anchor" id="a997b1cd7626666cdf8afb7f3bcba86cd"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">double Astro::stderr </td>
+          <td>(</td>
+          <td class="paramtype">const std::vector&lt; double &gt; &amp;&#160;</td>
+          <td class="paramname"><em>elements</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Function that computes the standard error of the mean of a vector of doubles. </p>
+
+</div>
+</div>
+<a class="anchor" id="a0b055d4411ca874bcbe589202df6cd36"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">double Astro::stderr_median </td>
+          <td>(</td>
+          <td class="paramtype">const std::vector&lt; double &gt; &amp;&#160;</td>
+          <td class="paramname"><em>elements</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Function that computes the standard error of the median of a vector of doubles. </p>
+
+</div>
+</div>
+<a class="anchor" id="a72fd29923bcd8e1768e1b6c178961234"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">double Astro::stdev </td>
+          <td>(</td>
+          <td class="paramtype">const std::vector&lt; double &gt; &amp;&#160;</td>
+          <td class="paramname"><em>elements</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Function that computes the standard deviation of a vector of doubles. </p>
+
+</div>
+</div>
+<a class="anchor" id="a41676e4368f264f4bb5b9c32306df340"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">double Astro::variance </td>
+          <td>(</td>
+          <td class="paramtype">const std::vector&lt; double &gt; &amp;&#160;</td>
+          <td class="paramname"><em>elements</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Function that computes the variance of a vector of doubles. </p>
+
+</div>
+</div>
 <a class="anchor" id="ab9e66466493b21cff481e2701851573e"></a>
 <div class="memitem">
 <div class="memproto">
@@ -322,13 +398,13 @@ Public Member Functions</h2></td></tr>
 </div>
 </div>
 <hr/>The documentation for this class was generated from the following files:<ul>
-<li>/Users/Rowen/Documents/Codes/github/fof_cluster_finder/fof_cluster_finder/src/<a class="el" href="astro_8hpp_source.html">astro.hpp</a></li>
-<li>/Users/Rowen/Documents/Codes/github/fof_cluster_finder/fof_cluster_finder/src/<a class="el" href="astro_8cpp.html">astro.cpp</a></li>
+<li>/Users/Rowen/Documents/Codes/fof_cluster_finder/fof_cluster_finder/src/<a class="el" href="astro_8hpp_source.html">astro.hpp</a></li>
+<li>/Users/Rowen/Documents/Codes/fof_cluster_finder/fof_cluster_finder/src/<a class="el" href="astro_8cpp.html">astro.cpp</a></li>
 </ul>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Tue Jun 3 2014 17:37:37 for fof_cluster_finder by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Thu Jul 17 2014 12:59:37 for fof_cluster_finder by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.6
 </small></address>
