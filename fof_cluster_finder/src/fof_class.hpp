@@ -24,7 +24,7 @@
 #include "kdtree_class.hpp"
 #include "zbin_class.hpp"
 
-class FoF { //! Class for friends-of-friends functions
+class FoF { // Class for friends-of-friends functions
 
 public:
 
@@ -130,8 +130,11 @@ private:
   /// Count of current number of Cluster instances.
   int cluster_count;
 
-  /// Transverse and line-of-sight linking parameters.
-  double link_r, link_z;
+  /// Transverse linking parameter.
+  double link_r;
+  
+  /// Line-of-sight linking parameter.
+  double link_z;
 
   /// FoF mode ["spec"/"phot"].
   std::string mode;
