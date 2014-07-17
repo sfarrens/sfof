@@ -38,8 +38,6 @@ target_link_libraries(main ${CFITSIO_LIBRARIES})
 add_executable(test_code ${CPP_SRC} ${CPP_SOURCE_DIR}/test_code.cpp)
 target_link_libraries(test_code ${CFITSIO_LIBRARIES})
 
-enable_testing()
-
 add_executable(unit_test ${CPP_SRC} ${CPP_UNITTEST_SOURCE_DIR}/unit_tests.cpp)
 target_link_libraries( unit_test ${CFITSIO_LIBRARIES} boost_unit_test_framework)
 
