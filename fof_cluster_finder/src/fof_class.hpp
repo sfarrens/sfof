@@ -33,80 +33,80 @@ public:
 
   /**
    * This method sets-up a FoF instance.
-   * @param link_r_val Transverse linking parameter value.
-   * @param link_z_val Line-of-sight linking parameter value.
-   * @param mode_val FoF mode ["spec"/"phot"].
+   * @param[in] link_r_val Transverse linking parameter value.
+   * @param[in] link_z_val Line-of-sight linking parameter value.
+   * @param[in] mode_val FoF mode ["spec"/"phot"].
    */
   void setup (double, double, const std::string &);
 
   /**
    * This method checks if a Galaxy instance is compatible with a given 
    * Zbin instance.
-   * @param zbin Zbin instance.
-   * @param gal Galaxy instance.
+   * @param[in] zbin Zbin instance.
+   * @param[in] gal Galaxy instance.
    */
   bool bin_check (const Zbin &, const Galaxy &);
 
   /**
    * This method checks if a Galaxy instance is compatibile with a given Kdtree 
    * node instance.
-   * @param gal Galaxy instance.
-   * @param node Kdtree node instance.
-   * @param rfriend R_friend value.
+   * @param[in] gal Galaxy instance.
+   * @param[in] node Kdtree node instance.
+   * @param[in] rfriend R_friend value.
    */
   bool node_check (const Galaxy &, const Kdtree::Kdtree_node &, double);
 
   /**
    * This method checks if two Galaxy instances satisfy the linking conditions in a 
    * given Zbin instance.
-   * @param zbin Zbin instance.
-   * @param gal1 Galaxy instance 1.
-   * @param gal2 Galaxy instance 2.
-   * @param rfriend R_friend value.
+   * @param[in] zbin Zbin instance.
+   * @param[in] gal1 Galaxy instance 1.
+   * @param[in] gal2 Galaxy instance 2.
+   * @param[in] rfriend R_friend value.
    */
   bool friendship (const Zbin &, const Galaxy &, const Galaxy &, double);
 
   /**
    * This method removes Cluster instances that have too few member Galaxy instances.
-   * @param min_ngal Minimum number of member Galaxy instances required.
+   * @param[in] min_ngal Minimum number of member Galaxy instances required.
    */
   void remove (int);
 
   /**
    * This method creates a new Cluster instance.
-   * @param zbin Zbin instance.
-   * @param gal1 Galaxy instance 1.
-   * @param gal2 Galaxy instance 2.
+   * @param[in] zbin Zbin instance.
+   * @param[in] gal1 Galaxy instance 1.
+   * @param[in] gal2 Galaxy instance 2.
    */
   void new_cluster (const Zbin &, Galaxy &, Galaxy &);
 
   /**
    * This method adds a new member Galaxy instance to an existing Cluster instance.
-   * @param zbin Zbin instance.
-   * @param gal Galaxy instance.
-   * @param cluster Cluster instance.
+   * @param[in] zbin Zbin instance.
+   * @param[in] gal Galaxy instance.
+   * @param[in] cluster Cluster instance.
    */
   void add_member (const Zbin &, Galaxy &, Cluster &);
   
   /**
    * This method finds Galaxy instances linked to a given Galaxy instance in a given
    * Zbin instance.
-   * @param zbin Zbin instance.
-   * @param gal Galaxy instance.
-   * @param rfriend R_friend value.
-   * @param gal_list Vector of Galaxy instances.
-   * @param tree Vector of Kdtree node instances.
+   * @param[in] zbin Zbin instance.
+   * @param[in] gal Galaxy instance.
+   * @param[in] rfriend R_friend value.
+   * @param[in] gal_list Vector of Galaxy instances.
+   * @param[in] tree Vector of Kdtree node instances.
    */
   void find_friends (const Zbin &, Galaxy &, double, std::vector<Galaxy> &, const Kdtree &);
 
   /**
    * This method finds Galaxy instances linked to the members of a given Cluster 
    * instance in a given Zbin instance.
-   * @param zbin Zbin instance.
-   * @param cluster Cluster instance.
-   * @param rfriend R_friend value.
-   * @param gal_list Vector of Galaxy instances.
-   * @param tree Vector of Kdtree node instances.
+   * @param[in] zbin Zbin instance.
+   * @param[in] cluster Cluster instance.
+   * @param[in] rfriend R_friend value.
+   * @param[in] gal_list Vector of Galaxy instances.
+   * @param[in] tree Vector of Kdtree node instances.
    */
   void find_friends_of_friends (const Zbin &, Cluster &, double,
 				std::vector<Galaxy> &, const Kdtree &);
@@ -114,10 +114,10 @@ public:
   /**
    * This method performs a friends-of-friends search for Cluster instances in a given 
    * Zbin instance.
-   * @param bin_num Zbin number.
-   * @param zbin_list Vector of Zbin instances.
-   * @param gal_list Vector of Galaxy instances.
-   * @param tree Vector of Kdtree node instances.
+   * @param[in] bin_num Zbin number.
+   * @param[in] zbin_list Vector of Zbin instances.
+   * @param[in] gal_list Vector of Galaxy instances.
+   * @param[in] tree Vector of Kdtree node instances.
    */
   void friends_of_friends (int, const std::vector<Zbin> &, std::vector<Galaxy> &,
 			   const Kdtree &);

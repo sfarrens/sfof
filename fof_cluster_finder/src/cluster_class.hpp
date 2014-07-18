@@ -67,7 +67,7 @@ public:
 
   /** 
    * Initialise Cluster instance. 
-   * @param num_val Integer value.
+   * @param[in] num_val Integer value.
    */
   Cluster (int num_val) { 
     num = num_val;
@@ -82,10 +82,10 @@ public:
   /**
    * This method calculates the angular diameter distance of a
    * Cluster instance for a given cosmology.
-   * @param c Speed of light [km/s].
-   * @param H0 Hubble parameter [km/s/Mpc].
-   * @param Omega_M Matter density.
-   * @param Omega_L Dark energy density.
+   * @param[in] c Speed of light [km/s].
+   * @param[in] H0 Hubble parameter [km/s/Mpc].
+   * @param[in] Omega_M Matter density.
+   * @param[in] Omega_L Dark energy density.
    */
   void assign_dist (double, double, double, double);
 
@@ -109,7 +109,7 @@ public:
 
   /**
    * This method resets the number associated to a Cluster instance.
-   * @param num_val Integer value.
+   * @param[in] num_val Integer value.
    */
   void rename (int);
 

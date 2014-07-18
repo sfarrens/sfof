@@ -47,11 +47,11 @@ private:
   
   /**
    * This method converts the walltime to days, hours, miutes and seconds.
-   * @param time Input walltime.
-   * @param days Placeholder for numbers of days.
-   * @param hours Placeholder for numbers of hours.
-   * @param minutes Placeholder for numbers of minutes.
-   * @param seconds Placeholder for numbers of seconds.
+   * @param[in] time Input walltime.
+   * @param[out] days Numbers of days.
+   * @param[out] hours Numbers of hours.
+   * @param[out] minutes Numbers of minutes.
+   * @param[out] seconds Numbers of seconds.
    */
   void d_h_m_s(double, double &, double &, double &, double &);
 
