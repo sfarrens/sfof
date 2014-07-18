@@ -3,42 +3,42 @@
 #include "cat_merge.hpp"
 
 void Cat_Merge::read_options (int argc, char *argv[]) {
-  //! Function to read code options.
+  // Function to read code options.
   double version_number = 1.0;
   opt.read_merge_opts(argc, argv, version_number);
 }
 
 void Cat_Merge::read_files () {
-  //! Function to read cluster member files.
+  // Function to read cluster member files.
   merge_fileio.read_file_list(opt.input_file, clusters, opt.input_mode);
   std::cout<<"Total Clusters Read: "<<clusters.size()<<std::endl;
 }
 
 void Cat_Merge::merge_clusters () {
-  //! Function to merge clusters.
+  // Function to merge clusters.
   Merge merge_clusters(clusters);
   std::cout<<"Total Merged Clusters: "<<clusters.size()<<std::endl;
 }
 
 void Cat_Merge::assign_cluster_props () {
-  //! Funciton that assigns cluster properties.
+  // Funciton that assigns cluster properties.
   for(int i = 0; i < clusters.size(); i++) {
-    /**< Remove duplicate members */
+    /* Remove duplicate members */
     clusters[i].unique();
-    /**< Assing properties */
+    /* Assing properties */
     clusters[i].assign_props();
     clusters[i].assign_sn(opt.bg_expect);
   }
-  /**< Sort clusters by number of members */
+  /* Sort clusters by number of members */
   std::sort(clusters.begin(), clusters.end());
   std::reverse(clusters.begin(), clusters.end());
-  //**< Rename clusters */
+  /* Rename clusters */
   for(int i = 0; i < clusters.size(); i++) 
     clusters[i].rename(i + 1);
 }
 
 void Cat_Merge::write_files () { 
-  //! Function to write cluster properties to output files.
+  // Function to write cluster properties to output files.
   std::string cluster_file_name, member_file_name;
   merge_fileio.output_file_names(opt.output_file, opt.output_mode, 
 				 cluster_file_name, member_file_name);
