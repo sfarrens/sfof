@@ -17,9 +17,10 @@ set(CPP_SOURCE_DIR ${CMAKE_CURRENT_SOURCE_DIR}/src)
 set(CPP_UNITTEST_SOURCE_DIR ${CMAKE_CURRENT_SOURCE_DIR}/tests/unit)
 
 set(CPP_SRC
-	${CPP_SOURCE_DIR}/dh.c
 	${CPP_SOURCE_DIR}/astro.cpp
 	${CPP_SOURCE_DIR}/cluster_class.cpp
+	${CPP_SOURCE_DIR}/comp.cpp
+	${CPP_SOURCE_DIR}/cosmo.cpp
 	${CPP_SOURCE_DIR}/fileio_class.cpp
 	${CPP_SOURCE_DIR}/fof_class.cpp
 	${CPP_SOURCE_DIR}/galaxy_class.cpp
@@ -27,7 +28,6 @@ set(CPP_SRC
 	${CPP_SOURCE_DIR}/merge_class.cpp
 	${CPP_SOURCE_DIR}/option_class.cpp
 	${CPP_SOURCE_DIR}/zbin_class.cpp
-	${CPP_SOURCE_DIR}/comp.cpp
 )
 
 include_directories(BEFORE SYSTEM ${CFITSIO_INCLUDE_DIRS} ${Boost_INCLUDE_DIRS})
