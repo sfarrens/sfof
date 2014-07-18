@@ -3,7 +3,7 @@
 #include "main.hpp"
 
 void Main::read_options (int argc, char *argv[]) {
-  //! Function to read code options.
+  // Function to read code options.
   double version_number = 3.0;
   param_file = "param_file.ini";
   opt.read_param_file(param_file);
@@ -11,7 +11,7 @@ void Main::read_options (int argc, char *argv[]) {
 }
 
 void Main::read_data () {
-  //! Function to read input file.
+  // Function to read input file.
   if (opt.fof_mode == "spec")
     fileio.set_up(1, 2, 3, 4);
   else
@@ -25,7 +25,7 @@ void Main::read_data () {
 }
 
 void Main::set_up_zbins () {
-  //! Function to set up the redshift bins.
+  // Function to set up the redshift bins.
   num_bins = astro.num_bins(opt.z_min, opt.z_max, opt.z_bin_size);
   for(int i = 0; i < num_bins; i++){
     Zbin zbin(i, opt.z_min + i * opt.z_bin_size, opt.z_bin_size);
@@ -45,8 +45,8 @@ void Main::set_up_zbins () {
 }
 
 void Main::assign_linking_param () {
-  //! Function to assign linking parameter values to redshift bins.
-  //! A reference value is defined in order to ensure uniformity.
+  // Function to assign linking parameter values to redshift bins.
+  // A reference value is defined in order to ensure uniformity.
   if(opt.link_mode == "fixed")
     for(int i = 0; i < num_bins; i++)
       zbins[i].assign_fixed_rfriend(opt.link_r); 
@@ -70,13 +70,13 @@ void Main::assign_linking_param () {
 }
 
 void Main::make_kdtree () {
-  //! Function to split data into kd-tree.
+  // Function to split data into kd-tree.
   std::cout<<"Building kd-tree to depth of "<<opt.kdtree_depth<<std::endl;
   tree.set_kdtree(galaxies, opt.kdtree_depth);
 }
 
 void Main::find_friends () {
-  //! Function that implements the friends-of-friends.
+  // Function that implements the friends-of-friends.
   std::cout<<"Performing FoF in "<<opt.fof_mode<<" mode."<<std::endl;
   int nbins = num_bins, cluster_count = 0;
   if(opt.fof_mode == "spec") nbins = 1;
@@ -111,30 +111,30 @@ void Main::find_friends () {
 }
 
 void Main::merge_clusters () {
-  //! Function that merges clusters with members in common.
+  // Function that merges clusters with members in common.
   std::cout<<"Merging clusters."<<std::endl;
   Merge merge_clusters(clusters);
 }
 
 void Main::assign_cluster_props () {
-  //! Funciton that assigns cluster properties.
+  // Funciton that assigns cluster properties.
   for(int i = 0; i < clusters.size(); i++) {
-    /**< Remove duplicate members */
+    /* Remove duplicate members */
     clusters[i].unique();
-    /**< Assing properties */
+    /* Assing properties */
     clusters[i].assign_props();
     clusters[i].assign_sn(opt.bg_expect);
   }
-  /**< Sort clusters by number of members */
+  /* Sort clusters by number of members */
   std::sort(clusters.begin(), clusters.end());
   std::reverse(clusters.begin(), clusters.end());
-  //**< Rename clusters */
+  //* Rename clusters */
   for(int i = 0; i < clusters.size(); i++) 
     clusters[i].rename(i + 1);
 }
 
 void Main::output_results () {
-  //! Function that outputs detected clusters.
+  // Function that outputs detected clusters.
   std::string cluster_file_name, member_file_name;
   fileio.output_file_names(opt.input_file, opt.fof_mode, 
 			   opt.output_mode, opt.link_r, opt.link_z, 
