@@ -5,7 +5,7 @@
 #include <iostream>
 
 void Kdtree::set_kdtree (std::vector<Galaxy> &gals, int max_depth_val) {
-  //! Set up a Kdtree instance.
+  // Set up a Kdtree instance.
   max_depth = max_depth_val;
   gaps_ptrs.reserve(gals.size());
     unsigned long long size = gals.size();
@@ -25,6 +25,7 @@ void Kdtree::build_kdtree(
         std::vector<Galaxy*>::iterator begin,
         std::vector<Galaxy*>::iterator end,
         int depth){
+  // Build kd-tree.
     unsigned long long elems = end - begin;
     if(elems == 0) return;
     if (elems == 1 || depth == max_depth){
