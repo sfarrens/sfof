@@ -1,7 +1,7 @@
 #include "cat_split.hpp"
 
 void Cat_Split::read_options (int argc, char *argv[]) {
-  //! Function to read code options.
+  // Function to read code options.
   double version_number = 1.0;
   opt.read_split_opts(argc, argv, version_number);
 }
@@ -40,7 +40,6 @@ void Cat_Split::find_bin (double ra, double dec, std::vector<int> &bins) {
 }
 
 void Cat_Split::read_ascii () { 
-  //! Function to read in an ASCII file and store the contents in a vector of Galaxy instances.
   double ra, dec;
   std::string line;
   std::vector<int> bins;
