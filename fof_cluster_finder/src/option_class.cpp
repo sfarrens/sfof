@@ -3,32 +3,32 @@
 #include "option_class.hpp"
 
 void Option::help() {
-  //! Function that prints help information.
+  // Function that prints help information.
   std::cout<<"Help!"<<std::endl;
   exit(0);
 }
 
 void Option::merge_help() {
-  //! Function that prints help information.
+  // Function that prints help information.
   std::cout<<"Merge Help!"<<std::endl;
   exit(0);
 }
 
 void Option::split_help() {
-  //! Function that prints help information.
+  // Function that prints help information.
   std::cout<<"Split Help!"<<std::endl;
   exit(0);
 }
 
 void Option::version(double version_number) {
-  //! Function that prints current code version.
+  // Function that prints current code version.
   std::cout<<"Version: "<<std::fixed<<std::setprecision(1)
 	   <<version_number<<std::endl;
   exit(0);
 }
 
 void Option::read_opts(int argc, char *argv[], double version_number) {
-  //! Function that reads code arguments.
+  // Function that reads code arguments.
   int index = 0, opt = 0;
   const char *option_tags;
   option_tags = "hvf:t:i:o:l:p:r:z:k:n:a:b:s:d:g:c:e:m:q:j:";
@@ -105,7 +105,7 @@ void Option::read_opts(int argc, char *argv[], double version_number) {
 }
 
 void Option::read_merge_opts(int argc, char *argv[], double version_number) {
-  //! Function that reads code arguments.
+  // Function that reads code arguments.
   //**SET DEFUALTS **//
   input_mode = "fits";
   output_mode = "fits";
@@ -147,7 +147,7 @@ void Option::read_merge_opts(int argc, char *argv[], double version_number) {
 }
 
 void Option::read_split_opts(int argc, char *argv[], double version_number) {
-  //! Function that reads code arguments.
+  // Function that reads code arguments.
   //**SET DEFUALTS **//
   ra_overlap = 0.5;
   dec_overlap = 0.5;
@@ -199,6 +199,7 @@ void Option::read_split_opts(int argc, char *argv[], double version_number) {
 }
 
 void Option::read_param_file(const std::string &file_name) {
+  // Function to read parameter file values.
   //**SET DEFUALTS **//
   fof_mode = "phot";
   input_mode = "fits";
@@ -216,7 +217,6 @@ void Option::read_param_file(const std::string &file_name) {
   omega_l = 0.7;
   bg_expect = 0;
   //*****************//
-  //! Function to read parameter file values.
   std::string line; /* line string */
   std::vector<std::string> values; /* values vector */
   std::ifstream read_file(file_name.c_str()); /* open file */
