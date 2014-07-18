@@ -69,10 +69,10 @@
 <div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;</div>
 <div class="line"><a name="l00017"></a><span class="lineno"><a class="line" href="class_cat___merge.html">   17</a></span>&#160;<span class="keyword">class </span><a class="code" href="class_cat___merge.html">Cat_Merge</a> { </div>
 <div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;<span class="keyword">private</span>:</div>
-<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;  <a class="code" href="class_fileio.html">Fileio</a> fileio;</div>
-<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;  <a class="code" href="class_option.html">Option</a> opt;</div>
-<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;  <a class="code" href="class_merge___fileio.html">Merge_Fileio</a> merge_fileio;</div>
-<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;  std::vector&lt;Cluster&gt; clusters;</div>
+<div class="line"><a name="l00019"></a><span class="lineno"><a class="line" href="class_cat___merge.html#a89bfc85a0ff8252b87b56405a36e4e0b">   19</a></span>&#160;  <a class="code" href="class_fileio.html">Fileio</a> <a class="code" href="class_cat___merge.html#a89bfc85a0ff8252b87b56405a36e4e0b">fileio</a>;</div>
+<div class="line"><a name="l00020"></a><span class="lineno"><a class="line" href="class_cat___merge.html#acf166de4db8cb0a21bba6e4a5695e0fe">   20</a></span>&#160;  <a class="code" href="class_option.html">Option</a> <a class="code" href="class_cat___merge.html#acf166de4db8cb0a21bba6e4a5695e0fe">opt</a>;</div>
+<div class="line"><a name="l00021"></a><span class="lineno"><a class="line" href="class_cat___merge.html#a3d0cb547ec75584714b27a4ffa63c94a">   21</a></span>&#160;  <a class="code" href="class_merge___fileio.html">Merge_Fileio</a> <a class="code" href="class_cat___merge.html#a3d0cb547ec75584714b27a4ffa63c94a">merge_fileio</a>;</div>
+<div class="line"><a name="l00022"></a><span class="lineno"><a class="line" href="class_cat___merge.html#a556f8ca6362ce3bfcb35b7643a6ebd2e">   22</a></span>&#160;  std::vector&lt;Cluster&gt; <a class="code" href="class_cat___merge.html#a556f8ca6362ce3bfcb35b7643a6ebd2e">clusters</a>;</div>
 <div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;<span class="keyword">public</span>:</div>
 <div class="line"><a name="l00024"></a><span class="lineno"><a class="line" href="class_cat___merge.html#af80a50c27f241b78a76ca354b405269a">   24</a></span>&#160;  <a class="code" href="class_comp.html">Comp</a> <a class="code" href="class_cat___merge.html#af80a50c27f241b78a76ca354b405269a">comp</a>;</div>
 <div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;  <span class="keywordtype">void</span> <a class="code" href="class_cat___merge.html#aea538c62cc3aa5be28eb585bd49cb5b9">read_options</a> (<span class="keywordtype">int</span>, <span class="keywordtype">char</span> *[]);</div>
@@ -83,18 +83,22 @@
 <div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;};</div>
 <div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;</div>
 <div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;<span class="preprocessor">#endif </span><span class="comment">/* CAT_MERGE_CLASS_H */</span><span class="preprocessor"></span></div>
-<div class="ttc" id="class_comp_html"><div class="ttname"><a href="class_comp.html">Comp</a></div><div class="ttdef"><b>Definition:</b> comp.hpp:11</div></div>
+<div class="ttc" id="class_comp_html"><div class="ttname"><a href="class_comp.html">Comp</a></div><div class="ttdoc">Class containing basic functions used in generic codes. </div><div class="ttdef"><b>Definition:</b> comp.hpp:21</div></div>
+<div class="ttc" id="class_cat___merge_html_a556f8ca6362ce3bfcb35b7643a6ebd2e"><div class="ttname"><a href="class_cat___merge.html#a556f8ca6362ce3bfcb35b7643a6ebd2e">Cat_Merge::clusters</a></div><div class="ttdeci">std::vector&lt; Cluster &gt; clusters</div><div class="ttdef"><b>Definition:</b> cat_merge.hpp:22</div></div>
+<div class="ttc" id="class_cat___merge_html_a3d0cb547ec75584714b27a4ffa63c94a"><div class="ttname"><a href="class_cat___merge.html#a3d0cb547ec75584714b27a4ffa63c94a">Cat_Merge::merge_fileio</a></div><div class="ttdeci">Merge_Fileio merge_fileio</div><div class="ttdef"><b>Definition:</b> cat_merge.hpp:21</div></div>
 <div class="ttc" id="comp_8hpp_html"><div class="ttname"><a href="comp_8hpp.html">comp.hpp</a></div></div>
 <div class="ttc" id="cluster__class_8hpp_html"><div class="ttname"><a href="cluster__class_8hpp.html">cluster_class.hpp</a></div></div>
-<div class="ttc" id="class_fileio_html"><div class="ttname"><a href="class_fileio.html">Fileio</a></div><div class="ttdef"><b>Definition:</b> fileio_class.hpp:19</div></div>
+<div class="ttc" id="class_fileio_html"><div class="ttname"><a href="class_fileio.html">Fileio</a></div><div class="ttdoc">Class for file input and output. </div><div class="ttdef"><b>Definition:</b> fileio_class.hpp:32</div></div>
 <div class="ttc" id="fileio__class_8hpp_html"><div class="ttname"><a href="fileio__class_8hpp.html">fileio_class.hpp</a></div></div>
 <div class="ttc" id="class_cat___merge_html_ae215c4b93a5335865e0ff6218e0531d4"><div class="ttname"><a href="class_cat___merge.html#ae215c4b93a5335865e0ff6218e0531d4">Cat_Merge::write_files</a></div><div class="ttdeci">void write_files()</div><div class="ttdef"><b>Definition:</b> cat_merge.cpp:40</div></div>
+<div class="ttc" id="class_cat___merge_html_a89bfc85a0ff8252b87b56405a36e4e0b"><div class="ttname"><a href="class_cat___merge.html#a89bfc85a0ff8252b87b56405a36e4e0b">Cat_Merge::fileio</a></div><div class="ttdeci">Fileio fileio</div><div class="ttdoc">Class structure for Cat_Merge. </div><div class="ttdef"><b>Definition:</b> cat_merge.hpp:19</div></div>
 <div class="ttc" id="class_cat___merge_html_aea538c62cc3aa5be28eb585bd49cb5b9"><div class="ttname"><a href="class_cat___merge.html#aea538c62cc3aa5be28eb585bd49cb5b9">Cat_Merge::read_options</a></div><div class="ttdeci">void read_options(int, char *[])</div><div class="ttdef"><b>Definition:</b> cat_merge.cpp:5</div></div>
 <div class="ttc" id="class_merge___fileio_html"><div class="ttname"><a href="class_merge___fileio.html">Merge_Fileio</a></div><div class="ttdef"><b>Definition:</b> cat_merge_fileio.hpp:17</div></div>
 <div class="ttc" id="class_cat___merge_html_a47e0e3d1a4f78f7251ada4e78e7f0d26"><div class="ttname"><a href="class_cat___merge.html#a47e0e3d1a4f78f7251ada4e78e7f0d26">Cat_Merge::merge_clusters</a></div><div class="ttdeci">void merge_clusters()</div><div class="ttdef"><b>Definition:</b> cat_merge.cpp:17</div></div>
 <div class="ttc" id="class_cat___merge_html"><div class="ttname"><a href="class_cat___merge.html">Cat_Merge</a></div><div class="ttdef"><b>Definition:</b> cat_merge.hpp:17</div></div>
+<div class="ttc" id="class_cat___merge_html_acf166de4db8cb0a21bba6e4a5695e0fe"><div class="ttname"><a href="class_cat___merge.html#acf166de4db8cb0a21bba6e4a5695e0fe">Cat_Merge::opt</a></div><div class="ttdeci">Option opt</div><div class="ttdef"><b>Definition:</b> cat_merge.hpp:20</div></div>
 <div class="ttc" id="cat__merge__fileio_8hpp_html"><div class="ttname"><a href="cat__merge__fileio_8hpp.html">cat_merge_fileio.hpp</a></div></div>
-<div class="ttc" id="class_option_html"><div class="ttname"><a href="class_option.html">Option</a></div><div class="ttdef"><b>Definition:</b> option_class.hpp:10</div></div>
+<div class="ttc" id="class_option_html"><div class="ttname"><a href="class_option.html">Option</a></div><div class="ttdoc">Class for reading code options. </div><div class="ttdef"><b>Definition:</b> option_class.hpp:23</div></div>
 <div class="ttc" id="class_cat___merge_html_af80a50c27f241b78a76ca354b405269a"><div class="ttname"><a href="class_cat___merge.html#af80a50c27f241b78a76ca354b405269a">Cat_Merge::comp</a></div><div class="ttdeci">Comp comp</div><div class="ttdef"><b>Definition:</b> cat_merge.hpp:24</div></div>
 <div class="ttc" id="option__class_8hpp_html"><div class="ttname"><a href="option__class_8hpp.html">option_class.hpp</a></div></div>
 <div class="ttc" id="class_cat___merge_html_a433ef90db4e30370ab94a1195d8a82c3"><div class="ttname"><a href="class_cat___merge.html#a433ef90db4e30370ab94a1195d8a82c3">Cat_Merge::read_files</a></div><div class="ttdeci">void read_files()</div><div class="ttdef"><b>Definition:</b> cat_merge.cpp:11</div></div>
@@ -103,7 +107,7 @@
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Thu Jul 17 2014 13:19:06 for fof_cluster_finder by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Fri Jul 18 2014 15:53:18 for fof_cluster_finder by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.6
 </small></address>

@@ -47,6 +47,7 @@
   <div class="summary">
 <a href="#pub-methods">Public Member Functions</a> &#124;
 <a href="#pub-attribs">Public Attributes</a> &#124;
+<a href="#pri-attribs">Private Attributes</a> &#124;
 <a href="#friends">Friends</a> &#124;
 <a href="class_galaxy-members.html">List of all members</a>  </div>
   <div class="headertitle">
@@ -54,52 +55,81 @@
 </div><!--header-->
 <div class="contents">
 
+<p>Class for storing galaxy properties.  
+ <a href="class_galaxy.html#details">More...</a></p>
+
 <p><code>#include &lt;<a class="el" href="galaxy__class_8hpp_source.html">galaxy_class.hpp</a>&gt;</code></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
 <tr class="memitem:a3a1167d32d27179946f4dc2d8a612018"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_galaxy.html#a3a1167d32d27179946f4dc2d8a612018">Galaxy</a> (int num_val, unsigned long id_val, double ra_val, double dec_val, double z_val)</td></tr>
+<tr class="memdesc:a3a1167d32d27179946f4dc2d8a612018"><td class="mdescLeft">&#160;</td><td class="mdescRight">Initialise <a class="el" href="class_galaxy.html" title="Class for storing galaxy properties. ">Galaxy</a> instance.  <a href="#a3a1167d32d27179946f4dc2d8a612018">More...</a><br/></td></tr>
 <tr class="separator:a3a1167d32d27179946f4dc2d8a612018"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ad6ef3cc2f8409c28d0a4cac163716c48"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_galaxy.html#ad6ef3cc2f8409c28d0a4cac163716c48">Galaxy</a> (int num_val, unsigned long id_val, double ra_val, double dec_val, double z_val, double dz_val)</td></tr>
+<tr class="memdesc:ad6ef3cc2f8409c28d0a4cac163716c48"><td class="mdescLeft">&#160;</td><td class="mdescRight">Initialise <a class="el" href="class_galaxy.html" title="Class for storing galaxy properties. ">Galaxy</a> instance.  <a href="#ad6ef3cc2f8409c28d0a4cac163716c48">More...</a><br/></td></tr>
 <tr class="separator:ad6ef3cc2f8409c28d0a4cac163716c48"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ab1caedf784bbd0a5f70d026d7cc57e24"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_galaxy.html#ab1caedf784bbd0a5f70d026d7cc57e24">assign_dist</a> (double, double, double, double)</td></tr>
+<tr class="memdesc:ab1caedf784bbd0a5f70d026d7cc57e24"><td class="mdescLeft">&#160;</td><td class="mdescRight">This method calculates the angular diameter distance of a <a class="el" href="class_galaxy.html" title="Class for storing galaxy properties. ">Galaxy</a> instance for a given cosmology.  <a href="#ab1caedf784bbd0a5f70d026d7cc57e24">More...</a><br/></td></tr>
 <tr class="separator:ab1caedf784bbd0a5f70d026d7cc57e24"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a0ae806f5fb35193da76e02c08a89d97f"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_galaxy.html#a0ae806f5fb35193da76e02c08a89d97f">assign_bin</a> (double, double)</td></tr>
+<tr class="memdesc:a0ae806f5fb35193da76e02c08a89d97f"><td class="mdescLeft">&#160;</td><td class="mdescRight">This method assigns the <a class="el" href="class_zbin.html" title="Class for storing redshift bin properties. ">Zbin</a> instance corresponding to the <a class="el" href="class_galaxy.html" title="Class for storing galaxy properties. ">Galaxy</a> instance.  <a href="#a0ae806f5fb35193da76e02c08a89d97f">More...</a><br/></td></tr>
 <tr class="separator:a0ae806f5fb35193da76e02c08a89d97f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a8ad5639c3bcb81b33f8066a85b868463"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_galaxy.html#a8ad5639c3bcb81b33f8066a85b868463">set_cluster_status</a> (int)</td></tr>
+<tr class="memdesc:a8ad5639c3bcb81b33f8066a85b868463"><td class="mdescLeft">&#160;</td><td class="mdescRight">This method sets the initial <a class="el" href="class_cluster.html" title="Class for storing galaxy cluster properties and members. ">Cluster</a> instance membership of the <a class="el" href="class_galaxy.html" title="Class for storing galaxy properties. ">Galaxy</a> instance to False.  <a href="#a8ad5639c3bcb81b33f8066a85b868463">More...</a><br/></td></tr>
 <tr class="separator:a8ad5639c3bcb81b33f8066a85b868463"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-attribs"></a>
 Public Attributes</h2></td></tr>
 <tr class="memitem:aeb86571eb62021442107493ffaf041c7"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_galaxy.html#aeb86571eb62021442107493ffaf041c7">num</a></td></tr>
+<tr class="memdesc:aeb86571eb62021442107493ffaf041c7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Class structure for galaxy properties.  <a href="#aeb86571eb62021442107493ffaf041c7">More...</a><br/></td></tr>
 <tr class="separator:aeb86571eb62021442107493ffaf041c7"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a1f05bdd93103f82a98f1a5620bd38a10"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_galaxy.html#a1f05bdd93103f82a98f1a5620bd38a10">bin</a></td></tr>
+<tr class="memdesc:a1f05bdd93103f82a98f1a5620bd38a10"><td class="mdescLeft">&#160;</td><td class="mdescRight"><a class="el" href="class_zbin.html" title="Class for storing redshift bin properties. ">Zbin</a> instance corresponding to <a class="el" href="class_galaxy.html" title="Class for storing galaxy properties. ">Galaxy</a> instance.  <a href="#a1f05bdd93103f82a98f1a5620bd38a10">More...</a><br/></td></tr>
 <tr class="separator:a1f05bdd93103f82a98f1a5620bd38a10"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:adfa15659c0f10524bf2dcc2eba755ce2"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_galaxy.html#adfa15659c0f10524bf2dcc2eba755ce2">ra</a></td></tr>
+<tr class="memdesc:adfa15659c0f10524bf2dcc2eba755ce2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Right ascension of <a class="el" href="class_galaxy.html" title="Class for storing galaxy properties. ">Galaxy</a> instance.  <a href="#adfa15659c0f10524bf2dcc2eba755ce2">More...</a><br/></td></tr>
 <tr class="separator:adfa15659c0f10524bf2dcc2eba755ce2"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a46d3c9f9087a7653c31312465d56c7ce"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_galaxy.html#a46d3c9f9087a7653c31312465d56c7ce">dec</a></td></tr>
+<tr class="memdesc:a46d3c9f9087a7653c31312465d56c7ce"><td class="mdescLeft">&#160;</td><td class="mdescRight">Declination of <a class="el" href="class_galaxy.html" title="Class for storing galaxy properties. ">Galaxy</a> instance.  <a href="#a46d3c9f9087a7653c31312465d56c7ce">More...</a><br/></td></tr>
 <tr class="separator:a46d3c9f9087a7653c31312465d56c7ce"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a5692d9945eeaf058cd8b6aaa6cfe26b0"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_galaxy.html#a5692d9945eeaf058cd8b6aaa6cfe26b0">z</a></td></tr>
+<tr class="memdesc:a5692d9945eeaf058cd8b6aaa6cfe26b0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Redshift of <a class="el" href="class_galaxy.html" title="Class for storing galaxy properties. ">Galaxy</a> instance.  <a href="#a5692d9945eeaf058cd8b6aaa6cfe26b0">More...</a><br/></td></tr>
 <tr class="separator:a5692d9945eeaf058cd8b6aaa6cfe26b0"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a2ed6223e622698cb466a5de532d44ae5"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_galaxy.html#a2ed6223e622698cb466a5de532d44ae5">dz</a></td></tr>
+<tr class="memdesc:a2ed6223e622698cb466a5de532d44ae5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Photometric redshift error of <a class="el" href="class_galaxy.html" title="Class for storing galaxy properties. ">Galaxy</a> instance.  <a href="#a2ed6223e622698cb466a5de532d44ae5">More...</a><br/></td></tr>
 <tr class="separator:a2ed6223e622698cb466a5de532d44ae5"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aab55bb47ddb660a3afafa500cd8842fa"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_galaxy.html#aab55bb47ddb660a3afafa500cd8842fa">da</a></td></tr>
+<tr class="memdesc:aab55bb47ddb660a3afafa500cd8842fa"><td class="mdescLeft">&#160;</td><td class="mdescRight">Angular diameter distance of <a class="el" href="class_galaxy.html" title="Class for storing galaxy properties. ">Galaxy</a> instance.  <a href="#aab55bb47ddb660a3afafa500cd8842fa">More...</a><br/></td></tr>
 <tr class="separator:aab55bb47ddb660a3afafa500cd8842fa"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a899abb576368397e2253afa611987ffa"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_galaxy.html#a899abb576368397e2253afa611987ffa">v</a></td></tr>
+<tr class="memdesc:a899abb576368397e2253afa611987ffa"><td class="mdescLeft">&#160;</td><td class="mdescRight">Velocity of <a class="el" href="class_galaxy.html" title="Class for storing galaxy properties. ">Galaxy</a> instance.  <a href="#a899abb576368397e2253afa611987ffa">More...</a><br/></td></tr>
 <tr class="separator:a899abb576368397e2253afa611987ffa"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a2df9d4cb3facd46ac531ef7b48dcdcda"><td class="memItemLeft" align="right" valign="top">unsigned long&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_galaxy.html#a2df9d4cb3facd46ac531ef7b48dcdcda">id</a></td></tr>
+<tr class="memdesc:a2df9d4cb3facd46ac531ef7b48dcdcda"><td class="mdescLeft">&#160;</td><td class="mdescRight">ID of <a class="el" href="class_galaxy.html" title="Class for storing galaxy properties. ">Galaxy</a> instance.  <a href="#a2df9d4cb3facd46ac531ef7b48dcdcda">More...</a><br/></td></tr>
 <tr class="separator:a2df9d4cb3facd46ac531ef7b48dcdcda"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a75513069298dfa5e05cb3c16821c8747"><td class="memItemLeft" align="right" valign="top">std::vector&lt; bool &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_galaxy.html#a75513069298dfa5e05cb3c16821c8747">in_cluster</a></td></tr>
+<tr class="memdesc:a75513069298dfa5e05cb3c16821c8747"><td class="mdescLeft">&#160;</td><td class="mdescRight">Vector of flags indicating if the <a class="el" href="class_galaxy.html" title="Class for storing galaxy properties. ">Galaxy</a> instance is a member of a <a class="el" href="class_cluster.html" title="Class for storing galaxy cluster properties and members. ">Cluster</a> instance for a given <a class="el" href="class_zbin.html" title="Class for storing redshift bin properties. ">Zbin</a> instance.  <a href="#a75513069298dfa5e05cb3c16821c8747">More...</a><br/></td></tr>
 <tr class="separator:a75513069298dfa5e05cb3c16821c8747"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pri-attribs"></a>
+Private Attributes</h2></td></tr>
+<tr class="memitem:a766a93cf17d3c01e5e90229fae00399d"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_astro.html">Astro</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_galaxy.html#a766a93cf17d3c01e5e90229fae00399d">astro</a></td></tr>
+<tr class="memdesc:a766a93cf17d3c01e5e90229fae00399d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Include <a class="el" href="class_astro.html" title="Class containing basic functions required for astronomy. ">Astro</a> class.  <a href="#a766a93cf17d3c01e5e90229fae00399d">More...</a><br/></td></tr>
+<tr class="separator:a766a93cf17d3c01e5e90229fae00399d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="friends"></a>
 Friends</h2></td></tr>
 <tr class="memitem:ac32d8ed59c447e75c270b2336bda17de"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_galaxy.html#ac32d8ed59c447e75c270b2336bda17de">operator==</a> (const <a class="el" href="class_galaxy.html">Galaxy</a> &amp;gal1, const <a class="el" href="class_galaxy.html">Galaxy</a> &amp;gal2)</td></tr>
+<tr class="memdesc:ac32d8ed59c447e75c270b2336bda17de"><td class="mdescLeft">&#160;</td><td class="mdescRight">Bool == operator for <a class="el" href="class_galaxy.html" title="Class for storing galaxy properties. ">Galaxy</a> class.  <a href="#ac32d8ed59c447e75c270b2336bda17de">More...</a><br/></td></tr>
 <tr class="separator:ac32d8ed59c447e75c270b2336bda17de"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:afb9ae0494ab1faa79976bb657b009905"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_galaxy.html#afb9ae0494ab1faa79976bb657b009905">operator&lt;</a> (const <a class="el" href="class_galaxy.html">Galaxy</a> &amp;gal1, const <a class="el" href="class_galaxy.html">Galaxy</a> &amp;gal2)</td></tr>
+<tr class="memdesc:afb9ae0494ab1faa79976bb657b009905"><td class="mdescLeft">&#160;</td><td class="mdescRight">Bool &lt; operator for <a class="el" href="class_galaxy.html" title="Class for storing galaxy properties. ">Galaxy</a> class.  <a href="#afb9ae0494ab1faa79976bb657b009905">More...</a><br/></td></tr>
 <tr class="separator:afb9ae0494ab1faa79976bb657b009905"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><p>Class for storing galaxy properties. </p>
+<p>This class calculates and stores <a class="el" href="class_galaxy.html" title="Class for storing galaxy properties. ">Galaxy</a> properties. </p>
+</div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a class="anchor" id="a3a1167d32d27179946f4dc2d8a612018"></a>
 <div class="memitem">
 <div class="memproto">
@@ -141,7 +171,19 @@ Friends</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>&lt; Initialise <a class="el" href="class_galaxy.html">Galaxy</a> instance in spec mode </p>
+
+<p>Initialise <a class="el" href="class_galaxy.html" title="Class for storing galaxy properties. ">Galaxy</a> instance. </p>
+<p>[<a class="el" href="class_fo_f.html" title="Class for perfoming friends-of-friends cluster detection. ">FoF</a> mode: "spec"] </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">num_val</td><td>Integer value. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">id_val</td><td><a class="el" href="class_galaxy.html" title="Class for storing galaxy properties. ">Galaxy</a> ID. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">ra_val</td><td><a class="el" href="class_galaxy.html" title="Class for storing galaxy properties. ">Galaxy</a> right ascension. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">dec_val</td><td><a class="el" href="class_galaxy.html" title="Class for storing galaxy properties. ">Galaxy</a> declination. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">z_val</td><td><a class="el" href="class_galaxy.html" title="Class for storing galaxy properties. ">Galaxy</a> spectroscopic redshift. </td></tr>
+  </table>
+  </dd>
+</dl>
 
 </div>
 </div>
@@ -192,7 +234,20 @@ Friends</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>&lt; Initialise <a class="el" href="class_galaxy.html">Galaxy</a> instance in phot mode </p>
+
+<p>Initialise <a class="el" href="class_galaxy.html" title="Class for storing galaxy properties. ">Galaxy</a> instance. </p>
+<p>[<a class="el" href="class_fo_f.html" title="Class for perfoming friends-of-friends cluster detection. ">FoF</a> mode: "phot"] </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">num_val</td><td>Integer value. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">id_val</td><td><a class="el" href="class_galaxy.html" title="Class for storing galaxy properties. ">Galaxy</a> ID. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">ra_val</td><td><a class="el" href="class_galaxy.html" title="Class for storing galaxy properties. ">Galaxy</a> right ascension. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">dec_val</td><td><a class="el" href="class_galaxy.html" title="Class for storing galaxy properties. ">Galaxy</a> declination. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">z_val</td><td><a class="el" href="class_galaxy.html" title="Class for storing galaxy properties. ">Galaxy</a> photometric redshift. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">dz_val</td><td><a class="el" href="class_galaxy.html" title="Class for storing galaxy properties. ">Galaxy</a> photometric redshift error. </td></tr>
+  </table>
+  </dd>
+</dl>
 
 </div>
 </div>
@@ -220,7 +275,15 @@ Friends</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>Assign redshift bin to <a class="el" href="class_galaxy.html">Galaxy</a> instance. </p>
+
+<p>This method assigns the <a class="el" href="class_zbin.html" title="Class for storing redshift bin properties. ">Zbin</a> instance corresponding to the <a class="el" href="class_galaxy.html" title="Class for storing galaxy properties. ">Galaxy</a> instance. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">min_value</td><td>Minimum value in redshift range. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">bin_size</td><td>Redshift bin size. </td></tr>
+  </table>
+  </dd>
+</dl>
 
 </div>
 </div>
@@ -259,7 +322,17 @@ Friends</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>Calculate angular diameter distance for <a class="el" href="class_galaxy.html">Galaxy</a> instance; </p>
+
+<p>This method calculates the angular diameter distance of a <a class="el" href="class_galaxy.html" title="Class for storing galaxy properties. ">Galaxy</a> instance for a given cosmology. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">c</td><td>Speed of light [km/s]. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">H0</td><td>Hubble parameter [km/s/Mpc]. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">Omega_M</td><td>Matter density. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">Omega_L</td><td>Dark energy density. </td></tr>
+  </table>
+  </dd>
+</dl>
 
 </div>
 </div>
@@ -276,7 +349,14 @@ Friends</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>Set the initial cluster status for each redshift bin to false. </p>
+
+<p>This method sets the initial <a class="el" href="class_cluster.html" title="Class for storing galaxy cluster properties and members. ">Cluster</a> instance membership of the <a class="el" href="class_galaxy.html" title="Class for storing galaxy properties. ">Galaxy</a> instance to False. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">nbins</td><td>Number of redshift bins. </td></tr>
+  </table>
+  </dd>
+</dl>
 
 </div>
 </div>
@@ -312,7 +392,9 @@ Friends</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-<p>Bool &lt; operator for <a class="el" href="class_galaxy.html">Galaxy</a> class. </p>
+
+<p>Bool &lt; operator for <a class="el" href="class_galaxy.html" title="Class for storing galaxy properties. ">Galaxy</a> class. </p>
+<p>Compares the ID between two <a class="el" href="class_cluster.html" title="Class for storing galaxy cluster properties and members. ">Cluster</a> instances. </p>
 
 </div>
 </div>
@@ -347,11 +429,35 @@ Friends</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-<p>Bool == operator for <a class="el" href="class_galaxy.html">Galaxy</a> class. </p>
+
+<p>Bool == operator for <a class="el" href="class_galaxy.html" title="Class for storing galaxy properties. ">Galaxy</a> class. </p>
+<p>Compares the ID between two <a class="el" href="class_cluster.html" title="Class for storing galaxy cluster properties and members. ">Cluster</a> instances. </p>
 
 </div>
 </div>
 <h2 class="groupheader">Member Data Documentation</h2>
+<a class="anchor" id="a766a93cf17d3c01e5e90229fae00399d"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="class_astro.html">Astro</a> Galaxy::astro</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Include <a class="el" href="class_astro.html" title="Class containing basic functions required for astronomy. ">Astro</a> class. </p>
+
+</div>
+</div>
 <a class="anchor" id="a1f05bdd93103f82a98f1a5620bd38a10"></a>
 <div class="memitem">
 <div class="memproto">
@@ -361,6 +467,8 @@ Friends</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+
+<p><a class="el" href="class_zbin.html" title="Class for storing redshift bin properties. ">Zbin</a> instance corresponding to <a class="el" href="class_galaxy.html" title="Class for storing galaxy properties. ">Galaxy</a> instance. </p>
 
 </div>
 </div>
@@ -374,6 +482,8 @@ Friends</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
+<p>Angular diameter distance of <a class="el" href="class_galaxy.html" title="Class for storing galaxy properties. ">Galaxy</a> instance. </p>
+
 </div>
 </div>
 <a class="anchor" id="a46d3c9f9087a7653c31312465d56c7ce"></a>
@@ -385,6 +495,8 @@ Friends</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+
+<p>Declination of <a class="el" href="class_galaxy.html" title="Class for storing galaxy properties. ">Galaxy</a> instance. </p>
 
 </div>
 </div>
@@ -398,6 +510,8 @@ Friends</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
+<p>Photometric redshift error of <a class="el" href="class_galaxy.html" title="Class for storing galaxy properties. ">Galaxy</a> instance. </p>
+
 </div>
 </div>
 <a class="anchor" id="a2df9d4cb3facd46ac531ef7b48dcdcda"></a>
@@ -409,6 +523,8 @@ Friends</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+
+<p>ID of <a class="el" href="class_galaxy.html" title="Class for storing galaxy properties. ">Galaxy</a> instance. </p>
 
 </div>
 </div>
@@ -422,6 +538,8 @@ Friends</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
+<p>Vector of flags indicating if the <a class="el" href="class_galaxy.html" title="Class for storing galaxy properties. ">Galaxy</a> instance is a member of a <a class="el" href="class_cluster.html" title="Class for storing galaxy cluster properties and members. ">Cluster</a> instance for a given <a class="el" href="class_zbin.html" title="Class for storing redshift bin properties. ">Zbin</a> instance. </p>
+
 </div>
 </div>
 <a class="anchor" id="aeb86571eb62021442107493ffaf041c7"></a>
@@ -433,6 +551,9 @@ Friends</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+
+<p>Class structure for galaxy properties. </p>
+<p>Number associated to <a class="el" href="class_galaxy.html" title="Class for storing galaxy properties. ">Galaxy</a> instance. </p>
 
 </div>
 </div>
@@ -446,6 +567,8 @@ Friends</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
+<p>Right ascension of <a class="el" href="class_galaxy.html" title="Class for storing galaxy properties. ">Galaxy</a> instance. </p>
+
 </div>
 </div>
 <a class="anchor" id="a899abb576368397e2253afa611987ffa"></a>
@@ -457,6 +580,8 @@ Friends</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+
+<p>Velocity of <a class="el" href="class_galaxy.html" title="Class for storing galaxy properties. ">Galaxy</a> instance. </p>
 
 </div>
 </div>
@@ -470,6 +595,8 @@ Friends</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
+<p>Redshift of <a class="el" href="class_galaxy.html" title="Class for storing galaxy properties. ">Galaxy</a> instance. </p>
+
 </div>
 </div>
 <hr/>The documentation for this class was generated from the following files:<ul>
@@ -479,7 +606,7 @@ Friends</h2></td></tr>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Thu Jul 17 2014 13:19:06 for fof_cluster_finder by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Fri Jul 18 2014 15:53:18 for fof_cluster_finder by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.6
 </small></address>

@@ -47,6 +47,7 @@
   <div class="summary">
 <a href="#pub-methods">Public Member Functions</a> &#124;
 <a href="#pub-attribs">Public Attributes</a> &#124;
+<a href="#pri-attribs">Private Attributes</a> &#124;
 <a href="class_cat___split-members.html">List of all members</a>  </div>
   <div class="headertitle">
 <div class="title">Cat_Split Class Reference</div>  </div>
@@ -74,6 +75,22 @@ Public Member Functions</h2></td></tr>
 Public Attributes</h2></td></tr>
 <tr class="memitem:a5cbc7cceebd587833de3e3f2986f24e6"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_comp.html">Comp</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_cat___split.html#a5cbc7cceebd587833de3e3f2986f24e6">comp</a></td></tr>
 <tr class="separator:a5cbc7cceebd587833de3e3f2986f24e6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pri-attribs"></a>
+Private Attributes</h2></td></tr>
+<tr class="memitem:aef5e49348b08da8f1d56436099022a05"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_fileio.html">Fileio</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_cat___split.html#aef5e49348b08da8f1d56436099022a05">fileio</a></td></tr>
+<tr class="memdesc:aef5e49348b08da8f1d56436099022a05"><td class="mdescLeft">&#160;</td><td class="mdescRight">Class for <a class="el" href="class_cat___split.html">Cat_Split</a> functions.  <a href="#aef5e49348b08da8f1d56436099022a05">More...</a><br/></td></tr>
+<tr class="separator:aef5e49348b08da8f1d56436099022a05"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6a09775b11208527895f5e587d63d30d"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_option.html">Option</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_cat___split.html#a6a09775b11208527895f5e587d63d30d">opt</a></td></tr>
+<tr class="separator:a6a09775b11208527895f5e587d63d30d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1d3d642c394a8273371732ed5eacaa05"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_cat___split.html#a1d3d642c394a8273371732ed5eacaa05">number_of_files</a></td></tr>
+<tr class="separator:a1d3d642c394a8273371732ed5eacaa05"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8920798bc18a1c5030f441db63d1f868"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_cat___split.html#a8920798bc18a1c5030f441db63d1f868">ra_bin_size</a></td></tr>
+<tr class="separator:a8920798bc18a1c5030f441db63d1f868"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a02dec606c6014bdcd1fbd3b30c313986"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_cat___split.html#a02dec606c6014bdcd1fbd3b30c313986">dec_bin_size</a></td></tr>
+<tr class="separator:a02dec606c6014bdcd1fbd3b30c313986"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a45d470bc02995301056b62ed2919096e"><td class="memItemLeft" align="right" valign="top">std::vector&lt; std::ofstream * &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_cat___split.html#a45d470bc02995301056b62ed2919096e">file_list</a></td></tr>
+<tr class="separator:a45d470bc02995301056b62ed2919096e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Member Function Documentation</h2>
 <a class="anchor" id="aecb86c2c1d5094134fbb6645d2f1ada5"></a>
@@ -150,7 +167,7 @@ Public Attributes</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>Function to read in an ASCII file and store the contents in a vector of <a class="el" href="class_galaxy.html">Galaxy</a> instances. </p>
+<p>Function to read in an ASCII file and store the contents in a vector of <a class="el" href="class_galaxy.html" title="Class for storing galaxy properties. ">Galaxy</a> instances. </p>
 
 </div>
 </div>
@@ -209,6 +226,128 @@ Public Attributes</h2></td></tr>
 
 </div>
 </div>
+<a class="anchor" id="a02dec606c6014bdcd1fbd3b30c313986"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">double Cat_Split::dec_bin_size</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a class="anchor" id="a45d470bc02995301056b62ed2919096e"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::vector&lt;std::ofstream*&gt; Cat_Split::file_list</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a class="anchor" id="aef5e49348b08da8f1d56436099022a05"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="class_fileio.html">Fileio</a> Cat_Split::fileio</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Class for <a class="el" href="class_cat___split.html">Cat_Split</a> functions. </p>
+
+</div>
+</div>
+<a class="anchor" id="a1d3d642c394a8273371732ed5eacaa05"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">int Cat_Split::number_of_files</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a class="anchor" id="a6a09775b11208527895f5e587d63d30d"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="class_option.html">Option</a> Cat_Split::opt</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a class="anchor" id="a8920798bc18a1c5030f441db63d1f868"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">double Cat_Split::ra_bin_size</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
 <hr/>The documentation for this class was generated from the following files:<ul>
 <li>/Users/Rowen/Documents/Codes/fof_cluster_finder/fof_cluster_finder/src/<a class="el" href="cat__split_8hpp_source.html">cat_split.hpp</a></li>
 <li>/Users/Rowen/Documents/Codes/fof_cluster_finder/fof_cluster_finder/src/<a class="el" href="cat__split_8cpp.html">cat_split.cpp</a></li>
@@ -216,7 +355,7 @@ Public Attributes</h2></td></tr>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Thu Jul 17 2014 13:19:06 for fof_cluster_finder by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Fri Jul 18 2014 15:53:18 for fof_cluster_finder by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.6
 </small></address>

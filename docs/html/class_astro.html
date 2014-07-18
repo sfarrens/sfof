@@ -52,41 +52,60 @@
 </div><!--header-->
 <div class="contents">
 
+<p>Class containing basic functions required for astronomy.  
+ <a href="class_astro.html#details">More...</a></p>
+
 <p><code>#include &lt;<a class="el" href="astro_8hpp_source.html">astro.hpp</a>&gt;</code></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
 <tr class="memitem:a602479e887f99f1ef128fbeef6034f87"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_astro.html#a602479e887f99f1ef128fbeef6034f87">find_bin</a> (double, double, double)</td></tr>
-<tr class="memdesc:a602479e887f99f1ef128fbeef6034f87"><td class="mdescLeft">&#160;</td><td class="mdescRight">Class structure for astronmy functions.  <a href="#a602479e887f99f1ef128fbeef6034f87">More...</a><br/></td></tr>
+<tr class="memdesc:a602479e887f99f1ef128fbeef6034f87"><td class="mdescLeft">&#160;</td><td class="mdescRight">This method finds a bin corresponding to the input value given the minimum value in range and the bin size.  <a href="#a602479e887f99f1ef128fbeef6034f87">More...</a><br/></td></tr>
 <tr class="separator:a602479e887f99f1ef128fbeef6034f87"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:afc03a3a5ccef52c6f20e235d9dec6460"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_astro.html#afc03a3a5ccef52c6f20e235d9dec6460">num_bins</a> (double, double, double)</td></tr>
+<tr class="memdesc:afc03a3a5ccef52c6f20e235d9dec6460"><td class="mdescLeft">&#160;</td><td class="mdescRight">This method finds the number of bins in a given range for a given bin size.  <a href="#afc03a3a5ccef52c6f20e235d9dec6460">More...</a><br/></td></tr>
 <tr class="separator:afc03a3a5ccef52c6f20e235d9dec6460"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ab9e66466493b21cff481e2701851573e"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_astro.html#ab9e66466493b21cff481e2701851573e">within</a> (double, double, double)</td></tr>
+<tr class="memdesc:ab9e66466493b21cff481e2701851573e"><td class="mdescLeft">&#160;</td><td class="mdescRight">This method deterimines whether or not a value is within the limits provided.  <a href="#ab9e66466493b21cff481e2701851573e">More...</a><br/></td></tr>
 <tr class="separator:ab9e66466493b21cff481e2701851573e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aa88397b5feed299e7b351a026a56ff53"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_astro.html#aa88397b5feed299e7b351a026a56ff53">deg2rad</a> (double)</td></tr>
+<tr class="memdesc:aa88397b5feed299e7b351a026a56ff53"><td class="mdescLeft">&#160;</td><td class="mdescRight">This method converts the input angle from degrees to radians.  <a href="#aa88397b5feed299e7b351a026a56ff53">More...</a><br/></td></tr>
 <tr class="separator:aa88397b5feed299e7b351a026a56ff53"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a4535a68de3d8e7bb3ee1b78c5eef8bd9"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_astro.html#a4535a68de3d8e7bb3ee1b78c5eef8bd9">rad2deg</a> (double)</td></tr>
+<tr class="memdesc:a4535a68de3d8e7bb3ee1b78c5eef8bd9"><td class="mdescLeft">&#160;</td><td class="mdescRight">This method converts the input angle from radians to degrees.  <a href="#a4535a68de3d8e7bb3ee1b78c5eef8bd9">More...</a><br/></td></tr>
 <tr class="separator:a4535a68de3d8e7bb3ee1b78c5eef8bd9"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a2da67db6a949fb3ce8744a8a7094bf13"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_astro.html#a2da67db6a949fb3ce8744a8a7094bf13">angsep</a> (double, double, double, double)</td></tr>
+<tr class="memdesc:a2da67db6a949fb3ce8744a8a7094bf13"><td class="mdescLeft">&#160;</td><td class="mdescRight">This method calculates the angular separation in radians between two points.  <a href="#a2da67db6a949fb3ce8744a8a7094bf13">More...</a><br/></td></tr>
 <tr class="separator:a2da67db6a949fb3ce8744a8a7094bf13"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a23af84033ac1948d7a6d131e730f80e7"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_astro.html#a23af84033ac1948d7a6d131e730f80e7">mean</a> (const std::vector&lt; double &gt; &amp;)</td></tr>
+<tr class="memdesc:a23af84033ac1948d7a6d131e730f80e7"><td class="mdescLeft">&#160;</td><td class="mdescRight">This method calculates the mean value of a vector of doubles.  <a href="#a23af84033ac1948d7a6d131e730f80e7">More...</a><br/></td></tr>
 <tr class="separator:a23af84033ac1948d7a6d131e730f80e7"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ab39b6fa100f8e7fe1fe484d36a1879b6"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_astro.html#ab39b6fa100f8e7fe1fe484d36a1879b6">median</a> (std::vector&lt; double &gt;)</td></tr>
+<tr class="memdesc:ab39b6fa100f8e7fe1fe484d36a1879b6"><td class="mdescLeft">&#160;</td><td class="mdescRight">This method calculates the median value of a vector of doubles.  <a href="#ab39b6fa100f8e7fe1fe484d36a1879b6">More...</a><br/></td></tr>
 <tr class="separator:ab39b6fa100f8e7fe1fe484d36a1879b6"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a41676e4368f264f4bb5b9c32306df340"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_astro.html#a41676e4368f264f4bb5b9c32306df340">variance</a> (const std::vector&lt; double &gt; &amp;)</td></tr>
+<tr class="memdesc:a41676e4368f264f4bb5b9c32306df340"><td class="mdescLeft">&#160;</td><td class="mdescRight">This method calculates the variance of a vector of doubles.  <a href="#a41676e4368f264f4bb5b9c32306df340">More...</a><br/></td></tr>
 <tr class="separator:a41676e4368f264f4bb5b9c32306df340"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a72fd29923bcd8e1768e1b6c178961234"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_astro.html#a72fd29923bcd8e1768e1b6c178961234">stdev</a> (const std::vector&lt; double &gt; &amp;)</td></tr>
+<tr class="memdesc:a72fd29923bcd8e1768e1b6c178961234"><td class="mdescLeft">&#160;</td><td class="mdescRight">This method calculates the standard deviation of a vector of doubles.  <a href="#a72fd29923bcd8e1768e1b6c178961234">More...</a><br/></td></tr>
 <tr class="separator:a72fd29923bcd8e1768e1b6c178961234"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a997b1cd7626666cdf8afb7f3bcba86cd"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_astro.html#a997b1cd7626666cdf8afb7f3bcba86cd">stderr</a> (const std::vector&lt; double &gt; &amp;)</td></tr>
+<tr class="memdesc:a997b1cd7626666cdf8afb7f3bcba86cd"><td class="mdescLeft">&#160;</td><td class="mdescRight">This method calculates the standard error on the mean of a vector of doubles.  <a href="#a997b1cd7626666cdf8afb7f3bcba86cd">More...</a><br/></td></tr>
 <tr class="separator:a997b1cd7626666cdf8afb7f3bcba86cd"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a0b055d4411ca874bcbe589202df6cd36"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_astro.html#a0b055d4411ca874bcbe589202df6cd36">stderr_median</a> (const std::vector&lt; double &gt; &amp;)</td></tr>
+<tr class="memdesc:a0b055d4411ca874bcbe589202df6cd36"><td class="mdescLeft">&#160;</td><td class="mdescRight">This method calculates the standard error on the median of a vector of doubles.  <a href="#a0b055d4411ca874bcbe589202df6cd36">More...</a><br/></td></tr>
 <tr class="separator:a0b055d4411ca874bcbe589202df6cd36"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a30af2c9b148d8d49bf2262839fb7aa39"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_astro.html#a30af2c9b148d8d49bf2262839fb7aa39">min</a> (const std::vector&lt; double &gt; &amp;)</td></tr>
+<tr class="memdesc:a30af2c9b148d8d49bf2262839fb7aa39"><td class="mdescLeft">&#160;</td><td class="mdescRight">This method calculates the minimum value of a vector of doubles.  <a href="#a30af2c9b148d8d49bf2262839fb7aa39">More...</a><br/></td></tr>
 <tr class="separator:a30af2c9b148d8d49bf2262839fb7aa39"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a289600fa81c0070355a640fabd61210e"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_astro.html#a289600fa81c0070355a640fabd61210e">max</a> (const std::vector&lt; double &gt; &amp;)</td></tr>
+<tr class="memdesc:a289600fa81c0070355a640fabd61210e"><td class="mdescLeft">&#160;</td><td class="mdescRight">This method calculates the maximum value of a vector of doubles.  <a href="#a289600fa81c0070355a640fabd61210e">More...</a><br/></td></tr>
 <tr class="separator:a289600fa81c0070355a640fabd61210e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<h2 class="groupheader">Member Function Documentation</h2>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><p>Class containing basic functions required for astronomy. </p>
+<p>This class encompasses a selection of functions that perform some basic calculations that often required for astronomy or cosmology. </p>
+</div><h2 class="groupheader">Member Function Documentation</h2>
 <a class="anchor" id="a2da67db6a949fb3ce8744a8a7094bf13"></a>
 <div class="memitem">
 <div class="memproto">
@@ -122,7 +141,18 @@ Public Member Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>Function that returns the angular separation (in radians) between two points. </p>
+
+<p>This method calculates the angular separation in radians between two points. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">ra1</td><td>Right ascension of first point. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">dec1</td><td>Declination of first point. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">ra2</td><td>Right ascension of second point. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">dec2</td><td>Declination of second point. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>Anugular separation in radians. </dd></dl>
 
 </div>
 </div>
@@ -139,7 +169,15 @@ Public Member Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>Function that converts angle from degrees to radians. </p>
+
+<p>This method converts the input angle from degrees to radians. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">angle</td><td>Input angle in degrees. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>Angle in radians. </dd></dl>
 
 </div>
 </div>
@@ -173,8 +211,16 @@ Public Member Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Class structure for astronmy functions. </p>
-<p>Find bin corresponding to the input value given the minimum value in range and bin size. </p>
+<p>This method finds a bin corresponding to the input value given the minimum value in range and the bin size. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">value</td><td>Input value. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">min_value</td><td>Minimum value in the range. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">bin_size</td><td>Bin size. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>Bin number corresponding to the input value. </dd></dl>
 
 </div>
 </div>
@@ -191,7 +237,15 @@ Public Member Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>Function that computes the maximum value of a vector of doubles. </p>
+
+<p>This method calculates the maximum value of a vector of doubles. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">elements</td><td>Vector of double floating point values. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>Maximum value. </dd></dl>
 
 </div>
 </div>
@@ -208,7 +262,15 @@ Public Member Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>Function that computes the mean value of a vector of doubles. </p>
+
+<p>This method calculates the mean value of a vector of doubles. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">elements</td><td>Vector of double floating point values. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>Mean value. </dd></dl>
 
 </div>
 </div>
@@ -225,7 +287,15 @@ Public Member Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>Function that computes the median value of a vector of doubles. Pass vector by value to leave original vector unaltered. </p>
+
+<p>This method calculates the median value of a vector of doubles. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">elements</td><td>Vector of double floating point values. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>Median value. </dd></dl>
 
 </div>
 </div>
@@ -242,7 +312,15 @@ Public Member Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>Function that computes the minimum value of a vector of doubles. </p>
+
+<p>This method calculates the minimum value of a vector of doubles. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">elements</td><td>Vector of double floating point values. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>Minimum value. </dd></dl>
 
 </div>
 </div>
@@ -275,7 +353,17 @@ Public Member Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>Find number of bins in given range for a given bin size. </p>
+
+<p>This method finds the number of bins in a given range for a given bin size. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">min_value</td><td>Maximum value in the range. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">max_value</td><td>Minimum value in the range. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">bin_size</td><td>Bin size. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>Number of bins in the relevant range. </dd></dl>
 
 </div>
 </div>
@@ -292,7 +380,15 @@ Public Member Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>Function that converts angle from radians to degrees. </p>
+
+<p>This method converts the input angle from radians to degrees. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">angle</td><td>Input angle in radians. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>Angle in degrees. </dd></dl>
 
 </div>
 </div>
@@ -309,7 +405,15 @@ Public Member Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>Function that computes the standard error of the mean of a vector of doubles. </p>
+
+<p>This method calculates the standard error on the mean of a vector of doubles. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">elements</td><td>Vector of double floating point values. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>Standard error on the mean. </dd></dl>
 
 </div>
 </div>
@@ -326,7 +430,15 @@ Public Member Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>Function that computes the standard error of the median of a vector of doubles. </p>
+
+<p>This method calculates the standard error on the median of a vector of doubles. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">elements</td><td>Vector of double floating point values. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>Standard error on the median. </dd></dl>
 
 </div>
 </div>
@@ -343,7 +455,15 @@ Public Member Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>Function that computes the standard deviation of a vector of doubles. </p>
+
+<p>This method calculates the standard deviation of a vector of doubles. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">elements</td><td>Vector of double floating point values. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>Standard deviation. </dd></dl>
 
 </div>
 </div>
@@ -360,7 +480,15 @@ Public Member Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>Function that computes the variance of a vector of doubles. </p>
+
+<p>This method calculates the variance of a vector of doubles. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">elements</td><td>Vector of double floating point values. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>Variance. </dd></dl>
 
 </div>
 </div>
@@ -393,7 +521,16 @@ Public Member Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>Deterimine whether or not a values is within the limits provided. </p>
+
+<p>This method deterimines whether or not a value is within the limits provided. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">value</td><td>Input value. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">min_value</td><td>Maximum value in the range. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">max_value</td><td>Minimum value in the range. </td></tr>
+  </table>
+  </dd>
+</dl>
 
 </div>
 </div>
@@ -404,7 +541,7 @@ Public Member Functions</h2></td></tr>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Thu Jul 17 2014 13:19:06 for fof_cluster_finder by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Fri Jul 18 2014 15:53:18 for fof_cluster_finder by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.6
 </small></address>

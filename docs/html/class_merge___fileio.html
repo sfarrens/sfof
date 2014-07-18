@@ -46,6 +46,7 @@
 <div class="header">
   <div class="summary">
 <a href="#pub-methods">Public Member Functions</a> &#124;
+<a href="#pri-attribs">Private Attributes</a> &#124;
 <a href="class_merge___fileio-members.html">List of all members</a>  </div>
   <div class="headertitle">
 <div class="title">Merge_Fileio Class Reference</div>  </div>
@@ -68,6 +69,18 @@ Public Member Functions</h2></td></tr>
 <tr class="separator:a95bf6908f55bf336e6392266c5e67f68"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a91d503700380ab522e8496e82c4a7a2f"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_merge___fileio.html#a91d503700380ab522e8496e82c4a7a2f">output_file_names</a> (const std::string &amp;, const std::string &amp;, std::string &amp;, std::string &amp;)</td></tr>
 <tr class="separator:a91d503700380ab522e8496e82c4a7a2f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pri-attribs"></a>
+Private Attributes</h2></td></tr>
+<tr class="memitem:a1d987f7ab205b4aa15e8846e4a0e81c5"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_fileio.html">Fileio</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_merge___fileio.html#a1d987f7ab205b4aa15e8846e4a0e81c5">fileio</a></td></tr>
+<tr class="memdesc:a1d987f7ab205b4aa15e8846e4a0e81c5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Class structure for file input and output.  <a href="#a1d987f7ab205b4aa15e8846e4a0e81c5">More...</a><br/></td></tr>
+<tr class="separator:a1d987f7ab205b4aa15e8846e4a0e81c5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae4d00e4d46f331089435bb6fc0e24512"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_merge___fileio.html#ae4d00e4d46f331089435bb6fc0e24512">gal_count</a></td></tr>
+<tr class="separator:ae4d00e4d46f331089435bb6fc0e24512"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab846868dad7cfb9a8d78feea32d4ba42"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_merge___fileio.html#ab846868dad7cfb9a8d78feea32d4ba42">clt_count</a></td></tr>
+<tr class="separator:ab846868dad7cfb9a8d78feea32d4ba42"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a800391fee034ae910287a57914c8953f"><td class="memItemLeft" align="right" valign="top">std::vector&lt; std::string &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_merge___fileio.html#a800391fee034ae910287a57914c8953f">file_list</a></td></tr>
+<tr class="separator:a800391fee034ae910287a57914c8953f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Member Function Documentation</h2>
 <a class="anchor" id="a4467007acb5ff2a3077c1126a46a763d"></a>
@@ -159,7 +172,7 @@ Public Member Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>Function to read in an ASCII file and store the contents in a vector of <a class="el" href="class_cluster.html">Cluster</a> instances. </p>
+<p>Function to read in an ASCII file and store the contents in a vector of <a class="el" href="class_cluster.html" title="Class for storing galaxy cluster properties and members. ">Cluster</a> instances. </p>
 
 </div>
 </div>
@@ -219,7 +232,7 @@ Public Member Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>Function to read in an FITS file and store the contents in a vector of <a class="el" href="class_cluster.html">Cluster</a> instances. </p>
+<p>Function to read in an FITS file and store the contents in a vector of <a class="el" href="class_cluster.html" title="Class for storing galaxy cluster properties and members. ">Cluster</a> instances. </p>
 
 </div>
 </div>
@@ -255,6 +268,89 @@ Public Member Functions</h2></td></tr>
 
 </div>
 </div>
+<h2 class="groupheader">Member Data Documentation</h2>
+<a class="anchor" id="ab846868dad7cfb9a8d78feea32d4ba42"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">int Merge_Fileio::clt_count</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a class="anchor" id="a800391fee034ae910287a57914c8953f"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::vector&lt;std::string&gt; Merge_Fileio::file_list</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a class="anchor" id="a1d987f7ab205b4aa15e8846e4a0e81c5"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="class_fileio.html">Fileio</a> Merge_Fileio::fileio</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Class structure for file input and output. </p>
+
+</div>
+</div>
+<a class="anchor" id="ae4d00e4d46f331089435bb6fc0e24512"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">int Merge_Fileio::gal_count</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
 <hr/>The documentation for this class was generated from the following files:<ul>
 <li>/Users/Rowen/Documents/Codes/fof_cluster_finder/fof_cluster_finder/src/<a class="el" href="cat__merge__fileio_8hpp_source.html">cat_merge_fileio.hpp</a></li>
 <li>/Users/Rowen/Documents/Codes/fof_cluster_finder/fof_cluster_finder/src/<a class="el" href="cat__merge__fileio_8cpp.html">cat_merge_fileio.cpp</a></li>
@@ -262,7 +358,7 @@ Public Member Functions</h2></td></tr>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Thu Jul 17 2014 13:19:06 for fof_cluster_finder by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Fri Jul 18 2014 15:53:18 for fof_cluster_finder by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.6
 </small></address>

@@ -48,36 +48,55 @@
 <a href="#nested-classes">Classes</a> &#124;
 <a href="#pub-methods">Public Member Functions</a> &#124;
 <a href="#pub-attribs">Public Attributes</a> &#124;
+<a href="#pri-attribs">Private Attributes</a> &#124;
 <a href="class_kdtree-members.html">List of all members</a>  </div>
   <div class="headertitle">
 <div class="title">Kdtree Class Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
 
+<p>Class for building a kd-tree in RA-DEC space.  
+ <a href="class_kdtree.html#details">More...</a></p>
+
 <p><code>#include &lt;<a class="el" href="kdtree__class_8hpp_source.html">kdtree_class.hpp</a>&gt;</code></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="nested-classes"></a>
 Classes</h2></td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_kdtree_1_1_kdtree__node.html">Kdtree_node</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Class for storing <a class="el" href="class_kdtree_1_1_kdtree__node.html" title="Class for storing Kdtree_node properties. ">Kdtree_node</a> properties.  <a href="class_kdtree_1_1_kdtree__node.html#details">More...</a><br/></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
 <tr class="memitem:ab2ba9d3e11da8f4405c0beb99631a1b8"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_kdtree.html#ab2ba9d3e11da8f4405c0beb99631a1b8">set_kdtree</a> (std::vector&lt; <a class="el" href="class_galaxy.html">Galaxy</a> &gt; &amp;, int)</td></tr>
+<tr class="memdesc:ab2ba9d3e11da8f4405c0beb99631a1b8"><td class="mdescLeft">&#160;</td><td class="mdescRight">This method sets-up a <a class="el" href="class_kdtree.html" title="Class for building a kd-tree in RA-DEC space. ">Kdtree</a> instance.  <a href="#ab2ba9d3e11da8f4405c0beb99631a1b8">More...</a><br/></td></tr>
 <tr class="separator:ab2ba9d3e11da8f4405c0beb99631a1b8"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ac7c07f924b5899b135d4cee9dd85d76d"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_kdtree.html#ac7c07f924b5899b135d4cee9dd85d76d">build_kdtree</a> (std::vector&lt; <a class="el" href="class_galaxy.html">Galaxy</a> * &gt;::iterator begin, std::vector&lt; <a class="el" href="class_galaxy.html">Galaxy</a> * &gt;::iterator end, int depth)</td></tr>
+<tr class="memdesc:ac7c07f924b5899b135d4cee9dd85d76d"><td class="mdescLeft">&#160;</td><td class="mdescRight">This method splits the data at a given depth and itterates until the maximum depth is reached.  <a href="#ac7c07f924b5899b135d4cee9dd85d76d">More...</a><br/></td></tr>
 <tr class="separator:ac7c07f924b5899b135d4cee9dd85d76d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-attribs"></a>
 Public Attributes</h2></td></tr>
 <tr class="memitem:a1ddbe70ff3ea6b38aa54be01de8e28b0"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_kdtree.html#a1ddbe70ff3ea6b38aa54be01de8e28b0">max_depth</a></td></tr>
+<tr class="memdesc:a1ddbe70ff3ea6b38aa54be01de8e28b0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Maximum depth to which the <a class="el" href="class_kdtree.html" title="Class for building a kd-tree in RA-DEC space. ">Kdtree</a> instance should be built.  <a href="#a1ddbe70ff3ea6b38aa54be01de8e28b0">More...</a><br/></td></tr>
 <tr class="separator:a1ddbe70ff3ea6b38aa54be01de8e28b0"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a13a66ba402a99ba6b5407b78d3b2b751"><td class="memItemLeft" align="right" valign="top">std::vector&lt; <a class="el" href="class_kdtree_1_1_kdtree__node.html">Kdtree_node</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_kdtree.html#a13a66ba402a99ba6b5407b78d3b2b751">node_list</a></td></tr>
+<tr class="memdesc:a13a66ba402a99ba6b5407b78d3b2b751"><td class="mdescLeft">&#160;</td><td class="mdescRight">Vector of <a class="el" href="class_kdtree_1_1_kdtree__node.html" title="Class for storing Kdtree_node properties. ">Kdtree_node</a> instances.  <a href="#a13a66ba402a99ba6b5407b78d3b2b751">More...</a><br/></td></tr>
 <tr class="separator:a13a66ba402a99ba6b5407b78d3b2b751"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a8680aa9730116cdf32e5f835b67b4c1b"><td class="memItemLeft" align="right" valign="top">std::vector&lt; <a class="el" href="class_galaxy.html">Galaxy</a> * &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_kdtree.html#a8680aa9730116cdf32e5f835b67b4c1b">gaps_ptrs</a></td></tr>
+<tr class="memdesc:a8680aa9730116cdf32e5f835b67b4c1b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Pointers to vector of <a class="el" href="class_galaxy.html" title="Class for storing galaxy properties. ">Galaxy</a> instances.  <a href="#a8680aa9730116cdf32e5f835b67b4c1b">More...</a><br/></td></tr>
 <tr class="separator:a8680aa9730116cdf32e5f835b67b4c1b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pri-attribs"></a>
+Private Attributes</h2></td></tr>
+<tr class="memitem:aa41523861716e203be385b08b4879513"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_astro.html">Astro</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_kdtree.html#aa41523861716e203be385b08b4879513">astro</a></td></tr>
+<tr class="memdesc:aa41523861716e203be385b08b4879513"><td class="mdescLeft">&#160;</td><td class="mdescRight">Include <a class="el" href="class_astro.html" title="Class containing basic functions required for astronomy. ">Astro</a> class.  <a href="#aa41523861716e203be385b08b4879513">More...</a><br/></td></tr>
+<tr class="separator:aa41523861716e203be385b08b4879513"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<h2 class="groupheader">Member Function Documentation</h2>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><p>Class for building a kd-tree in RA-DEC space. </p>
+<p>This class builds a two-dimentional kd-tree in RA-DEC space to a specified depth. </p>
+</div><h2 class="groupheader">Member Function Documentation</h2>
 <a class="anchor" id="ac7c07f924b5899b135d4cee9dd85d76d"></a>
 <div class="memitem">
 <div class="memproto">
@@ -108,6 +127,16 @@ Public Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
+<p>This method splits the data at a given depth and itterates until the maximum depth is reached. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">begin</td><td>Begining itterator of <a class="el" href="class_galaxy.html" title="Class for storing galaxy properties. ">Galaxy</a> vector. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">end</td><td>Ending itterator of <a class="el" href="class_galaxy.html" title="Class for storing galaxy properties. ">Galaxy</a> vector.. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">depth</td><td>Current depth of <a class="el" href="class_kdtree.html" title="Class for building a kd-tree in RA-DEC space. ">Kdtree</a>. </td></tr>
+  </table>
+  </dd>
+</dl>
+
 </div>
 </div>
 <a class="anchor" id="ab2ba9d3e11da8f4405c0beb99631a1b8"></a>
@@ -133,11 +162,41 @@ Public Attributes</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>Set up a <a class="el" href="class_kdtree.html">Kdtree</a> instance. </p>
+
+<p>This method sets-up a <a class="el" href="class_kdtree.html" title="Class for building a kd-tree in RA-DEC space. ">Kdtree</a> instance. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">gals</td><td>Vector of <a class="el" href="class_galaxy.html" title="Class for storing galaxy properties. ">Galaxy</a> instances. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">max_depth_val</td><td>Maximum depth of <a class="el" href="class_kdtree.html" title="Class for building a kd-tree in RA-DEC space. ">Kdtree</a>. </td></tr>
+  </table>
+  </dd>
+</dl>
 
 </div>
 </div>
 <h2 class="groupheader">Member Data Documentation</h2>
+<a class="anchor" id="aa41523861716e203be385b08b4879513"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="class_astro.html">Astro</a> Kdtree::astro</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Include <a class="el" href="class_astro.html" title="Class containing basic functions required for astronomy. ">Astro</a> class. </p>
+
+</div>
+</div>
 <a class="anchor" id="a8680aa9730116cdf32e5f835b67b4c1b"></a>
 <div class="memitem">
 <div class="memproto">
@@ -147,6 +206,8 @@ Public Attributes</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+
+<p>Pointers to vector of <a class="el" href="class_galaxy.html" title="Class for storing galaxy properties. ">Galaxy</a> instances. </p>
 
 </div>
 </div>
@@ -160,6 +221,8 @@ Public Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
+<p>Maximum depth to which the <a class="el" href="class_kdtree.html" title="Class for building a kd-tree in RA-DEC space. ">Kdtree</a> instance should be built. </p>
+
 </div>
 </div>
 <a class="anchor" id="a13a66ba402a99ba6b5407b78d3b2b751"></a>
@@ -172,6 +235,8 @@ Public Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
+<p>Vector of <a class="el" href="class_kdtree_1_1_kdtree__node.html" title="Class for storing Kdtree_node properties. ">Kdtree_node</a> instances. </p>
+
 </div>
 </div>
 <hr/>The documentation for this class was generated from the following files:<ul>
@@ -181,7 +246,7 @@ Public Attributes</h2></td></tr>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Thu Jul 17 2014 13:19:06 for fof_cluster_finder by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Fri Jul 18 2014 15:53:18 for fof_cluster_finder by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.6
 </small></address>
