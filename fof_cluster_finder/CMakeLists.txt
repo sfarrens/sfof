@@ -30,7 +30,7 @@ set(CPP_SRC
 	${CPP_SOURCE_DIR}/comp.cpp
 )
 
-include_directories(BEFORE SYSTEM ${CFITSIO_INCLUDE_DIRS})
+include_directories(BEFORE SYSTEM ${CFITSIO_INCLUDE_DIRS} ${Boost_INCLUDE_DIRS})
 
 add_executable(main ${CPP_SRC} ${CPP_SOURCE_DIR}/main.cpp)
 target_link_libraries(main ${CFITSIO_LIBRARIES})
@@ -39,6 +39,6 @@ add_executable(test_code ${CPP_SRC} ${CPP_SOURCE_DIR}/test_code.cpp)
 target_link_libraries(test_code ${CFITSIO_LIBRARIES})
 
 add_executable(unit_test ${CPP_SRC} ${CPP_UNITTEST_SOURCE_DIR}/unit_tests.cpp)
-target_link_libraries( unit_test ${CFITSIO_LIBRARIES} boost_unit_test_framework)
+target_link_libraries( unit_test ${CFITSIO_LIBRARIES})
 
 add_test(unit_test unit_test)
