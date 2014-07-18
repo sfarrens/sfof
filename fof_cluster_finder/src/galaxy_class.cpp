@@ -1,12 +1,10 @@
 /*Class for storing galaxy properties*/
 
-#include <math.h>
 #include "galaxy_class.hpp"
-#include "dh.h"
 
 void Galaxy::assign_dist (double c, double H0, double Omega_M, double Omega_L) {
   // Calculate angular diameter distance for Galaxy instance;
-  da = ((c / H0) * angdidis(z, Omega_M, Omega_L));
+  da = ((c / H0) * cosmo.angdidis(z, Omega_M, Omega_L));
 }
 
 void Galaxy::assign_bin (double min_value, double bin_size) {

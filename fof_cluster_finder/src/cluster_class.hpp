@@ -20,6 +20,7 @@
 #include <math.h>
 #include <vector>
 #include "astro.hpp"
+#include "cosmo.hpp"
 #include "galaxy_class.hpp"
 
 class Cluster { // Class structure for cluster properties.
@@ -124,6 +125,9 @@ private:
 
   /// Include Astro class.
   Astro astro;
+
+  /// Include Cosmo class.
+  Cosmo cosmo;
 
 }; 
 

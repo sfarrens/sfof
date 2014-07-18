@@ -1,14 +1,12 @@
 /*Class for storing redshift bin properties*/
 
-#include <math.h>
 #include "zbin_class.hpp"
-#include "dh.h"
 
 void Zbin::assign_dist (double c, double H0, double Omega_M, double Omega_L) {
   // Calculate the angular diameter distance and the differential comoving 
   // volume element for a Zbin instance.
-  dvdz = dcomvoldz(z, Omega_M, Omega_L);
-  da = ((c / H0) * angdidis(z, Omega_M, Omega_L));
+  dvdz = cosmo.dcomvoldz(z, Omega_M, Omega_L);
+  da = ((c / H0) * cosmo.angdidis(z, Omega_M, Omega_L));
 }
 
 void Zbin::assign_rfriend (double r_ref) {

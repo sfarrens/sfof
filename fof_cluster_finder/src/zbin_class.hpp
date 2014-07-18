@@ -15,6 +15,9 @@
  * This class calculates and stores Zbin properties.
  */
 
+#include <math.h>
+#include "cosmo.hpp"
+
 class Zbin { // Class structure for redshift bin properties.
 
 public:
@@ -86,6 +89,11 @@ public:
    * @param[in] link_r_val Transverse linking parameter value.
    */
   void assign_fixed_rfriend (double);
+
+private:
+  
+  /// Include Cosmo class.
+  Cosmo cosmo;
 
 };
 

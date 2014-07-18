@@ -15,8 +15,10 @@
  * This class calculates and stores Galaxy properties.
  */
 
+#include <math.h>
 #include <string>
 #include "astro.hpp"
+#include "cosmo.hpp"
 
 class Galaxy { //! Class structure for galaxy properties
 
@@ -122,6 +124,9 @@ private:
   
   /// Include Astro class.
   Astro astro;
+
+  /// Include Cosmo class.
+  Cosmo cosmo;
 
 };
 
