@@ -10,10 +10,10 @@
 /**
  * @class Cat_Merge
  *
- * @brief Class for splitting galaxy catalogues.
+ * @brief Class for merging cluster catalogues.
  *
- * This class splits a catalogue of galaxies into overlapping 
- * pieces.
+ * This class merges Cluster instances that share commom
+ * member Galaxy instances.
  */
 
 #include <iostream>
