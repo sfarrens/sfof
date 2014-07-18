@@ -30,7 +30,6 @@
     <ul class="tablist">
       <li><a href="index.html"><span>Main&#160;Page</span></a></li>
       <li><a href="pages.html"><span>Related&#160;Pages</span></a></li>
-      <li><a href="namespaces.html"><span>Packages</span></a></li>
       <li><a href="annotated.html"><span>Classes</span></a></li>
       <li class="current"><a href="files.html"><span>Files</span></a></li>
     </ul>
@@ -51,58 +50,67 @@
 <div class="title">cat_merge_fileio.hpp</div>  </div>
 </div><!--header-->
 <div class="contents">
-<a href="cat__merge__fileio_8hpp.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="comment">/*Class header for Fileio*/</span></div>
-<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;</div>
-<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="preprocessor">#ifndef MERGE_FILEIO_CLASS_H</span></div>
-<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="preprocessor">#define MERGE_FILEIO_CLASS_H</span></div>
-<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;</div>
-<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="preprocessor">#include &lt;fitsio.h&gt;</span> <span class="comment">//*Include FITSIO packages*//</span></div>
-<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;</div>
-<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="preprocessor">#include &lt;fstream&gt;</span></div>
-<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="preprocessor">#include &lt;iomanip&gt;</span></div>
-<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="preprocessor">#include &lt;iostream&gt;</span></div>
-<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;<span class="preprocessor">#include &lt;sstream&gt;</span></div>
-<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;<span class="preprocessor">#include &lt;string&gt;</span></div>
-<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;<span class="preprocessor">#include &lt;vector&gt;</span></div>
-<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="cluster__class_8hpp.html">cluster_class.hpp</a>&quot;</span></div>
-<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="fileio__class_8hpp.html">fileio_class.hpp</a>&quot;</span></div>
-<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;</div>
-<div class="line"><a name="l00017"></a><span class="lineno"><a class="line" href="class_merge___fileio.html">   17</a></span>&#160;<span class="keyword">class </span><a class="code" href="class_merge___fileio.html">Merge_Fileio</a> { </div>
-<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;<span class="keyword">private</span>:</div>
-<div class="line"><a name="l00019"></a><span class="lineno"><a class="line" href="class_merge___fileio.html#a1d987f7ab205b4aa15e8846e4a0e81c5">   19</a></span>&#160;  <a class="code" href="class_fileio.html">Fileio</a> <a class="code" href="class_merge___fileio.html#a1d987f7ab205b4aa15e8846e4a0e81c5">fileio</a>;</div>
-<div class="line"><a name="l00020"></a><span class="lineno"><a class="line" href="class_merge___fileio.html#ae4d00e4d46f331089435bb6fc0e24512">   20</a></span>&#160;  <span class="keywordtype">int</span> <a class="code" href="class_merge___fileio.html#ae4d00e4d46f331089435bb6fc0e24512">gal_count</a>, <a class="code" href="class_merge___fileio.html#ab846868dad7cfb9a8d78feea32d4ba42">clt_count</a>;</div>
-<div class="line"><a name="l00021"></a><span class="lineno"><a class="line" href="class_merge___fileio.html#a800391fee034ae910287a57914c8953f">   21</a></span>&#160;  std::vector&lt;std::string&gt; <a class="code" href="class_merge___fileio.html#a800391fee034ae910287a57914c8953f">file_list</a>;</div>
-<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;<span class="keyword">public</span>:</div>
-<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;  <span class="keywordtype">void</span> <a class="code" href="class_merge___fileio.html#aa5aca61584d82ae584d4623b8136bd0e">split</a> (<span class="keyword">const</span> std::string &amp;, std::vector&lt;std::string&gt; &amp;, </div>
-<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;          <span class="keyword">const</span> std::string &amp;);</div>
-<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;  <span class="keywordtype">bool</span> <a class="code" href="class_merge___fileio.html#a4467007acb5ff2a3077c1126a46a763d">existing_clt</a> (<span class="keywordtype">int</span>, <span class="keyword">const</span> std::vector&lt;int&gt; &amp;);</div>
-<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;  <span class="keywordtype">void</span> <a class="code" href="class_merge___fileio.html#ae13115df95bd804ddcd67d718f0d70e9">read_file_list</a> (<span class="keyword">const</span> std::string &amp;, std::vector&lt;Cluster&gt; &amp;, </div>
-<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;               <span class="keyword">const</span> std::string &amp;);</div>
-<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;  <span class="keywordtype">void</span> <a class="code" href="class_merge___fileio.html#a4aef2fad7ee27eeb8b67af4555be71ff">read_ascii</a> (<span class="keyword">const</span> std::string &amp;, std::vector&lt;Cluster&gt; &amp;);</div>
-<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;  <span class="keywordtype">void</span> <a class="code" href="class_merge___fileio.html#a95bf6908f55bf336e6392266c5e67f68">read_fits</a> (<span class="keyword">const</span> std::string &amp;, std::vector&lt;Cluster&gt; &amp;);</div>
-<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;  <span class="keywordtype">void</span> <a class="code" href="class_merge___fileio.html#a91d503700380ab522e8496e82c4a7a2f">output_file_names</a> (<span class="keyword">const</span> std::string &amp;, <span class="keyword">const</span> std::string &amp;, </div>
-<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;              std::string &amp;, std::string &amp;);</div>
-<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;};</div>
-<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;</div>
-<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;<span class="preprocessor">#endif </span><span class="comment">/* MERGE_FILEIO_CLASS_H */</span><span class="preprocessor"></span></div>
-<div class="ttc" id="class_merge___fileio_html_a4467007acb5ff2a3077c1126a46a763d"><div class="ttname"><a href="class_merge___fileio.html#a4467007acb5ff2a3077c1126a46a763d">Merge_Fileio::existing_clt</a></div><div class="ttdeci">bool existing_clt(int, const std::vector&lt; int &gt; &amp;)</div><div class="ttdef"><b>Definition:</b> cat_merge_fileio.cpp:5</div></div>
+<a href="cat__merge__fileio_8hpp.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;</div>
+<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="preprocessor">#ifndef MERGE_FILEIO_CLASS_H</span></div>
+<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="preprocessor">#define MERGE_FILEIO_CLASS_H</span></div>
+<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;</div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;<span class="preprocessor">#include &lt;fitsio.h&gt;</span> <span class="comment">//*Include FITSIO packages*//</span></div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;</div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;<span class="preprocessor">#include &lt;fstream&gt;</span></div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;<span class="preprocessor">#include &lt;iomanip&gt;</span></div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;<span class="preprocessor">#include &lt;iostream&gt;</span></div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;<span class="preprocessor">#include &lt;sstream&gt;</span></div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;<span class="preprocessor">#include &lt;string&gt;</span></div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;<span class="preprocessor">#include &lt;vector&gt;</span></div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="cluster__class_8hpp.html">cluster_class.hpp</a>&quot;</span></div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="fileio__class_8hpp.html">fileio_class.hpp</a>&quot;</span></div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;</div>
+<div class="line"><a name="l00029"></a><span class="lineno"><a class="line" href="class_merge___fileio.html">   29</a></span>&#160;<span class="keyword">class </span><a class="code" href="class_merge___fileio.html">Merge_Fileio</a> { <span class="comment">// Class structure for file input and output</span></div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;</div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;<span class="keyword">public</span>:</div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;</div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;  <span class="keywordtype">bool</span> <a class="code" href="class_merge___fileio.html#a4467007acb5ff2a3077c1126a46a763d">existing_clt</a> (<span class="keywordtype">int</span>, <span class="keyword">const</span> std::vector&lt;int&gt; &amp;);</div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;</div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;  <span class="keywordtype">void</span> <a class="code" href="class_merge___fileio.html#ae13115df95bd804ddcd67d718f0d70e9">read_file_list</a> (<span class="keyword">const</span> std::string &amp;, std::vector&lt;Cluster&gt; &amp;, </div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;               <span class="keyword">const</span> std::string &amp;);</div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;</div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;  <span class="keywordtype">void</span> <a class="code" href="class_merge___fileio.html#a4aef2fad7ee27eeb8b67af4555be71ff">read_ascii</a> (<span class="keyword">const</span> std::string &amp;, std::vector&lt;Cluster&gt; &amp;);</div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;</div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;  <span class="keywordtype">void</span> <a class="code" href="class_merge___fileio.html#a95bf6908f55bf336e6392266c5e67f68">read_fits</a> (<span class="keyword">const</span> std::string &amp;, std::vector&lt;Cluster&gt; &amp;);</div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;</div>
+<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;  <span class="keywordtype">void</span> <a class="code" href="class_merge___fileio.html#a91d503700380ab522e8496e82c4a7a2f">output_file_names</a> (<span class="keyword">const</span> std::string &amp;, <span class="keyword">const</span> std::string &amp;, </div>
+<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;              std::string &amp;, std::string &amp;);</div>
+<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;</div>
+<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;<span class="keyword">private</span>:</div>
+<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;  </div>
+<div class="line"><a name="l00078"></a><span class="lineno"><a class="line" href="class_merge___fileio.html#a1d987f7ab205b4aa15e8846e4a0e81c5">   78</a></span>&#160;  <a class="code" href="class_fileio.html">Fileio</a> <a class="code" href="class_merge___fileio.html#a1d987f7ab205b4aa15e8846e4a0e81c5">fileio</a>;</div>
+<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;</div>
+<div class="line"><a name="l00081"></a><span class="lineno"><a class="line" href="class_merge___fileio.html#ae4d00e4d46f331089435bb6fc0e24512">   81</a></span>&#160;  <span class="keywordtype">int</span> <a class="code" href="class_merge___fileio.html#ae4d00e4d46f331089435bb6fc0e24512">gal_count</a>;</div>
+<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;</div>
+<div class="line"><a name="l00084"></a><span class="lineno"><a class="line" href="class_merge___fileio.html#ab846868dad7cfb9a8d78feea32d4ba42">   84</a></span>&#160;  <span class="keywordtype">int</span> <a class="code" href="class_merge___fileio.html#ab846868dad7cfb9a8d78feea32d4ba42">clt_count</a>;</div>
+<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;</div>
+<div class="line"><a name="l00087"></a><span class="lineno"><a class="line" href="class_merge___fileio.html#a800391fee034ae910287a57914c8953f">   87</a></span>&#160;  std::vector&lt;std::string&gt; <a class="code" href="class_merge___fileio.html#a800391fee034ae910287a57914c8953f">file_list</a>;</div>
+<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;  </div>
+<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;};</div>
+<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;</div>
+<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;<span class="preprocessor">#endif // MERGE_FILEIO_CLASS_H</span></div>
+<div class="ttc" id="class_merge___fileio_html_a4467007acb5ff2a3077c1126a46a763d"><div class="ttname"><a href="class_merge___fileio.html#a4467007acb5ff2a3077c1126a46a763d">Merge_Fileio::existing_clt</a></div><div class="ttdeci">bool existing_clt(int, const std::vector&lt; int &gt; &amp;)</div><div class="ttdoc">This method checks to see if a Cluster instance ID already exists. </div><div class="ttdef"><b>Definition:</b> cat_merge_fileio.cpp:5</div></div>
 <div class="ttc" id="cluster__class_8hpp_html"><div class="ttname"><a href="cluster__class_8hpp.html">cluster_class.hpp</a></div></div>
 <div class="ttc" id="class_fileio_html"><div class="ttname"><a href="class_fileio.html">Fileio</a></div><div class="ttdoc">Class for file input and output. </div><div class="ttdef"><b>Definition:</b> fileio_class.hpp:32</div></div>
-<div class="ttc" id="class_merge___fileio_html_ae13115df95bd804ddcd67d718f0d70e9"><div class="ttname"><a href="class_merge___fileio.html#ae13115df95bd804ddcd67d718f0d70e9">Merge_Fileio::read_file_list</a></div><div class="ttdeci">void read_file_list(const std::string &amp;, std::vector&lt; Cluster &gt; &amp;, const std::string &amp;)</div><div class="ttdef"><b>Definition:</b> cat_merge_fileio.cpp:10</div></div>
+<div class="ttc" id="class_merge___fileio_html_ae13115df95bd804ddcd67d718f0d70e9"><div class="ttname"><a href="class_merge___fileio.html#ae13115df95bd804ddcd67d718f0d70e9">Merge_Fileio::read_file_list</a></div><div class="ttdeci">void read_file_list(const std::string &amp;, std::vector&lt; Cluster &gt; &amp;, const std::string &amp;)</div><div class="ttdoc">This method reads in the list containing the input file names. </div><div class="ttdef"><b>Definition:</b> cat_merge_fileio.cpp:10</div></div>
 <div class="ttc" id="fileio__class_8hpp_html"><div class="ttname"><a href="fileio__class_8hpp.html">fileio_class.hpp</a></div></div>
-<div class="ttc" id="class_merge___fileio_html_ae4d00e4d46f331089435bb6fc0e24512"><div class="ttname"><a href="class_merge___fileio.html#ae4d00e4d46f331089435bb6fc0e24512">Merge_Fileio::gal_count</a></div><div class="ttdeci">int gal_count</div><div class="ttdef"><b>Definition:</b> cat_merge_fileio.hpp:20</div></div>
-<div class="ttc" id="class_merge___fileio_html_a1d987f7ab205b4aa15e8846e4a0e81c5"><div class="ttname"><a href="class_merge___fileio.html#a1d987f7ab205b4aa15e8846e4a0e81c5">Merge_Fileio::fileio</a></div><div class="ttdeci">Fileio fileio</div><div class="ttdoc">Class structure for file input and output. </div><div class="ttdef"><b>Definition:</b> cat_merge_fileio.hpp:19</div></div>
-<div class="ttc" id="class_merge___fileio_html"><div class="ttname"><a href="class_merge___fileio.html">Merge_Fileio</a></div><div class="ttdef"><b>Definition:</b> cat_merge_fileio.hpp:17</div></div>
-<div class="ttc" id="class_merge___fileio_html_a91d503700380ab522e8496e82c4a7a2f"><div class="ttname"><a href="class_merge___fileio.html#a91d503700380ab522e8496e82c4a7a2f">Merge_Fileio::output_file_names</a></div><div class="ttdeci">void output_file_names(const std::string &amp;, const std::string &amp;, std::string &amp;, std::string &amp;)</div><div class="ttdef"><b>Definition:</b> cat_merge_fileio.cpp:114</div></div>
-<div class="ttc" id="class_merge___fileio_html_ab846868dad7cfb9a8d78feea32d4ba42"><div class="ttname"><a href="class_merge___fileio.html#ab846868dad7cfb9a8d78feea32d4ba42">Merge_Fileio::clt_count</a></div><div class="ttdeci">int clt_count</div><div class="ttdef"><b>Definition:</b> cat_merge_fileio.hpp:20</div></div>
-<div class="ttc" id="class_merge___fileio_html_a95bf6908f55bf336e6392266c5e67f68"><div class="ttname"><a href="class_merge___fileio.html#a95bf6908f55bf336e6392266c5e67f68">Merge_Fileio::read_fits</a></div><div class="ttdeci">void read_fits(const std::string &amp;, std::vector&lt; Cluster &gt; &amp;)</div><div class="ttdef"><b>Definition:</b> cat_merge_fileio.cpp:65</div></div>
-<div class="ttc" id="class_merge___fileio_html_aa5aca61584d82ae584d4623b8136bd0e"><div class="ttname"><a href="class_merge___fileio.html#aa5aca61584d82ae584d4623b8136bd0e">Merge_Fileio::split</a></div><div class="ttdeci">void split(const std::string &amp;, std::vector&lt; std::string &gt; &amp;, const std::string &amp;)</div></div>
-<div class="ttc" id="class_merge___fileio_html_a4aef2fad7ee27eeb8b67af4555be71ff"><div class="ttname"><a href="class_merge___fileio.html#a4aef2fad7ee27eeb8b67af4555be71ff">Merge_Fileio::read_ascii</a></div><div class="ttdeci">void read_ascii(const std::string &amp;, std::vector&lt; Cluster &gt; &amp;)</div><div class="ttdef"><b>Definition:</b> cat_merge_fileio.cpp:29</div></div>
-<div class="ttc" id="class_merge___fileio_html_a800391fee034ae910287a57914c8953f"><div class="ttname"><a href="class_merge___fileio.html#a800391fee034ae910287a57914c8953f">Merge_Fileio::file_list</a></div><div class="ttdeci">std::vector&lt; std::string &gt; file_list</div><div class="ttdef"><b>Definition:</b> cat_merge_fileio.hpp:21</div></div>
+<div class="ttc" id="class_merge___fileio_html_ae4d00e4d46f331089435bb6fc0e24512"><div class="ttname"><a href="class_merge___fileio.html#ae4d00e4d46f331089435bb6fc0e24512">Merge_Fileio::gal_count</a></div><div class="ttdeci">int gal_count</div><div class="ttdoc">Current number of Galaxy instances. </div><div class="ttdef"><b>Definition:</b> cat_merge_fileio.hpp:81</div></div>
+<div class="ttc" id="class_merge___fileio_html_a1d987f7ab205b4aa15e8846e4a0e81c5"><div class="ttname"><a href="class_merge___fileio.html#a1d987f7ab205b4aa15e8846e4a0e81c5">Merge_Fileio::fileio</a></div><div class="ttdeci">Fileio fileio</div><div class="ttdoc">Include Fileio class. </div><div class="ttdef"><b>Definition:</b> cat_merge_fileio.hpp:78</div></div>
+<div class="ttc" id="class_merge___fileio_html"><div class="ttname"><a href="class_merge___fileio.html">Merge_Fileio</a></div><div class="ttdoc">Class for reading files for Cat_Merge. </div><div class="ttdef"><b>Definition:</b> cat_merge_fileio.hpp:29</div></div>
+<div class="ttc" id="class_merge___fileio_html_a91d503700380ab522e8496e82c4a7a2f"><div class="ttname"><a href="class_merge___fileio.html#a91d503700380ab522e8496e82c4a7a2f">Merge_Fileio::output_file_names</a></div><div class="ttdeci">void output_file_names(const std::string &amp;, const std::string &amp;, std::string &amp;, std::string &amp;)</div><div class="ttdoc">This method sets the output file names. </div><div class="ttdef"><b>Definition:</b> cat_merge_fileio.cpp:115</div></div>
+<div class="ttc" id="class_merge___fileio_html_ab846868dad7cfb9a8d78feea32d4ba42"><div class="ttname"><a href="class_merge___fileio.html#ab846868dad7cfb9a8d78feea32d4ba42">Merge_Fileio::clt_count</a></div><div class="ttdeci">int clt_count</div><div class="ttdoc">Current number of Cluster instances. </div><div class="ttdef"><b>Definition:</b> cat_merge_fileio.hpp:84</div></div>
+<div class="ttc" id="class_merge___fileio_html_a95bf6908f55bf336e6392266c5e67f68"><div class="ttname"><a href="class_merge___fileio.html#a95bf6908f55bf336e6392266c5e67f68">Merge_Fileio::read_fits</a></div><div class="ttdeci">void read_fits(const std::string &amp;, std::vector&lt; Cluster &gt; &amp;)</div><div class="ttdoc">This method reads in an FITS file and store the contents in a vector of Cluster instances. </div><div class="ttdef"><b>Definition:</b> cat_merge_fileio.cpp:65</div></div>
+<div class="ttc" id="class_merge___fileio_html_a4aef2fad7ee27eeb8b67af4555be71ff"><div class="ttname"><a href="class_merge___fileio.html#a4aef2fad7ee27eeb8b67af4555be71ff">Merge_Fileio::read_ascii</a></div><div class="ttdeci">void read_ascii(const std::string &amp;, std::vector&lt; Cluster &gt; &amp;)</div><div class="ttdoc">This method reads in an ASCII file and store the contents in a vector of Cluster instances. </div><div class="ttdef"><b>Definition:</b> cat_merge_fileio.cpp:29</div></div>
+<div class="ttc" id="class_merge___fileio_html_a800391fee034ae910287a57914c8953f"><div class="ttname"><a href="class_merge___fileio.html#a800391fee034ae910287a57914c8953f">Merge_Fileio::file_list</a></div><div class="ttdeci">std::vector&lt; std::string &gt; file_list</div><div class="ttdoc">Vector of file names. </div><div class="ttdef"><b>Definition:</b> cat_merge_fileio.hpp:87</div></div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Fri Jul 18 2014 15:53:18 for fof_cluster_finder by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Fri Jul 18 2014 16:54:48 for fof_cluster_finder by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.6
 </small></address>

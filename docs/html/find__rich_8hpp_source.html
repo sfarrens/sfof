@@ -30,7 +30,6 @@
     <ul class="tablist">
       <li><a href="index.html"><span>Main&#160;Page</span></a></li>
       <li><a href="pages.html"><span>Related&#160;Pages</span></a></li>
-      <li><a href="namespaces.html"><span>Packages</span></a></li>
       <li><a href="annotated.html"><span>Classes</span></a></li>
       <li class="current"><a href="files.html"><span>Files</span></a></li>
     </ul>
@@ -62,15 +61,15 @@
 <div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="astro_8hpp.html">astro.hpp</a>&quot;</span></div>
 <div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="cluster__class_8hpp.html">cluster_class.hpp</a>&quot;</span></div>
 <div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="comp_8hpp.html">comp.hpp</a>&quot;</span></div>
-<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="fileio__class_8hpp.html">fileio_class.hpp</a>&quot;</span></div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;<span class="preprocessor">#include &quot;fileio_class.hpp&quot;</span></div>
 <div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="galaxy__class_8hpp.html">galaxy_class.hpp</a>&quot;</span></div>
 <div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="option__class_8hpp.html">option_class.hpp</a>&quot;</span></div>
-<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="spline_8h.html">spline.h</a>&quot;</span></div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;<span class="preprocessor">#include &quot;spline.h&quot;</span></div>
 <div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;</div>
 <div class="line"><a name="l00017"></a><span class="lineno"><a class="line" href="class_find___rich.html">   17</a></span>&#160;<span class="keyword">class </span><a class="code" href="class_find___rich.html">Find_Rich</a> { </div>
 <div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;<span class="keyword">private</span>:</div>
 <div class="line"><a name="l00019"></a><span class="lineno"><a class="line" href="class_find___rich.html#acfddd3081232a7a5ddedabb7528e53f8">   19</a></span>&#160;  <a class="code" href="class_astro.html">Astro</a> <a class="code" href="class_find___rich.html#acfddd3081232a7a5ddedabb7528e53f8">astro</a>;</div>
-<div class="line"><a name="l00020"></a><span class="lineno"><a class="line" href="class_find___rich.html#aaf79cec070f73eb5a9c4348f9b8d86e8">   20</a></span>&#160;  <a class="code" href="class_fileio.html">Fileio</a> <a class="code" href="class_find___rich.html#aaf79cec070f73eb5a9c4348f9b8d86e8">fileio</a>;</div>
+<div class="line"><a name="l00020"></a><span class="lineno"><a class="line" href="class_find___rich.html#aaf79cec070f73eb5a9c4348f9b8d86e8">   20</a></span>&#160;  Fileio <a class="code" href="class_find___rich.html#aaf79cec070f73eb5a9c4348f9b8d86e8">fileio</a>;</div>
 <div class="line"><a name="l00021"></a><span class="lineno"><a class="line" href="class_find___rich.html#a10a9a6abb4e42e8dc333f52249570b80">   21</a></span>&#160;  <a class="code" href="class_option.html">Option</a> <a class="code" href="class_find___rich.html#a10a9a6abb4e42e8dc333f52249570b80">opt</a>;</div>
 <div class="line"><a name="l00022"></a><span class="lineno"><a class="line" href="class_find___rich.html#ab5f7a512994304597647545bda3f9206">   22</a></span>&#160;  <span class="keywordtype">double</span> <a class="code" href="class_find___rich.html#a4b6c549be45a1ec1d30cbe619ba61d2d">c</a>, <a class="code" href="class_find___rich.html#acd01467f9cf10f2ac7c859fe92c4cc52">H0</a>, <a class="code" href="class_find___rich.html#acaa7a0b027ca88cdeeb7820c7f697a30">Omega_M</a>, <a class="code" href="class_find___rich.html#ae1cdff93322de329f890c93cb351b0a6">Omega_L</a>, <a class="code" href="class_find___rich.html#a232b2b085d67fc7728589f71fbc1ad5c">M_star</a>, <a class="code" href="class_find___rich.html#ab5f7a512994304597647545bda3f9206">radial_threshold</a>, <a class="code" href="class_find___rich.html#a969414e0a52c6a2748644cb0f631e6f4">lum_frac</a>;</div>
 <div class="line"><a name="l00023"></a><span class="lineno"><a class="line" href="class_find___rich.html#a40c28f7a6b5249a91e02c99820791407">   23</a></span>&#160;  std::vector&lt;double&gt; <a class="code" href="class_find___rich.html#a40c28f7a6b5249a91e02c99820791407">ms_z</a>, <a class="code" href="class_find___rich.html#a6bd449dc29db45cf641f43741a4c9521">ms_mag</a>;</div>
@@ -94,7 +93,6 @@
 <div class="ttc" id="class_comp_html"><div class="ttname"><a href="class_comp.html">Comp</a></div><div class="ttdoc">Class containing basic functions used in generic codes. </div><div class="ttdef"><b>Definition:</b> comp.hpp:21</div></div>
 <div class="ttc" id="class_find___rich_html_ae1cdff93322de329f890c93cb351b0a6"><div class="ttname"><a href="class_find___rich.html#ae1cdff93322de329f890c93cb351b0a6">Find_Rich::Omega_L</a></div><div class="ttdeci">double Omega_L</div><div class="ttdef"><b>Definition:</b> find_rich.hpp:22</div></div>
 <div class="ttc" id="class_galaxy_html"><div class="ttname"><a href="class_galaxy.html">Galaxy</a></div><div class="ttdoc">Class for storing galaxy properties. </div><div class="ttdef"><b>Definition:</b> galaxy_class.hpp:21</div></div>
-<div class="ttc" id="spline_8h_html"><div class="ttname"><a href="spline_8h.html">spline.h</a></div></div>
 <div class="ttc" id="class_find___rich_html_a0c506e68a6d8b486ac979614a248aad5"><div class="ttname"><a href="class_find___rich.html#a0c506e68a6d8b486ac979614a248aad5">Find_Rich::check_mag</a></div><div class="ttdeci">bool check_mag(double, double)</div><div class="ttdef"><b>Definition:</b> find_rich.cpp:60</div></div>
 <div class="ttc" id="class_find___rich_html_acfddd3081232a7a5ddedabb7528e53f8"><div class="ttname"><a href="class_find___rich.html#acfddd3081232a7a5ddedabb7528e53f8">Find_Rich::astro</a></div><div class="ttdeci">Astro astro</div><div class="ttdoc">Class for Find_Rich functions. </div><div class="ttdef"><b>Definition:</b> find_rich.hpp:19</div></div>
 <div class="ttc" id="class_find___rich_html_a232b2b085d67fc7728589f71fbc1ad5c"><div class="ttname"><a href="class_find___rich.html#a232b2b085d67fc7728589f71fbc1ad5c">Find_Rich::M_star</a></div><div class="ttdeci">double M_star</div><div class="ttdef"><b>Definition:</b> find_rich.hpp:22</div></div>
@@ -102,8 +100,6 @@
 <div class="ttc" id="class_find___rich_html_a1bc60f78042a0abc8472f3625928f8ba"><div class="ttname"><a href="class_find___rich.html#a1bc60f78042a0abc8472f3625928f8ba">Find_Rich::assign_cluster_props</a></div><div class="ttdeci">void assign_cluster_props()</div><div class="ttdef"><b>Definition:</b> find_rich.cpp:109</div></div>
 <div class="ttc" id="comp_8hpp_html"><div class="ttname"><a href="comp_8hpp.html">comp.hpp</a></div></div>
 <div class="ttc" id="cluster__class_8hpp_html"><div class="ttname"><a href="cluster__class_8hpp.html">cluster_class.hpp</a></div></div>
-<div class="ttc" id="class_fileio_html"><div class="ttname"><a href="class_fileio.html">Fileio</a></div><div class="ttdoc">Class for file input and output. </div><div class="ttdef"><b>Definition:</b> fileio_class.hpp:32</div></div>
-<div class="ttc" id="fileio__class_8hpp_html"><div class="ttname"><a href="fileio__class_8hpp.html">fileio_class.hpp</a></div></div>
 <div class="ttc" id="class_find___rich_html_a40c28f7a6b5249a91e02c99820791407"><div class="ttname"><a href="class_find___rich.html#a40c28f7a6b5249a91e02c99820791407">Find_Rich::ms_z</a></div><div class="ttdeci">std::vector&lt; double &gt; ms_z</div><div class="ttdef"><b>Definition:</b> find_rich.hpp:23</div></div>
 <div class="ttc" id="class_astro_html"><div class="ttname"><a href="class_astro.html">Astro</a></div><div class="ttdoc">Class containing basic functions required for astronomy. </div><div class="ttdef"><b>Definition:</b> astro.hpp:24</div></div>
 <div class="ttc" id="class_find___rich_html_a31b5263e42310f01fbac3b78d62183ec"><div class="ttname"><a href="class_find___rich.html#a31b5263e42310f01fbac3b78d62183ec">Find_Rich::read_clusters</a></div><div class="ttdeci">void read_clusters(const std::string &amp;)</div><div class="ttdef"><b>Definition:</b> find_rich.cpp:28</div></div>
@@ -131,7 +127,7 @@
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Fri Jul 18 2014 15:53:18 for fof_cluster_finder by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Fri Jul 18 2014 16:52:36 for fof_cluster_finder by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.6
 </small></address>

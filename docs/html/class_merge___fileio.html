@@ -30,7 +30,6 @@
     <ul class="tablist">
       <li><a href="index.html"><span>Main&#160;Page</span></a></li>
       <li><a href="pages.html"><span>Related&#160;Pages</span></a></li>
-      <li><a href="namespaces.html"><span>Packages</span></a></li>
       <li class="current"><a href="annotated.html"><span>Classes</span></a></li>
       <li><a href="files.html"><span>Files</span></a></li>
     </ul>
@@ -53,36 +52,48 @@
 </div><!--header-->
 <div class="contents">
 
+<p>Class for reading files for <a class="el" href="class_cat___merge.html" title="Class for merging cluster catalogues. ">Cat_Merge</a>.  
+ <a href="class_merge___fileio.html#details">More...</a></p>
+
 <p><code>#include &lt;<a class="el" href="cat__merge__fileio_8hpp_source.html">cat_merge_fileio.hpp</a>&gt;</code></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:aa5aca61584d82ae584d4623b8136bd0e"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_merge___fileio.html#aa5aca61584d82ae584d4623b8136bd0e">split</a> (const std::string &amp;, std::vector&lt; std::string &gt; &amp;, const std::string &amp;)</td></tr>
-<tr class="separator:aa5aca61584d82ae584d4623b8136bd0e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a4467007acb5ff2a3077c1126a46a763d"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_merge___fileio.html#a4467007acb5ff2a3077c1126a46a763d">existing_clt</a> (int, const std::vector&lt; int &gt; &amp;)</td></tr>
+<tr class="memdesc:a4467007acb5ff2a3077c1126a46a763d"><td class="mdescLeft">&#160;</td><td class="mdescRight">This method checks to see if a <a class="el" href="class_cluster.html" title="Class for storing galaxy cluster properties and members. ">Cluster</a> instance ID already exists.  <a href="#a4467007acb5ff2a3077c1126a46a763d">More...</a><br/></td></tr>
 <tr class="separator:a4467007acb5ff2a3077c1126a46a763d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ae13115df95bd804ddcd67d718f0d70e9"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_merge___fileio.html#ae13115df95bd804ddcd67d718f0d70e9">read_file_list</a> (const std::string &amp;, std::vector&lt; <a class="el" href="class_cluster.html">Cluster</a> &gt; &amp;, const std::string &amp;)</td></tr>
+<tr class="memdesc:ae13115df95bd804ddcd67d718f0d70e9"><td class="mdescLeft">&#160;</td><td class="mdescRight">This method reads in the list containing the input file names.  <a href="#ae13115df95bd804ddcd67d718f0d70e9">More...</a><br/></td></tr>
 <tr class="separator:ae13115df95bd804ddcd67d718f0d70e9"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a4aef2fad7ee27eeb8b67af4555be71ff"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_merge___fileio.html#a4aef2fad7ee27eeb8b67af4555be71ff">read_ascii</a> (const std::string &amp;, std::vector&lt; <a class="el" href="class_cluster.html">Cluster</a> &gt; &amp;)</td></tr>
+<tr class="memdesc:a4aef2fad7ee27eeb8b67af4555be71ff"><td class="mdescLeft">&#160;</td><td class="mdescRight">This method reads in an ASCII file and store the contents in a vector of <a class="el" href="class_cluster.html" title="Class for storing galaxy cluster properties and members. ">Cluster</a> instances.  <a href="#a4aef2fad7ee27eeb8b67af4555be71ff">More...</a><br/></td></tr>
 <tr class="separator:a4aef2fad7ee27eeb8b67af4555be71ff"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a95bf6908f55bf336e6392266c5e67f68"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_merge___fileio.html#a95bf6908f55bf336e6392266c5e67f68">read_fits</a> (const std::string &amp;, std::vector&lt; <a class="el" href="class_cluster.html">Cluster</a> &gt; &amp;)</td></tr>
+<tr class="memdesc:a95bf6908f55bf336e6392266c5e67f68"><td class="mdescLeft">&#160;</td><td class="mdescRight">This method reads in an FITS file and store the contents in a vector of <a class="el" href="class_cluster.html" title="Class for storing galaxy cluster properties and members. ">Cluster</a> instances.  <a href="#a95bf6908f55bf336e6392266c5e67f68">More...</a><br/></td></tr>
 <tr class="separator:a95bf6908f55bf336e6392266c5e67f68"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a91d503700380ab522e8496e82c4a7a2f"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_merge___fileio.html#a91d503700380ab522e8496e82c4a7a2f">output_file_names</a> (const std::string &amp;, const std::string &amp;, std::string &amp;, std::string &amp;)</td></tr>
+<tr class="memdesc:a91d503700380ab522e8496e82c4a7a2f"><td class="mdescLeft">&#160;</td><td class="mdescRight">This method sets the output file names.  <a href="#a91d503700380ab522e8496e82c4a7a2f">More...</a><br/></td></tr>
 <tr class="separator:a91d503700380ab522e8496e82c4a7a2f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pri-attribs"></a>
 Private Attributes</h2></td></tr>
 <tr class="memitem:a1d987f7ab205b4aa15e8846e4a0e81c5"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_fileio.html">Fileio</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_merge___fileio.html#a1d987f7ab205b4aa15e8846e4a0e81c5">fileio</a></td></tr>
-<tr class="memdesc:a1d987f7ab205b4aa15e8846e4a0e81c5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Class structure for file input and output.  <a href="#a1d987f7ab205b4aa15e8846e4a0e81c5">More...</a><br/></td></tr>
+<tr class="memdesc:a1d987f7ab205b4aa15e8846e4a0e81c5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Include <a class="el" href="class_fileio.html" title="Class for file input and output. ">Fileio</a> class.  <a href="#a1d987f7ab205b4aa15e8846e4a0e81c5">More...</a><br/></td></tr>
 <tr class="separator:a1d987f7ab205b4aa15e8846e4a0e81c5"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ae4d00e4d46f331089435bb6fc0e24512"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_merge___fileio.html#ae4d00e4d46f331089435bb6fc0e24512">gal_count</a></td></tr>
+<tr class="memdesc:ae4d00e4d46f331089435bb6fc0e24512"><td class="mdescLeft">&#160;</td><td class="mdescRight">Current number of <a class="el" href="class_galaxy.html" title="Class for storing galaxy properties. ">Galaxy</a> instances.  <a href="#ae4d00e4d46f331089435bb6fc0e24512">More...</a><br/></td></tr>
 <tr class="separator:ae4d00e4d46f331089435bb6fc0e24512"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ab846868dad7cfb9a8d78feea32d4ba42"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_merge___fileio.html#ab846868dad7cfb9a8d78feea32d4ba42">clt_count</a></td></tr>
+<tr class="memdesc:ab846868dad7cfb9a8d78feea32d4ba42"><td class="mdescLeft">&#160;</td><td class="mdescRight">Current number of <a class="el" href="class_cluster.html" title="Class for storing galaxy cluster properties and members. ">Cluster</a> instances.  <a href="#ab846868dad7cfb9a8d78feea32d4ba42">More...</a><br/></td></tr>
 <tr class="separator:ab846868dad7cfb9a8d78feea32d4ba42"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a800391fee034ae910287a57914c8953f"><td class="memItemLeft" align="right" valign="top">std::vector&lt; std::string &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_merge___fileio.html#a800391fee034ae910287a57914c8953f">file_list</a></td></tr>
+<tr class="memdesc:a800391fee034ae910287a57914c8953f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Vector of file names.  <a href="#a800391fee034ae910287a57914c8953f">More...</a><br/></td></tr>
 <tr class="separator:a800391fee034ae910287a57914c8953f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<h2 class="groupheader">Member Function Documentation</h2>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><p>Class for reading files for <a class="el" href="class_cat___merge.html" title="Class for merging cluster catalogues. ">Cat_Merge</a>. </p>
+<p>This class handles the file input for <a class="el" href="class_cat___merge.html" title="Class for merging cluster catalogues. ">Cat_Merge</a>. </p>
+</div><h2 class="groupheader">Member Function Documentation</h2>
 <a class="anchor" id="a4467007acb5ff2a3077c1126a46a763d"></a>
 <div class="memitem">
 <div class="memproto">
@@ -106,7 +117,15 @@ Private Attributes</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>Function to check if a cluster ID is new. </p>
+
+<p>This method checks to see if a <a class="el" href="class_cluster.html" title="Class for storing galaxy cluster properties and members. ">Cluster</a> instance ID already exists. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">id</td><td>ID of <a class="el" href="class_cluster.html" title="Class for storing galaxy cluster properties and members. ">Cluster</a> instance. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">list</td><td>Vector of <a class="el" href="class_cluster.html" title="Class for storing galaxy cluster properties and members. ">Cluster</a> instance IDs. </td></tr>
+  </table>
+  </dd>
+</dl>
 
 </div>
 </div>
@@ -145,7 +164,17 @@ Private Attributes</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>Function to set up output file names. </p>
+
+<p>This method sets the output file names. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">output</td><td>Output file name. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">output_mode</td><td>Ouput mode ["ascii"/"fits"]. </td></tr>
+    <tr><td class="paramdir">[out]</td><td class="paramname">cluster_file_name</td><td>Output <a class="el" href="class_cluster.html" title="Class for storing galaxy cluster properties and members. ">Cluster</a> list file name. </td></tr>
+    <tr><td class="paramdir">[out]</td><td class="paramname">member_file_name</td><td>Output member <a class="el" href="class_galaxy.html" title="Class for storing galaxy properties. ">Galaxy</a> list file name. </td></tr>
+  </table>
+  </dd>
+</dl>
 
 </div>
 </div>
@@ -172,7 +201,15 @@ Private Attributes</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>Function to read in an ASCII file and store the contents in a vector of <a class="el" href="class_cluster.html" title="Class for storing galaxy cluster properties and members. ">Cluster</a> instances. </p>
+
+<p>This method reads in an ASCII file and store the contents in a vector of <a class="el" href="class_cluster.html" title="Class for storing galaxy cluster properties and members. ">Cluster</a> instances. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">fname</td><td>Input file name. </td></tr>
+    <tr><td class="paramdir">[out]</td><td class="paramname">cluster_list</td><td>Vector of <a class="el" href="class_cluster.html" title="Class for storing galaxy cluster properties and members. ">Cluster</a> instances. </td></tr>
+  </table>
+  </dd>
+</dl>
 
 </div>
 </div>
@@ -205,7 +242,16 @@ Private Attributes</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>Function to read a list of files. </p>
+
+<p>This method reads in the list containing the input file names. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">list</td><td>File name containing the list of input file names. </td></tr>
+    <tr><td class="paramdir">[out]</td><td class="paramname">cluster_list</td><td>Vector of <a class="el" href="class_cluster.html" title="Class for storing galaxy cluster properties and members. ">Cluster</a> instances. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">input_mode</td><td>Input mode ["ascii"/"fits"]. </td></tr>
+  </table>
+  </dd>
+</dl>
 
 </div>
 </div>
@@ -232,39 +278,15 @@ Private Attributes</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>Function to read in an FITS file and store the contents in a vector of <a class="el" href="class_cluster.html" title="Class for storing galaxy cluster properties and members. ">Cluster</a> instances. </p>
 
-</div>
-</div>
-<a class="anchor" id="aa5aca61584d82ae584d4623b8136bd0e"></a>
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">void Merge_Fileio::split </td>
-          <td>(</td>
-          <td class="paramtype">const std::string &amp;&#160;</td>
-          <td class="paramname">, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">std::vector&lt; std::string &gt; &amp;&#160;</td>
-          <td class="paramname">, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">const std::string &amp;&#160;</td>
-          <td class="paramname">&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
+<p>This method reads in an FITS file and store the contents in a vector of <a class="el" href="class_cluster.html" title="Class for storing galaxy cluster properties and members. ">Cluster</a> instances. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">fname</td><td>Input file name. </td></tr>
+    <tr><td class="paramdir">[out]</td><td class="paramname">cluster_list</td><td>Vector of <a class="el" href="class_cluster.html" title="Class for storing galaxy cluster properties and members. ">Cluster</a> instances. </td></tr>
+  </table>
+  </dd>
+</dl>
 
 </div>
 </div>
@@ -287,6 +309,8 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
+<p>Current number of <a class="el" href="class_cluster.html" title="Class for storing galaxy cluster properties and members. ">Cluster</a> instances. </p>
+
 </div>
 </div>
 <a class="anchor" id="a800391fee034ae910287a57914c8953f"></a>
@@ -306,6 +330,8 @@ Private Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+
+<p>Vector of file names. </p>
 
 </div>
 </div>
@@ -327,7 +353,7 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Class structure for file input and output. </p>
+<p>Include <a class="el" href="class_fileio.html" title="Class for file input and output. ">Fileio</a> class. </p>
 
 </div>
 </div>
@@ -349,6 +375,8 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
+<p>Current number of <a class="el" href="class_galaxy.html" title="Class for storing galaxy properties. ">Galaxy</a> instances. </p>
+
 </div>
 </div>
 <hr/>The documentation for this class was generated from the following files:<ul>
@@ -358,7 +386,7 @@ Private Attributes</h2></td></tr>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Fri Jul 18 2014 15:53:18 for fof_cluster_finder by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Fri Jul 18 2014 16:54:48 for fof_cluster_finder by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.6
 </small></address>
