@@ -21,7 +21,7 @@ void Fileio::set_up (int id_col_val, int ra_col_val, int dec_col_val,
 
 void Fileio::split (const std::string &str, std::vector<std::string> &tokens, 
 		    const std::string &delimiter) {
-  //! Function to split a string read in from a file into columns.
+  // Function to split a string read in from a file into columns.
   std::string::size_type lastPos, pos;      
   lastPos = str.find_first_not_of(delimiter, 0); /* pos = find first "non-delimiter" */
   pos = str.find_first_of(delimiter, lastPos);
@@ -34,7 +34,7 @@ void Fileio::split (const std::string &str, std::vector<std::string> &tokens,
 
 void Fileio::read_ascii (const std::string &fname, const std::string &mode, double z_min, 
 			 double z_max, double dz_max, std::vector<Galaxy> &gals) { 
-  //! Function to read in an ASCII file and store the contents in a vector of Galaxy instances.
+  // Function to read in an ASCII file and store the contents in a vector of Galaxy instances.
   int count = 0;
   unsigned long id;
   double ra, dec, z, dz;
@@ -81,7 +81,7 @@ void Fileio::read_ascii (const std::string &fname, const std::string &mode, doub
 
 void Fileio::read_fits (const std::string &fname, const std::string &mode, double z_min,
 			double z_max, double dz_max, std::vector<Galaxy> &gals) { 
-  //! Function to read in an FITS file and store the contents in a vector of Galaxy instances.
+  // Function to read in an FITS file and store the contents in a vector of Galaxy instances.
   unsigned long id;
   double ra, dec, z, dz;
   fitsfile *fptr;
@@ -140,7 +140,7 @@ void Fileio::read_fits (const std::string &fname, const std::string &mode, doubl
 void Fileio::output_file_names (const std::string &fname, const std::string &mode, 
 				const std::string &output, double link_r, double link_z,
 				std::string &cluster_file_name, std::string &member_file_name) {
-  //! Function to set up output file names.
+  // Function to set up output file names.
   std::stringstream cluster_file_stream, member_file_stream;
   if(output == "ascii") {
     cluster_file_stream<<fname<<"_clusters_"<<link_r<<"_"<<link_z<<"_"<<mode<<".dat";
@@ -158,7 +158,7 @@ void Fileio::output_file_names (const std::string &fname, const std::string &mod
 
 void Fileio::write_ascii (const std::vector<Cluster> &cluster_list, const std::string &cluster_file_name, 
 			  const std::string &member_file_name) {
-  //! Funtion to output Cluster intances to an ASCII file.
+  // Funtion to output Cluster intances to an ASCII file.
   std::ofstream write_clusters (cluster_file_name.c_str());
   std::ofstream write_members (member_file_name.c_str());
   for(int i = 0; i < cluster_list.size(); i++) {
@@ -190,7 +190,7 @@ void Fileio::write_ascii (const std::vector<Cluster> &cluster_list, const std::s
 
 void Fileio::write_fits (const std::vector<Cluster> &cluster_list, const std::string &cluster_file_name, 
 			  const std::string &member_file_name) {
-  //! Funtion to output Cluster intances to an FITS file.
+  // Funtion to output Cluster intances to an FITS file.
   fitsfile *fptr1, *fptr2;
   int tint, current_pos = 0, status = 0;
   unsigned long tlong;
