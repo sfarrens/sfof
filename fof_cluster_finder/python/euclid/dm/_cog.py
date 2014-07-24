@@ -1,7 +1,7 @@
 # /home/sartor/pymodule/euclid/dm/_cog.py
 # -*- coding: utf-8 -*-
 # PyXB bindings for NM:a17fe44f5818a6dad4c3af2f6274ac08c385d7a5
-# Generated 2014-07-23 16:11:22.132887 by PyXB version 1.2.3
+# Generated 2014-07-24 16:26:39.932813 by PyXB version 1.2.3
 # Namespace http://euclid.esa.org/schema/pro/le3/cog [xmlns:cog]
 
 import pyxb
@@ -13,7 +13,7 @@ import pyxb.utils.domutils
 import sys
 
 # Unique identifier for bindings created at the same time
-_GenerationUID = pyxb.utils.utility.UniqueIdentifier('urn:uuid:392da7a4-1273-11e4-a458-90b11c83965f')
+_GenerationUID = pyxb.utils.utility.UniqueIdentifier('urn:uuid:869ae486-133e-11e4-88d8-90b11c83965f')
 
 # Version of PyXB used to generate the bindings
 _PyXBVersion = '1.2.3'
@@ -154,11 +154,11 @@ class fofParams (pyxb.binding.basis.complexTypeDefinition):
     kdtree_depth = property(__kdtree_depth.value, __kdtree_depth.set, None, None)
 
     
-    # Element min_n_gal uses Python identifier min_n_gal
-    __min_n_gal = pyxb.binding.content.ElementDeclaration(pyxb.namespace.ExpandedName(None, u'min_n_gal'), 'min_n_gal', '__httpeuclid_esa_orgschemaprole3cog_fofParams_min_n_gal', False, pyxb.utils.utility.Location(u'/home/sartor/workspace/EUCLID/svn_tot/schema/branches/challenge4/Dictionary/pro/le3/cog/euc-test-le3-cog.xsd', 58, 12), )
+    # Element min_ngal uses Python identifier min_ngal
+    __min_ngal = pyxb.binding.content.ElementDeclaration(pyxb.namespace.ExpandedName(None, u'min_ngal'), 'min_ngal', '__httpeuclid_esa_orgschemaprole3cog_fofParams_min_ngal', False, pyxb.utils.utility.Location(u'/home/sartor/workspace/EUCLID/svn_tot/schema/branches/challenge4/Dictionary/pro/le3/cog/euc-test-le3-cog.xsd', 58, 12), )
 
     
-    min_n_gal = property(__min_n_gal.value, __min_n_gal.set, None, None)
+    min_ngal = property(__min_ngal.value, __min_ngal.set, None, None)
 
     
     # Element z_min uses Python identifier z_min
@@ -222,7 +222,7 @@ class fofParams (pyxb.binding.basis.complexTypeDefinition):
         __link_r.name() : __link_r,
         __link_z.name() : __link_z,
         __kdtree_depth.name() : __kdtree_depth,
-        __min_n_gal.name() : __min_n_gal,
+        __min_ngal.name() : __min_ngal,
         __z_min.name() : __z_min,
         __z_max.name() : __z_max,
         __z_bin_size.name() : __z_bin_size,
@@ -452,7 +452,7 @@ fofParams._AddElement(pyxb.binding.basis.element(pyxb.namespace.ExpandedName(Non
 
 fofParams._AddElement(pyxb.binding.basis.element(pyxb.namespace.ExpandedName(None, u'kdtree_depth'), pyxb.binding.datatypes.integer, scope=fofParams, location=pyxb.utils.utility.Location(u'/home/sartor/workspace/EUCLID/svn_tot/schema/branches/challenge4/Dictionary/pro/le3/cog/euc-test-le3-cog.xsd', 57, 12)))
 
-fofParams._AddElement(pyxb.binding.basis.element(pyxb.namespace.ExpandedName(None, u'min_n_gal'), pyxb.binding.datatypes.int, scope=fofParams, location=pyxb.utils.utility.Location(u'/home/sartor/workspace/EUCLID/svn_tot/schema/branches/challenge4/Dictionary/pro/le3/cog/euc-test-le3-cog.xsd', 58, 12)))
+fofParams._AddElement(pyxb.binding.basis.element(pyxb.namespace.ExpandedName(None, u'min_ngal'), pyxb.binding.datatypes.int, scope=fofParams, location=pyxb.utils.utility.Location(u'/home/sartor/workspace/EUCLID/svn_tot/schema/branches/challenge4/Dictionary/pro/le3/cog/euc-test-le3-cog.xsd', 58, 12)))
 
 fofParams._AddElement(pyxb.binding.basis.element(pyxb.namespace.ExpandedName(None, u'z_min'), pyxb.binding.datatypes.double, scope=fofParams, location=pyxb.utils.utility.Location(u'/home/sartor/workspace/EUCLID/svn_tot/schema/branches/challenge4/Dictionary/pro/le3/cog/euc-test-le3-cog.xsd', 59, 12)))
 
@@ -499,7 +499,7 @@ def _BuildAutomaton_ ():
     st_4 = fac.State(symbol, is_initial=False, final_update=final_update, is_unordered_catenation=False)
     states.append(st_4)
     final_update = None
-    symbol = pyxb.binding.content.ElementUse(fofParams._UseForTag(pyxb.namespace.ExpandedName(None, u'min_n_gal')), pyxb.utils.utility.Location(u'/home/sartor/workspace/EUCLID/svn_tot/schema/branches/challenge4/Dictionary/pro/le3/cog/euc-test-le3-cog.xsd', 58, 12))
+    symbol = pyxb.binding.content.ElementUse(fofParams._UseForTag(pyxb.namespace.ExpandedName(None, u'min_ngal')), pyxb.utils.utility.Location(u'/home/sartor/workspace/EUCLID/svn_tot/schema/branches/challenge4/Dictionary/pro/le3/cog/euc-test-le3-cog.xsd', 58, 12))
     st_5 = fac.State(symbol, is_initial=False, final_update=final_update, is_unordered_catenation=False)
     states.append(st_5)
     final_update = None

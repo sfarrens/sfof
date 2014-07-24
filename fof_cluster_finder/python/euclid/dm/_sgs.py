@@ -1,7 +1,7 @@
 # /home/sartor/pymodule/euclid/dm/_sgs.py
 # -*- coding: utf-8 -*-
 # PyXB bindings for NM:77d3da8c9c0b8eec64b9957d9ec227ca99caec32
-# Generated 2014-07-23 16:11:22.133337 by PyXB version 1.2.3
+# Generated 2014-07-24 16:26:39.933073 by PyXB version 1.2.3
 # Namespace http://euclid.esa.org/schema/sys/sgs [xmlns:sgs]
 
 import pyxb
@@ -13,7 +13,7 @@ import pyxb.utils.domutils
 import sys
 
 # Unique identifier for bindings created at the same time
-_GenerationUID = pyxb.utils.utility.UniqueIdentifier('urn:uuid:392da7a4-1273-11e4-a458-90b11c83965f')
+_GenerationUID = pyxb.utils.utility.UniqueIdentifier('urn:uuid:869ae486-133e-11e4-88d8-90b11c83965f')
 
 # Version of PyXB used to generate the bindings
 _PyXBVersion = '1.2.3'
@@ -23,8 +23,8 @@ if pyxb.__version__ != _PyXBVersion:
 
 # Import bindings for namespaces imported into schema
 import pyxb.binding.datatypes
-import euclid.dm._dss as _ImportedBinding_euclid_dm__dss
 import euclid.dm._sys as _ImportedBinding_euclid_dm__sys
+import euclid.dm._dss as _ImportedBinding_euclid_dm__dss
 
 # NOTE: All namespace declarations are reserved within the binding
 Namespace = pyxb.namespace.NamespaceForURI(u'http://euclid.esa.org/schema/sys/sgs', create_if_missing=True)

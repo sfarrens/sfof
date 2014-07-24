@@ -1,7 +1,7 @@
 # /home/sartor/pymodule/euclid/dm/_dss.py
 # -*- coding: utf-8 -*-
 # PyXB bindings for NM:44ff076caf94dd1666a330718f99f59b80790879
-# Generated 2014-07-23 16:11:22.132541 by PyXB version 1.2.3
+# Generated 2014-07-24 16:26:39.931924 by PyXB version 1.2.3
 # Namespace http://euclid.esa.org/schema/sys/dss [xmlns:dss]
 
 import pyxb
@@ -13,7 +13,7 @@ import pyxb.utils.domutils
 import sys
 
 # Unique identifier for bindings created at the same time
-_GenerationUID = pyxb.utils.utility.UniqueIdentifier('urn:uuid:392da7a4-1273-11e4-a458-90b11c83965f')
+_GenerationUID = pyxb.utils.utility.UniqueIdentifier('urn:uuid:869ae486-133e-11e4-88d8-90b11c83965f')
 
 # Version of PyXB used to generate the bindings
 _PyXBVersion = '1.2.3'

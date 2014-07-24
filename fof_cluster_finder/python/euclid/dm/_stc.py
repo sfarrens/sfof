@@ -1,7 +1,7 @@
 # /home/sartor/pymodule/euclid/dm/_stc.py
 # -*- coding: utf-8 -*-
 # PyXB bindings for NM:c85a7aef9dd35afb45dde402fdc86e2ca92a56ad
-# Generated 2014-07-23 16:11:22.132367 by PyXB version 1.2.3
+# Generated 2014-07-24 16:26:39.932475 by PyXB version 1.2.3
 # Namespace http://euclid.esa.org/schema/bas/imp/stc [xmlns:stc]
 
 import pyxb
@@ -13,7 +13,7 @@ import pyxb.utils.domutils
 import sys
 
 # Unique identifier for bindings created at the same time
-_GenerationUID = pyxb.utils.utility.UniqueIdentifier('urn:uuid:392da7a4-1273-11e4-a458-90b11c83965f')
+_GenerationUID = pyxb.utils.utility.UniqueIdentifier('urn:uuid:869ae486-133e-11e4-88d8-90b11c83965f')
 
 # Version of PyXB used to generate the bindings
 _PyXBVersion = '1.2.3'
@@ -81,10 +81,10 @@ class hsOffsetType (pyxb.binding.datatypes.double):
     _ExpandedName = pyxb.namespace.ExpandedName(Namespace, u'hsOffsetType')
     _XSDLocation = pyxb.utils.utility.Location(u'/home/sartor/workspace/EUCLID/svn_tot/schema/branches/challenge4/Dictionary/bas/imp/stc/euc-test-stc.xsd', 365, 1)
     _Documentation = None
-hsOffsetType._CF_minInclusive = pyxb.binding.facets.CF_minInclusive(value_datatype=hsOffsetType, value=pyxb.binding.datatypes.double(-1.0))
 hsOffsetType._CF_maxInclusive = pyxb.binding.facets.CF_maxInclusive(value_datatype=hsOffsetType, value=pyxb.binding.datatypes.double(1.0))
-hsOffsetType._InitializeFacetMap(hsOffsetType._CF_minInclusive,
-   hsOffsetType._CF_maxInclusive)
+hsOffsetType._CF_minInclusive = pyxb.binding.facets.CF_minInclusive(value_datatype=hsOffsetType, value=pyxb.binding.datatypes.double(-1.0))
+hsOffsetType._InitializeFacetMap(hsOffsetType._CF_maxInclusive,
+   hsOffsetType._CF_minInclusive)
 Namespace.addCategoryObject('typeBinding', u'hsOffsetType', hsOffsetType)
 
 # Atomic simple type: {http://euclid.esa.org/schema/bas/imp/stc}redshiftFrameValue
@@ -177,10 +177,10 @@ class coordNaxesValue (pyxb.binding.datatypes.short):
     _ExpandedName = pyxb.namespace.ExpandedName(Namespace, u'coordNaxesValue')
     _XSDLocation = pyxb.utils.utility.Location(u'/home/sartor/workspace/EUCLID/svn_tot/schema/branches/challenge4/Dictionary/bas/imp/stc/euc-test-stc.xsd', 583, 1)
     _Documentation = None
-coordNaxesValue._CF_minInclusive = pyxb.binding.facets.CF_minInclusive(value_datatype=coordNaxesValue, value=pyxb.binding.datatypes.short(1))
 coordNaxesValue._CF_maxInclusive = pyxb.binding.facets.CF_maxInclusive(value_datatype=coordNaxesValue, value=pyxb.binding.datatypes.short(3))
-coordNaxesValue._InitializeFacetMap(coordNaxesValue._CF_minInclusive,
-   coordNaxesValue._CF_maxInclusive)
+coordNaxesValue._CF_minInclusive = pyxb.binding.facets.CF_minInclusive(value_datatype=coordNaxesValue, value=pyxb.binding.datatypes.short(1))
+coordNaxesValue._InitializeFacetMap(coordNaxesValue._CF_maxInclusive,
+   coordNaxesValue._CF_minInclusive)
 Namespace.addCategoryObject('typeBinding', u'coordNaxesValue', coordNaxesValue)
 
 # Atomic simple type: {http://euclid.esa.org/schema/bas/imp/stc}handednessValue

@@ -1,7 +1,7 @@
 # /home/sartor/pymodule/euclid/dm/_dtd.py
 # -*- coding: utf-8 -*-
 # PyXB bindings for NM:b271ffc25c73f887dbff4e054cfd41e733c35b7f
-# Generated 2014-07-23 16:11:22.131998 by PyXB version 1.2.3
+# Generated 2014-07-24 16:26:39.931170 by PyXB version 1.2.3
 # Namespace http://euclid.esa.org/schema/bas/dtd [xmlns:dtd]
 
 import pyxb
@@ -13,7 +13,7 @@ import pyxb.utils.domutils
 import sys
 
 # Unique identifier for bindings created at the same time
-_GenerationUID = pyxb.utils.utility.UniqueIdentifier('urn:uuid:392da7a4-1273-11e4-a458-90b11c83965f')
+_GenerationUID = pyxb.utils.utility.UniqueIdentifier('urn:uuid:869ae486-133e-11e4-88d8-90b11c83965f')
 
 # Version of PyXB used to generate the bindings
 _PyXBVersion = '1.2.3'
@@ -213,10 +213,10 @@ class percentValue (pyxb.binding.datatypes.double):
     _ExpandedName = pyxb.namespace.ExpandedName(Namespace, u'percentValue')
     _XSDLocation = pyxb.utils.utility.Location(u'/home/sartor/workspace/EUCLID/svn_tot/schema/branches/challenge4/Dictionary/bas/dtd/euc-test-dtd.xsd', 107, 1)
     _Documentation = u'Double between  0 and 100 inclusive'
-percentValue._CF_minInclusive = pyxb.binding.facets.CF_minInclusive(value_datatype=percentValue, value=pyxb.binding.datatypes.double(0.0))
 percentValue._CF_maxInclusive = pyxb.binding.facets.CF_maxInclusive(value_datatype=percentValue, value=pyxb.binding.datatypes.double(100.0))
-percentValue._InitializeFacetMap(percentValue._CF_minInclusive,
-   percentValue._CF_maxInclusive)
+percentValue._CF_minInclusive = pyxb.binding.facets.CF_minInclusive(value_datatype=percentValue, value=pyxb.binding.datatypes.double(0.0))
+percentValue._InitializeFacetMap(percentValue._CF_maxInclusive,
+   percentValue._CF_minInclusive)
 Namespace.addCategoryObject('typeBinding', u'percentValue', percentValue)
 
 # Atomic simple type: {http://euclid.esa.org/schema/bas/dtd}degAngle
