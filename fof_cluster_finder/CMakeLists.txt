@@ -28,12 +28,19 @@ set(CPP_SRC
 	${CPP_SOURCE_DIR}/merge_class.cpp
 	${CPP_SOURCE_DIR}/option_class.cpp
 	${CPP_SOURCE_DIR}/zbin_class.cpp
+	${CPP_SOURCE_DIR}/cat_merge_fileio.cpp		
 )
 
 include_directories(BEFORE SYSTEM ${CFITSIO_INCLUDE_DIRS} ${Boost_INCLUDE_DIRS})
 
 add_executable(main ${CPP_SRC} ${CPP_SOURCE_DIR}/main.cpp)
 target_link_libraries(main ${CFITSIO_LIBRARIES})
+
+add_executable(cat_split ${CPP_SRC} ${CPP_SOURCE_DIR}/cat_split.cpp)
+target_link_libraries(cat_split ${CFITSIO_LIBRARIES})
+
+add_executable(cat_merge ${CPP_SRC} ${CPP_SOURCE_DIR}/cat_merge.cpp)
+target_link_libraries(cat_merge ${CFITSIO_LIBRARIES})
 
 add_executable(test_code ${CPP_SRC} ${CPP_SOURCE_DIR}/test_code.cpp)
 target_link_libraries(test_code ${CFITSIO_LIBRARIES})
