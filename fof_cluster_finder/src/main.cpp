@@ -152,17 +152,22 @@ void Main::output_results () {
 }
 
 int main (int argc, char *argv[]) {
-  Main run_code;
-  run_code.comp.start_time();
-  run_code.read_options(argc, argv);
-  run_code.read_data();
-  run_code.set_up_zbins();
-  run_code.assign_linking_param();
-  run_code.make_kdtree();
-  run_code.find_friends();
-  run_code.merge_clusters();
-  run_code.assign_cluster_props();
-  run_code.output_results();
-  run_code.comp.end_time();
-  run_code.comp.print_time();
+  try {
+    Main run_code;
+    run_code.comp.start_time();
+    run_code.read_options(argc, argv);
+    run_code.read_data();
+    run_code.set_up_zbins();
+    run_code.assign_linking_param();
+    run_code.make_kdtree();
+    run_code.find_friends();
+    run_code.merge_clusters();
+    run_code.assign_cluster_props();
+    run_code.output_results();
+    run_code.comp.end_time();
+    run_code.comp.print_time();
+  }
+  catch (const char* msg) {
+    std::cerr << "ERROR!: " << msg << std::endl;
+  }
 }
