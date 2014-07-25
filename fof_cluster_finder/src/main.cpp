@@ -135,14 +135,20 @@ void Main::assign_cluster_props () {
 
 void Main::output_results () {
   // Function that outputs detected clusters.
-  std::string cluster_file_name, member_file_name;
-  fileio.output_file_names(opt.input_file, opt.fof_mode, 
-			   opt.output_mode, opt.link_r, opt.link_z, 
-			   cluster_file_name, member_file_name);
+  if(opt.output_clusters.empty())
+    fileio.output_cluster_name(opt.input_file, opt.fof_mode, 
+			     opt.output_mode, opt.link_r, opt.link_z, 
+			     opt.output_clusters);
+  if(opt.output_members.empty())
+    fileio.output_member_name(opt.input_file, opt.fof_mode, 
+			     opt.output_mode, opt.link_r, opt.link_z, 
+			     opt.output_members);
+  std::cout<<"Cluster properties being written to: "<<opt.output_clusters<<std::endl;
+  std::cout<<"Cluster member properties being written to: "<<opt.output_members<<std::endl;
   if(opt.output_mode == "fits") 
-    fileio.write_fits(clusters, cluster_file_name, member_file_name);
+    fileio.write_fits(clusters, opt.output_clusters, opt.output_members);
   else if(opt.output_mode == "ascii") 
-    fileio.write_ascii(clusters, cluster_file_name, member_file_name);  
+    fileio.write_ascii(clusters, opt.output_clusters, opt.output_members);  
 }
 
 int main (int argc, char *argv[]) {

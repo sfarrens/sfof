@@ -90,18 +90,30 @@ public:
 		  double, double, std::vector<Galaxy> &);
 
   /**
-   * This method sets the output file names.
+   * This method sets the cluster output file name.
    * @param[in] fname Input file name.
    * @param[in] mode FoF mode ["spec"/"phot"].
    * @param[in] output Ouput mode ["ascii"/"fits"].
    * @param[in] link_r Transverse linking parameter value.
    * @param[in] link_z Line-of-sight linking parameter value.
    * @param[out] cluster_file_name Output Cluster list file name.
+   */
+  void output_cluster_name (const std::string &, const std::string &,
+			    const std::string &, double, double, 
+			    std::string &);
+
+  /**
+   * This method sets the member output file name.
+   * @param[in] fname Input file name.
+   * @param[in] mode FoF mode ["spec"/"phot"].
+   * @param[in] output Ouput mode ["ascii"/"fits"].
+   * @param[in] link_r Transverse linking parameter value.
+   * @param[in] link_z Line-of-sight linking parameter value.
    * @param[out] member_file_name Output member Galaxy list file name.
    */
-  void output_file_names (const std::string &, const std::string &,
-			  const std::string &, double, double, 
-			  std::string &, std::string &);
+  void output_member_name (const std::string &, const std::string &,
+			   const std::string &, double, double, 
+			   std::string &);
 
   /**
    * This method writes a list of the specified Cluster instances and a list 

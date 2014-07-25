@@ -93,6 +93,12 @@ public:
 
   /// Input file name.
   std::string input_file;
+
+  /// Output cluster file name.
+  std::string output_clusters;
+
+  /// Output member file name.
+  std::string output_members;
   
   /// Output file name.
   std::string output_file;

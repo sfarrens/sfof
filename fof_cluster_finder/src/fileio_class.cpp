@@ -137,23 +137,28 @@ void Fileio::read_fits (const std::string &fname, const std::string &mode, doubl
   if(mode == "phot") std::cout<<"   - (dz <= "<<dz_max<<")"<<std::endl;
 }
 
-void Fileio::output_file_names (const std::string &fname, const std::string &mode, 
-				const std::string &output, double link_r, double link_z,
-				std::string &cluster_file_name, std::string &member_file_name) {
-  // Function to set up output file names.
+void Fileio::output_cluster_name (const std::string &fname, const std::string &mode, 
+				  const std::string &output, double link_r, double link_z,
+				  std::string &cluster_file_name) {
+  // Function to set up cluster output file name.
   std::stringstream cluster_file_stream, member_file_stream;
-  if(output == "ascii") {
+  if(output == "ascii") 
     cluster_file_stream<<fname<<"_clusters_"<<link_r<<"_"<<link_z<<"_"<<mode<<".dat";
-    member_file_stream<<fname<<"_members_"<<link_r<<"_"<<link_z<<"_"<<mode<<".dat"; 
-  }
-  else if(output == "fits") {
+  else if(output == "fits") 
     cluster_file_stream<<fname<<"_clusters_"<<link_r<<"_"<<link_z<<"_"<<mode<<".fits";
-    member_file_stream<<fname<<"_members_"<<link_r<<"_"<<link_z<<"_"<<mode<<".fits"; 
-  }
   cluster_file_name = cluster_file_stream.str();
+}
+
+void Fileio::output_member_name (const std::string &fname, const std::string &mode, 
+				 const std::string &output, double link_r, double link_z,
+				 std::string &member_file_name) {
+  // Function to set up member output file name.
+  std::stringstream cluster_file_stream, member_file_stream;
+  if(output == "ascii") 
+    member_file_stream<<fname<<"_members_"<<link_r<<"_"<<link_z<<"_"<<mode<<".dat"; 
+  else if(output == "fits") 
+    member_file_stream<<fname<<"_members_"<<link_r<<"_"<<link_z<<"_"<<mode<<".fits"; 
   member_file_name = member_file_stream.str();
-  std::cout<<"Cluster properties being written to: "<<cluster_file_name<<std::endl;
-  std::cout<<"Cluster member properties being written to: "<<member_file_name<<std::endl;
 }
 
 void Fileio::write_ascii (const std::vector<Cluster> &cluster_list, const std::string &cluster_file_name, 

@@ -31,11 +31,13 @@ void Option::read_opts(int argc, char *argv[], double version_number) {
   // Function that reads code arguments.
   int index = 0, opt = 0;
   const char *option_tags;
-  option_tags = "hvf:t:i:o:l:p:r:z:k:n:a:b:s:d:g:c:e:m:q:j:";
+  option_tags = "hvf:u:w:t:i:o:l:p:r:z:k:n:a:b:s:d:g:c:e:m:q:j:";
   const struct option longopts[] = {
       {"help", no_argument, 0, 'h'},
       {"version", no_argument, 0, 'v'},
       {"input_file", required_argument, 0, 'f'},
+      {"output_clusters", required_argument, 0, 'u'},
+      {"output_members", required_argument, 0, 'w'},
       {"fof_mode", required_argument, 0, 't'},
       {"input_mode", required_argument, 0, 'i'},
       {"output_mode", required_argument, 0, 'o'},
@@ -65,6 +67,10 @@ void Option::read_opts(int argc, char *argv[], double version_number) {
     case 'v': version(version_number);
       break;
     case 'f': input_file = optarg;
+      break;
+    case 'u': output_clusters = optarg;
+      break;
+    case 'w': output_members = optarg;
       break;
     case 't': fof_mode = optarg;
       break;
@@ -229,6 +235,8 @@ void Option::read_param_file(const std::string &file_name) {
 	values.clear();
 	fileio.split(line, values, " "); /* split line into values */
 	if(values[0] == "input_file") input_file = values[1];
+	if(values[0] == "output_clusters") output_clusters = values[1];
+	if(values[0] == "output_members") output_members = values[1];
 	if(values[0] == "fof_mode") fof_mode = values[1];
 	if(values[0] == "input_mode") input_mode = values[1];
 	if(values[0] == "output_mode") output_mode = values[1];
