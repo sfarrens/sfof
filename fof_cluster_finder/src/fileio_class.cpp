@@ -195,7 +195,7 @@ void Fileio::write_fits (const std::vector<Cluster> &cluster_list, const std::st
   int tint, current_pos = 0, status = 0;
   unsigned long tlong;
   double tdouble;
-  const int cluster_fields = 7, member_fields = 6;
+  const int cluster_fields = 11, member_fields = 6;
   char *cluster_types[cluster_fields], *member_types[member_fields];
   char *cluster_forms[cluster_fields], *member_forms[member_fields];
   cluster_types[0] = const_cast<char *>("NUM");     cluster_forms[0] = const_cast<char *>("J");
@@ -216,9 +216,13 @@ void Fileio::write_fits (const std::vector<Cluster> &cluster_list, const std::st
   member_types[4] = const_cast<char *>("G_DEC");    member_forms[4] = const_cast<char *>("E");
   member_types[5] = const_cast<char *>("G_Z");      member_forms[5] = const_cast<char *>("E");
   fits_create_file(&fptr1, cluster_file_name.c_str(), &status); /*create new FITS file*/
+  if(status != 0){
+    std::cout<<"Error! Cannot create cluster FITS file."<<std::endl;
+    exit(-1);
+  }
   fits_create_file(&fptr2, member_file_name.c_str(), &status); /*create new FITS file*/
   if(status != 0){
-    std::cout<<"Error! Cannot create FITS file."<<std::endl;
+    std::cout<<"Error! Cannot create member FITS file."<<std::endl;
     exit(-1);
   }
   fits_create_tbl(fptr1, BINARY_TBL, 0, cluster_fields, cluster_types, 
