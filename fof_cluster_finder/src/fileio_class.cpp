@@ -2,7 +2,7 @@
 
 #include "fileio_class.hpp"
 
-void Fileio::split (const std::string &str, std::vector<std::string> &tokens, 
+int Fileio::split (const std::string &str, std::vector<std::string> &tokens, 
 		    const std::string &delimiter) {
   //! Function to split a string read in from a file into columns.
   std::string::size_type lastPos, pos;      
@@ -13,12 +13,14 @@ void Fileio::split (const std::string &str, std::vector<std::string> &tokens,
     lastPos = str.find_first_not_of(delimiter, pos); /* Skip delimiters. Note the "not_of" */         
     pos=str.find_first_of(delimiter, lastPos); /* Find next "non-delimiter" */            
   }
+  return tokens.size();
 }
 
 void Fileio::read_ascii (const std::string &fname, const std::string &mode, double z_min, 
 			 double z_max, double dz_max, std::vector<Galaxy> &gals) { 
   //! Function to read in an ASCII file and store the contents in a vector of Galaxy instances.
   int count = 0; /* line count */
+  int num_tokens;
   double ra, dec, z, dz;
   std::string id, line;
   std::vector<std::string> cols; 
@@ -27,26 +29,31 @@ void Fileio::read_ascii (const std::string &fname, const std::string &mode, doub
     std::getline(read_file, line); /* read each line */
     if(line.length() >= 1 && 
        line.find("#") == std::string::npos) { /* skip empty lines and lines starting with # */
-      split(line, cols, " "); /* split line into columns */
-      id = cols[0];
-      ra = atof(cols[1].c_str());
-      dec = atof(cols[2].c_str());
-      z = atof(cols[3].c_str());
-      if (z >= z_min && z <= z_max) { /* check if galaxy is within redshift limits*/
-	if(mode == "spec") {
-	  Galaxy spec_gal(count, id, ra, dec, z); /* intialise spec Galaxy */
-	  gals.push_back(spec_gal); /* store spec Galaxy instance in vector */
-	  count++; /* increase line count */
-	}
-	else {
-	  dz = atof(cols[4].c_str());
-	  if (dz <= z_max) { /* check if photo-z error is below accepted threshold */
-	    Galaxy phot_gal(count, id, ra, dec, z, dz); /* intialise phot Galaxy */
-	    gals.push_back(phot_gal); /* store phot Galaxy instance in vector */
-	    count++; /* increase line count */
-	  }
-	}
+      num_tokens = split(line, cols, " "); /* split line into columns */
+      if( (mode == "spec" && num_tokens >= 4) ||
+          (mode == "phot" && num_tokens >= 5) ) {
+        id = cols[0];
+        ra = atof(cols[1].c_str());
+        dec = atof(cols[2].c_str());
+        z = atof(cols[3].c_str());
+        if (z >= z_min && z <= z_max) { /* check if galaxy is within redshift limits*/
+          if(mode == "spec") {
+            Galaxy spec_gal(count, id, ra, dec, z); /* intialise spec Galaxy */
+            gals.push_back(spec_gal); /* store spec Galaxy instance in vector */
+            count++; /* increase line count */
+          }
+          else {
+            dz = atof(cols[4].c_str());
+            if (dz <= z_max) { /* check if photo-z error is below accepted threshold */
+              Galaxy phot_gal(count, id, ra, dec, z, dz); /* intialise phot Galaxy */
+              gals.push_back(phot_gal); /* store phot Galaxy instance in vector */
+              count++; /* increase line count */
+            }
+          }
+        }
       }
+      else
+        std::cout<<"malformed line in ascii file: "<<line<<std::endl;
       cols.clear(); /* clear column vector */
     }
   }

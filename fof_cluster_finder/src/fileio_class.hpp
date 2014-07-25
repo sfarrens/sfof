@@ -20,7 +20,7 @@ class Fileio { //! Class structure for file input and output
 private:
   std::string cluster_file_name, member_file_name;
 public:
-  void split (const std::string &, std::vector<std::string> &, 
+  int split (const std::string &, std::vector<std::string> &, 
 	      const std::string &);
   void read_ascii (const std::string &, const std::string &, double, 
 		   double, double, std::vector<Galaxy> &);
