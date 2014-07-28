@@ -13,6 +13,6 @@ std::invalid_argument(arg_name){
     message.append("BadArgumentExeception in").append(context).append(". ").append(arg_name).
             append(" value. It must be ").append(expected);
 }
-const char* BadArgumentExeception::what(){
+const char* BadArgumentExeception::what() const throw(){
     return message.c_str();
 }

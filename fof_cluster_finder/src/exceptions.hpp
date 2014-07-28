@@ -11,7 +11,7 @@ public:
     BadArgumentExeception(const std::string& context,
             const std::string& arg_name, const std::string& expected);
     virtual ~BadArgumentExeception() throw(){}
-    virtual const char* what();
+    virtual const char* what() const throw();
 protected:
     std::string message;
 
