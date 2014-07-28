@@ -167,7 +167,7 @@ int main (int argc, char *argv[]) {
     run_code.comp.end_time();
     run_code.comp.print_time();
   }
-  catch (const char* msg) {
-    std::cerr << "ERROR!: " << msg << std::endl;
+  catch (const std::exception& e) {
+    std::cerr << "ERROR!: " << e.what() << std::endl;
   }
 }

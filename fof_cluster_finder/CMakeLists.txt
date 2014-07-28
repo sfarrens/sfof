@@ -28,7 +28,8 @@ set(CPP_SRC
 	${CPP_SOURCE_DIR}/merge_class.cpp
 	${CPP_SOURCE_DIR}/option_class.cpp
 	${CPP_SOURCE_DIR}/zbin_class.cpp
-	${CPP_SOURCE_DIR}/cat_merge_fileio.cpp		
+	${CPP_SOURCE_DIR}/cat_merge_fileio.cpp	
+    ${CPP_SOURCE_DIR}/exceptions.cpp	
 )
 
 include_directories(BEFORE SYSTEM ${CFITSIO_INCLUDE_DIRS} ${Boost_INCLUDE_DIRS})
