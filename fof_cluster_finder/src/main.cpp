@@ -58,7 +58,7 @@ void Main::assign_linking_param () {
       zbins[i].assign_rfriend(r_ref); 
   }
   if(opt.print_bin_data == "yes") {
-    std::string z_bin_data = "z_bin_data.dat";
+    const char* z_bin_data = "z_bin_data.dat";
     std::cout<<"Printing redshift bin data to "<<z_bin_data<<"."<<std::endl;
     std::ofstream zbin_out(z_bin_data);
     zbin_out<<"#Num[1] Z[2] Link_R[3] R_Friend[4] Count[5]"<<std::endl;
