@@ -9,6 +9,7 @@
 
 #include <vector>
 #include "../../src/main.hpp"
+#include "../../src/exceptions.hpp"
 
 #define BOOST_TEST_DYN_LINK
 #define BOOST_TEST_MODULE MasterTestSuite
@@ -33,7 +34,7 @@ BOOST_AUTO_TEST_CASE( test_Astro )
   Astro astro;
   BOOST_TEST_MESSAGE("entering case for Astro");
   BOOST_CHECK( astro.find_bin(1.0, 1.0, 1.0) == 0 );
-  BOOST_WARN( astro.find_bin(1.0, 2.0, 1.0) == 0 );   // out-of-range values should be handled
+  BOOST_CHECK_THROW( astro.find_bin(1.0, 2.0, 1.0) == 0, BadArgumentExeception);   // out-of-range values should be handled
 
   /* .. */
   
