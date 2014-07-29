@@ -9,7 +9,8 @@ void Cluster::add_gal (const Galaxy &gal) {
 
 void Cluster::assign_dist (double c, double H0, double Omega_M, double Omega_L) {
   // Calculate angular diameter distance for Cluster instance;
-  da = ((c / H0) * cosmo.angdidis(z, Omega_M, Omega_L));
+  cosmo.set_up(Omega_M, Omega_L);
+  da = ((c / H0) * cosmo.angdidis(z));
 }
 
 void Cluster::assign_props () {

@@ -5,8 +5,9 @@
 void Zbin::assign_dist (double c, double H0, double Omega_M, double Omega_L) {
   // Calculate the angular diameter distance and the differential comoving 
   // volume element for a Zbin instance.
-  dvdz = cosmo.dcomvoldz(z, Omega_M, Omega_L);
-  da = ((c / H0) * cosmo.angdidis(z, Omega_M, Omega_L));
+  cosmo.set_up(Omega_M, Omega_L);
+  dvdz = cosmo.dcomvoldz(z);
+  da = ((c / H0) * cosmo.angdidis(z));
 }
 
 void Zbin::assign_rfriend (double r_ref) {
