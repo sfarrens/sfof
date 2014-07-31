@@ -2,6 +2,7 @@
 
 import argparse
 import subprocess
+import datetime
 import sys
 import pyxb.utils.domutils as domutils
 
@@ -41,23 +42,50 @@ if __name__ == '__main__':
     else:
         t_opt["fof_mode"] = "spec"
         t_opt["input_file"] = "data/%s" % dm_i.Catalog.SpecZcatalog.DataContainer.FileName
-            
+     
+    t = datetime.datetime.now()
+    ts = t.isoformat().replace(':','')
+    out_clusters = 'EUC-TEST-LE3COGCLUS-%s.fits' % ts
+    out_members  = 'EUC-TEST-LE3COGMEMB-%s.fits' % ts  
+    
+    t_opt['output_clusters'] = 'data/%s' % out_clusters
+    t_opt['output_members' ] = 'data/%s' % out_members   
   
-    conf=["euclid.le3.galcluster.fof_cluser_finder"]
+    conf=["euclid.le3.cog.fof_cluser_finder"]
     
 
     for (o,v) in t_opt.items():
         conf.append('--'+o)
         conf.append(v)
+        print ('--%s %s' % (o,v))
         
-    print (conf)
-    
+        
 #    proc = subprocess.Popen(conf, stdout = subprocess.PIPE, \
 #    stderr = subprocess.PIPE, shell = True, close_fds = True)
 #    (stdoutdata, stderrdata) = proc.communicate()
 
         
     proc = subprocess.Popen(conf)
-    proc.wait() 
+    proc.wait()
     
+    r_code = proc.returncode
+    if r_code != 0:
+        exit(r_code)
+    
+    dm_o = gal.GalClusterOutput()
+    dm_o.Clusters = gal.pyxb.BIND(version='0.1')
+    #pyxb complains about fixed attributes even if it correctly populates it...
+    dm_o.Clusters.format = dm_o.Clusters.format
+    dm_o.Clusters.DataContainer = gal.pyxb.BIND(filestatus='PROPOSED')
+    dm_o.Clusters.DataContainer.FileName = gal.pyxb.BIND(out_clusters)
+    
+    dm_o.Members = gal.pyxb.BIND(version='0.1')
+    #same consideration
+    dm_o.Members.format = dm_o.Members.format
+    dm_o.Members.DataContainer = gal.pyxb.BIND(filestatus='PROPOSED')
+    dm_o.Members.DataContainer.FileName = gal.pyxb.BIND(out_members)   
+
+    with open(args.output,'w+t') as f:
+        f.write(dm_o.toxml())
+        
 #     --input_file test_phot.dat --input_mode ascii --output_mode ascii --link_r 0.86 --link_z 1.0 --min_ngal 3 --kdtree_depth 7
