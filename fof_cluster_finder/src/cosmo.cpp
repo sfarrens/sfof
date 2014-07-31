@@ -8,9 +8,11 @@
 
 void Cosmo::set_up(double OmegaM_val, double OmegaL_val) {
   if (OmegaM_val < 0 || OmegaM_val > 1.0)
-    throw BadArgumentExeception("Cosmo::set_up", "OmegaM_val", "in the range 0.0 <= OmegaM_val <= 1.0");
+    throw BadArgumentException("Cosmo::set_up", "OmegaM_val", "in the range 0.0 <= OmegaM_val <= 1.0");
   if (OmegaL_val < 0 || OmegaL_val > 1.0)
-    throw BadArgumentExeception("Cosmo::set_up", "OmegaL_val", "in the range 0.0 <= OmegaL_val <= 1.0");
+    throw BadArgumentException("Cosmo::set_up", "OmegaL_val", "in the range 0.0 <= OmegaL_val <= 1.0");
+  if (OmegaM_val + OmegaL_val != 1.0)
+    throw DomainException("Cosmo::set_up", "OmegaM_val and OmegaL_val must sum to 1.0");
   OmegaM = OmegaM_val;
   OmegaL = OmegaL_val;
 }
@@ -92,7 +94,7 @@ double Cosmo::comvol(double z) {
 ---------------------------------------------------------------------------- */
 double Cosmo::dcomdisdz(double z) {
   if (z < 0.0)
-    throw BadArgumentExeception("Cosmo::dcomdisdz", "z", "> 0.0");
+    throw BadArgumentException("Cosmo::dcomdisdz", "z", "> 0.0");
   return (1.0 / sqrt((1.0 + z) * (1.0 + z) * (1.0 + OmegaM * z) - z *
 		     (2.0 + z) * OmegaL));
 }
@@ -123,7 +125,7 @@ double Cosmo::dcomvoldz(double z) {
 ---------------------------------------------------------------------------- */
 double Cosmo::dlookbackdz(double z) {
   if (z < 0.0)
-    throw BadArgumentExeception("Cosmo::dlookbackdz", "z", "> 0.0");
+    throw BadArgumentException("Cosmo::dlookbackdz", "z", "> 0.0");
   return 1.0 / ((1.0 + z) * sqrt((1.0 + z) * (1.0 + z) * (1.0 + OmegaM * z) - z * 
 				 (2.0 + z) * OmegaL));
 }
@@ -138,7 +140,7 @@ double Cosmo::dlookbackdz(double z) {
 ---------------------------------------------------------------------------- */
 double Cosmo::doptdepthdz(double z) {
   if (z < 0.0)
-    throw BadArgumentExeception("Cosmo::doptdepthdz", "z", "> 0.0");
+    throw BadArgumentException("Cosmo::doptdepthdz", "z", "> 0.0");
   return (1.0 + z) * (1.0 + z) / sqrt((1.0 + z) * (1.0 + z) * (1.0 + OmegaM * z) - 
 				      z * (2.0 + z) * OmegaL);
 }
@@ -239,7 +241,7 @@ double Cosmo::optdepth(double z) {
 ---------------------------------------------------------------------------- */
 double Cosmo::propmotdis(double z) {
   if (z < 0.0)
-    throw BadArgumentExeception("Cosmo::propmotdis", "z", "> 0.0");
+    throw BadArgumentException("Cosmo::propmotdis", "z", "> 0.0");
   double dM, q0, OmegaK, sqrtOmegaK;
   if(fabs(OmegaM) < TINY && fabs(OmegaL) < TINY) {
     dM = (z + 0.5 * z * z) / (1.0 + z);

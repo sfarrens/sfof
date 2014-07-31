@@ -64,6 +64,12 @@ public:
     z = z_val;
     dz = z_bin_size;
     count = 0;
+    da = 0;
+    dvdz = 0;
+    dndz = 0;
+    dndv = 0;
+    link_r = 0;
+    rfriend = 0;
   };
 
   /**
