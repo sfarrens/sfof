@@ -155,12 +155,19 @@ void Option::read_merge_opts(int argc, char *argv[], double version_number) {
 void Option::read_split_opts(int argc, char *argv[], double version_number) {
   // Function that reads code arguments.
   //**SET DEFUALTS **//
+  ra_lower = 0;
+  ra_upper = 0;
+  dec_lower = 0;
+  dec_upper = 0;
   ra_overlap = 0.5;
   dec_overlap = 0.5;
+  n_ra_bins = 0;
+  n_dec_bins = 0;
+  n_procs = 0;
   //*****************//
   int index = 0, opt = 0;
   const char *option_tags;
-  option_tags = "hvf:a:b:c:e:g:i:r:d:";
+  option_tags = "hvf:a:b:c:e:g:i:r:d:n:";
   const struct option longopts[] = {
       {"help", no_argument, 0, 'h'},
       {"version", no_argument, 0, 'v'},
@@ -173,6 +180,7 @@ void Option::read_split_opts(int argc, char *argv[], double version_number) {
       {"dec_overlap", required_argument, 0, 'i'},
       {"n_ra_bins", required_argument, 0, 'r'},
       {"n_dec_bins", required_argument, 0, 'd'},
+      {"n_procs", required_argument, 0, 'n'},
       {0, 0, 0, 0}
     };  
   while(opt != -1) {
@@ -199,6 +207,8 @@ void Option::read_split_opts(int argc, char *argv[], double version_number) {
     case 'r': n_ra_bins = atoi(optarg);
       break;
     case 'd': n_dec_bins = atoi(optarg);
+      break;
+    case 'n': n_procs = atoi(optarg);
       break;
     }
   }

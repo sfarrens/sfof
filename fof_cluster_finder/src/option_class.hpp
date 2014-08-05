@@ -36,6 +36,9 @@ public:
 
   /// Number of bins in declination.
   int n_dec_bins;
+  
+  /// Number of processes.
+  int n_procs;
 
   /// Transverse linking parameter.
   double link_r;
