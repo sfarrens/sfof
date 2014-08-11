@@ -9,6 +9,12 @@ void Cluster::add_gal (const Galaxy &gal) {
 
 void Cluster::assign_dist (double c, double H0, double Omega_M, double Omega_L) {
   // Calculate angular diameter distance for Cluster instance;
+  if (c <= 0)
+    throw BadArgumentException("Cluster::assign_dist", "c", "> 0.0");
+  if (H0 <= 0)
+    throw BadArgumentException("Cluster::assign_dist", "H0", "> 0.0");
+  if (z <= 0)
+    throw RuntimeException("Cluster::assign_dist", "z", "> 0.0");
   cosmo.set_up(Omega_M, Omega_L);
   da = ((c / H0) * cosmo.angdidis(z));
 }
@@ -40,6 +46,12 @@ void Cluster::assign_props () {
 void Cluster::assign_sn (double bg_expect) {
   // Assign singal-to-noise to Cluster instance
   // given the expected background counts.
+  if (bg_expect < 0)
+    throw BadArgumentException("Cluster::assign_sn", "bg_expect", ">= 0.0");
+  if (ngal <= 0)
+    throw RuntimeException("Cluster::assign_sn", "ngal", "> 0.0");
+  if (area <= 0)
+    throw RuntimeException("Cluster::assign_sn", "area", "> 0.0");
   if(bg_expect == 0) 
     sn = -1.0;
   else

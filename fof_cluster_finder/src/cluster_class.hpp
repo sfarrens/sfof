@@ -72,6 +72,16 @@ public:
    */
   Cluster (int num_val) { 
     num = num_val;
+    ngal = 0;
+    ra = 0;
+    ra_err = 0;
+    dec = 0;
+    dec_err = 0;
+    z = 0;
+    z_err = 0;
+    size = 0;
+    area = 0;
+    da = 0;  
   };
   
   /**
