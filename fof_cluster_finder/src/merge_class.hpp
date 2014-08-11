@@ -19,6 +19,7 @@
 #include <algorithm> 
 #include <vector>
 #include "cluster_class.hpp"
+#include "exceptions.hpp"
 
 class Merge { // Class for merge functions
 
@@ -29,6 +30,8 @@ public:
    * @param[in] clusters Vector of Cluster instances.
    */
   Merge (std::vector<Cluster> &clusters) {
+    if (clusters.empty())
+      throw BadArgumentException("Merge", "clusters", "a valid vector");
     seek(clusters);
     destroy(clusters);
   };
