@@ -28,7 +28,7 @@ void Main::set_up_zbins () {
   // Function to set up the redshift bins.
   num_bins = astro.num_bins(opt.z_min, opt.z_max, opt.z_bin_size);
   for(int i = 0; i < num_bins; i++){
-    Zbin zbin(i, opt.z_min + i * opt.z_bin_size, opt.z_bin_size);
+    Zbin zbin(i, opt.z_min + (i + 0.5) * opt.z_bin_size, opt.z_bin_size);
     zbin.assign_dist(opt.c, opt.H0, opt.omega_m, opt.omega_l);
     zbins.push_back(zbin);
   }
