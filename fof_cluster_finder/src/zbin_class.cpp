@@ -10,6 +10,8 @@ void Zbin::assign_dist (double c, double H0, double Omega_M, double Omega_L) {
     throw BadArgumentException("Zbin::assign_dist", "c", "> 0.0");
   if (H0 <= 0)
     throw BadArgumentException("Zbin::assign_dist", "H0", "> 0.0");
+  if (z <= 0) 
+    throw RuntimeException("Zbin::assign_rfriend", "z", "> 0.0");
   cosmo.set_up(Omega_M, Omega_L);
   dvdz = cosmo.dcomvoldz(z);
   da = ((c / H0) * cosmo.angdidis(z));
