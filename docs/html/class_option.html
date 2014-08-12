@@ -38,6 +38,7 @@
     <ul class="tablist">
       <li><a href="annotated.html"><span>Class&#160;List</span></a></li>
       <li><a href="classes.html"><span>Class&#160;Index</span></a></li>
+      <li><a href="hierarchy.html"><span>Class&#160;Hierarchy</span></a></li>
       <li><a href="functions.html"><span>Class&#160;Members</span></a></li>
     </ul>
   </div>
@@ -88,6 +89,9 @@ Public Attributes</h2></td></tr>
 <tr class="memitem:a9ed874098b6cdb81f3dd26e09567f364"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_option.html#a9ed874098b6cdb81f3dd26e09567f364">n_dec_bins</a></td></tr>
 <tr class="memdesc:a9ed874098b6cdb81f3dd26e09567f364"><td class="mdescLeft">&#160;</td><td class="mdescRight">Number of bins in declination.  <a href="#a9ed874098b6cdb81f3dd26e09567f364">More...</a><br/></td></tr>
 <tr class="separator:a9ed874098b6cdb81f3dd26e09567f364"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a00e399ca3c24d641c44ce4a502180148"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_option.html#a00e399ca3c24d641c44ce4a502180148">n_procs</a></td></tr>
+<tr class="memdesc:a00e399ca3c24d641c44ce4a502180148"><td class="mdescLeft">&#160;</td><td class="mdescRight">Number of processes.  <a href="#a00e399ca3c24d641c44ce4a502180148">More...</a><br/></td></tr>
+<tr class="separator:a00e399ca3c24d641c44ce4a502180148"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a7200681c925acfb9d84cd16417a95366"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_option.html#a7200681c925acfb9d84cd16417a95366">link_r</a></td></tr>
 <tr class="memdesc:a7200681c925acfb9d84cd16417a95366"><td class="mdescLeft">&#160;</td><td class="mdescRight">Transverse linking parameter.  <a href="#a7200681c925acfb9d84cd16417a95366">More...</a><br/></td></tr>
 <tr class="separator:a7200681c925acfb9d84cd16417a95366"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -145,6 +149,12 @@ Public Attributes</h2></td></tr>
 <tr class="memitem:a02e699d6ff62d05cfa953746b687e05c"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_option.html#a02e699d6ff62d05cfa953746b687e05c">input_file</a></td></tr>
 <tr class="memdesc:a02e699d6ff62d05cfa953746b687e05c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Input file name.  <a href="#a02e699d6ff62d05cfa953746b687e05c">More...</a><br/></td></tr>
 <tr class="separator:a02e699d6ff62d05cfa953746b687e05c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:acf82b7785cd8d81f0cc07145114e85ce"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_option.html#acf82b7785cd8d81f0cc07145114e85ce">output_clusters</a></td></tr>
+<tr class="memdesc:acf82b7785cd8d81f0cc07145114e85ce"><td class="mdescLeft">&#160;</td><td class="mdescRight">Output cluster file name.  <a href="#acf82b7785cd8d81f0cc07145114e85ce">More...</a><br/></td></tr>
+<tr class="separator:acf82b7785cd8d81f0cc07145114e85ce"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a97df67df9ba52c6d0c349604fcfb88f2"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_option.html#a97df67df9ba52c6d0c349604fcfb88f2">output_members</a></td></tr>
+<tr class="memdesc:a97df67df9ba52c6d0c349604fcfb88f2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Output member file name.  <a href="#a97df67df9ba52c6d0c349604fcfb88f2">More...</a><br/></td></tr>
+<tr class="separator:a97df67df9ba52c6d0c349604fcfb88f2"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a58b8d1e96b0677c5d1932142effda787"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_option.html#a58b8d1e96b0677c5d1932142effda787">output_file</a></td></tr>
 <tr class="memdesc:a58b8d1e96b0677c5d1932142effda787"><td class="mdescLeft">&#160;</td><td class="mdescRight">Output file name.  <a href="#a58b8d1e96b0677c5d1932142effda787">More...</a><br/></td></tr>
 <tr class="separator:a58b8d1e96b0677c5d1932142effda787"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -687,6 +697,20 @@ Private Attributes</h2></td></tr>
 
 </div>
 </div>
+<a class="anchor" id="a00e399ca3c24d641c44ce4a502180148"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int Option::n_procs</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Number of processes. </p>
+
+</div>
+</div>
 <a class="anchor" id="ab605dfc757d0eeadb6780e32426567fc"></a>
 <div class="memitem">
 <div class="memproto">
@@ -729,6 +753,20 @@ Private Attributes</h2></td></tr>
 
 </div>
 </div>
+<a class="anchor" id="acf82b7785cd8d81f0cc07145114e85ce"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::string Option::output_clusters</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Output cluster file name. </p>
+
+</div>
+</div>
 <a class="anchor" id="a58b8d1e96b0677c5d1932142effda787"></a>
 <div class="memitem">
 <div class="memproto">
@@ -740,6 +778,20 @@ Private Attributes</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Output file name. </p>
+
+</div>
+</div>
+<a class="anchor" id="a97df67df9ba52c6d0c349604fcfb88f2"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::string Option::output_members</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Output member file name. </p>
 
 </div>
 </div>
@@ -876,7 +928,7 @@ Private Attributes</h2></td></tr>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Thu Jul 24 2014 12:18:24 for fof_cluster_finder by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Tue Aug 12 2014 12:30:54 for fof_cluster_finder by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.6
 </small></address>
