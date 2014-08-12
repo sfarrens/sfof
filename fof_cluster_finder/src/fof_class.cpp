@@ -5,6 +5,12 @@
 
 void FoF::setup (double link_r_val, double link_z_val, const std::string &mode_val) { 
   // Function to set-up a FoF instance.
+  if (link_r_val <= 0)
+    throw BadArgumentException("FoF::setup", "link_r_val", "> 0.0");
+  if (link_z_val <= 0)
+    throw BadArgumentException("FoF::setup", "link_z_val", "> 0.0");
+  if (mode_val != "spec" && mode_val != "phot")
+    throw BadArgumentException("FoF::setup", "mode_val", "a valid option [spec/phot]");
   link_r = link_r_val;
   link_z = link_z_val;
   mode = mode_val;
@@ -20,12 +26,16 @@ bool FoF::bin_check (const Zbin &zbin, const Galaxy &gal) {
 
 bool FoF::node_check (const Galaxy &gal, const Kdtree::Kdtree_node &node, double rfriend) {
   // Function that checks if a galaxy is compatibile with a given kd-tree node.
+  if (rfriend < 0)
+    throw BadArgumentException("FoF::node_check", "rfriend", ">= 0.0");
   double dist = astro.angsep(gal.ra, gal.dec, node.ra, node.dec) - node.radius;
   return dist <= rfriend;
 }
 
 bool FoF::friendship (const Zbin &zbin, const Galaxy &gal1, const Galaxy &gal2, double rfriend) {
   // Function that checks if two galaxies are friends in a given redshift bin.
+   if (rfriend < 0)
+    throw BadArgumentException("FoF::node_check", "rfriend", ">= 0.0");
   bool final_check;
   bool check0 = gal1.num != gal2.num;
   bool check1 = bin_check(zbin, gal2);
@@ -96,6 +106,12 @@ void FoF::find_friends_of_friends (const Zbin &zbin, Cluster &cluster,
 void FoF::friends_of_friends (int bin_num, const std::vector<Zbin> &zbin_list, 
 			      std::vector<Galaxy> &gal_list, const Kdtree &tree) {
   // Funciton find friends-of-friends in a given redshift bin.
+  if (bin_num < 0)
+    throw BadArgumentException("FoF::friends_of_friends", "bin_num", ">= 0.0");
+  if (link_r <= 0)
+    throw RuntimeException("FoF::friends_of_friends", "link_r", "> 0.0");
+  if (link_z <= 0)
+    throw RuntimeException("FoF::friends_of_friends", "link_z", "> 0.0");
   cluster_count = -1;
   Zbin zbin = zbin_list[bin_num];
   double rfriend = zbin.rfriend;
@@ -115,6 +131,8 @@ void FoF::friends_of_friends (int bin_num, const std::vector<Zbin> &zbin_list,
 
 void FoF::remove (int min_ngal) {
   // Function that removes clusters that have too few members.
+  if (min_ngal <= 0)
+    throw BadArgumentException("FoF::remove", "min_ngal", "> 0.0");
   std::vector<int> remove_list;
   /* Loop through clusters */
   for(int i = 0; i < list_of_clusters.size(); i++) {

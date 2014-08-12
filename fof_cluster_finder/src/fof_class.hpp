@@ -31,6 +31,18 @@ public:
   /// Vector of Cluster instances.
   std::vector<Cluster> list_of_clusters;
 
+  /** 
+   * Initialise FoF instance.
+   * @param[in] num_val Integer value.
+   * @param[in] z_val Redshift.
+   * @param[in] z_bin_size Redshift bin size.
+   */
+  FoF() { 
+    cluster_count = -1;
+    link_r = 0;
+    link_z = 0;
+  };
+
   /**
    * This method sets-up a FoF instance.
    * @param[in] link_r_val Transverse linking parameter value.
@@ -38,6 +50,40 @@ public:
    * @param[in] mode_val FoF mode ["spec"/"phot"].
    */
   void setup (double, double, const std::string &);
+
+  /**
+   * This method removes Cluster instances that have too few member Galaxy instances.
+   * @param[in] min_ngal Minimum number of member Galaxy instances required.
+   */
+  void remove (int);
+
+  /**
+   * This method performs a friends-of-friends search for Cluster instances in a given 
+   * Zbin instance.
+   * @param[in] bin_num Zbin number.
+   * @param[in] zbin_list Vector of Zbin instances.
+   * @param[in] gal_list Vector of Galaxy instances.
+   * @param[in] tree Vector of Kdtree node instances.
+   */
+  void friends_of_friends (int, const std::vector<Zbin> &, std::vector<Galaxy> &,
+			   const Kdtree &);
+
+private:
+
+  /// Include Astro class.
+  Astro astro;
+
+  /// Count of current number of Cluster instances.
+  int cluster_count;
+
+  /// Transverse linking parameter.
+  double link_r;
+  
+  /// Line-of-sight linking parameter.
+  double link_z;
+
+  /// FoF mode ["spec"/"phot"].
+  std::string mode;
 
   /**
    * This method checks if a Galaxy instance is compatible with a given 
@@ -65,12 +111,6 @@ public:
    * @param[in] rfriend R_friend value.
    */
   bool friendship (const Zbin &, const Galaxy &, const Galaxy &, double);
-
-  /**
-   * This method removes Cluster instances that have too few member Galaxy instances.
-   * @param[in] min_ngal Minimum number of member Galaxy instances required.
-   */
-  void remove (int);
 
   /**
    * This method creates a new Cluster instance.
@@ -110,34 +150,6 @@ public:
    */
   void find_friends_of_friends (const Zbin &, Cluster &, double,
 				std::vector<Galaxy> &, const Kdtree &);
-
-  /**
-   * This method performs a friends-of-friends search for Cluster instances in a given 
-   * Zbin instance.
-   * @param[in] bin_num Zbin number.
-   * @param[in] zbin_list Vector of Zbin instances.
-   * @param[in] gal_list Vector of Galaxy instances.
-   * @param[in] tree Vector of Kdtree node instances.
-   */
-  void friends_of_friends (int, const std::vector<Zbin> &, std::vector<Galaxy> &,
-			   const Kdtree &);
-
-private:
-
-  /// Include Astro class.
-  Astro astro;
-
-  /// Count of current number of Cluster instances.
-  int cluster_count;
-
-  /// Transverse linking parameter.
-  double link_r;
-  
-  /// Line-of-sight linking parameter.
-  double link_z;
-
-  /// FoF mode ["spec"/"phot"].
-  std::string mode;
 
 };
 
