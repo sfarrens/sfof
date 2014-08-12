@@ -33,9 +33,6 @@ public:
 
   /** 
    * Initialise FoF instance.
-   * @param[in] num_val Integer value.
-   * @param[in] z_val Redshift.
-   * @param[in] z_bin_size Redshift bin size.
    */
   FoF() { 
     cluster_count = -1;
