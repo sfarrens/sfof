@@ -1,5 +1,7 @@
 /*Class of cosmology functions*/
 
+#include <cmath>
+#include <limits>
 #include "cosmo.hpp"
 #include "exceptions.hpp"
 
@@ -11,7 +13,7 @@ void Cosmo::set_up(double OmegaM_val, double OmegaL_val) {
     throw BadArgumentException("Cosmo::set_up", "OmegaM_val", "in the range 0.0 <= OmegaM_val <= 1.0");
   if (OmegaL_val < 0 || OmegaL_val > 1.0)
     throw BadArgumentException("Cosmo::set_up", "OmegaL_val", "in the range 0.0 <= OmegaL_val <= 1.0");
-  if (OmegaM_val + OmegaL_val != 1.0)
+  if (std::abs(1.0 - OmegaM_val - OmegaL_val) > std::numeric_limits<double>::epsilon()) 
     throw DomainException("Cosmo::set_up", "OmegaM_val and OmegaL_val must sum to 1.0");
   OmegaM = OmegaM_val;
   OmegaL = OmegaL_val;
