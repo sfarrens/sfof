@@ -75,25 +75,25 @@ void Option::read_opts(int argc, char *argv[], double version_number) {
      "Line-of-sight linking parameter value.")
     ("kdtree_depth", po::value<int>(&kdtree_depth), 
      "Maximum depth of kd-tree.")
-    ("min_ngal", po::value<int>(&min_ngal)->default_value(10), 
+    ("min_ngal", po::value<int>(&min_ngal)->default_value(10, "10"), 
      "Minimum number of cluster galaxies members.")
-    ("z_min", po::value<double>(&z_min)->default_value(0.0), 
+    ("z_min", po::value<double>(&z_min)->default_value(0.0, "0.00"), 
      "Minimum redshift of sample.")
-    ("z_max", po::value<double>(&z_max)->default_value(3.0), 
+    ("z_max", po::value<double>(&z_max)->default_value(3.0, "3.00"), 
      "Maximum redshift of sample.")
-    ("z_bin_size", po::value<double>(&z_bin_size)->default_value(0.01), 
+    ("z_bin_size", po::value<double>(&z_bin_size)->default_value(0.01, "0.01"), 
      "Size of redshift bins.")
-    ("z_ref", po::value<double>(&z_ref)->default_value(0.5), 
+    ("z_ref", po::value<double>(&z_ref)->default_value(0.50, "0.50"), 
      "Reference redshift for calculations.")
-    ("dz_max", po::value<double>(&dz_max)->default_value(0.06), 
+    ("dz_max", po::value<double>(&dz_max)->default_value(0.06, "0.06"), 
      "Maxmimum photo-z error allowed.")
-    ("c", po::value<double>(&c)->default_value(2.997e5), 
+    ("c", po::value<double>(&c)->default_value(2.997e5, "2.997e5"), 
      "Speed of light in km/s.")
-    ("H0", po::value<double>(&H0)->default_value(100), 
+    ("H0", po::value<double>(&H0)->default_value(100, "100.00"), 
      "Hubble parameter in km/s/Mpc.")
-    ("omega_m", po::value<double>(&omega_m)->default_value(0.30), 
+    ("omega_m", po::value<double>(&omega_m)->default_value(0.30, "0.30"), 
      "Matter density.")
-    ("omega_l", po::value<double>(&omega_l)->default_value(0.70), 
+    ("omega_l", po::value<double>(&omega_l)->default_value(0.70, "0.70"), 
      "Dark energy density.")
     ("bg_expect", po::value<double>(&bg_expect), 
      "Expected number density of galaxies per square arcminute.");
