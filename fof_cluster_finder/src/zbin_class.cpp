@@ -1,7 +1,6 @@
 /*Class for storing redshift bin properties*/
 
 #include "zbin_class.hpp"
-#include "exceptions.hpp"
 
 void Zbin::assign_dist (double c, double H0, double Omega_M, double Omega_L) {
   // Calculate the angular diameter distance and the differential comoving 
@@ -10,8 +9,6 @@ void Zbin::assign_dist (double c, double H0, double Omega_M, double Omega_L) {
     throw BadArgumentException("Zbin::assign_dist", "c", "> 0.0");
   if (H0 <= 0)
     throw BadArgumentException("Zbin::assign_dist", "H0", "> 0.0");
-  if (z <= 0) 
-    throw RuntimeException("Zbin::assign_rfriend", "z", "> 0.0");
   cosmo.set_up(Omega_M, Omega_L);
   dvdz = cosmo.dcomvoldz(z);
   da = ((c / H0) * cosmo.angdidis(z));
@@ -27,8 +24,6 @@ void Zbin::assign_rfriend (double r_ref) {
     throw RuntimeException("Zbin::assign_rfriend", "dvdz", "> 0.0");
   if (da <= 0)
     throw RuntimeException("Zbin::assign_rfriend", "da", "> 0.0");
-  if (dz <= 0)
-    throw RuntimeException("Zbin::assign_rfriend", "dz", "> 0.0");
   dndz = double(count) / dz;
   dndv = dndz / dvdz;
   if(dndv > 0) 
@@ -48,8 +43,6 @@ void Zbin::assign_fixed_rfriend (double link_r_val) {
     throw RuntimeException("Zbin::assign_rfriend", "dvdz", "> 0.0");
   if (da <= 0)
     throw RuntimeException("Zbin::assign_rfriend", "da", "> 0.0");
-  if (dz <= 0)
-    throw RuntimeException("Zbin::assign_rfriend", "dz", "> 0.0");
   dndz = double(count) / dz;
   dndv = dndz / dvdz;
   if(dndv > 0)

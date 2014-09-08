@@ -10,12 +10,16 @@ bool Merge_Fileio::existing_clt (int id, const std::vector<int> &list) {
 void Merge_Fileio::read_file_list (const std::string &list, std::vector<Cluster> &cluster_list, 
 				   const std::string &input_mode) { 
   // Function to read a list of files.
+  std::cout<<"File List: "<<list<<std::endl;
+  std::ifstream read_file(list.c_str()); /* open file */
+  if(read_file.fail())
+    throw BadArgumentException("Merge_Fileio::read_file_list", "list", "a valid file name");
+  if (input_mode != "ascii" && input_mode != "fits")
+    throw BadArgumentException("Merge_Fileio::read_file_list", "input_mode", "a valid option [ascii/fits]");
   gal_count = -1;
   clt_count = -1;
   std::string line;
-  std::ifstream read_file(list.c_str()); /* open file */
-  while(!read_file.eof()) { /* while not the end of the file */
-    std::getline(read_file, line); /* read each line */
+  while( std::getline(read_file, line)) { /* read each line */
     if(line.length() >= 1 && 
        line.find("#") == std::string::npos) { /* skip empty lines and lines starting with # */
       if(input_mode == "ascii")
@@ -24,21 +28,23 @@ void Merge_Fileio::read_file_list (const std::string &list, std::vector<Cluster>
 	read_fits(line, cluster_list);
     }
   }
+  read_file.close();
 }
 
 void Merge_Fileio::read_ascii (const std::string &fname, 
 			       std::vector<Cluster> &cluster_list) { 
   // Function to read in an ASCII file and store the contents in a vector of Cluster instances.
   std::cout<<"Reading: "<<fname<<std::endl;
+  std::ifstream read_file(fname.c_str()); /* open file */
+  if(read_file.fail())
+    throw BadArgumentException("Merge_Fileio::read_ascii", "fname", "a valid file name");
   int clt_id;
   unsigned long id;
   double ra, dec, z;
   std::string line;
   std::vector<int> list_of_ids;
   std::vector<std::string> cols; 
-  std::ifstream read_file(fname.c_str()); /* open file */
-  while(!read_file.eof()) { /* while not the end of the file */
-    std::getline(read_file, line); /* read each line */
+  while(std::getline(read_file, line)) { /* read each line */
     if(line.length() >= 1 && 
        line.find("#") == std::string::npos) { /* skip empty lines and lines starting with # */
       fileio.split(line, cols, " "); /* split line into columns */
@@ -66,6 +72,10 @@ void Merge_Fileio::read_fits (const std::string &fname,
 			std::vector<Cluster> &cluster_list) { 
   // Function to read in an FITS file and store the contents in a vector of Cluster instances.
   std::cout<<"Reading: "<<fname<<std::endl;
+  std::ifstream read_file(fname.c_str()); /* open file */
+  if(read_file.fail())
+    throw BadArgumentException("Merge_Fileio::read_fits", "fname", "a valid file name");
+  read_file.close();
   int clt_id;
   unsigned long id;
   double ra, dec, z;
@@ -115,6 +125,10 @@ void Merge_Fileio::read_fits (const std::string &fname,
 void Merge_Fileio::output_file_names (const std::string &output, const std::string &output_mode, 
 				      std::string &cluster_file_name, std::string &member_file_name) {
   // Function to set up output file names.
+  if (output.empty())
+    throw BadArgumentException("Merge_Fileio::output_file_names", "output", "a valid string");
+  if (output_mode != "ascii" && output_mode != "fits")
+    throw BadArgumentException("Merge_Fileio::output_file_names", "output_mode", "a valid option [ascii/fits]");
   std::stringstream cluster_file_stream, member_file_stream;
   if(output_mode == "ascii") {
     cluster_file_stream<<output<<"_clusters.dat";

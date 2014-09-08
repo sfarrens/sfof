@@ -6,7 +6,6 @@ void Main::read_options (int argc, char *argv[]) {
   // Function to read code options.
   double version_number = 3.0;
   param_file = "param_file.ini";
-  opt.read_param_file(param_file);
   opt.read_opts(argc, argv, version_number);
 }
 

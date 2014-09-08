@@ -17,6 +17,7 @@
 
 #include <math.h>
 #include "cosmo.hpp"
+#include "exceptions.hpp"
 
 class Zbin { // Class structure for redshift bin properties.
 
@@ -60,6 +61,10 @@ public:
    */
   Zbin(int num_val, double z_val, double z_bin_size) { 
     /**< Initialise Zbin instance. */
+    if (z_val <= 0)
+      throw BadArgumentException("Zbin", "z_val", "> 0.0");
+    if (z_bin_size <= 0)
+      throw BadArgumentException("Zbin", "z_bin_size", "> 0.0");
     num = num_val;
     z = z_val;
     dz = z_bin_size;
