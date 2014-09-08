@@ -16,8 +16,6 @@
  * parameter file.
  */
 
-#include <iostream> 
-#include <getopt.h>
 #include "fileio_class.hpp"
 
 class Option { // Class for code options
@@ -94,6 +92,9 @@ public:
   /// Overlap in declination.
   double dec_overlap;
 
+  /// Configuration File
+  std::string config_file;
+
   /// Input file name.
   std::string input_file;
 
@@ -145,11 +146,6 @@ public:
    */
   void read_split_opts (int, char *[], double);
 
-  /**
-   * This method reads options provided in a parameter file for Main.
-   * @param[in] file_name Parameter file name.
-   */
-  void read_param_file (const std::string &);
 
 private:
 
@@ -157,24 +153,14 @@ private:
   Fileio fileio;
 
   /**
-   * This method prints help information for Main.
-   */
-  void help();
-
-  /**
-   * This method prints help information for Cat_Merge.
-   */
-  void merge_help();
-
-  /**
-   * This method prints help information for Cat_Split.
-   */
-  void split_help();
-
-  /**
    * This method prints the code version number.
    */
   void version(double);
+
+  /**
+   * This method prints the current parameter values.
+   */
+  void print_parameters();
 
 };
 
