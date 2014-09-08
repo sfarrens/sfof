@@ -16,6 +16,8 @@
 #include <boost/test/included/unit_test.hpp>
 #include <boost/test/parameterized_test.hpp>
 
+#include <iostream>
+
 using namespace boost::unit_test;
 
 BOOST_AUTO_TEST_SUITE (Master_test_suite)
@@ -34,7 +36,7 @@ BOOST_AUTO_TEST_CASE( test_Astro )
   Astro astro;
   BOOST_TEST_MESSAGE("entering case for Astro");
   BOOST_CHECK( astro.find_bin(1.0, 1.0, 1.0) == 0 );
-  BOOST_CHECK_THROW( astro.find_bin(1.0, 2.0, 1.0) == 0, BadArgumentExeception);   // out-of-range values should be handled
+  BOOST_CHECK_THROW( astro.find_bin(1.0, 2.0, 1.0) == 0, BadArgumentException);   // out-of-range values should be handled
 
   /* .. */
   
@@ -51,8 +53,10 @@ BOOST_AUTO_TEST_CASE( test_Options_and_Galaxies )
   double version_number = 1.0;
   
   BOOST_TEST_MESSAGE("entering case for Options and Galaxy");
-  opt.read_param_file(param_file_name);
-  //opt.read_opts(framework::master_test_suite().argc, framework::master_test_suite().argv, version_number);
+  // opt.read_param_file(param_file_name);
+
+  std::cout<<"Print Me: "<<framework::master_test_suite().argc<<std::endl;
+  opt.read_opts(framework::master_test_suite().argc, framework::master_test_suite().argv, version_number);
 
   BOOST_CHECK( opt.link_r != 0);
   BOOST_CHECK( opt.fof_mode == "phot");
