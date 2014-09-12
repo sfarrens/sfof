@@ -1,5 +1,7 @@
 /*Class of computational functions*/
 
+#include <cmath>
+#include <iostream>
 #include "comp.hpp"
 
 void Comp::start_time () { 

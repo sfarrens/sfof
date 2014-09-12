@@ -1,5 +1,7 @@
 /*Class for storing cluster properties*/
 
+#include <algorithm>
+#include <vector>
 #include "cluster_class.hpp"
 
 void Cluster::add_gal (const Galaxy &gal) {

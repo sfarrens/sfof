@@ -18,7 +18,6 @@
  */
 
 #include <math.h>
-#include <vector>
 #include "astro.hpp"
 #include "cosmo.hpp"
 #include "galaxy_class.hpp"

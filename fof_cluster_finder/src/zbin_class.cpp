@@ -1,5 +1,6 @@
 /*Class for storing redshift bin properties*/
 
+#include <cmath>
 #include "zbin_class.hpp"
 
 void Zbin::assign_dist (double c, double H0, double Omega_M, double Omega_L) {

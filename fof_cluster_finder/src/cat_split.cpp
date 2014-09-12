@@ -1,3 +1,4 @@
+#include <algorithm>
 #include "cat_split.hpp"
 #include "exceptions.hpp"
 

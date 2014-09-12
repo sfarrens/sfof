@@ -16,10 +16,6 @@
  * basic calculations required for cosmology.
  */
 
-#include <math.h>
-#include <stdio.h>
-#include <stdlib.h>
-
 class Cosmo { // Class structure for cosmology functions
 
 public:

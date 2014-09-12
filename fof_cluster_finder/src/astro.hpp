@@ -16,9 +16,6 @@
  * basic calculations that often required for astronomy or cosmology.
  */
 
-#include <algorithm>
-#include <math.h>
-#include <numeric>
 #include <vector>
 
 class Astro { // Class structure for astronmy functions

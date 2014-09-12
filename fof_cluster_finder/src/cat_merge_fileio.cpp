@@ -1,5 +1,6 @@
 /*Class for file input and output*/
 
+#include <algorithm>
 #include "cat_merge_fileio.hpp"
 
 bool Merge_Fileio::existing_clt (int id, const std::vector<int> &list) {

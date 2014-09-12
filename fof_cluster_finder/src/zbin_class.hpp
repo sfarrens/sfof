@@ -15,7 +15,6 @@
  * This class calculates and stores Zbin properties.
  */
 
-#include <math.h>
 #include "cosmo.hpp"
 #include "exceptions.hpp"
 

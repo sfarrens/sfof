@@ -13,10 +13,7 @@
  * @brief Class containing basic functions used in generic codes.
  */
 
-#include <iostream>
-#include <math.h>
 #include <time.h>
-#include <stdio.h>
 
 class Comp { // Class structure for computational functions
 

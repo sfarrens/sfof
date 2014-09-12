@@ -1,5 +1,8 @@
 /*Class of astronomy functions*/
 
+#include <algorithm>
+#include <cmath>
+#include <numeric>
 #include "astro.hpp"
 #include "exceptions.hpp"
 
