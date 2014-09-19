@@ -49,4 +49,8 @@ target_link_libraries(test_code ${CFITSIO_LIBRARIES}  ${Boost_PROGRAM_OPTIONS_LI
 add_executable(unit_test ${CPP_SRC} ${CPP_UNITTEST_SOURCE_DIR}/unit_tests.cpp)
 target_link_libraries(unit_test ${CFITSIO_LIBRARIES} ${Boost_PROGRAM_OPTIONS_LIBRARY_DEBUG})
 
+add_executable(astro_test ${CPP_SRC} ${CPP_UNITTEST_SOURCE_DIR}/astro_test.cpp)
+target_link_libraries(astro_test ${CFITSIO_LIBRARIES}  ${Boost_PROGRAM_OPTIONS_LIBRARY_DEBUG})
+
 add_test(unit_test unit_test "--config ../examples/param_file.unit_test.ini")
+add_test(astro_test astro_test)
