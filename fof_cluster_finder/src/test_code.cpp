@@ -1,19 +1,19 @@
-#include "astro.hpp"
-
+#include <cmath>
+#include <limits>
 #include <iostream>
-#include <sstream>
 
-int main (int argc, char *argv[]) {
+int main(int argc, char* argv[]) {
   
-  std::cout<<"THIS IS TEST CODE:"<<std::endl;
+  double OmegaM_val = atof(argv[1]);
+  double OmegaL_val = atof(argv[2]);
+
+  std::cout<<OmegaM_val<<" "<<OmegaL_val<<" "<<abs(1.0 - OmegaM_val - OmegaL_val)<<" "
+	   <<std::numeric_limits<double>::epsilon()<<std::endl;
+
+  if (std::abs(1.0 - OmegaM_val - OmegaL_val) > std::numeric_limits<double>::epsilon())
+    std::cout<<"True!"<<std::endl;
+  else
+    std::cout<<"False!"<<std::endl;
   
-  Astro astro;
-  std::vector<double> stuff;
-
-  for (int i = 0; i < 10; i++)
-    stuff.push_back(i * 0.5);
-
-  std::cout<<astro.mean(stuff)<<" "<<astro.median(stuff)<<" "<<astro.variance(stuff)<<" "
-	   <<astro.stderr(stuff)<<" "<<astro.stderr_median(stuff)<<std::endl;
-
+  return 0;
 }
