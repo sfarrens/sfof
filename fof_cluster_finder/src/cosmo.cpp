@@ -38,6 +38,8 @@ double Cosmo::angdidis(double z) {
    universe, using the function propmotdis().  H0=c=1.
 ---------------------------------------------------------------------------- */
 double Cosmo::angdidis2(double z1, double z2) {
+  if (z2 <= z1)
+    throw BadArgumentException("Cosmo::angdidis2", "z2", "> z1");
   double y1, y2, y12, OmegaR;
   OmegaR = 1.0 - OmegaM - OmegaL;
   if(OmegaR <- TINY) printf("WARNING: angdidis2() does not work at Omega_R<0!");
@@ -55,6 +57,8 @@ double Cosmo::angdidis2(double z1, double z2) {
    universe, using dcomdisdz().  H0=c=1.
 ---------------------------------------------------------------------------- */
 double Cosmo::comdis(double z) {
+  if (z < 0.0)
+    throw BadArgumentException("Cosmo::comdis", "z", ">= 0.0");
   int nsteps;
   double dz, dC, zz;
   nsteps = ((int) (z / MINSTEP)) + 1;
@@ -96,7 +100,7 @@ double Cosmo::comvol(double z) {
 ---------------------------------------------------------------------------- */
 double Cosmo::dcomdisdz(double z) {
   if (z < 0.0)
-    throw BadArgumentException("Cosmo::dcomdisdz", "z", "> 0.0");
+    throw BadArgumentException("Cosmo::dcomdisdz", "z", ">= 0.0");
   return (1.0 / sqrt((1.0 + z) * (1.0 + z) * (1.0 + OmegaM * z) - z *
 		     (2.0 + z) * OmegaL));
 }
@@ -127,7 +131,7 @@ double Cosmo::dcomvoldz(double z) {
 ---------------------------------------------------------------------------- */
 double Cosmo::dlookbackdz(double z) {
   if (z < 0.0)
-    throw BadArgumentException("Cosmo::dlookbackdz", "z", "> 0.0");
+    throw BadArgumentException("Cosmo::dlookbackdz", "z", ">= 0.0");
   return 1.0 / ((1.0 + z) * sqrt((1.0 + z) * (1.0 + z) * (1.0 + OmegaM * z) - z * 
 				 (2.0 + z) * OmegaL));
 }
@@ -142,7 +146,7 @@ double Cosmo::dlookbackdz(double z) {
 ---------------------------------------------------------------------------- */
 double Cosmo::doptdepthdz(double z) {
   if (z < 0.0)
-    throw BadArgumentException("Cosmo::doptdepthdz", "z", "> 0.0");
+    throw BadArgumentException("Cosmo::doptdepthdz", "z", ">= 0.0");
   return (1.0 + z) * (1.0 + z) / sqrt((1.0 + z) * (1.0 + z) * (1.0 + OmegaM * z) - 
 				      z * (2.0 + z) * OmegaL);
 }
@@ -243,7 +247,7 @@ double Cosmo::optdepth(double z) {
 ---------------------------------------------------------------------------- */
 double Cosmo::propmotdis(double z) {
   if (z < 0.0)
-    throw BadArgumentException("Cosmo::propmotdis", "z", "> 0.0");
+    throw BadArgumentException("Cosmo::propmotdis", "z", ">= 0.0");
   double dM, q0, OmegaK, sqrtOmegaK;
   if(fabs(OmegaM) < TINY && fabs(OmegaL) < TINY) {
     dM = (z + 0.5 * z * z) / (1.0 + z);
