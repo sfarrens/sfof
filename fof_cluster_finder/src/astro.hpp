@@ -111,7 +111,7 @@ public:
    * @param[in] elements Vector of double floating point values.
    * @return Standard error on the mean. 
    */
-  double stderr (const std::vector<double> &);
+  double stderr_mean (const std::vector<double> &);
 
   /**
    * This method calculates the standard error on the median of a   

@@ -97,7 +97,7 @@ double Astro::stdev (const std::vector<double> &elements) {
   return pow(variance(elements), 0.5);
 }
 
-double Astro::stderr (const std::vector<double> &elements) {
+double Astro::stderr_mean (const std::vector<double> &elements) {
   // Function that computes the standard error of the mean
   // of a vector of doubles.
   return stdev(elements) / pow(double(elements.size()), 0.5);
@@ -106,7 +106,7 @@ double Astro::stderr (const std::vector<double> &elements) {
 double Astro::stderr_median (const std::vector<double> &elements) {
   // Function that computes the standard error of the median of a 
   // vector of doubles.
-  return 1.253 * stderr(elements);
+  return 1.253 * stderr_mean(elements);
 }
 
 double Astro::min (const std::vector<double> &elements) {
