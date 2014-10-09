@@ -17,6 +17,7 @@
  */
 
 #include <vector>
+#include "point_class.hpp"
 
 class Astro { // Class structure for astronmy functions
 
@@ -76,6 +77,14 @@ public:
    */
   double angsep (double, double, double, double);
 
+  /**
+   * This method calculates the angular separation in radians between
+   * two points.
+   * @param[in] Point1 Right ascension and Declination of first point.
+   * @param[in] Point2 Right ascension and Declination of second point.
+   * @return Anugular separation in radians. 
+   */
+  double angsep (const Point &, const Point &);
   /**
    * This method calculates the mean value of a vector of doubles.
    * @param[in] elements Vector of double floating point values.

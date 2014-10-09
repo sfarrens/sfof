@@ -91,15 +91,6 @@ private:
   bool bin_check (const Zbin &, const Galaxy &);
 
   /**
-   * This method checks if a Galaxy instance is compatibile with a given Kdtree 
-   * node instance.
-   * @param[in] gal Galaxy instance.
-   * @param[in] node Kdtree node instance.
-   * @param[in] rfriend R_friend value.
-   */
-  bool node_check (const Galaxy &, const Kdtree::Kdtree_node &, double);
-
-  /**
    * This method checks if two Galaxy instances satisfy the linking conditions in a 
    * given Zbin instance.
    * @param[in] zbin Zbin instance.

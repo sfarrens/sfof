@@ -28,8 +28,8 @@ void Cluster::assign_props () {
   ngal = mem.size();
   if(ngal > 0) {
     for(int i = 0; i < ngal; i++) {
-      g_ra.push_back(mem[i].ra);
-      g_dec.push_back(mem[i].dec);
+      g_ra.push_back(mem[i].P.P[0]);
+      g_dec.push_back(mem[i].P.P[1]);
       g_z.push_back(mem[i].z);
     }
     ra = astro.median(g_ra);

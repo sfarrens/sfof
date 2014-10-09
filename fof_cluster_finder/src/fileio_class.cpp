@@ -242,8 +242,8 @@ void Fileio::write_ascii (const std::vector<Cluster> &cluster_list, const std::s
       write_members<<std::setw(6)<<cluster_list[i].num<<" ";
       write_members<<std::setw(6)<<cluster_list[i].ngal<<" ";
       write_members<<std::setw(12)<<cluster_list[i].mem[j].id<<" ";
-      write_members<<std::setw(7)<<cluster_list[i].mem[j].ra<<" ";
-      write_members<<std::setw(7)<<std::showpos<<cluster_list[i].mem[j].dec<<" ";
+      write_members<<std::setw(7)<<cluster_list[i].mem[j].P.P[0]<<" ";
+      write_members<<std::setw(7)<<std::showpos<<cluster_list[i].mem[j].P.P[1]<<" ";
       write_members<<std::setw(5)<<std::noshowpos<<cluster_list[i].mem[j].z<<"\n";
     }
   }
@@ -329,9 +329,9 @@ void Fileio::write_fits (const std::vector<Cluster> &cluster_list, const std::st
       fits_write_col(fptr2, TUINT, 2, current_pos, 1, 1, &tint, &status);
       tlong = cluster_list[i - 1].mem[j - 1].id;
       fits_write_col(fptr2, TULONG, 3, current_pos, 1, 1, &tlong, &status); 
-      tdouble = cluster_list[i - 1].mem[j - 1].ra;
+      tdouble = cluster_list[i - 1].mem[j - 1].P.P[0];
       fits_write_col(fptr2, TDOUBLE, 4, current_pos, 1, 1, &tdouble, &status);
-      tdouble = cluster_list[i - 1].mem[j - 1].dec;
+      tdouble = cluster_list[i - 1].mem[j - 1].P.P[1];
       fits_write_col(fptr2, TDOUBLE, 5, current_pos, 1, 1, &tdouble, &status);
       tdouble = cluster_list[i - 1].mem[j - 1].z;
       fits_write_col(fptr2, TDOUBLE, 6, current_pos, 1, 1, &tdouble, &status);

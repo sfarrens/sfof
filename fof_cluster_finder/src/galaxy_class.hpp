@@ -30,12 +30,9 @@ public:
   
   /// Zbin instance corresponding to Galaxy instance.
   int bin;
-  
-  /// Right ascension of Galaxy instance.
-  double ra;
 
-  /// Declination of Galaxy instance.
-  double dec;
+  /// coordinates of the Galaxy instance: the entries corresponds to Right ascension and Declination respectively
+  Point P;
 
   /// Redshift of Galaxy instance.
   double z;
@@ -70,8 +67,8 @@ public:
       throw BadArgumentException("Galaxy", "z_val", ">= 0.0");
     num = num_val;
     id = id_val;
-    ra = ra_val;
-    dec = dec_val;
+    P.P[0] = ra_val;
+    P.P[1] = dec_val;
     z = z_val;
     v = z / (1 + z);
     da = 0;
@@ -95,8 +92,8 @@ public:
       throw BadArgumentException("Galaxy", "dz_val", "> 0.0");
     num = num_val;
     id = id_val;
-    ra = ra_val;
-    dec = dec_val;
+    P.P[0] = ra_val;
+    P.P[1] = dec_val;
     z = z_val;
     dz = dz_val;
     da = 0;

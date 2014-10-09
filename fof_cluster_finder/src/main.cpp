@@ -70,8 +70,8 @@ void Main::assign_linking_param () {
 
 void Main::make_kdtree () {
   // Function to split data into kd-tree.
-  std::cout<<"Building kd-tree to depth of "<<opt.kdtree_depth<<std::endl;
-  tree.set_kdtree(galaxies, opt.kdtree_depth);
+  std::cout<<"Building kd-tree "<<std::endl;
+  tree.set_Kdtree(galaxies, 0.7);
 }
 
 void Main::find_friends () {

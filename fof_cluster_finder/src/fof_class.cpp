@@ -24,14 +24,6 @@ bool FoF::bin_check (const Zbin &zbin, const Galaxy &gal) {
     return fabs(gal.z - zbin.z) <= link_z * gal.dz;
 }
 
-bool FoF::node_check (const Galaxy &gal, const Kdtree::Kdtree_node &node, double rfriend) {
-  // Function that checks if a galaxy is compatibile with a given kd-tree node.
-  if (rfriend < 0)
-    throw BadArgumentException("FoF::node_check", "rfriend", ">= 0.0");
-  double dist = astro.angsep(gal.ra, gal.dec, node.ra, node.dec) - node.radius;
-  return dist <= rfriend;
-}
-
 bool FoF::friendship (const Zbin &zbin, const Galaxy &gal1, const Galaxy &gal2, double rfriend) {
   // Function that checks if two galaxies are friends in a given redshift bin.
    if (rfriend < 0)
@@ -40,7 +32,7 @@ bool FoF::friendship (const Zbin &zbin, const Galaxy &gal1, const Galaxy &gal2, 
   bool check0 = gal1.num != gal2.num;
   bool check1 = bin_check(zbin, gal2);
   bool check2 = !gal2.in_cluster[zbin.num];
-  double dist = astro.angsep(gal1.ra, gal1.dec, gal2.ra, gal2.dec);
+  double dist = astro.angsep(gal1.P, gal2.P);
   bool check3 = dist <= rfriend;    
   if (mode == "spec") {
     bool check4 = fabs(gal1.v - gal2.v) <= (link_z / (1 + gal1.z));
@@ -68,29 +60,32 @@ void FoF::add_member (const Zbin &zbin, Galaxy &gal, Cluster &cluster) {
   cluster.add_gal(gal);
 }
 
-void FoF::find_friends (const Zbin &zbin, Galaxy &gal, 
-			double rfriend, std::vector<Galaxy> &gal_list,
-			const Kdtree &tree) {
-  // Function to find galaxies linked to the galaxy in question.
-  /* Loop through kd-tree nodes */
-  for(int j = 0; j < tree.node_list.size(); j++) {
-    /* Check if galaxy is compatible with kd-tree node */
-    if(node_check(gal, tree.node_list[j], rfriend)) {
-      /* Loop through node members */
-      for(int k = 0; k < tree.node_list[j].members.size(); k++) {
-	/* Check if galaxies are friends */
-	int gal_now = tree.node_list[j].members[k].num;
-	if(friendship(zbin, gal, gal_list[gal_now], rfriend)) {
-	  /* Create new cluster */
-	  if(!gal.in_cluster[zbin.num]) 
-	    new_cluster(zbin, gal, gal_list[gal_now]);
-	  /* Add new member to existing cluster */
-	  else 
-	    add_member(zbin, gal_list[gal_now], list_of_clusters[cluster_count]);
-	}
-      } /* end of node member loop */
+void FoF::find_friends (const Zbin &zbin, Galaxy &gal, double rfriend, std::vector<Galaxy> &gal_list, const Kdtree &tree) {
+  //! Function to find galaxies linked to the galaxy in question.
+  /**< Loop through kd-tree nodes */
+
+  std::deque<Galaxy*> myfriends;
+  
+  tree.range_search(gal, zbin.rfriend, myfriends);
+  
+  std::deque<Galaxy*>::iterator itr;
+  for(itr=myfriends.begin(); itr != myfriends.end(); itr++) {
+    int gal_now = (*itr)->num;
+    if(friendship(zbin, gal, gal_list[gal_now], rfriend)) {
+      /**< Create new cluster */
+      if(!gal.in_cluster[zbin.num]) { 
+        new_cluster(zbin, gal, gal_list[gal_now]);
+        //std::cout << "== nc zbin " << zbin.num << " gal " << gal_now << std::endl;
+      }
+      /**< Add new member to existing cluster */
+      else {
+        add_member(zbin, gal_list[gal_now], list_of_clusters[cluster_count]);
+        //std::cout << "== am zbin " << zbin.num << " gal " << gal_now << " cl " << cluster_count << std::endl;
+      }
     }
-  } /* end of node loop */
+  }
+  
+  myfriends.clear();
 }
 
 void FoF::find_friends_of_friends (const Zbin &zbin, Cluster &cluster, 

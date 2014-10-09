@@ -43,6 +43,25 @@ double Astro::rad2deg (double angle) {
   return angle * 180.0 / M_PI;
 }
 
+
+double Astro::angsep (const Point &P1, const Point &P2) {
+  //! Function that returns the angular separation (in radians) between two points.
+  if (P1.P[0] < 0 || P1.P[0] > 360)
+    throw BadArgumentException("Astro::angsep", "ra1", "in the range 0 <= ra1 <= 360");
+  if (P2.P[0] < 0 || P2.P[0] > 360)
+    throw BadArgumentException("Astro::angsep", "ra2", "in the range 0 <= ra2 <= 360");
+  if (P1.P[1] < -90 || P1.P[1] > 90)
+    throw BadArgumentException("Astro::angsep", "dec1", "in the range -90 <= dec1 <= 90");
+  if (P2.P[1] < -90 || P2.P[1] > 90)
+    throw BadArgumentException("Astro::angsep", "dec2", "in the range -90 <= dec2 <= 90");
+  if(P1.P[0] == P2.P[0] && P1.P[1] == P2.P[1])
+    return 0.0;
+  else
+    return acos(sin(deg2rad(P1.P[1])) * sin(deg2rad(P2.P[1])) + cos(deg2rad(P1.P[1])) * 
+		cos(deg2rad(P2.P[1])) * cos(deg2rad(P1.P[0]) - deg2rad(P2.P[0])));
+}
+
+
 double Astro::angsep (double ra1, double dec1, double ra2, double dec2) {
   // Function that returns the angular separation (in radians) between two points.
   if (ra1 < 0 || ra1 > 360)

@@ -1,121 +1,90 @@
-/**
- * @file kdtree_class.hpp
- *
- * @author Samuel Farrens + Stefano Sartor
- */
+/*Class header for Kdtree*/
 
 #ifndef KDTREE_CLASS_H
 #define KDTREE_CLASS_H
 
-/**
- * @class Kdtree
- *
- * @brief Class for building a kd-tree in RA-DEC space.
- *
- * This class builds a two-dimentional kd-tree in RA-DEC space to a specified
- * depth.
- */
-
+#include <cstdlib>
+#include <iostream>
+#include <sstream>
+#include <string>
 #include <algorithm>
 #include <string>
 #include <vector>
+#include <deque>
 #include "astro.hpp"
 #include "galaxy_class.hpp"
+#include "point_class.hpp"
 
-class Kdtree { // Class structure for kd-tree properties
+#define FLTC (1.0 + 1e-5)
+enum node_to_galaxy {External, Intersects, Internal};
+
+class Kdtree{ //! Class structure for kd-tree properties
+
   
 public:
 
-  /**
-   * @class Kdtree_node
-   *
-   * @brief Class for storing Kdtree_node properties. 
-   *
-   * This class assigns Galaxy instances to a node at a specified depth.
-   */
-  class Kdtree_node{ // Nested class structure for kd-tree node properties
-  
-  public:
+  class Kdtree_node{ //! Nested class structure for kd-tree node properties
 
-    /// Vector of node member Galaxy instances.
-    std::vector<Galaxy> members;
-
-    /// Right ascension of node instance.
-    double ra;
-
-    /// Declination of node instance.
-    double dec;
-
-    /// Size of node instance.
-    double size;
-
-    /// Radius of node instance.
-    double radius;
-
-    /** 
-     * Initialise Kdtree_node instance.
-     * @param[in] begin Begining itterator of Galaxy vector.
-     * @param[in] end Ending itterator of Galaxy vector.
-     */
-    Kdtree_node (std::vector<Galaxy*>::iterator begin,  
-		 std::vector<Galaxy*>::iterator end){
-      size = end-begin;
-      members.reserve(size);
-      while(begin != end){
-          members.push_back(*(*begin));
-          ++begin;
-      }
-      std::vector<double> ra_list, dec_list;
-      for (int i = 0; i < size; i++) {
-    ra_list.push_back(members[i].ra);
-    dec_list.push_back(members[i].dec);
-      }
-      ra = astro.mean(ra_list);
-      dec = astro.mean(dec_list);
-      radius = std::max(astro.angsep(ra, dec, astro.min(ra_list), astro.min(dec_list)),
-            astro.angsep(ra, dec, astro.max(ra_list), astro.max(dec_list)));
-    }
-    
   private:
-
-    /// Include Astro class.
     Astro astro;
+    
+  public:
+    Galaxy *Gal;
+    Kdtree_node *left, *right;
+    
+    //double center_ra, center_dec;
+    //double half_ra, half_dec;
+    class Point bottom_left, top_right;
+    class Point center;
+    double radius;
+    int axis;
+    unsigned int Ngalaxies;
+    //unsigned int ID;
 
+    //Kdtree_node ();
+
+    void print_node_info(class Kdtree_node *, const std::vector<Galaxy> &);
+      
+    node_to_galaxy check_node(class Point &, double, int);    
+    
   }; /*End of Kdtree_node nested class*/
 
-  /// Maximum depth to which the Kdtree instance should be built.
-  int max_depth;
-
-  /// Vector of Kdtree_node instances.
-  std::vector<Kdtree_node> node_list; 
-
-  /// Pointers to vector of Galaxy instances.
-  std::vector<Galaxy*> gaps_ptrs;
-
-  /**
-   * This method sets-up a Kdtree instance.
-   * @param[in] gals Vector of Galaxy instances.
-   * @param[in] max_depth_val Maximum depth of Kdtree.
-   */
-  void set_kdtree (std::vector<Galaxy>&, int);
-
-  /**
-   * This method splits the data at a given depth and itterates until the maximum
-   * depth is reached.
-   * @param[in] begin Begining itterator of Galaxy vector.
-   * @param[in] end Ending itterator of Galaxy vector..
-   * @param[in] depth Current depth of Kdtree.
-   */
-  void build_kdtree (
-          std::vector<Galaxy*>::iterator begin,
-          std::vector<Galaxy*>::iterator end,
-          int depth);
-
 private:
-  
-  /// Include Astro class.
   Astro astro;
   
+public:
+  
+  class Kdtree_node *Nodes, *root;
+  std::vector<Galaxy> AllG;
+  std::vector<Galaxy*> GalPtrs;
+
+  Point MIN, MAX;
+  int NNodes, NMaxNodes, NLeaves;
+  double max_axis_inequality;
+
+  
+  class Kdtree_node* build_kdtree (std::vector<Galaxy*>::iterator begin,
+                                   std::vector<Galaxy*>::iterator end,
+                                   class Point [2],
+                                   int);
+
+  //Kdtree();
+  void set_Kdtree(std::vector<Galaxy> &, double);
+  
+  //~Kdtree() {delete [] Nodes;}
+  
+  void WalkTree(class Kdtree_node *, int);
+
+  void WalkTree(class Kdtree_node *, std::ofstream &);
+
+  void range_search(Point &, int, double, std::deque<Galaxy*> &) const;
+  
+  void range_search(Galaxy &, double, std::deque<Galaxy*> &) const;
+
+  void range_search_loop(Kdtree_node *, class Point &, int, double, node_to_galaxy, std::deque<Galaxy*> &, int&) const;
+
 };
 
-#endif // KDTREE_CLASS_H
+
+
+#endif /* KDTREE_CLASS_H */

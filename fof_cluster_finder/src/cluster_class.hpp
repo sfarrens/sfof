@@ -21,6 +21,7 @@
 #include "astro.hpp"
 #include "cosmo.hpp"
 #include "galaxy_class.hpp"
+#include "point_class.hpp"
 
 class Cluster { // Class structure for cluster properties.
 
