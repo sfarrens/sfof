@@ -1,4 +1,5 @@
 #include <algorithm>
+#include <iostream>
 #include "cat_split.hpp"
 #include "exceptions.hpp"
 
