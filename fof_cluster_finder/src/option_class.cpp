@@ -95,7 +95,7 @@ void Option::read_opts(int argc, char *argv[], double version_number) {
      "Matter density.")
     ("omega_l", po::value<double>(&omega_l)->default_value(0.70, "0.70"), 
      "Dark energy density.")
-    ("bg_expect", po::value<double>(&bg_expect), 
+    ("bg_expect", po::value<double>(&bg_expect)->default_value(0.0), 
      "Expected number density of galaxies per square arcminute.");
  
   /* Command Line Options */
