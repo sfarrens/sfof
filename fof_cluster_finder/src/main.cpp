@@ -71,7 +71,8 @@ void Main::assign_linking_param () {
 void Main::make_kdtree () {
   // Function to split data into kd-tree.
   std::cout<<"Building kd-tree "<<std::endl;
-  tree.set_Kdtree(galaxies, 0.7);
+  tree.set_Kdtree(galaxies, 0.3);
+  tree.write_Kdtree();
 }
 
 void Main::find_friends () {
@@ -86,21 +87,24 @@ void Main::find_friends () {
     fof_list.push_back(fof_bin);
   }
   //Start OMP//
+  int unused_nodes = 0;
 #pragma omp parallel
   {
+    
     int nts=omp_get_num_threads();
     int tid=omp_get_thread_num();
 #pragma omp master
     std::cout<<" OMP: Using "<<nts<<" threads."<<std::endl;
-#pragma omp for 
+#pragma omp for reduction(+:unused_nodes)
     for (int i = 0; i < nbins; i++) {
       std::cout<<"ID: "<<tid<<" finding clusters at z = "<<zbins[i].z<<std::endl;
       fof_list[i].setup(opt.link_r, opt.link_z, opt.fof_mode);
-      fof_list[i].friends_of_friends(i, zbins, galaxies, tree);
+      unused_nodes += fof_list[i].friends_of_friends(i, zbins, galaxies, tree);
       fof_list[i].remove(opt.min_ngal);
     }
   }
   //End OMP//
+  std::cout << unused_nodes << " not used nodes"<< std::endl;
   for (int i = 0; i < nbins; i++) 
     for (int j = 0; j < fof_list[i].list_of_clusters.size(); j++) {
       fof_list[i].list_of_clusters[j].rename(cluster_count);

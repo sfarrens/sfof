@@ -62,7 +62,7 @@ public:
    * @param[in] gal_list Vector of Galaxy instances.
    * @param[in] tree Vector of Kdtree node instances.
    */
-  void friends_of_friends (int, const std::vector<Zbin> &, std::vector<Galaxy> &,
+  int friends_of_friends (int, const std::vector<Zbin> &, std::vector<Galaxy> &,
 			   const Kdtree &);
 
 private:
@@ -125,7 +125,7 @@ private:
    * @param[in] gal_list Vector of Galaxy instances.
    * @param[in] tree Vector of Kdtree node instances.
    */
-  void find_friends (const Zbin &, Galaxy &, double, std::vector<Galaxy> &, const Kdtree &);
+  int find_friends (const Zbin &, Galaxy &, double, std::vector<Galaxy> &, const Kdtree &);
 
   /**
    * This method finds Galaxy instances linked to the members of a given Cluster 
@@ -136,8 +136,8 @@ private:
    * @param[in] gal_list Vector of Galaxy instances.
    * @param[in] tree Vector of Kdtree node instances.
    */
-  void find_friends_of_friends (const Zbin &, Cluster &, double,
-				std::vector<Galaxy> &, const Kdtree &);
+  int find_friends_of_friends (const Zbin &, Cluster &, double,
+                               std::vector<Galaxy> &, const Kdtree &);
 
 };
 

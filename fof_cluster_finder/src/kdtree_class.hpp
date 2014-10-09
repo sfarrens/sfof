@@ -71,17 +71,17 @@ public:
   //Kdtree();
   void set_Kdtree(std::vector<Galaxy> &, double);
   
-  //~Kdtree() {delete [] Nodes;}
+  void write_Kdtree();
   
   void WalkTree(class Kdtree_node *, int);
 
   void WalkTree(class Kdtree_node *, std::ofstream &);
 
-  void range_search(Point &, int, double, std::deque<Galaxy*> &) const;
+  int range_search(Point &, int, double, std::deque<Galaxy*> &) const;
   
-  void range_search(Galaxy &, double, std::deque<Galaxy*> &) const;
+  int range_search(Galaxy &, double, std::deque<Galaxy*> &) const;
 
-  void range_search_loop(Kdtree_node *, class Point &, int, double, node_to_galaxy, std::deque<Galaxy*> &, int&) const;
+  int range_search_loop(Kdtree_node *, class Point &, int, double, node_to_galaxy, std::deque<Galaxy*> &) const;
 
 };
 

@@ -60,13 +60,14 @@ void FoF::add_member (const Zbin &zbin, Galaxy &gal, Cluster &cluster) {
   cluster.add_gal(gal);
 }
 
-void FoF::find_friends (const Zbin &zbin, Galaxy &gal, double rfriend, std::vector<Galaxy> &gal_list, const Kdtree &tree) {
+int FoF::find_friends (const Zbin &zbin, Galaxy &gal, double rfriend, std::vector<Galaxy> &gal_list, const Kdtree &tree) {
   //! Function to find galaxies linked to the galaxy in question.
   /**< Loop through kd-tree nodes */
 
   std::deque<Galaxy*> myfriends;
+  int unused_nodes;
   
-  tree.range_search(gal, rfriend, myfriends);
+  unused_nodes = tree.range_search(gal, rfriend, myfriends);
   
   std::deque<Galaxy*>::iterator itr;
   for(itr=myfriends.begin(); itr != myfriends.end(); itr++) {
@@ -86,19 +87,22 @@ void FoF::find_friends (const Zbin &zbin, Galaxy &gal, double rfriend, std::vect
   }
   
   myfriends.clear();
+  return unused_nodes;
 }
 
-void FoF::find_friends_of_friends (const Zbin &zbin, Cluster &cluster, 
+int FoF::find_friends_of_friends (const Zbin &zbin, Cluster &cluster, 
 				   double rfriend, std::vector<Galaxy> &gal_list, 
 				   const Kdtree &tree){
   // Function to find the galaxies linked to existing cluster members.
   /* Loop through cluster members */
+  int unused_nodes = 0;
   for(int i = 0; i < cluster.mem.size(); i++) {
-    find_friends(zbin, gal_list[cluster.mem[i].num], rfriend, gal_list, tree);
+    unused_nodes += find_friends(zbin, gal_list[cluster.mem[i].num], rfriend, gal_list, tree);
   } /* end of cluster member loop */
+  return unused_nodes;
 }
 
-void FoF::friends_of_friends (int bin_num, const std::vector<Zbin> &zbin_list, 
+int FoF::friends_of_friends (int bin_num, const std::vector<Zbin> &zbin_list, 
 			      std::vector<Galaxy> &gal_list, const Kdtree &tree) {
   // Funciton find friends-of-friends in a given redshift bin.
   if (bin_num < 0)
@@ -110,18 +114,20 @@ void FoF::friends_of_friends (int bin_num, const std::vector<Zbin> &zbin_list,
   cluster_count = -1;
   Zbin zbin = zbin_list[bin_num];
   double rfriend = zbin.rfriend;
+  int unused_nodes = 0;
   /* Loop through galaxies */
   for(int i = 0; i < gal_list.size(); i++) {
     /* Modify rfriend for spectroscopic mode */
     if (mode == "spec") rfriend = zbin_list[gal_list[i].bin].link_r / gal_list[i].da;
     /* Check if galaxy is already in a cluster (f-loop) */
     if(!gal_list[i].in_cluster[zbin.num] && bin_check(zbin, gal_list[i])) { 
-      find_friends(zbin, gal_list[i], rfriend, gal_list, tree);
+      unused_nodes += find_friends(zbin, gal_list[i], rfriend, gal_list, tree);
       /* Check if galaxy is now in a cluster (fof-loop) */
       if(gal_list[i].in_cluster[zbin.num])
-	find_friends_of_friends(zbin, list_of_clusters[cluster_count], rfriend, gal_list, tree);
+	unused_nodes += find_friends_of_friends(zbin, list_of_clusters[cluster_count], rfriend, gal_list, tree);
     }
   } /* end of galaxy loop */
+  return unused_nodes;
 }
 
 void FoF::remove (int min_ngal) {

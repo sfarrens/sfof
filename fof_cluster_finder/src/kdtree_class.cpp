@@ -1,5 +1,8 @@
 /*Class for storing kdtree properties*/
 
+#include <fstream>
+#include <iomanip>
+#include <iostream>
 #include "kdtree_class.hpp"
 
 
@@ -42,9 +45,26 @@ node_to_galaxy Kdtree::Kdtree_node::check_node(Point &origin, double sradius, in
     }
     
 
+void Kdtree::write_Kdtree() {
+  std::ofstream kdtree_file ("tree.dat");
+  kdtree_file << std::fixed << std::setprecision(6);
+  for(int i = NNodes-1; i >= 0; i--) {
+    if(Nodes[i].Gal == NULL){
+      double xdelta = (Nodes[i].top_right.P[0] - Nodes[i].bottom_left.P[0])/2;
+      double ydelta = (Nodes[i].top_right.P[1] - Nodes[i].bottom_left.P[1])/2;
+      // writes the # of the node
+      kdtree_file << i << " ";
+      // writes coordiantes: center, xdelta, ydelta, radius
+      kdtree_file << Nodes[i].center.P[0] << " " << Nodes[i].center.P[1] << " " << xdelta << " " << ydelta << " " << Nodes[i].radius << " ";
+      // writes the splitting axis and the ratio of maximum side over the minimum side
+      kdtree_file << Nodes[i].axis << " " << std::max(xdelta, ydelta)/std::min(xdelta, ydelta) << std::endl;
+    }
+  }
+  kdtree_file.close();
+}
 
-void Kdtree::set_Kdtree(std::vector<Galaxy> &Gals, double max_inq = 0.3)// : AllG(Gals)
-  {
+void Kdtree::set_Kdtree(std::vector<Galaxy> &Gals, double max_inq = 0.3) {
+    
     std::vector<Galaxy*>::iterator itr;
     Point box[2];
 #ifdef TIMING
@@ -253,35 +273,32 @@ void Kdtree::WalkTree(class Kdtree_node *start, int mode)
   }
 
 
-void Kdtree::range_search(Point &origin, int num, double link_r, std::deque<Galaxy*> &GalList) const
+int Kdtree::range_search(Point &origin, int num, double link_r, std::deque<Galaxy*> &GalList) const
 {
-  int useless = 0;
-  range_search_loop(root, origin, num, link_r, Intersects, GalList, useless);
-  // if(link_r > 0 && useless > 0)
-  //   std::cout << useless << " nodes open with no use" << std::endl;
+  return range_search_loop(root, origin, num, link_r, Intersects, GalList);
 }
   
-void Kdtree::range_search(Galaxy &G, double link_r, std::deque<Galaxy*> &GalList) const
+int Kdtree::range_search(Galaxy &G, double link_r, std::deque<Galaxy*> &GalList) const
 {
-  int useless = 0;
-  range_search_loop(root, G.P, G.num, link_r, Intersects, GalList, useless);
-  // if(link_r > 0 && useless > 0)
-  //   std::cout << useless << " nodes open with no use" << std::endl;
+  return range_search_loop(root, G.P, G.num, link_r, Intersects, GalList);
 };
 
-void Kdtree::range_search_loop(Kdtree_node *start, class Point &origin, int num, double radius, node_to_galaxy status, std::deque<Galaxy*> &GalList, int &useless) const
+int Kdtree::range_search_loop(Kdtree_node *start, class Point &origin, int num, double radius, node_to_galaxy status, std::deque<Galaxy*> &GalList) const
 {
     
     node_to_galaxy lstatus, rstatus;
+    int ret = 0;
     
     if(status == External)
-      return;
+      return 1;
     
     if(start -> Gal != NULL) {
       if( ((start->Gal)->num != num) &&
           ((status == Internal) ||
            (start->check_node(origin, radius, num) == Internal) ) )
         GalList.push_back(start->Gal);
+      else
+        ret = 1;
     }
     else {
       if(status == Internal) {
@@ -295,18 +312,18 @@ void Kdtree::range_search_loop(Kdtree_node *start, class Point &origin, int num,
       
       if(lstatus > External){
         int save = GalList.size();
-        range_search_loop(start->left, origin, num, radius, lstatus, GalList, useless);
+        ret = range_search_loop(start->left, origin, num, radius, lstatus, GalList);
         if(GalList.size() == save)
-          useless++;
+          ret++;
       }
       if(rstatus > External) {
         int save = GalList.size();
-        range_search_loop(start->right, origin, num, radius, rstatus, GalList, useless);
+        ret = range_search_loop(start->right, origin, num, radius, rstatus, GalList);
         if(GalList.size() == save)
-          useless++;
+          ret++;
       }
     }
     
-    return;
+    return ret;
   };
 
