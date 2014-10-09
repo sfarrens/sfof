@@ -97,6 +97,47 @@ void Kdtree::set_Kdtree(std::vector<Galaxy> &Gals, double max_inq = 0.3)// : All
   };
 
 
+#if __cplusplus >= 201103L
+  
+inline void mynth( int N, int ax,
+                     std::vector<Galaxy*>::iterator begin,
+                     std::vector<Galaxy*>::iterator end) {
+std::nth_element(begin, begin+N/2, end,
+                   [&](Galaxy *G1, Galaxy *G2)->bool {return G1->P.P[ax] < G2->P.P[ax];});
+}
+
+inline std::vector<Galaxy*>::iterator mymax( int ax,
+                                               std::vector<Galaxy*>::iterator begin,
+                                               std::vector<Galaxy*>::iterator end) {
+return std::max_element(begin, end,
+                          [&](Galaxy *G1, Galaxy *G2)->bool {return G1->P.P[ax] < G2->P.P[ax];});
+}
+
+#else
+
+class GalaxyCompCoord{
+public:
+GalaxyCompCoord(int ax){}
+bool operator()(Galaxy* A, Galaxy* B) const{
+return A->P.P[ax] < B->P.P[ax];
+}
+};
+
+inline void mynth( int N, int ax,
+                     std::vector<Galaxy*>::iterator begin,
+                     std::vector<Galaxy*>::iterator end) {
+std::nth_element(begin, begin+N/2, end, GalaxyCompCoord(ax));
+}
+
+inline std::vector<Galaxy*>::iterator mymax( int ax,
+                   std::vector<Galaxy*>::iterator begin,
+                   std::vector<Galaxy*>::iterator end) {
+return std::max_element(begin, end, GalaxyCompCoord(ax));
+}
+
+
+#endif
+
 Kdtree::Kdtree_node* Kdtree::build_kdtree(std::vector<Galaxy*>::iterator begin,
                                           std::vector<Galaxy*>::iterator end,
                                           Point box[2],
@@ -135,14 +176,16 @@ Kdtree::Kdtree_node* Kdtree::build_kdtree(std::vector<Galaxy*>::iterator begin,
       else
         axis = depth % 2;
       
-      std::nth_element(begin, begin+elems/2, end, [&](Galaxy *G1, Galaxy *G2)->bool {return G1->P.P[axis] < G2->P.P[axis];});
+      //std::nth_element(begin, begin+elems/2, end, [&](Galaxy *G1, Galaxy *G2)->bool {return G1->P.P[axis] < G2->P.P[axis];});
+      mynth(elems, axis, begin, end);
 
       half_node = begin+elems/2;
       split_value = (*half_node)->P.P[axis];
 
       mybox[!axis] = box[!axis];
 
-      itr = std::max_element(begin, half_node, [&](Galaxy *G1, Galaxy *G2)->bool {return G1->P.P[axis] < G2->P.P[axis];});
+      //itr = std::max_element(begin, half_node, [&](Galaxy *G1, Galaxy *G2)->bool {return G1->P.P[axis] < G2->P.P[axis];});
+      itr = mymax(axis, begin, half_node);
       
       mybox[axis].P[0] = box[axis].P[0];
       mybox[axis].P[1] = (*itr)->P.P[axis];
