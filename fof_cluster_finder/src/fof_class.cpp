@@ -66,7 +66,7 @@ void FoF::find_friends (const Zbin &zbin, Galaxy &gal, double rfriend, std::vect
 
   std::deque<Galaxy*> myfriends;
   
-  tree.range_search(gal, zbin.rfriend, myfriends);
+  tree.range_search(gal, rfriend, myfriends);
   
   std::deque<Galaxy*>::iterator itr;
   for(itr=myfriends.begin(); itr != myfriends.end(); itr++) {
