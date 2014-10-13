@@ -136,10 +136,12 @@ return std::max_element(begin, end,
 #else
 
 class GalaxyCompCoord{
+private:
+    int ax_;
 public:
-GalaxyCompCoord(int ax){}
+GalaxyCompCoord(int ax):ax_(ax){}
 bool operator()(Galaxy* A, Galaxy* B) const{
-return A->P.P[ax] < B->P.P[ax];
+return A->P.P[ax_] < B->P.P[ax_];
 }
 };
 
