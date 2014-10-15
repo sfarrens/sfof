@@ -20,8 +20,15 @@ bool FoF::bin_check (const Zbin &zbin, const Galaxy &gal) {
   // Function that checks if a galaxy is compatible with a given redshift bin.
   if (mode == "spec")
     return true;
-  else
-    return fabs(gal.z - zbin.z) <= link_z * gal.dz;
+  else {
+    if (std::abs(gal.z - zbin.z) < link_z * gal.dz)
+      return true;
+    else if (std::abs(std::abs(gal.z - zbin.z) - (link_z * gal.dz)) 
+	     < std::numeric_limits<double>::epsilon())
+      return true;
+    else
+      return false;
+  }
 }
 
 bool FoF::friendship (const Zbin &zbin, const Galaxy &gal1, const Galaxy &gal2, double rfriend) {
