@@ -90,21 +90,22 @@ void Main::find_friends () {
   int unused_nodes = 0;
 #pragma omp parallel
   {
-    
     int nts=omp_get_num_threads();
     int tid=omp_get_thread_num();
 #pragma omp master
     std::cout<<" OMP: Using "<<nts<<" threads."<<std::endl;
 #pragma omp for reduction(+:unused_nodes)
     for (int i = 0; i < nbins; i++) {
-      std::cout<<"ID: "<<tid<<" finding clusters at z = "<<zbins[i].z<<std::endl;
+      std::cout<<"ID: "<<tid<<" finding clusters at z = "<<zbins[i].z<<"; ";
       fof_list[i].setup(opt.link_r, opt.link_z, opt.fof_mode);
       unused_nodes += fof_list[i].friends_of_friends(i, zbins, galaxies, tree);
       fof_list[i].remove(opt.min_ngal);
+      std::cout<<std::setw(4)<<fof_list[i].list_of_clusters.size()
+	       <<" candidates detected."<<std::endl;
     }
   }
   //End OMP//
-  std::cout << unused_nodes << " not used nodes"<< std::endl;
+  std::cout << unused_nodes << " unused nodes"<< std::endl;
   for (int i = 0; i < nbins; i++) 
     for (int j = 0; j < fof_list[i].list_of_clusters.size(); j++) {
       fof_list[i].list_of_clusters[j].rename(cluster_count);
@@ -113,10 +114,21 @@ void Main::find_friends () {
     }
 }
 
+void Main::check_results() {
+  // Function that checks how many cluster canidates 
+  // have been detected.
+  if (clusters.size() > 0)
+    merge_clusters();
+  else 
+    std::cout<<"No clusters deteced in sample!"<<std::endl;
+}
+
 void Main::merge_clusters () {
   // Function that merges clusters with members in common.
-  std::cout<<"Merging clusters."<<std::endl;
+  std::cout<<"Merging "<<clusters.size()<<" candidates."<<std::endl;
   Merge merge_clusters(clusters);
+  std::cout<<clusters.size()<<" clusters detected."<<std::endl;
+  assign_cluster_props();
 }
 
 void Main::assign_cluster_props () {
@@ -134,6 +146,7 @@ void Main::assign_cluster_props () {
   //* Rename clusters */
   for(int i = 0; i < clusters.size(); i++) 
     clusters[i].rename(i + 1);
+  output_results();
 }
 
 void Main::output_results () {
@@ -164,9 +177,7 @@ int main (int argc, char *argv[]) {
     run_code.assign_linking_param();
     run_code.make_kdtree();
     run_code.find_friends();
-    run_code.merge_clusters();
-    run_code.assign_cluster_props();
-    run_code.output_results();
+    run_code.check_results();
     run_code.comp.end_time();
     run_code.comp.print_time();
   }

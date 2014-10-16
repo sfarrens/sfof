@@ -61,6 +61,12 @@ public:
    * A reference value is defined in order to ensure uniformity.
    */
   void assign_linking_param ();
+  
+  /**
+   * This method checks how many cluster candidates have been
+   * detected.
+   */
+  void check_results();
 
   /**
    * This method initialises a Kdtree instance.
