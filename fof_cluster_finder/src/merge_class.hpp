@@ -36,6 +36,10 @@ public:
     destroy(clusters);
   };
 
+  Merge(){
+
+  }
+
 private:
 
   /**
@@ -76,6 +80,10 @@ private:
    * @param[in] clusters Vector of Cluster instances.
    */
   void destroy (std::vector<Cluster> &);
+public:
+  void join_uf(std::vector<Cluster> &);
+
+  void rearrange_clusters(std::vector<Galaxy>&, std::vector<Cluster>&);
 
 };
 

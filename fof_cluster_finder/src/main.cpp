@@ -126,7 +126,11 @@ void Main::check_results() {
 void Main::merge_clusters () {
   // Function that merges clusters with members in common.
   std::cout<<"Merging "<<clusters.size()<<" candidates."<<std::endl;
-  Merge merge_clusters(clusters);
+  //Merge merge_clusters(clusters);
+  Merge merge_clusters;
+  merge_clusters.join_uf(clusters);
+  std::cout<<clusters.size()<<" clusters candidates."<<std::endl;
+  merge_clusters.rearrange_clusters(galaxies,clusters);
   std::cout<<clusters.size()<<" clusters detected."<<std::endl;
   assign_cluster_props();
 }

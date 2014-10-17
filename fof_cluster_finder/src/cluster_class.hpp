@@ -84,6 +84,19 @@ public:
     da = 0;  
   };
   
+  Cluster (){
+      num = 0;
+      ngal = 0;
+      ra = 0;
+      ra_err = 0;
+      dec = 0;
+      dec_err = 0;
+      z = 0;
+      z_err = 0;
+      size = 0;
+      area =0;
+  }
+
   /**
    * This method adds a Galaxy instance to a Cluster instance.
    * @param gal Galaxy instance.
