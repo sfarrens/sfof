@@ -181,6 +181,9 @@ int main (int argc, char *argv[]) {
     run_code.assign_linking_param();
     run_code.make_kdtree();
     run_code.find_friends();
+    run_code.comp.end_time();
+    run_code.comp.print_time();
+    run_code.comp.start_time();
     run_code.check_results();
     run_code.comp.end_time();
     run_code.comp.print_time();

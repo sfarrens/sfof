@@ -4,7 +4,7 @@
 #include <vector>
 #include "cluster_class.hpp"
 
-void Cluster::add_gal (const Galaxy &gal) {
+void Cluster::add_gal (Galaxy *gal) {
   // Add galaxy properties to Cluster instance.
   mem.push_back(gal);
 }
@@ -28,9 +28,9 @@ void Cluster::assign_props () {
   ngal = mem.size();
   if(ngal > 0) {
     for(int i = 0; i < ngal; i++) {
-      g_ra.push_back(mem[i].P.P[0]);
-      g_dec.push_back(mem[i].P.P[1]);
-      g_z.push_back(mem[i].z);
+      g_ra.push_back(mem[i]->P.P[0]);
+      g_dec.push_back(mem[i]->P.P[1]);
+      g_z.push_back(mem[i]->z);
     }
     ra = astro.median(g_ra);
     dec = astro.median(g_dec);

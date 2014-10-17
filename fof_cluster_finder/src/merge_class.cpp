@@ -4,9 +4,9 @@
 #include <map>
 #include <iostream>
 
-bool Merge::gal_in_clt (const Galaxy &gal, const Cluster &clt) {
-    // Function to check if a Galaxy instance is a member of a Cluster instance.
-    return std::find(clt.mem.begin(), clt.mem.end(), gal) != clt.mem.end();
+bool Merge::gal_in_clt (Galaxy *gal, const Cluster &clt) {
+  // Function to check if a Galaxy instance is a member of a Cluster instance.
+  return std::find(clt.mem.begin(), clt.mem.end(), gal) != clt.mem.end();
 }
 
 bool Merge::check_mem (const Cluster &clt1, const Cluster &clt2) {

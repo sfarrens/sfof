@@ -50,20 +50,20 @@ bool FoF::friendship (const Zbin &zbin, const Galaxy &gal1, const Galaxy &gal2, 
   return final_check;
 }
 
-void FoF::new_cluster (const Zbin &zbin, Galaxy &gal1, Galaxy &gal2) {
+void FoF::new_cluster (const Zbin &zbin, Galaxy* gal1, Galaxy *gal2) {
   // Function to create a new cluster.
   cluster_count++;
   Cluster cluster_here(cluster_count);
-  gal1.in_cluster[zbin.num] = true;
-  gal2.in_cluster[zbin.num] = true;
+  gal1->in_cluster[zbin.num] = true;
+  gal2->in_cluster[zbin.num] = true;
   cluster_here.add_gal(gal1);
   cluster_here.add_gal(gal2);
-  list_of_clusters.push_back(cluster_here);
+  list_of_clusters.push_back(std::move(cluster_here));
 }
 
-void FoF::add_member (const Zbin &zbin, Galaxy &gal, Cluster &cluster) {
+void FoF::add_member (const Zbin &zbin, Galaxy* gal, Cluster &cluster) {
   // Function to add a new member to an existing cluster.
-  gal.in_cluster[zbin.num] = true;
+  gal->in_cluster[zbin.num] = true;
   cluster.add_gal(gal);
 }
 
@@ -82,12 +82,12 @@ int FoF::find_friends (const Zbin &zbin, Galaxy &gal, double rfriend, std::vecto
     if(friendship(zbin, gal, gal_list[gal_now], rfriend)) {
       /**< Create new cluster */
       if(!gal.in_cluster[zbin.num]) { 
-        new_cluster(zbin, gal, gal_list[gal_now]);
+        new_cluster(zbin, &gal, &gal_list[gal_now]);
         //std::cout << "== nc zbin " << zbin.num << " gal " << gal_now << std::endl;
       }
       /**< Add new member to existing cluster */
       else {
-        add_member(zbin, gal_list[gal_now], list_of_clusters[cluster_count]);
+        add_member(zbin, &gal_list[gal_now], list_of_clusters[cluster_count]);
         //std::cout << "== am zbin " << zbin.num << " gal " << gal_now << " cl " << cluster_count << std::endl;
       }
     }
@@ -104,7 +104,7 @@ int FoF::find_friends_of_friends (const Zbin &zbin, Cluster &cluster,
   /* Loop through cluster members */
   int unused_nodes = 0;
   for(int i = 0; i < cluster.mem.size(); i++) {
-    unused_nodes += find_friends(zbin, gal_list[cluster.mem[i].num], rfriend, gal_list, tree);
+    unused_nodes += find_friends(zbin, gal_list[cluster.mem[i]->num], rfriend, gal_list, tree);
   } /* end of cluster member loop */
   return unused_nodes;
 }

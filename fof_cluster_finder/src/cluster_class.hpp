@@ -64,7 +64,7 @@ public:
   double da;
 
   /// Vector of Cluster member Galaxy instances.
-  std::vector<Galaxy> mem;
+  std::vector<Galaxy*> mem;
 
   /** 
    * Initialise Cluster instance. 
@@ -101,7 +101,7 @@ public:
    * This method adds a Galaxy instance to a Cluster instance.
    * @param gal Galaxy instance.
    */
-  void add_gal (const Galaxy &);
+  void add_gal (Galaxy*);
 
   /**
    * This method calculates the angular diameter distance of a

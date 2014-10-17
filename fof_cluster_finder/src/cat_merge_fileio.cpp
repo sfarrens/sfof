@@ -55,13 +55,14 @@ void Merge_Fileio::read_ascii (const std::string &fname,
       ra = atof(cols[3].c_str());
       dec = atof(cols[4].c_str());
       z = atof(cols[5].c_str());
-      Galaxy gal_here(gal_count, id, ra, dec, z); /* intialise spec Galaxy */      
+      Galaxy* gal_here = new Galaxy(gal_count, id, ra, dec, z); /* intialise spec Galaxy */
       if (!existing_clt(clt_id, list_of_ids)) {
 	list_of_ids.push_back(clt_id);
 	clt_count++;
 	Cluster cluster_here(clt_count);
 	cluster_list.push_back(cluster_here);
       }
+      //FIXME check if this is correct.
       cluster_list[clt_count].add_gal(gal_here);
       cols.clear(); /* clear column vector */
     }
@@ -108,13 +109,14 @@ void Merge_Fileio::read_fits (const std::string &fname,
 	ra = atof(cols[3].c_str());
 	dec = atof(cols[4].c_str());
 	z = atof(cols[5].c_str());
-	Galaxy gal_here(gal_count, id, ra, dec, z); /* intialise spec Galaxy */      
+	Galaxy* gal_here = new Galaxy(gal_count, id, ra, dec, z); /* intialise spec Galaxy */
 	if (!existing_clt(clt_id, list_of_ids)) {
 	  list_of_ids.push_back(clt_id);
 	  clt_count++;
 	  Cluster cluster_here(clt_count);
 	  cluster_list.push_back(cluster_here);
 	}
+    //FIXME check if this is correct.
 	cluster_list[clt_count].add_gal(gal_here);
        	cols.clear(); /* clear column vector */
       }      
