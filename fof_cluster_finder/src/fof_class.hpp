@@ -106,7 +106,7 @@ private:
    * @param[in] gal1 Galaxy instance 1.
    * @param[in] gal2 Galaxy instance 2.
    */
-  void new_cluster (const Zbin &, Galaxy &, Galaxy &);
+  void new_cluster (const Zbin &, Galaxy*, Galaxy*);
 
   /**
    * This method adds a new member Galaxy instance to an existing Cluster instance.
@@ -114,7 +114,7 @@ private:
    * @param[in] gal Galaxy instance.
    * @param[in] cluster Cluster instance.
    */
-  void add_member (const Zbin &, Galaxy &, Cluster &);
+  void add_member (const Zbin &, Galaxy* , Cluster &);
   
   /**
    * This method finds Galaxy instances linked to a given Galaxy instance in a given

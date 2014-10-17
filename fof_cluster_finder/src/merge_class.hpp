@@ -44,7 +44,7 @@ private:
    * @param[in] gal Galaxy instance.
    * @param[in] clt Cluster instance.
    */
-  bool gal_in_clt (const Galaxy &, const Cluster &);
+  bool gal_in_clt (Galaxy *, const Cluster &);
 
   /**
    * This method checks if two given Cluster instances have any

@@ -2,7 +2,7 @@
 
 #include "merge_class.hpp"
 
-bool Merge::gal_in_clt (const Galaxy &gal, const Cluster &clt) {
+bool Merge::gal_in_clt (Galaxy *gal, const Cluster &clt) {
   // Function to check if a Galaxy instance is a member of a Cluster instance.
   return std::find(clt.mem.begin(), clt.mem.end(), gal) != clt.mem.end();
 }
