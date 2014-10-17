@@ -42,47 +42,21 @@ void Merge::seek (std::vector<Cluster> &clusters) {
                     }
 }
 
-bool first_time=true;
-
 void Merge::join_uf(std::vector<Cluster> &clusters){
-    for(int i = 0; i < clusters.size(); i++){
-        if(first_time){
-            for(int j=1; j<clusters[i].mem.size(); j++)
-                std::cout << "gal_id "<< clusters[i].mem[j].id
-                << " uf: " << (long long) clusters[i].mem[j].uf.parent << std::endl;
-        }
-        for(int j=1; j<clusters[i].mem.size(); j++){
-            clusters[i].mem[j].uf.join(&clusters[i].mem[0].uf);
-        }
-        //  std::cout << "merged cluster " << clusters[i].mem.size() << " wide" << std::endl;
-        if(first_time){
-            std::cout << std::endl;
-            for(int j=1; j<clusters[i].mem.size(); j++)
-                std::cout << "gal_id "<< clusters[i].mem[j].id
-                << " uf: " << (long long) clusters[i].mem[j].uf.parent << std::endl;
-            first_time=false;
-        }
-    }
-
+    for(int i = 0; i < clusters.size(); i++)
+        for(int j=1; j<clusters[i].mem.size(); j++)
+            clusters[i].mem[j]->uf.join(&clusters[i].mem[0]->uf);
 }
 
 void Merge::rearrange_clusters(std::vector<Galaxy>& gals, std::vector<Cluster>& clus_vec){
     typedef std::vector<Galaxy>::iterator gal_it;
     typedef std::map<UnionFind*,Cluster>::iterator map_it;
-
-    std::cout << std::endl;
-    for(int j=1; j<clus_vec[0].mem.size(); j++)
-        std::cout << "gal_id "<< clus_vec[0].mem[j].id
-        << " uf: " << (long long) clus_vec[0].mem[j].uf.parent << std::endl;
-
-
     std::map<UnionFind*,Cluster> m;
-    std::cout << "gals tot=" << gals.size() << std::endl;
+
     for(gal_it it = gals.begin(); it != gals.end(); ++it){
         if(it->uf.is_singlethon())
             continue;
-        std::cout << "new map entry!!!" << std::endl;
-        m[it->uf.find()].add_gal(*it);
+        m[it->uf.find()].add_gal(&*it);
     }
     clus_vec.clear();
     clus_vec.reserve(m.size());

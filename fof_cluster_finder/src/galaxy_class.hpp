@@ -20,7 +20,7 @@
 #include "astro.hpp"
 #include "cosmo.hpp"
 #include "exceptions.hpp"
-#include <iostream>
+
 
 class UnionFind{
 //DBG private:
@@ -34,7 +34,6 @@ public:
             parent = this;
         if (parent != this)
             parent = parent->find();
-  //      std::cout << "uf " << (long long) parent << std::endl;
         return parent;
     }
 

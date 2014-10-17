@@ -37,7 +37,6 @@ public:
   };
 
   Merge(){
-
   }
 
 private:
