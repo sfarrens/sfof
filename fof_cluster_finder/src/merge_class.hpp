@@ -25,7 +25,7 @@ class Merge { // Class for merge functions
 
 public:
 
-  /** 
+  /**
    * Initialise Merge instance.
    * @param[in] clusters Vector of Cluster instances.
    */

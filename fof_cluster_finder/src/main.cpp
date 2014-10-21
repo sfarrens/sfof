@@ -126,7 +126,6 @@ void Main::check_results() {
 void Main::merge_clusters () {
   // Function that merges clusters with members in common.
   std::cout<<"Merging "<<clusters.size()<<" candidates."<<std::endl;
-  //Merge merge_clusters(clusters);
   Merge merge_clusters;
   merge_clusters.join_uf(clusters);
   merge_clusters.rearrange_clusters(galaxies,clusters);
@@ -179,9 +178,6 @@ int main (int argc, char *argv[]) {
     run_code.assign_linking_param();
     run_code.make_kdtree();
     run_code.find_friends();
-    run_code.comp.end_time();
-    run_code.comp.print_time();
-    run_code.comp.start_time();
     run_code.check_results();
     run_code.comp.end_time();
     run_code.comp.print_time();

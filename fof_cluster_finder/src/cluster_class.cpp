@@ -52,8 +52,8 @@ void Cluster::assign_sn (double bg_expect) {
     throw BadArgumentException("Cluster::assign_sn", "bg_expect", ">= 0.0");
   if (ngal <= 0)
     throw RuntimeException("Cluster::assign_sn", "ngal", "> 0.0");
-  if (area <= 0)
-    throw RuntimeException("Cluster::assign_sn", "area", "> 0.0");
+  if (area < 0)
+    throw RuntimeException("Cluster::assign_sn", "area", ">= 0.0");
   if(bg_expect == 0) 
     sn = -1.0;
   else
