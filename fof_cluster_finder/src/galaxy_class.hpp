@@ -117,10 +117,10 @@ public:
      */
     Galaxy(int num_val,  unsigned long id_val, double ra_val, double dec_val,
             double z_val, double dz_val) {
-        if (z_val <= 0)
-            throw BadArgumentException("Galaxy", "z_val", "> 0.0");
-        if (dz_val <= 0)
-            throw BadArgumentException("Galaxy", "dz_val", "> 0.0");
+        if (z_val < 0)
+            throw BadArgumentException("Galaxy", "z_val", ">= 0.0");
+        if (dz_val < 0)
+            throw BadArgumentException("Galaxy", "dz_val", ">= 0.0");
         num = num_val;
         id = id_val;
         P.P[0] = ra_val;
