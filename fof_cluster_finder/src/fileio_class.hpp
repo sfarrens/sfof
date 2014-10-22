@@ -24,6 +24,7 @@
 #include <sstream>
 #include <string>
 #include <vector>
+#include <map>
 #include "astro.hpp"
 #include "cluster_class.hpp"
 #include "galaxy_class.hpp"

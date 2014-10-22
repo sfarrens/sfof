@@ -21,6 +21,7 @@
 #include <vector>
 #include "comp.hpp"
 #include "cluster_class.hpp"
+#include "galaxy_class.hpp"
 #include "cat_merge_fileio.hpp"
 #include "fileio_class.hpp"
 #include "merge_class.hpp"
@@ -29,7 +30,6 @@
 class Cat_Merge { // Class structure for Cat_Merge.
 
 public:
-
   /// Include Comp class.
   Comp comp;
 
@@ -64,7 +64,6 @@ public:
   void write_files ();
   
 private:
-  
   /// Include Fileio class.
   Fileio fileio;
   
@@ -76,6 +75,9 @@ private:
  
   /// Vector of Cluster instances.
   std::vector<Cluster> clusters;
+
+  /// Set of Galaxies.
+  Merge_Fileio::gal_container galaxies;
 
 };
 

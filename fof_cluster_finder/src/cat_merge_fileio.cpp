@@ -3,13 +3,14 @@
 #include <algorithm>
 #include "cat_merge_fileio.hpp"
 
+
 bool Merge_Fileio::existing_clt (int id, const std::vector<int> &list) {
   // Function to check if a cluster ID is new.
   return std::find(list.begin(), list.end(), id) != list.end();
 }
 
 void Merge_Fileio::read_file_list (const std::string &list, std::vector<Cluster> &cluster_list, 
-				   const std::string &input_mode) { 
+				   gal_container& gals, const std::string &input_mode) {
   // Function to read a list of files.
   std::cout<<"File List: "<<list<<std::endl;
   std::ifstream read_file(list.c_str()); /* open file */
@@ -24,16 +25,16 @@ void Merge_Fileio::read_file_list (const std::string &list, std::vector<Cluster>
     if(line.length() >= 1 && 
        line.find("#") == std::string::npos) { /* skip empty lines and lines starting with # */
       if(input_mode == "ascii")
-	read_ascii(line, cluster_list); /* read each file */
+	read_ascii(line, cluster_list,gals); /* read each file */
       else
-	read_fits(line, cluster_list);
+	read_fits(line, cluster_list,gals);
     }
   }
   read_file.close();
 }
 
 void Merge_Fileio::read_ascii (const std::string &fname, 
-			       std::vector<Cluster> &cluster_list) { 
+			       std::vector<Cluster> &cluster_list,gal_container& gals) {
   // Function to read in an ASCII file and store the contents in a vector of Cluster instances.
   std::cout<<"Reading: "<<fname<<std::endl;
   std::ifstream read_file(fname.c_str()); /* open file */
@@ -55,14 +56,14 @@ void Merge_Fileio::read_ascii (const std::string &fname,
       ra = atof(cols[3].c_str());
       dec = atof(cols[4].c_str());
       z = atof(cols[5].c_str());
-      Galaxy* gal_here = new Galaxy(gal_count, id, ra, dec, z); /* intialise spec Galaxy */
+      auto ref = gals.insert(gal_container::value_type(id,Galaxy(gal_count, id, ra, dec, z)));/* intialise spec Galaxy */
+      Galaxy* gal_here =  &ref.first->second;
       if (!existing_clt(clt_id, list_of_ids)) {
 	list_of_ids.push_back(clt_id);
 	clt_count++;
 	Cluster cluster_here(clt_count);
 	cluster_list.push_back(cluster_here);
       }
-      //FIXME check if this is correct.
       cluster_list[clt_count].add_gal(gal_here);
       cols.clear(); /* clear column vector */
     }
@@ -71,7 +72,7 @@ void Merge_Fileio::read_ascii (const std::string &fname,
 }
 
 void Merge_Fileio::read_fits (const std::string &fname, 
-			std::vector<Cluster> &cluster_list) { 
+			std::vector<Cluster> &cluster_list,gal_container& gals) {
   // Function to read in an FITS file and store the contents in a vector of Cluster instances.
   std::cout<<"Reading: "<<fname<<std::endl;
   std::ifstream read_file(fname.c_str()); /* open file */
@@ -109,14 +110,14 @@ void Merge_Fileio::read_fits (const std::string &fname,
 	ra = atof(cols[3].c_str());
 	dec = atof(cols[4].c_str());
 	z = atof(cols[5].c_str());
-	Galaxy* gal_here = new Galaxy(gal_count, id, ra, dec, z); /* intialise spec Galaxy */
+      auto ref = gals.insert(gal_container::value_type(id,Galaxy(gal_count, id, ra, dec, z)));/* intialise spec Galaxy */
+      Galaxy* gal_here =  &ref.first->second;
 	if (!existing_clt(clt_id, list_of_ids)) {
 	  list_of_ids.push_back(clt_id);
 	  clt_count++;
 	  Cluster cluster_here(clt_count);
 	  cluster_list.push_back(cluster_here);
 	}
-    //FIXME check if this is correct.
 	cluster_list[clt_count].add_gal(gal_here);
        	cols.clear(); /* clear column vector */
       }      

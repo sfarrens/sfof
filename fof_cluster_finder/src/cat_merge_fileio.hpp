@@ -23,13 +23,15 @@
 #include <sstream>
 #include <string>
 #include <vector>
+#include "galaxy_class.hpp"
 #include "cluster_class.hpp"
 #include "fileio_class.hpp"
+
 
 class Merge_Fileio { // Class structure for file input and output
 
 public:
-
+  typedef std::map<unsigned long,Galaxy> gal_container;
   /**
    * This method checks to see if a Cluster instance ID already exists.
    * @param[in] id ID of Cluster instance.
@@ -43,7 +45,7 @@ public:
    * @param[out] cluster_list Vector of Cluster instances.
    * @param[in] input_mode Input mode ["ascii"/"fits"].
    */
-  void read_file_list (const std::string &, std::vector<Cluster> &, 
+  void read_file_list (const std::string &, std::vector<Cluster> &, gal_container&,
 		       const std::string &);
 
   /**
@@ -52,7 +54,7 @@ public:
    * @param[in] fname Input file name.
    * @param[out] cluster_list Vector of Cluster instances.
    */
-  void read_ascii (const std::string &, std::vector<Cluster> &);
+  void read_ascii (const std::string &, std::vector<Cluster> &, gal_container&);
 
   /**
    * This method reads in an FITS file and store the contents in a vector 
@@ -60,7 +62,7 @@ public:
    * @param[in] fname Input file name.
    * @param[out] cluster_list Vector of Cluster instances.
    */
-  void read_fits (const std::string &, std::vector<Cluster> &);
+  void read_fits (const std::string &, std::vector<Cluster> &, gal_container&);
 
   /**
    * This method sets the output file names.

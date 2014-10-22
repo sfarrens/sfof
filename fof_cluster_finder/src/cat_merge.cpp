@@ -10,13 +10,15 @@ void Cat_Merge::read_options (int argc, char *argv[]) {
 
 void Cat_Merge::read_files () {
   // Function to read cluster member files.
-  merge_fileio.read_file_list(opt.input_file, clusters, opt.input_mode);
+  merge_fileio.read_file_list(opt.input_file, clusters, galaxies, opt.input_mode);
   std::cout<<"Total Clusters Read: "<<clusters.size()<<std::endl;
 }
 
 void Cat_Merge::merge_clusters () {
   // Function to merge clusters.
-  Merge merge_clusters(clusters);
+  Merge merge_clusters;
+  merge_clusters.join_uf(clusters);
+  merge_clusters.rearrange_clusters(galaxies,clusters);
   std::cout<<"Total Merged Clusters: "<<clusters.size()<<std::endl;
 }
 

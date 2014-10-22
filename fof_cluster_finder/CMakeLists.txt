@@ -9,7 +9,7 @@ find_package(Boost COMPONENTS system filesystem unit_test_framework
 program_options REQUIRED)
 
 set(CMAKE_CXX_FLAGS "-std=c++0x -O0 ${OpenMP_CXX_FLAGS} -fprofile-arcs -ftest-coverage")
-set(CMAKE_C_FLAGS "-O0 ${OpenMP_C_FLAGS} -fprofile-arcs -ftest-coverage")
+set(CMAKE_C_FLAGS "-O0 ${OpenMP_C_FLAGS} -fprofile-arcs -ftest-coverage ")
 
 set(CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH} "${CMAKE_CURRENT_SOURCE_DIR}/aux/")
 
