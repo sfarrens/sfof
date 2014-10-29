@@ -24,12 +24,18 @@ void Cat_Merge::merge_clusters () {
 
 void Cat_Merge::assign_cluster_props () {
   // Funciton that assigns cluster properties.
+  std::vector<double> z_vals, count_vals;
+  if (!opt.bg_data.empty()) {
+    merge_fileio.read_bg_data(opt.bg_data, z_vals, count_vals);
+    spline.set_points(z_vals, count_vals);
+  }
   for(int i = 0; i < clusters.size(); i++) {
     /* Remove duplicate members */
     clusters[i].unique();
     /* Assing properties */
     clusters[i].assign_props();
-    clusters[i].assign_sn(opt.bg_expect);
+    if (!opt.bg_data.empty()) 
+      clusters[i].assign_sn(spline(clusters[i].z));
   }
   /* Sort clusters by number of members */
   std::sort(clusters.begin(), clusters.end());

@@ -19,7 +19,6 @@
 enum node_to_galaxy {External, Intersects, Internal};
 
 class Kdtree{ //! Class structure for kd-tree properties
-
   
 public:
 
@@ -32,16 +31,11 @@ public:
     Galaxy *Gal;
     Kdtree_node *left, *right;
     
-    //double center_ra, center_dec;
-    //double half_ra, half_dec;
     class Point bottom_left, top_right;
     class Point center;
     double radius;
     int axis;
     unsigned int Ngalaxies;
-    //unsigned int ID;
-
-    //Kdtree_node ();
 
     void print_node_info(class Kdtree_node *, const std::vector<Galaxy> &);
       
@@ -62,13 +56,13 @@ public:
   int NNodes, NMaxNodes, NLeaves;
   double max_axis_inequality;
 
-  
+  double sample_area;
+
   class Kdtree_node* build_kdtree (std::vector<Galaxy*>::iterator begin,
                                    std::vector<Galaxy*>::iterator end,
                                    class Point [2],
                                    int);
 
-  //Kdtree();
   void set_Kdtree(std::vector<Galaxy> &, double);
   
   void write_Kdtree();
@@ -84,7 +78,5 @@ public:
   int range_search_loop(Kdtree_node *, class Point &, int, double, node_to_galaxy, std::deque<Galaxy*> &) const;
 
 };
-
-
 
 #endif /* KDTREE_CLASS_H */

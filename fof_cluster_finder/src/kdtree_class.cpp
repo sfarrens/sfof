@@ -110,11 +110,18 @@ void Kdtree::set_Kdtree(std::vector<Galaxy> &Gals, double max_inq = 0.3) {
       t1 = clock();
       timing[TREE_CONSTRUCTION] += GET_SECS(t1, t0);
 #endif
+
+      // KD-Tree Sample Area
+      sample_area = std::abs(root->bottom_left.P[0] - root->top_right.P[0]) *
+	std::abs(root->bottom_left.P[1] * root->top_right.P[1]);      
     
     std::cout << "building tree done : root node is" << root << " with " << NNodes << " nodes and " << NLeaves << " leaves" << std::endl;
     std::cout << "[xmin, ymin][xmax, ymax] are : [" << root->bottom_left.P[0] << ", " << root->bottom_left.P[1] << "][" << root->top_right.P[0] <<", " << root->top_right.P[1] << "]" << std::endl;
     return;
   };
+
+
+
 
 
 #if __cplusplus >= 201103L

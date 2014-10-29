@@ -147,3 +147,23 @@ void Merge_Fileio::output_file_names (const std::string &output, const std::stri
   std::cout<<"Cluster properties being written to: "<<cluster_file_name<<std::endl;
   std::cout<<"Cluster member properties being written to: "<<member_file_name<<std::endl;
 }
+
+void Merge_Fileio::read_bg_data (const std::string &file_name, std::vector<double> &z_vals, std::vector<double> &count_vals) {
+  // Function to read background data from a file.
+  std::cout<<"Reading background data from: "<<file_name<<std::endl;
+  std::ifstream read_file(file_name.c_str()); /* open file */
+  if(read_file.fail())
+    throw BadArgumentException("Merge_Fileio::read_file_list", "file_name", "a valid file name");
+  std::string line;
+  std::vector<std::string> cols;    
+  while(std::getline(read_file, line)) { /* read each line */
+    if(line.length() >= 1 && 
+       line.find("#") == std::string::npos) { /* skip empty lines and lines starting with # */
+      fileio.split(line, cols, " "); /* split line into columns */
+      z_vals.push_back(atof(cols[0].c_str()));
+      count_vals.push_back(atof(cols[1].c_str()));
+      cols.clear(); /* clear column vector */
+    }
+  }
+  read_file.close(); /* close file */
+}

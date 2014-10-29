@@ -1,6 +1,7 @@
 /*Main Code*/
 
 #include "main.hpp"
+//tk::spline spline;
 
 void Main::read_options (int argc, char *argv[]) {
   // Function to read code options.
@@ -57,7 +58,8 @@ void Main::assign_linking_param () {
       zbins[i].assign_rfriend(r_ref); 
   }
   if(opt.print_bin_data == "yes") {
-    const char* z_bin_data = "z_bin_data.dat";
+    std::string z_bin_data = opt.input_file + ".z_bin_data.dat";
+    //const char* z_bin_data = opt.input_file.c_str() + ".z_bin_data.dat";
     std::cout<<"Printing redshift bin data to "<<z_bin_data<<"."<<std::endl;
     std::ofstream zbin_out(z_bin_data);
     zbin_out<<"#Num[1] Z[2] Link_R[3] R_Friend[4] Count[5]"<<std::endl;
@@ -73,6 +75,26 @@ void Main::make_kdtree () {
   std::cout<<"Building kd-tree "<<std::endl;
   tree.set_Kdtree(galaxies, 0.3);
   tree.write_Kdtree();
+}
+
+void Main::background_counts () {
+  // Function to count number of background objects
+  // at a given redshift.
+  std::vector<double> z_vals, count_vals;
+  for (int i = 0; i < zbins.size(); i++) {
+    z_vals.push_back(zbins[i].z);
+    count_vals.push_back(double(zbins[i].count) / (tree.sample_area * 3600));
+  }  
+  spline.set_points(z_vals, count_vals);
+  if(opt.print_bg_data == "yes") {
+    std::string bg_data = opt.input_file + ".bg_data.dat";
+    std::cout<<"Printing background data to "<<bg_data<<"."<<std::endl;
+    std::ofstream bg_out(bg_data);
+    bg_out<<"#Z[1] Counts[2]"<<std::endl;
+    for(int i = 0; i < z_vals.size(); i++) 
+      bg_out<<z_vals[i]<<" "<<count_vals[i]<<std::endl;
+    bg_out.close();
+  }
 }
 
 void Main::find_friends () {
@@ -128,7 +150,7 @@ void Main::merge_clusters () {
   std::cout<<"Merging "<<clusters.size()<<" candidates."<<std::endl;
   Merge merge_clusters;
   merge_clusters.join_uf(clusters);
-  merge_clusters.rearrange_clusters(galaxies,clusters);
+  merge_clusters.rearrange_clusters(galaxies, clusters);
   assign_cluster_props();
 }
 
@@ -137,9 +159,9 @@ void Main::assign_cluster_props () {
   for(int i = 0; i < clusters.size(); i++) {
     /* Remove duplicate members */
     clusters[i].unique();
-    /* Assing properties */
+    /* Assign properties */
     clusters[i].assign_props();
-    clusters[i].assign_sn(opt.bg_expect);
+    clusters[i].assign_sn(spline(clusters[i].z));
   }
   /* Sort clusters by number of members */
   std::sort(clusters.begin(), clusters.end());
@@ -177,6 +199,7 @@ int main (int argc, char *argv[]) {
     run_code.set_up_zbins();
     run_code.assign_linking_param();
     run_code.make_kdtree();
+    run_code.background_counts();
     run_code.find_friends();
     run_code.check_results();
     run_code.comp.end_time();

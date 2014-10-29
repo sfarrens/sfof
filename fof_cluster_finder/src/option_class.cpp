@@ -68,7 +68,9 @@ void Option::read_opts(int argc, char *argv[], double version_number) {
     ("link_mode", po::value<std::string>(&link_mode)->default_value("dynamic"), 
      "Friends-of-friends linking mode [fixed/dynamic].")
     ("print_bin_data", po::value<std::string>(&print_bin_data)->default_value("no"), 
-     "Print bin data [yes/no].")
+     "Print redshift bin data [yes/no].")
+    ("print_bg_data", po::value<std::string>(&print_bg_data)->default_value("no"), 
+     "Print background data [yes/no].")
     ("link_r", po::value<double>(&link_r), 
      "Transverse linking parameter value.")
     ("link_z", po::value<double>(&link_z), 
@@ -94,9 +96,7 @@ void Option::read_opts(int argc, char *argv[], double version_number) {
     ("omega_m", po::value<double>(&omega_m)->default_value(0.30, "0.30"), 
      "Matter density.")
     ("omega_l", po::value<double>(&omega_l)->default_value(0.70, "0.70"), 
-     "Dark energy density.")
-    ("bg_expect", po::value<double>(&bg_expect)->default_value(0.0), 
-     "Expected number density of galaxies per square arcminute.");
+     "Dark energy density.");
  
   /* Command Line Options */
   po::options_description cmdline_options("Code Options");
@@ -144,14 +144,14 @@ void Option::read_merge_opts(int argc, char *argv[], double version_number) {
     ("version,v", "Print code version.")
     ("input_file,i", po::value<std::string>(&input_file),
      "Input file name.")
-    ("output_file", po::value<std::string>(&output_file),
+    ("output_file,o", po::value<std::string>(&output_file),
      "Output file name.")
     ("input_mode", po::value<std::string>(&input_mode)->default_value("fits"), 
      "File input mode [ascii/fits].")
     ("output_mode", po::value<std::string>(&output_mode)->default_value("fits"), 
      "File output mode [ascii/fits].")
-    ("bg_expect", po::value<double>(&bg_expect), 
-     "Expected number density of galaxies per square arcminute.");
+    ("bg_data", po::value<std::string>(&bg_data),
+     "Input file name for background data.");
   
   /* Define Variables Map */
   po::variables_map v_map;

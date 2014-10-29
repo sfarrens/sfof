@@ -53,9 +53,6 @@ public:
   /// Maximum redshift allowed.
   double z_max;
 
-  /// Expected background number density [n_gal / arcmin^2].
-  double bg_expect;
-
   /// Reference redshift for calculations.
   double z_ref;
 
@@ -109,6 +106,12 @@ public:
 
   /// Option to print Zbin data ["yes"/"no"].
   std::string print_bin_data;
+
+  /// Option to print background data ["yes"/"no"].
+  std::string print_bg_data;
+
+  /// Input file name for background data.
+  std::string bg_data;
 
   /// Input mode ["ascii"/"fits"].
   std::string input_mode;

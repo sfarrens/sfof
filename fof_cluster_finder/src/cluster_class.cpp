@@ -57,7 +57,7 @@ void Cluster::assign_sn (double bg_expect) {
   if(bg_expect == 0) 
     sn = -1.0;
   else
-    sn = double(ngal) / pow((area * bg_expect), 0.5);
+    sn = (double(ngal) - (area * bg_expect)) / pow((area * bg_expect), 0.5);
 }
 
 void Cluster::clear () {

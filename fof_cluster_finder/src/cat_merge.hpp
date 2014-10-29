@@ -26,6 +26,7 @@
 #include "fileio_class.hpp"
 #include "merge_class.hpp"
 #include "option_class.hpp"
+#include "spline.hpp"
 
 class Cat_Merge { // Class structure for Cat_Merge.
 
@@ -72,6 +73,9 @@ private:
   
   /// Include Merge_Fileio class.
   Merge_Fileio merge_fileio;
+
+  /// Include Spline.
+  Spline spline;
  
   /// Vector of Cluster instances.
   std::vector<Cluster> clusters;

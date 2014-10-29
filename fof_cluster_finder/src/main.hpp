@@ -29,6 +29,7 @@
 #include "merge_class.hpp"
 #include "option_class.hpp"
 #include "zbin_class.hpp"
+#include "spline.hpp"
 
 class Main { // Class structure for Main.
 
@@ -74,6 +75,12 @@ public:
   void make_kdtree ();
 
   /**
+   * This method counts the number of background galaxies at each
+   * redshift.
+   */
+  void background_counts ();
+
+  /**
    * This method initialises a series of FoF instances for the 
    * corresponding Zbin instances.
    */
@@ -108,6 +115,9 @@ private:
 
   /// Include Option class.
   Option opt;
+
+  /// Include Spline.
+  Spline spline;
 
   /// Number of redshift bins.
   int num_bins;

@@ -27,7 +27,6 @@
 #include "cluster_class.hpp"
 #include "fileio_class.hpp"
 
-
 class Merge_Fileio { // Class structure for file input and output
 
 public:
@@ -73,6 +72,13 @@ public:
    */
   void output_file_names (const std::string &, const std::string &, 
 			  std::string &, std::string &);
+
+  /**
+   * This reads backround data.
+   * @param[in] background data file name.
+   * @param[out] Spline instance.
+   */
+  void read_bg_data (const std::string &, std::vector<double> &, std::vector<double> &);
 
 private:
   
