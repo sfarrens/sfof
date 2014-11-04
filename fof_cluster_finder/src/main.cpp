@@ -1,7 +1,6 @@
 /*Main Code*/
 
 #include "main.hpp"
-//tk::spline spline;
 
 void Main::read_options (int argc, char *argv[]) {
   // Function to read code options.
