@@ -22,9 +22,6 @@ class Option { // Class for code options
 
 public:
 
-  /// Maximum depth to which the Kdtree instance should be built.
-  int kdtree_depth;
-
   /// Minimum number of member Galaxy instances required to form a 
   /// Cluster instance.
   int min_ngal;

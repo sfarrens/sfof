@@ -25,7 +25,6 @@ void Option::print_parameters() {
   std::cout<<" - print_bin_data = "<<print_bin_data<<std::endl;
   std::cout<<" - link_r = "<<link_r<<std::endl;
   std::cout<<" - link_z = "<<link_z<<std::endl;
-  std::cout<<" - kdtree_depth = "<<kdtree_depth<<std::endl;
   std::cout<<" - min_ngal = "<<min_ngal<<std::endl;
   std::cout<<" - z_min = "<<z_min<<std::endl;
   std::cout<<" - z_max = "<<z_max<<std::endl;
@@ -75,8 +74,6 @@ void Option::read_opts(int argc, char *argv[], double version_number) {
      "Transverse linking parameter value.")
     ("link_z", po::value<double>(&link_z), 
      "Line-of-sight linking parameter value.")
-    ("kdtree_depth", po::value<int>(&kdtree_depth), 
-     "Maximum depth of kd-tree.")
     ("min_ngal", po::value<int>(&min_ngal)->default_value(10, "10"), 
      "Minimum number of cluster galaxies members.")
     ("z_min", po::value<double>(&z_min)->default_value(0.0, "0.00"), 
@@ -99,7 +96,7 @@ void Option::read_opts(int argc, char *argv[], double version_number) {
      "Dark energy density.");
  
   /* Command Line Options */
-  po::options_description cmdline_options("Code Options");
+  po::options_description cmdline_options("\nFRIENDS-OF-FRIENDS CLUSTER DETECTION ALGORITHM\n\nCode Options");
   cmdline_options.add(generic).add(config);
   
   /* Configuration File Options */
@@ -118,7 +115,7 @@ void Option::read_opts(int argc, char *argv[], double version_number) {
     notify(v_map);
   }
   else 
-    std::cout<<"Warning: "<<config_file.c_str()<<" not found."<<std::endl; 
+    std::cout<<"Warning: configuration file ["<<config_file.c_str()<<"] not found."<<std::endl; 
   
   /* Print Help */
   if (v_map.count("help")) {
