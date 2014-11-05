@@ -37,11 +37,21 @@ public:
 private:
 
 public:
+
+  /**
+    * This method ...
+    */
   void join_uf(std::vector<Cluster> &);
 
+  /**
+    * This method ...
+    */
   void rearrange_clusters(std::vector<Galaxy>&, std::vector<Cluster>&);
 
-  void rearrange_clusters(std::map<unsigned long,Galaxy>&, std::vector<Cluster>&);
+  /**
+   * This method ...
+   */
+  void rearrange_clusters(std::map<unsigned long, Galaxy>&, std::vector<Cluster>&);
 
 };
 

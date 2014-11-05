@@ -30,7 +30,10 @@
 class Merge_Fileio { // Class structure for file input and output
 
 public:
-  typedef std::map<unsigned long,Galaxy> gal_container;
+
+  /// Map of Galaxy instances.
+  typedef std::map<unsigned long, Galaxy> gal_container;
+
   /**
    * This method checks to see if a Cluster instance ID already exists.
    * @param[in] id ID of Cluster instance.

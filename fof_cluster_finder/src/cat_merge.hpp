@@ -31,6 +31,7 @@
 class Cat_Merge { // Class structure for Cat_Merge.
 
 public:
+
   /// Include Comp class.
   Comp comp;
 
@@ -65,6 +66,7 @@ public:
   void write_files ();
   
 private:
+
   /// Include Fileio class.
   Fileio fileio;
   

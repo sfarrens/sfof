@@ -18,7 +18,7 @@ void Cat_Merge::merge_clusters () {
   // Function to merge clusters.
   Merge merge_clusters;
   merge_clusters.join_uf(clusters);
-  merge_clusters.rearrange_clusters(galaxies,clusters);
+  merge_clusters.rearrange_clusters(galaxies, clusters);
   std::cout<<"Total Merged Clusters: "<<clusters.size()<<std::endl;
 }
 
