@@ -1,7 +1,7 @@
 /**
  * @file galaxy_class.hpp
  *
- * @author Samuel Farrens
+ * @author Samuel Farrens, Stefano Sartor
  */
 
 #ifndef GALAXY_CLASS_H
@@ -21,13 +21,16 @@
 #include "cosmo.hpp"
 #include "exceptions.hpp"
 
-
-class UnionFind{
+class UnionFind{ //! Class structure for union find algorithm
 //DBG private:
 public:
     UnionFind* parent;
 
 public:
+
+    /**
+    * This method ...
+    */
     UnionFind(): parent(nullptr){}
     UnionFind * find(){
         if (parent == nullptr)
@@ -37,16 +40,22 @@ public:
         return parent;
     }
 
+    /**
+    * This method ...
+    */
     void join(UnionFind* u){
         UnionFind* a = find();
         UnionFind* b = u->find();
         if(a != b)
             a->parent = b;
     }
+
+    /**
+    * This method checks if an object is a singleton.
+    */
     bool is_singlethon(){
         return parent == nullptr;
     }
-
 
 };
 
@@ -54,6 +63,7 @@ class Galaxy { //! Class structure for galaxy properties
 
 public:
 
+    /// Include UnionFind class.
     UnionFind uf;
 
     /// Number associated to Galaxy instance.
