@@ -58,9 +58,9 @@ void Option::read_opts(int argc, char *argv[], double version_number) {
      "Output clusters file name.")
     ("output_members", po::value<std::string>(&output_members), 
      "Output members file name.")
-    ("input_mode", po::value<std::string>(&input_mode)->default_value("fits"), 
+    ("input_mode", po::value<std::string>(&input_mode)->default_value("ascii"), 
      "File input mode [ascii/fits].")
-    ("output_mode", po::value<std::string>(&output_mode)->default_value("fits"), 
+    ("output_mode", po::value<std::string>(&output_mode)->default_value("ascii"), 
      "File output mode [ascii/fits].")
     ("fof_mode", po::value<std::string>(&fof_mode)->default_value("phot"), 
      "Friends-of-friends redshift mode [spec/phot].")

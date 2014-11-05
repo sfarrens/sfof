@@ -64,6 +64,6 @@ target_link_libraries(astro_test ${CFITSIO_LIBRARIES}  ${Boost_PROGRAM_OPTIONS_L
 add_executable(cosmo_test ${CPP_SRC} ${CPP_UNITTEST_SOURCE_DIR}/cosmo_test.cpp)
 target_link_libraries(cosmo_test ${CFITSIO_LIBRARIES}  ${Boost_PROGRAM_OPTIONS_LIBRARY_${CMAKE_BUILD_TYPE}})
 
-add_test(unit_test unit_test "--config ../examples/param_file.unit_test.ini")
+add_test(unit_test unit_test "--config ../examples/unit_test/param_file.unit_test.ini")
 add_test(astro_test astro_test "--log_level=test_suite")
 add_test(cosmo_test cosmo_test "--log_level=test_suite")
