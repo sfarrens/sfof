@@ -68,6 +68,8 @@ void Option::read_opts(int argc, char *argv[], double version_number) {
      "Friends-of-friends linking mode [fixed/dynamic].")
     ("print_bin_data", po::value<std::string>(&print_bin_data)->default_value("no"), 
      "Print redshift bin data [yes/no].")
+    ("print_kdtree_data", po::value<std::string>(&print_kdtree_data)->default_value("no"), 
+     "Print kd-tree data [yes/no].")
     ("print_bg_data", po::value<std::string>(&print_bg_data)->default_value("no"), 
      "Print background data [yes/no].")
     ("link_r", po::value<double>(&link_r), 

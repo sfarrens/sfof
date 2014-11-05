@@ -1,7 +1,20 @@
-/*Class header for Kdtree*/
+/**
+ * @file kdtree_class.hpp
+ *
+ * @author Luca Toranatore, Samuel Farrens
+ */
 
 #ifndef KDTREE_CLASS_H
 #define KDTREE_CLASS_H
+
+/**
+ * @class Kdtree
+ *
+ * @brief Class for constructing a kd-tree.
+ *
+ * This class constructs a kd-tree.
+ *
+ */
 
 #include <cstdlib>
 #include <iostream>
@@ -65,7 +78,7 @@ public:
 
   void set_Kdtree(std::vector<Galaxy> &, double);
   
-  void write_Kdtree();
+  void write_Kdtree(const std::string &);
   
   void WalkTree(class Kdtree_node *, int);
 

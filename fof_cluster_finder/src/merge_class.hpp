@@ -1,7 +1,7 @@
 /**
  * @file merge_class.hpp
  *
- * @author Samuel Farrens
+ * @author Stefano Sartor, Samuel Farrens
  */
 
 #ifndef MERGE_CLASS_H

@@ -71,9 +71,11 @@ void Main::assign_linking_param () {
 
 void Main::make_kdtree () {
   // Function to split data into kd-tree.
-  std::cout<<"Building kd-tree "<<std::endl;
+  std::cout<<"Building kd-tree."<<std::endl;
   tree.set_Kdtree(galaxies, 0.3);
-  tree.write_Kdtree();
+  std::string kdtree_data = opt.input_file + ".kdtree_data.dat";
+  if(opt.print_kdtree_data == "yes") 
+    tree.write_Kdtree(kdtree_data);
 }
 
 void Main::background_counts () {
@@ -126,7 +128,6 @@ void Main::find_friends () {
     }
   }
   //End OMP//
-  std::cout << unused_nodes << " unused nodes"<< std::endl;
   for (int i = 0; i < nbins; i++) 
     for (int j = 0; j < fof_list[i].list_of_clusters.size(); j++) {
       fof_list[i].list_of_clusters[j].rename(cluster_count);
@@ -150,6 +151,8 @@ void Main::merge_clusters () {
   Merge merge_clusters;
   merge_clusters.join_uf(clusters);
   merge_clusters.rearrange_clusters(galaxies, clusters);
+  std::cout<<"Total clusters detected with Ngal >= "<<opt.min_ngal
+	   <<": "<<clusters.size()<<std::endl;
   assign_cluster_props();
 }
 
@@ -191,6 +194,9 @@ void Main::output_results () {
 
 int main (int argc, char *argv[]) {
   try {
+    std::cout<<"=================================================="<<std::endl;
+    std::cout<<"* FRIENDS-OF-FRIENDS CLUSTER DETECTION INITIATED *"<<std::endl;
+    std::cout<<"=================================================="<<std::endl;
     Main run_code;
     run_code.comp.start_time();
     run_code.read_options(argc, argv);
@@ -203,6 +209,7 @@ int main (int argc, char *argv[]) {
     run_code.check_results();
     run_code.comp.end_time();
     run_code.comp.print_time();
+    std::cout<<"=================================================="<<std::endl;
   }
   catch (const std::exception& e) {
     std::cerr << "ERROR!: " << e.what() << std::endl;

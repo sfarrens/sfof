@@ -104,6 +104,9 @@ public:
   /// Option to print Zbin data ["yes"/"no"].
   std::string print_bin_data;
 
+  /// Option to print kd-tree data ["yes"/"no"].
+  std::string print_kdtree_data;
+
   /// Option to print background data ["yes"/"no"].
   std::string print_bg_data;
 

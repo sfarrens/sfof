@@ -44,20 +44,21 @@ node_to_galaxy Kdtree::Kdtree_node::check_node(Point &origin, double sradius, in
         }
     }
     
-
-void Kdtree::write_Kdtree() {
-  std::ofstream kdtree_file ("tree.dat");
+void Kdtree::write_Kdtree(const std::string &output_file) {
+  std::ofstream kdtree_file (output_file);
   kdtree_file << std::fixed << std::setprecision(6);
   for(int i = NNodes-1; i >= 0; i--) {
     if(Nodes[i].Gal == NULL){
-      double xdelta = (Nodes[i].top_right.P[0] - Nodes[i].bottom_left.P[0])/2;
-      double ydelta = (Nodes[i].top_right.P[1] - Nodes[i].bottom_left.P[1])/2;
+      double xdelta = (Nodes[i].top_right.P[0] - Nodes[i].bottom_left.P[0]) / 2;
+      double ydelta = (Nodes[i].top_right.P[1] - Nodes[i].bottom_left.P[1]) / 2;
       // writes the # of the node
       kdtree_file << i << " ";
       // writes coordiantes: center, xdelta, ydelta, radius
-      kdtree_file << Nodes[i].center.P[0] << " " << Nodes[i].center.P[1] << " " << xdelta << " " << ydelta << " " << Nodes[i].radius << " ";
+      kdtree_file << Nodes[i].center.P[0] << " " << Nodes[i].center.P[1] << " " 
+		  << xdelta << " " << ydelta << " " << Nodes[i].radius << " ";
       // writes the splitting axis and the ratio of maximum side over the minimum side
-      kdtree_file << Nodes[i].axis << " " << std::max(xdelta, ydelta)/std::min(xdelta, ydelta) << std::endl;
+      kdtree_file << Nodes[i].axis << " " << std::max(xdelta, ydelta) / std::min(xdelta, ydelta) 
+		  << std::endl;
     }
   }
   kdtree_file.close();
@@ -65,60 +66,62 @@ void Kdtree::write_Kdtree() {
 
 void Kdtree::set_Kdtree(std::vector<Galaxy> &Gals, double max_inq = 0.3) {
     
-    std::vector<Galaxy*>::iterator itr;
-    Point box[2];
+  std::vector<Galaxy*>::iterator itr;
+  Point box[2];
 #ifdef TIMING
-    clock_t t0, t1;
+  clock_t t0, t1;
 #endif
-    SETPERIODIC(0, 360);
-    AllG = Gals;
-    max_axis_inequality = max_inq;
-    Galaxy *G = Gals.data();
-    GalPtrs.reserve(Gals.size());
+  SETPERIODIC(0, 360);
+  AllG = Gals;
+  max_axis_inequality = max_inq;
+  Galaxy *G = Gals.data();
+  GalPtrs.reserve(Gals.size());
 
-    NNodes = 0;
-    NLeaves = 0;
+  NNodes = 0;
+  NLeaves = 0;
 
-    for(int i=0; i < Gals.size(); i++)
-      GalPtrs.push_back(G++);
+  for(int i=0; i < Gals.size(); i++)
+    GalPtrs.push_back(G++);
+  
+  NMaxNodes = Gals.size()*2 + 1;
+  Nodes = new Kdtree_node [NMaxNodes];
 
-    NMaxNodes = Gals.size()*2 + 1;
-    Nodes = new Kdtree_node [NMaxNodes];
-
-    box[0] = Gals[0].P;
-    box[1] = Gals[0].P;
-    itr = GalPtrs.begin() + 1;
-    while(itr != GalPtrs.end()) {
-      for(int i = 0; i < 2; i++) {
-        if( (*itr)->P.P[i] < box[i].P[0] )
-          box[i].P[0] = (*itr)->P.P[i];
-        else if( (*itr)->P.P[i] > box[i].P[1] )
-          box[i].P[1] = (*itr)->P.P[i];
-      }
-      itr++;
+  box[0] = Gals[0].P;
+  box[1] = Gals[0].P;
+  itr = GalPtrs.begin() + 1;
+  while(itr != GalPtrs.end()) {
+    for(int i = 0; i < 2; i++) {
+      if( (*itr)->P.P[i] < box[i].P[0] )
+	box[i].P[0] = (*itr)->P.P[i];
+      else if( (*itr)->P.P[i] > box[i].P[1] )
+	box[i].P[1] = (*itr)->P.P[i];
     }
+    itr++;
+  }
           
 #ifdef TIMING    
-    for( int i = 0; i < N_TIMING; i++)
-      timing[i] = 0;
+  for( int i = 0; i < N_TIMING; i++)
+    timing[i] = 0;
 #endif
 #ifdef TIMING      
-      t0 = clock();
+  t0 = clock();
 #endif                
-      root = build_kdtree(GalPtrs.begin(), GalPtrs.end(), box, 0);
+  root = build_kdtree(GalPtrs.begin(), GalPtrs.end(), box, 0);
 #ifdef TIMING
-      t1 = clock();
-      timing[TREE_CONSTRUCTION] += GET_SECS(t1, t0);
+  t1 = clock();
+  timing[TREE_CONSTRUCTION] += GET_SECS(t1, t0);
 #endif
 
-      // KD-Tree Sample Area
-      sample_area = std::abs(root->bottom_left.P[0] - root->top_right.P[0]) *
-	std::abs(root->bottom_left.P[1] * root->top_right.P[1]);      
-    
-    std::cout << "building tree done : root node is" << root << " with " << NNodes << " nodes and " << NLeaves << " leaves" << std::endl;
-    std::cout << "[xmin, ymin][xmax, ymax] are : [" << root->bottom_left.P[0] << ", " << root->bottom_left.P[1] << "][" << root->top_right.P[0] <<", " << root->top_right.P[1] << "]" << std::endl;
-    return;
-  };
+  // KD-Tree Sample Area
+  sample_area = std::abs(root->bottom_left.P[0] - root->top_right.P[0]) *
+    std::abs(root->bottom_left.P[1] * root->top_right.P[1]);      
+  
+  std::cout << "   - with " << NNodes << " nodes and " << NLeaves << " leaves." << std::endl;
+  std::cout << "   - [xmin, ymin][xmax, ymax] are : [" << root->bottom_left.P[0] << ", " 
+	    << root->bottom_left.P[1] << "][" << root->top_right.P[0] <<", " << root->top_right.P[1] 
+	    << "]" << std::endl;
+  return;
+};
 
 
 

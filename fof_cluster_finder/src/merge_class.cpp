@@ -21,7 +21,6 @@ void Merge::rearrange_clusters(std::vector<Galaxy>& gals, std::vector<Cluster>& 
     }
     clus_vec.clear();
     clus_vec.reserve(m.size());
-    std::cout << "total real clusters:" << m.size() << std::endl;
     unsigned long long i=0;
     for(map_it it=m.begin(); it != m.end(); ++it){
         it->second.num=i;
