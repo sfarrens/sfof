@@ -15,7 +15,7 @@ void Merge::rearrange_clusters(std::vector<Galaxy>& gals, std::vector<Cluster>& 
     std::map<UnionFind*, Cluster> m;
 
     for(gal_it it = gals.begin(); it != gals.end(); ++it){
-        if(it->uf.is_singlethon())
+        if(it->uf.is_singleton())
             continue;
         m[it->uf.find()].add_gal(&*it);
     }
@@ -37,7 +37,7 @@ void Merge::rearrange_clusters(std::map<unsigned long, Galaxy>& gals, std::vecto
     std::cout << "galaxies number=" << gals.size() << std::endl;
 
     for(gal_it it = gals.begin(); it != gals.end(); ++it){
-        if(it->second.uf.is_singlethon())
+        if(it->second.uf.is_singleton())
             continue;
         m[it->second.uf.find()].add_gal(&it->second);
     }

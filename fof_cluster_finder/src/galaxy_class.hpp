@@ -22,16 +22,21 @@
 #include "exceptions.hpp"
 
 class UnionFind{ //! Class structure for union find algorithm
-//DBG private:
-public:
+private:
     UnionFind* parent;
 
 public:
 
     /**
-    * This method ...
+    * This method initialize the union-find structure as singleton.
     */
     UnionFind(): parent(nullptr){}
+
+    /**
+     * This method finds the representative element of the UF structure,
+     * performing the path compression in the meanwhile.
+     * @return the representative UnionFind of the group.
+     */
     UnionFind * find(){
         if (parent == nullptr)
             parent = this;
@@ -41,7 +46,8 @@ public:
     }
 
     /**
-    * This method ...
+    * This method joins the UnionFind passed as argument
+    * @param[in] UnionFind to join
     */
     void join(UnionFind* u){
         UnionFind* a = find();
@@ -53,7 +59,7 @@ public:
     /**
     * This method checks if an object is a singleton.
     */
-    bool is_singlethon(){
+    bool is_singleton(){
         return parent == nullptr;
     }
 

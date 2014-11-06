@@ -16,9 +16,8 @@ void Cat_Merge::read_files () {
 
 void Cat_Merge::merge_clusters () {
   // Function to merge clusters.
-  Merge merge_clusters;
-  merge_clusters.join_uf(clusters);
-  merge_clusters.rearrange_clusters(galaxies, clusters);
+  Merge::join_uf(clusters);
+  Merge::rearrange_clusters(galaxies, clusters);
   std::cout<<"Total Merged Clusters: "<<clusters.size()<<std::endl;
 }
 

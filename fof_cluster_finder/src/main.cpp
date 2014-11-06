@@ -148,9 +148,8 @@ void Main::check_results() {
 void Main::merge_clusters () {
   // Function that merges clusters with members in common.
   std::cout<<"Merging "<<clusters.size()<<" candidates."<<std::endl;
-  Merge merge_clusters;
-  merge_clusters.join_uf(clusters);
-  merge_clusters.rearrange_clusters(galaxies, clusters);
+  Merge::join_uf(clusters);
+  Merge::rearrange_clusters(galaxies, clusters);
   std::cout<<"Total clusters detected with Ngal >= "<<opt.min_ngal
 	   <<": "<<clusters.size()<<std::endl;
   assign_cluster_props();
