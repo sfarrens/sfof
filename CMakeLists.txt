@@ -1,2 +1,7 @@
 cmake_minimum_required(VERSION 2.6)
+enable_testing()
+if(CMAKE_BUILD_TYPE STREQUAL "")
+  set(CMAKE_BUILD_TYPE "Release")
+endif()
+string(TOUPPER ${CMAKE_BUILD_TYPE} CMAKE_BUILD_TYPE)
 add_subdirectory(${CMAKE_SOURCE_DIR}/fof_cluster_finder)

@@ -1,15 +1,19 @@
-#include "fileio_class.hpp"
-#include "option_class.hpp"
-
+#include <cmath>
+#include <limits>
 #include <iostream>
-#include <sstream>
 
-int main (int argc, char *argv[]) {
+int main(int argc, char* argv[]) {
   
-  Option opt;
-  std::string param_file_name = "param_file.ini";
-  opt.read_param_file(param_file_name);
-  opt.read_opts(argc, argv);
-  std::cout<<opt.omega_l<<std::endl;
+  double OmegaM_val = atof(argv[1]);
+  double OmegaL_val = atof(argv[2]);
 
+  std::cout<<OmegaM_val<<" "<<OmegaL_val<<" "<<abs(1.0 - OmegaM_val - OmegaL_val)<<" "
+	   <<std::numeric_limits<double>::epsilon()<<std::endl;
+
+  if (std::abs(1.0 - OmegaM_val - OmegaL_val) > std::numeric_limits<double>::epsilon())
+    std::cout<<"True!"<<std::endl;
+  else
+    std::cout<<"False!"<<std::endl;
+  
+  return 0;
 }

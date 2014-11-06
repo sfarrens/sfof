@@ -4,7 +4,7 @@
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.6"/>
-<title>fof_cluster_finder: /Users/Rowen/Documents/Codes/github/fof_cluster_finder/fof_cluster_finder/src/kdtree_class.cpp File Reference</title>
+<title>fof_cluster_finder: /Users/Rowen/Documents/Codes/fof_cluster_finder/fof_cluster_finder/src/kdtree_class.cpp File Reference</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -29,8 +29,6 @@
   <div id="navrow1" class="tabs">
     <ul class="tablist">
       <li><a href="index.html"><span>Main&#160;Page</span></a></li>
-      <li><a href="pages.html"><span>Related&#160;Pages</span></a></li>
-      <li><a href="namespaces.html"><span>Packages</span></a></li>
       <li><a href="annotated.html"><span>Classes</span></a></li>
       <li class="current"><a href="files.html"><span>Files</span></a></li>
     </ul>
@@ -47,15 +45,105 @@
 </div>
 </div><!-- top -->
 <div class="header">
+  <div class="summary">
+<a href="#nested-classes">Classes</a> &#124;
+<a href="#func-members">Functions</a>  </div>
   <div class="headertitle">
 <div class="title">kdtree_class.cpp File Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
-<div class="textblock"><code>#include &quot;<a class="el" href="kdtree__class_8hpp_source.html">kdtree_class.hpp</a>&quot;</code><br/>
-</div></div><!-- contents -->
+<div class="textblock"><code>#include &lt;fstream&gt;</code><br/>
+<code>#include &lt;iomanip&gt;</code><br/>
+<code>#include &lt;iostream&gt;</code><br/>
+<code>#include &quot;<a class="el" href="kdtree__class_8hpp_source.html">kdtree_class.hpp</a>&quot;</code><br/>
+</div><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="nested-classes"></a>
+Classes</h2></td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_galaxy_comp_coord.html">GalaxyCompCoord</a></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
+Functions</h2></td></tr>
+<tr class="memitem:a1d2ec6c12cd8aafccadc4bfc3f8dc0c0"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="kdtree__class_8cpp.html#a1d2ec6c12cd8aafccadc4bfc3f8dc0c0">mynth</a> (int N, int ax, std::vector&lt; <a class="el" href="class_galaxy.html">Galaxy</a> * &gt;::iterator begin, std::vector&lt; <a class="el" href="class_galaxy.html">Galaxy</a> * &gt;::iterator end)</td></tr>
+<tr class="separator:a1d2ec6c12cd8aafccadc4bfc3f8dc0c0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2e064687ce4ad423eaef4960a746805f"><td class="memItemLeft" align="right" valign="top">std::vector&lt; <a class="el" href="class_galaxy.html">Galaxy</a> * &gt;::iterator&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="kdtree__class_8cpp.html#a2e064687ce4ad423eaef4960a746805f">mymax</a> (int ax, std::vector&lt; <a class="el" href="class_galaxy.html">Galaxy</a> * &gt;::iterator begin, std::vector&lt; <a class="el" href="class_galaxy.html">Galaxy</a> * &gt;::iterator end)</td></tr>
+<tr class="separator:a2e064687ce4ad423eaef4960a746805f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<h2 class="groupheader">Function Documentation</h2>
+<a class="anchor" id="a2e064687ce4ad423eaef4960a746805f"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::vector&lt;<a class="el" href="class_galaxy.html">Galaxy</a>*&gt;::iterator mymax </td>
+          <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>ax</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">std::vector&lt; <a class="el" href="class_galaxy.html">Galaxy</a> * &gt;::iterator&#160;</td>
+          <td class="paramname"><em>begin</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">std::vector&lt; <a class="el" href="class_galaxy.html">Galaxy</a> * &gt;::iterator&#160;</td>
+          <td class="paramname"><em>end</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a class="anchor" id="a1d2ec6c12cd8aafccadc4bfc3f8dc0c0"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void mynth </td>
+          <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>N</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>ax</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">std::vector&lt; <a class="el" href="class_galaxy.html">Galaxy</a> * &gt;::iterator&#160;</td>
+          <td class="paramname"><em>begin</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">std::vector&lt; <a class="el" href="class_galaxy.html">Galaxy</a> * &gt;::iterator&#160;</td>
+          <td class="paramname"><em>end</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+</div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Tue Jun 3 2014 17:37:37 for fof_cluster_finder by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Thu Nov 6 2014 16:03:10 for fof_cluster_finder by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.6
 </small></address>
