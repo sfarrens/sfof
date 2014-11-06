@@ -30,7 +30,6 @@
     <ul class="tablist">
       <li><a href="index.html"><span>Main&#160;Page</span></a></li>
       <li><a href="pages.html"><span>Related&#160;Pages</span></a></li>
-      <li><a href="namespaces.html"><span>Packages</span></a></li>
       <li class="current"><a href="annotated.html"><span>Classes</span></a></li>
       <li><a href="files.html"><span>Files</span></a></li>
     </ul>
@@ -39,6 +38,7 @@
     <ul class="tablist">
       <li><a href="annotated.html"><span>Class&#160;List</span></a></li>
       <li><a href="classes.html"><span>Class&#160;Index</span></a></li>
+      <li><a href="hierarchy.html"><span>Class&#160;Hierarchy</span></a></li>
       <li><a href="functions.html"><span>Class&#160;Members</span></a></li>
     </ul>
   </div>
@@ -46,36 +46,76 @@
 <div class="header">
   <div class="summary">
 <a href="#pub-methods">Public Member Functions</a> &#124;
+<a href="#pri-attribs">Private Attributes</a> &#124;
 <a href="class_fileio-members.html">List of all members</a>  </div>
   <div class="headertitle">
 <div class="title">Fileio Class Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
 
+<p>Class for file input and output.  
+ <a href="class_fileio.html#details">More...</a></p>
+
 <p><code>#include &lt;<a class="el" href="fileio__class_8hpp_source.html">fileio_class.hpp</a>&gt;</code></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
+<tr class="memitem:a9704a3f831a0bc53dc47885b7cb59723"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_fileio.html#a9704a3f831a0bc53dc47885b7cb59723">set_up</a> (int, int, int, int)</td></tr>
+<tr class="memdesc:a9704a3f831a0bc53dc47885b7cb59723"><td class="mdescLeft">&#160;</td><td class="mdescRight">This method sets the column numbers where galaxy properties are stored in the input file.  <a href="#a9704a3f831a0bc53dc47885b7cb59723">More...</a><br/></td></tr>
+<tr class="separator:a9704a3f831a0bc53dc47885b7cb59723"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6f1978074da3fee048e5f93ee05bb73e"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_fileio.html#a6f1978074da3fee048e5f93ee05bb73e">set_up</a> (int, int, int, int, int)</td></tr>
+<tr class="memdesc:a6f1978074da3fee048e5f93ee05bb73e"><td class="mdescLeft">&#160;</td><td class="mdescRight">This method sets the column numbers where galaxy properties are stored in the input file.  <a href="#a6f1978074da3fee048e5f93ee05bb73e">More...</a><br/></td></tr>
+<tr class="separator:a6f1978074da3fee048e5f93ee05bb73e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a6aed60255d8290e92ee4393ee2508f7d"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_fileio.html#a6aed60255d8290e92ee4393ee2508f7d">split</a> (const std::string &amp;, std::vector&lt; std::string &gt; &amp;, const std::string &amp;)</td></tr>
+<tr class="memdesc:a6aed60255d8290e92ee4393ee2508f7d"><td class="mdescLeft">&#160;</td><td class="mdescRight">This method splits a string into columns.  <a href="#a6aed60255d8290e92ee4393ee2508f7d">More...</a><br/></td></tr>
 <tr class="separator:a6aed60255d8290e92ee4393ee2508f7d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aeab6d26c1c238480c79f71f6f0eb9e6e"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_fileio.html#aeab6d26c1c238480c79f71f6f0eb9e6e">read_ascii</a> (const std::string &amp;, const std::string &amp;, double, double, double, std::vector&lt; <a class="el" href="class_galaxy.html">Galaxy</a> &gt; &amp;)</td></tr>
+<tr class="memdesc:aeab6d26c1c238480c79f71f6f0eb9e6e"><td class="mdescLeft">&#160;</td><td class="mdescRight">This method reads in an ASCII file and store the contents in a vector of <a class="el" href="class_galaxy.html" title="Class for storing galaxy properties. ">Galaxy</a> instances.  <a href="#aeab6d26c1c238480c79f71f6f0eb9e6e">More...</a><br/></td></tr>
 <tr class="separator:aeab6d26c1c238480c79f71f6f0eb9e6e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:abd1b489c1e2dc9425b904cfebfc78404"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_fileio.html#abd1b489c1e2dc9425b904cfebfc78404">read_fits</a> (const std::string &amp;, const std::string &amp;, double, double, double, std::vector&lt; <a class="el" href="class_galaxy.html">Galaxy</a> &gt; &amp;)</td></tr>
+<tr class="memdesc:abd1b489c1e2dc9425b904cfebfc78404"><td class="mdescLeft">&#160;</td><td class="mdescRight">This method reads in a FITS file and store the contents in a vector of <a class="el" href="class_galaxy.html" title="Class for storing galaxy properties. ">Galaxy</a> instances.  <a href="#abd1b489c1e2dc9425b904cfebfc78404">More...</a><br/></td></tr>
 <tr class="separator:abd1b489c1e2dc9425b904cfebfc78404"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a9b0c9fb1ac0c2ad82a51eb9a2092964c"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_fileio.html#a9b0c9fb1ac0c2ad82a51eb9a2092964c">output_file_names</a> (const std::string &amp;, const std::string &amp;, const std::string &amp;, double, double)</td></tr>
-<tr class="separator:a9b0c9fb1ac0c2ad82a51eb9a2092964c"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aa144e8b1160a0510e31a1f05bf384112"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_fileio.html#aa144e8b1160a0510e31a1f05bf384112">write_ascii</a> (const std::vector&lt; <a class="el" href="class_cluster.html">Cluster</a> &gt; &amp;)</td></tr>
-<tr class="separator:aa144e8b1160a0510e31a1f05bf384112"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ae52e63a106a09cba2983c77057aa6247"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_fileio.html#ae52e63a106a09cba2983c77057aa6247">write_fits</a> (const std::vector&lt; <a class="el" href="class_cluster.html">Cluster</a> &gt; &amp;)</td></tr>
-<tr class="separator:ae52e63a106a09cba2983c77057aa6247"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad3f945cdfc84d8abd576ce4384c33b72"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_fileio.html#ad3f945cdfc84d8abd576ce4384c33b72">output_cluster_name</a> (const std::string &amp;, const std::string &amp;, const std::string &amp;, double, double, std::string &amp;)</td></tr>
+<tr class="memdesc:ad3f945cdfc84d8abd576ce4384c33b72"><td class="mdescLeft">&#160;</td><td class="mdescRight">This method sets the cluster output file name.  <a href="#ad3f945cdfc84d8abd576ce4384c33b72">More...</a><br/></td></tr>
+<tr class="separator:ad3f945cdfc84d8abd576ce4384c33b72"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:abd3717bd499a204cd8167bdf4cfe1b93"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_fileio.html#abd3717bd499a204cd8167bdf4cfe1b93">output_member_name</a> (const std::string &amp;, const std::string &amp;, const std::string &amp;, double, double, std::string &amp;)</td></tr>
+<tr class="memdesc:abd3717bd499a204cd8167bdf4cfe1b93"><td class="mdescLeft">&#160;</td><td class="mdescRight">This method sets the member output file name.  <a href="#abd3717bd499a204cd8167bdf4cfe1b93">More...</a><br/></td></tr>
+<tr class="separator:abd3717bd499a204cd8167bdf4cfe1b93"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa8c1d0e5f52892ac9312e4d32ce7cc75"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_fileio.html#aa8c1d0e5f52892ac9312e4d32ce7cc75">write_ascii</a> (const std::vector&lt; <a class="el" href="class_cluster.html">Cluster</a> &gt; &amp;, const std::string &amp;, const std::string &amp;)</td></tr>
+<tr class="memdesc:aa8c1d0e5f52892ac9312e4d32ce7cc75"><td class="mdescLeft">&#160;</td><td class="mdescRight">This method writes a list of the specified <a class="el" href="class_cluster.html" title="Class for storing galaxy cluster properties and members. ">Cluster</a> instances and a list of the corresponding member <a class="el" href="class_galaxy.html" title="Class for storing galaxy properties. ">Galaxy</a> instances to two ASCII files.  <a href="#aa8c1d0e5f52892ac9312e4d32ce7cc75">More...</a><br/></td></tr>
+<tr class="separator:aa8c1d0e5f52892ac9312e4d32ce7cc75"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:adda2a3257fa3f524cce9eb5f50851808"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_fileio.html#adda2a3257fa3f524cce9eb5f50851808">write_fits</a> (const std::vector&lt; <a class="el" href="class_cluster.html">Cluster</a> &gt; &amp;, const std::string &amp;, const std::string &amp;)</td></tr>
+<tr class="memdesc:adda2a3257fa3f524cce9eb5f50851808"><td class="mdescLeft">&#160;</td><td class="mdescRight">This method writes a list of the specified <a class="el" href="class_cluster.html" title="Class for storing galaxy cluster properties and members. ">Cluster</a> instances and a list of the corresponding member <a class="el" href="class_galaxy.html" title="Class for storing galaxy properties. ">Galaxy</a> instances to two FITS files.  <a href="#adda2a3257fa3f524cce9eb5f50851808">More...</a><br/></td></tr>
+<tr class="separator:adda2a3257fa3f524cce9eb5f50851808"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pri-attribs"></a>
+Private Attributes</h2></td></tr>
+<tr class="memitem:a8a4b3279dc6ee92622adb2597773da33"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_fileio.html#a8a4b3279dc6ee92622adb2597773da33">id_col</a></td></tr>
+<tr class="memdesc:a8a4b3279dc6ee92622adb2597773da33"><td class="mdescLeft">&#160;</td><td class="mdescRight">Column number for galaxy ID.  <a href="#a8a4b3279dc6ee92622adb2597773da33">More...</a><br/></td></tr>
+<tr class="separator:a8a4b3279dc6ee92622adb2597773da33"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa10965911fa86a522396f1c5d21660ca"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_fileio.html#aa10965911fa86a522396f1c5d21660ca">ra_col</a></td></tr>
+<tr class="memdesc:aa10965911fa86a522396f1c5d21660ca"><td class="mdescLeft">&#160;</td><td class="mdescRight">Column number for galaxy right ascension.  <a href="#aa10965911fa86a522396f1c5d21660ca">More...</a><br/></td></tr>
+<tr class="separator:aa10965911fa86a522396f1c5d21660ca"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab69c1fd5d6d90fc89313371c274cf01b"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_fileio.html#ab69c1fd5d6d90fc89313371c274cf01b">dec_col</a></td></tr>
+<tr class="memdesc:ab69c1fd5d6d90fc89313371c274cf01b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Column number for galaxy declination.  <a href="#ab69c1fd5d6d90fc89313371c274cf01b">More...</a><br/></td></tr>
+<tr class="separator:ab69c1fd5d6d90fc89313371c274cf01b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae78f81530c111ad5d3bda8da48961745"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_fileio.html#ae78f81530c111ad5d3bda8da48961745">z_col</a></td></tr>
+<tr class="memdesc:ae78f81530c111ad5d3bda8da48961745"><td class="mdescLeft">&#160;</td><td class="mdescRight">Column number for galaxy redshift.  <a href="#ae78f81530c111ad5d3bda8da48961745">More...</a><br/></td></tr>
+<tr class="separator:ae78f81530c111ad5d3bda8da48961745"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a909a4c2b965108d715fab5a88d91d1cc"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_fileio.html#a909a4c2b965108d715fab5a88d91d1cc">dz_col</a></td></tr>
+<tr class="memdesc:a909a4c2b965108d715fab5a88d91d1cc"><td class="mdescLeft">&#160;</td><td class="mdescRight">Column number for galaxy photometric redshift error.  <a href="#a909a4c2b965108d715fab5a88d91d1cc">More...</a><br/></td></tr>
+<tr class="separator:a909a4c2b965108d715fab5a88d91d1cc"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<h2 class="groupheader">Member Function Documentation</h2>
-<a class="anchor" id="a9b0c9fb1ac0c2ad82a51eb9a2092964c"></a>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><p>Class for file input and output. </p>
+<p>This class contains functions for reading and writing ASCII and FITS files. </p>
+</div><h2 class="groupheader">Member Function Documentation</h2>
+<a class="anchor" id="ad3f945cdfc84d8abd576ce4384c33b72"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">void Fileio::output_file_names </td>
+          <td class="memname">void Fileio::output_cluster_name </td>
           <td>(</td>
           <td class="paramtype">const std::string &amp;&#160;</td>
           <td class="paramname"><em>fname</em>, </td>
@@ -102,7 +142,13 @@ Public Member Functions</h2></td></tr>
           <td class="paramkey"></td>
           <td></td>
           <td class="paramtype">double&#160;</td>
-          <td class="paramname"><em>link_z</em>&#160;</td>
+          <td class="paramname"><em>link_z</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">std::string &amp;&#160;</td>
+          <td class="paramname"><em>cluster_file_name</em>&#160;</td>
         </tr>
         <tr>
           <td></td>
@@ -111,7 +157,82 @@ Public Member Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>Function to set up output file names. </p>
+
+<p>This method sets the cluster output file name. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">fname</td><td>Input file name. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">mode</td><td><a class="el" href="class_fo_f.html" title="Class for perfoming friends-of-friends cluster detection. ">FoF</a> mode ["spec"/"phot"]. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">output</td><td>Ouput mode ["ascii"/"fits"]. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">link_r</td><td>Transverse linking parameter value. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">link_z</td><td>Line-of-sight linking parameter value. </td></tr>
+    <tr><td class="paramdir">[out]</td><td class="paramname">cluster_file_name</td><td>Output <a class="el" href="class_cluster.html" title="Class for storing galaxy cluster properties and members. ">Cluster</a> list file name. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a class="anchor" id="abd3717bd499a204cd8167bdf4cfe1b93"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Fileio::output_member_name </td>
+          <td>(</td>
+          <td class="paramtype">const std::string &amp;&#160;</td>
+          <td class="paramname"><em>fname</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const std::string &amp;&#160;</td>
+          <td class="paramname"><em>mode</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const std::string &amp;&#160;</td>
+          <td class="paramname"><em>output</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">double&#160;</td>
+          <td class="paramname"><em>link_r</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">double&#160;</td>
+          <td class="paramname"><em>link_z</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">std::string &amp;&#160;</td>
+          <td class="paramname"><em>member_file_name</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>This method sets the member output file name. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">fname</td><td>Input file name. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">mode</td><td><a class="el" href="class_fo_f.html" title="Class for perfoming friends-of-friends cluster detection. ">FoF</a> mode ["spec"/"phot"]. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">output</td><td>Ouput mode ["ascii"/"fits"]. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">link_r</td><td>Transverse linking parameter value. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">link_z</td><td>Line-of-sight linking parameter value. </td></tr>
+    <tr><td class="paramdir">[out]</td><td class="paramname">member_file_name</td><td>Output member <a class="el" href="class_galaxy.html" title="Class for storing galaxy properties. ">Galaxy</a> list file name. </td></tr>
+  </table>
+  </dd>
+</dl>
 
 </div>
 </div>
@@ -162,7 +283,19 @@ Public Member Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>Function to read in an ASCII file and store the contents in a vector of <a class="el" href="class_galaxy.html">Galaxy</a> instances. </p>
+
+<p>This method reads in an ASCII file and store the contents in a vector of <a class="el" href="class_galaxy.html" title="Class for storing galaxy properties. ">Galaxy</a> instances. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">fname</td><td>Input file name. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">mode</td><td><a class="el" href="class_fo_f.html" title="Class for perfoming friends-of-friends cluster detection. ">FoF</a> mode ["spec"/"phot"]. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">z_min</td><td>Minimum redshift allowed. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">z_max</td><td>Maximum redshift allowed. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">dz_max</td><td>Maximum photometric redshift error allowed. </td></tr>
+    <tr><td class="paramdir">[out]</td><td class="paramname">gals</td><td>Vector of <a class="el" href="class_galaxy.html" title="Class for storing galaxy properties. ">Galaxy</a> instances. </td></tr>
+  </table>
+  </dd>
+</dl>
 
 </div>
 </div>
@@ -213,7 +346,126 @@ Public Member Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>Function to read in an FITS file and store the contents in a vector of <a class="el" href="class_galaxy.html">Galaxy</a> instances. </p>
+
+<p>This method reads in a FITS file and store the contents in a vector of <a class="el" href="class_galaxy.html" title="Class for storing galaxy properties. ">Galaxy</a> instances. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">fname</td><td>Input file name. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">mode</td><td><a class="el" href="class_fo_f.html" title="Class for perfoming friends-of-friends cluster detection. ">FoF</a> mode ["spec"/"phot"]. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">z_min</td><td>Minimum redshift allowed. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">z_max</td><td>Maximum redshift allowed. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">dz_max</td><td>Maximum photometric redshift error allowed. </td></tr>
+    <tr><td class="paramdir">[out]</td><td class="paramname">gals</td><td>Vector of <a class="el" href="class_galaxy.html" title="Class for storing galaxy properties. ">Galaxy</a> instances. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a class="anchor" id="a9704a3f831a0bc53dc47885b7cb59723"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Fileio::set_up </td>
+          <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>id_col_val</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>ra_col_val</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>dec_col_val</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>z_col_val</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>This method sets the column numbers where galaxy properties are stored in the input file. </p>
+<p>[Spectroscopic mode] </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">id_col_val</td><td>Column number for galaxy ID. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">ra_col_val</td><td>Column number for galaxy right ascension. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">dec_col_val</td><td>Column number for galaxy declination. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">z_col_val</td><td>Column number for galaxy spectroscopic redshift. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a class="anchor" id="a6f1978074da3fee048e5f93ee05bb73e"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Fileio::set_up </td>
+          <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>id_col_val</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>ra_col_val</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>dec_col_val</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>z_col_val</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>dz_col_val</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>This method sets the column numbers where galaxy properties are stored in the input file. </p>
+<p>[Photometric mode] </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">id_col_val</td><td>Column number for galaxy ID. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">ra_col_val</td><td>Column number for galaxy right ascension. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">dec_col_val</td><td>Column number for galaxy declination. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">z_col_val</td><td>Column number for galaxy photometric redshift. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">dz_col_val</td><td>Column number for galaxy photometric redshift error. </td></tr>
+  </table>
+  </dd>
+</dl>
 
 </div>
 </div>
@@ -246,11 +498,20 @@ Public Member Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>Function to split a string read in from a file into columns. </p>
+
+<p>This method splits a string into columns. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">str</td><td>String. </td></tr>
+    <tr><td class="paramdir">[out]</td><td class="paramname">tokens</td><td>Vector of column data. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">delimiter</td><td>Column delimiter. </td></tr>
+  </table>
+  </dd>
+</dl>
 
 </div>
 </div>
-<a class="anchor" id="aa144e8b1160a0510e31a1f05bf384112"></a>
+<a class="anchor" id="aa8c1d0e5f52892ac9312e4d32ce7cc75"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
@@ -258,16 +519,41 @@ Public Member Functions</h2></td></tr>
           <td class="memname">void Fileio::write_ascii </td>
           <td>(</td>
           <td class="paramtype">const std::vector&lt; <a class="el" href="class_cluster.html">Cluster</a> &gt; &amp;&#160;</td>
-          <td class="paramname"><em>cluster_list</em></td><td>)</td>
+          <td class="paramname"><em>cluster_list</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
           <td></td>
+          <td class="paramtype">const std::string &amp;&#160;</td>
+          <td class="paramname"><em>cluster_file_name</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const std::string &amp;&#160;</td>
+          <td class="paramname"><em>member_file_name</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>Funtion to output <a class="el" href="class_cluster.html">Cluster</a> intances to an ASCII file. </p>
+
+<p>This method writes a list of the specified <a class="el" href="class_cluster.html" title="Class for storing galaxy cluster properties and members. ">Cluster</a> instances and a list of the corresponding member <a class="el" href="class_galaxy.html" title="Class for storing galaxy properties. ">Galaxy</a> instances to two ASCII files. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">cluster_list</td><td>Vector of <a class="el" href="class_cluster.html" title="Class for storing galaxy cluster properties and members. ">Cluster</a> instances. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">cluster_file_name</td><td>Output <a class="el" href="class_cluster.html" title="Class for storing galaxy cluster properties and members. ">Cluster</a> list file name. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">member_file_name</td><td>Output member <a class="el" href="class_galaxy.html" title="Class for storing galaxy properties. ">Galaxy</a> list file name. </td></tr>
+  </table>
+  </dd>
+</dl>
 
 </div>
 </div>
-<a class="anchor" id="ae52e63a106a09cba2983c77057aa6247"></a>
+<a class="anchor" id="adda2a3257fa3f524cce9eb5f50851808"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
@@ -275,23 +561,159 @@ Public Member Functions</h2></td></tr>
           <td class="memname">void Fileio::write_fits </td>
           <td>(</td>
           <td class="paramtype">const std::vector&lt; <a class="el" href="class_cluster.html">Cluster</a> &gt; &amp;&#160;</td>
-          <td class="paramname"><em>cluster_list</em></td><td>)</td>
+          <td class="paramname"><em>cluster_list</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
           <td></td>
+          <td class="paramtype">const std::string &amp;&#160;</td>
+          <td class="paramname"><em>cluster_file_name</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const std::string &amp;&#160;</td>
+          <td class="paramname"><em>member_file_name</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>Funtion to output <a class="el" href="class_cluster.html">Cluster</a> intances to an FITS file. </p>
+
+<p>This method writes a list of the specified <a class="el" href="class_cluster.html" title="Class for storing galaxy cluster properties and members. ">Cluster</a> instances and a list of the corresponding member <a class="el" href="class_galaxy.html" title="Class for storing galaxy properties. ">Galaxy</a> instances to two FITS files. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">cluster_list</td><td>Vector of <a class="el" href="class_cluster.html" title="Class for storing galaxy cluster properties and members. ">Cluster</a> instances. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">cluster_file_name</td><td>Output <a class="el" href="class_cluster.html" title="Class for storing galaxy cluster properties and members. ">Cluster</a> list file name. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">member_file_name</td><td>Output member <a class="el" href="class_galaxy.html" title="Class for storing galaxy properties. ">Galaxy</a> list file name. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<h2 class="groupheader">Member Data Documentation</h2>
+<a class="anchor" id="ab69c1fd5d6d90fc89313371c274cf01b"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">int Fileio::dec_col</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Column number for galaxy declination. </p>
+
+</div>
+</div>
+<a class="anchor" id="a909a4c2b965108d715fab5a88d91d1cc"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">int Fileio::dz_col</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Column number for galaxy photometric redshift error. </p>
+
+</div>
+</div>
+<a class="anchor" id="a8a4b3279dc6ee92622adb2597773da33"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">int Fileio::id_col</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Column number for galaxy ID. </p>
+
+</div>
+</div>
+<a class="anchor" id="aa10965911fa86a522396f1c5d21660ca"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">int Fileio::ra_col</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Column number for galaxy right ascension. </p>
+
+</div>
+</div>
+<a class="anchor" id="ae78f81530c111ad5d3bda8da48961745"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">int Fileio::z_col</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Column number for galaxy redshift. </p>
 
 </div>
 </div>
 <hr/>The documentation for this class was generated from the following files:<ul>
-<li>/Users/Rowen/Documents/Codes/github/fof_cluster_finder/fof_cluster_finder/src/<a class="el" href="fileio__class_8hpp_source.html">fileio_class.hpp</a></li>
-<li>/Users/Rowen/Documents/Codes/github/fof_cluster_finder/fof_cluster_finder/src/<a class="el" href="fileio__class_8cpp.html">fileio_class.cpp</a></li>
+<li>/Users/Rowen/Documents/Codes/fof_cluster_finder/fof_cluster_finder/src/<a class="el" href="fileio__class_8hpp_source.html">fileio_class.hpp</a></li>
+<li>/Users/Rowen/Documents/Codes/fof_cluster_finder/fof_cluster_finder/src/<a class="el" href="fileio__class_8cpp.html">fileio_class.cpp</a></li>
 </ul>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Tue Jun 3 2014 17:37:37 for fof_cluster_finder by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Tue Aug 12 2014 12:30:54 for fof_cluster_finder by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.6
 </small></address>

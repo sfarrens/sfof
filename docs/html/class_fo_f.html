@@ -30,7 +30,6 @@
     <ul class="tablist">
       <li><a href="index.html"><span>Main&#160;Page</span></a></li>
       <li><a href="pages.html"><span>Related&#160;Pages</span></a></li>
-      <li><a href="namespaces.html"><span>Packages</span></a></li>
       <li class="current"><a href="annotated.html"><span>Classes</span></a></li>
       <li><a href="files.html"><span>Files</span></a></li>
     </ul>
@@ -39,6 +38,7 @@
     <ul class="tablist">
       <li><a href="annotated.html"><span>Class&#160;List</span></a></li>
       <li><a href="classes.html"><span>Class&#160;Index</span></a></li>
+      <li><a href="hierarchy.html"><span>Class&#160;Hierarchy</span></a></li>
       <li><a href="functions.html"><span>Class&#160;Members</span></a></li>
     </ul>
   </div>
@@ -47,91 +47,100 @@
   <div class="summary">
 <a href="#pub-methods">Public Member Functions</a> &#124;
 <a href="#pub-attribs">Public Attributes</a> &#124;
+<a href="#pri-methods">Private Member Functions</a> &#124;
+<a href="#pri-attribs">Private Attributes</a> &#124;
 <a href="class_fo_f-members.html">List of all members</a>  </div>
   <div class="headertitle">
 <div class="title">FoF Class Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
 
+<p>Class for perfoming friends-of-friends cluster detection.  
+ <a href="class_fo_f.html#details">More...</a></p>
+
 <p><code>#include &lt;<a class="el" href="fof__class_8hpp_source.html">fof_class.hpp</a>&gt;</code></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:a40ca7bf140fb9b6c714d4737edaa2b7b"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_fo_f.html#a40ca7bf140fb9b6c714d4737edaa2b7b">FoF</a> (double link_r_val, double link_z_val, std::string mode_val, const <a class="el" href="class_kdtree.html">Kdtree</a> &amp;tree_val, const std::vector&lt; <a class="el" href="class_zbin.html">Zbin</a> &gt; &amp;zbin_val, std::vector&lt; <a class="el" href="class_galaxy.html">Galaxy</a> &gt; &amp;gal_val)</td></tr>
-<tr class="separator:a40ca7bf140fb9b6c714d4737edaa2b7b"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ae8d3a3f04fae117e01bd6617ecadbd20"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_fo_f.html#ae8d3a3f04fae117e01bd6617ecadbd20">bin_check</a> (const <a class="el" href="class_zbin.html">Zbin</a> &amp;, const <a class="el" href="class_galaxy.html">Galaxy</a> &amp;)</td></tr>
-<tr class="separator:ae8d3a3f04fae117e01bd6617ecadbd20"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aca12fed9c211c8c81c2bacf5827f7bcc"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_fo_f.html#aca12fed9c211c8c81c2bacf5827f7bcc">node_check</a> (const <a class="el" href="class_galaxy.html">Galaxy</a> &amp;, const <a class="el" href="class_kdtree_1_1_kdtree__node.html">Kdtree::Kdtree_node</a> &amp;, double)</td></tr>
-<tr class="separator:aca12fed9c211c8c81c2bacf5827f7bcc"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aadc96488b7394c363cc38fce47841bc2"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_fo_f.html#aadc96488b7394c363cc38fce47841bc2">friendship</a> (const <a class="el" href="class_zbin.html">Zbin</a> &amp;, const <a class="el" href="class_galaxy.html">Galaxy</a> &amp;, const <a class="el" href="class_galaxy.html">Galaxy</a> &amp;, double)</td></tr>
-<tr class="separator:aadc96488b7394c363cc38fce47841bc2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5062d1be7e4897cd0cdb185dfd47a0f3"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_fo_f.html#a5062d1be7e4897cd0cdb185dfd47a0f3">FoF</a> ()</td></tr>
+<tr class="memdesc:a5062d1be7e4897cd0cdb185dfd47a0f3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Initialise <a class="el" href="class_fo_f.html" title="Class for perfoming friends-of-friends cluster detection. ">FoF</a> instance.  <a href="#a5062d1be7e4897cd0cdb185dfd47a0f3">More...</a><br/></td></tr>
+<tr class="separator:a5062d1be7e4897cd0cdb185dfd47a0f3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a501f899b1929ee106ffea8e34145fa74"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_fo_f.html#a501f899b1929ee106ffea8e34145fa74">setup</a> (double, double, const std::string &amp;)</td></tr>
+<tr class="memdesc:a501f899b1929ee106ffea8e34145fa74"><td class="mdescLeft">&#160;</td><td class="mdescRight">This method sets-up a <a class="el" href="class_fo_f.html" title="Class for perfoming friends-of-friends cluster detection. ">FoF</a> instance.  <a href="#a501f899b1929ee106ffea8e34145fa74">More...</a><br/></td></tr>
+<tr class="separator:a501f899b1929ee106ffea8e34145fa74"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:afc35e53b3f914095ca7fc65887bcb330"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_fo_f.html#afc35e53b3f914095ca7fc65887bcb330">remove</a> (int)</td></tr>
+<tr class="memdesc:afc35e53b3f914095ca7fc65887bcb330"><td class="mdescLeft">&#160;</td><td class="mdescRight">This method removes <a class="el" href="class_cluster.html" title="Class for storing galaxy cluster properties and members. ">Cluster</a> instances that have too few member <a class="el" href="class_galaxy.html" title="Class for storing galaxy properties. ">Galaxy</a> instances.  <a href="#afc35e53b3f914095ca7fc65887bcb330">More...</a><br/></td></tr>
 <tr class="separator:afc35e53b3f914095ca7fc65887bcb330"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a5eef5b0fd13c7f9e9029714d283c9582"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_fo_f.html#a5eef5b0fd13c7f9e9029714d283c9582">new_cluster</a> (const <a class="el" href="class_zbin.html">Zbin</a> &amp;, <a class="el" href="class_galaxy.html">Galaxy</a> &amp;, <a class="el" href="class_galaxy.html">Galaxy</a> &amp;)</td></tr>
-<tr class="separator:a5eef5b0fd13c7f9e9029714d283c9582"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:afd890fe25b302db883c0d6694736b5d7"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_fo_f.html#afd890fe25b302db883c0d6694736b5d7">add_member</a> (const <a class="el" href="class_zbin.html">Zbin</a> &amp;, <a class="el" href="class_galaxy.html">Galaxy</a> &amp;, <a class="el" href="class_cluster.html">Cluster</a> &amp;)</td></tr>
-<tr class="separator:afd890fe25b302db883c0d6694736b5d7"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a89a5417feafc3621fc057cdbd1895410"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_fo_f.html#a89a5417feafc3621fc057cdbd1895410">find_friends</a> (const <a class="el" href="class_zbin.html">Zbin</a> &amp;, <a class="el" href="class_galaxy.html">Galaxy</a> &amp;, double)</td></tr>
-<tr class="separator:a89a5417feafc3621fc057cdbd1895410"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:adc9b1ea55e1bd10100b60014e44cd2c7"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_fo_f.html#adc9b1ea55e1bd10100b60014e44cd2c7">find_friends_of_friends</a> (const <a class="el" href="class_zbin.html">Zbin</a> &amp;, <a class="el" href="class_cluster.html">Cluster</a> &amp;, double)</td></tr>
-<tr class="separator:adc9b1ea55e1bd10100b60014e44cd2c7"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ae5cf48e66c76193df9ae9b27a08a5086"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_fo_f.html#ae5cf48e66c76193df9ae9b27a08a5086">friends_of_friends</a> (int)</td></tr>
-<tr class="separator:ae5cf48e66c76193df9ae9b27a08a5086"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab9e0bf8a685cd384065153d2d314da58"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_fo_f.html#ab9e0bf8a685cd384065153d2d314da58">friends_of_friends</a> (int, const std::vector&lt; <a class="el" href="class_zbin.html">Zbin</a> &gt; &amp;, std::vector&lt; <a class="el" href="class_galaxy.html">Galaxy</a> &gt; &amp;, const <a class="el" href="class_kdtree.html">Kdtree</a> &amp;)</td></tr>
+<tr class="memdesc:ab9e0bf8a685cd384065153d2d314da58"><td class="mdescLeft">&#160;</td><td class="mdescRight">This method performs a friends-of-friends search for <a class="el" href="class_cluster.html" title="Class for storing galaxy cluster properties and members. ">Cluster</a> instances in a given <a class="el" href="class_zbin.html" title="Class for storing redshift bin properties. ">Zbin</a> instance.  <a href="#ab9e0bf8a685cd384065153d2d314da58">More...</a><br/></td></tr>
+<tr class="separator:ab9e0bf8a685cd384065153d2d314da58"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-attribs"></a>
 Public Attributes</h2></td></tr>
 <tr class="memitem:ac6eb8b7e045e596fc088d7b78a44e184"><td class="memItemLeft" align="right" valign="top">std::vector&lt; <a class="el" href="class_cluster.html">Cluster</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_fo_f.html#ac6eb8b7e045e596fc088d7b78a44e184">list_of_clusters</a></td></tr>
+<tr class="memdesc:ac6eb8b7e045e596fc088d7b78a44e184"><td class="mdescLeft">&#160;</td><td class="mdescRight">Vector of <a class="el" href="class_cluster.html" title="Class for storing galaxy cluster properties and members. ">Cluster</a> instances.  <a href="#ac6eb8b7e045e596fc088d7b78a44e184">More...</a><br/></td></tr>
 <tr class="separator:ac6eb8b7e045e596fc088d7b78a44e184"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pri-methods"></a>
+Private Member Functions</h2></td></tr>
+<tr class="memitem:ae8d3a3f04fae117e01bd6617ecadbd20"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_fo_f.html#ae8d3a3f04fae117e01bd6617ecadbd20">bin_check</a> (const <a class="el" href="class_zbin.html">Zbin</a> &amp;, const <a class="el" href="class_galaxy.html">Galaxy</a> &amp;)</td></tr>
+<tr class="memdesc:ae8d3a3f04fae117e01bd6617ecadbd20"><td class="mdescLeft">&#160;</td><td class="mdescRight">This method checks if a <a class="el" href="class_galaxy.html" title="Class for storing galaxy properties. ">Galaxy</a> instance is compatible with a given <a class="el" href="class_zbin.html" title="Class for storing redshift bin properties. ">Zbin</a> instance.  <a href="#ae8d3a3f04fae117e01bd6617ecadbd20">More...</a><br/></td></tr>
+<tr class="separator:ae8d3a3f04fae117e01bd6617ecadbd20"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aca12fed9c211c8c81c2bacf5827f7bcc"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_fo_f.html#aca12fed9c211c8c81c2bacf5827f7bcc">node_check</a> (const <a class="el" href="class_galaxy.html">Galaxy</a> &amp;, const <a class="el" href="class_kdtree_1_1_kdtree__node.html">Kdtree::Kdtree_node</a> &amp;, double)</td></tr>
+<tr class="memdesc:aca12fed9c211c8c81c2bacf5827f7bcc"><td class="mdescLeft">&#160;</td><td class="mdescRight">This method checks if a <a class="el" href="class_galaxy.html" title="Class for storing galaxy properties. ">Galaxy</a> instance is compatibile with a given <a class="el" href="class_kdtree.html" title="Class for building a kd-tree in RA-DEC space. ">Kdtree</a> node instance.  <a href="#aca12fed9c211c8c81c2bacf5827f7bcc">More...</a><br/></td></tr>
+<tr class="separator:aca12fed9c211c8c81c2bacf5827f7bcc"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aadc96488b7394c363cc38fce47841bc2"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_fo_f.html#aadc96488b7394c363cc38fce47841bc2">friendship</a> (const <a class="el" href="class_zbin.html">Zbin</a> &amp;, const <a class="el" href="class_galaxy.html">Galaxy</a> &amp;, const <a class="el" href="class_galaxy.html">Galaxy</a> &amp;, double)</td></tr>
+<tr class="memdesc:aadc96488b7394c363cc38fce47841bc2"><td class="mdescLeft">&#160;</td><td class="mdescRight">This method checks if two <a class="el" href="class_galaxy.html" title="Class for storing galaxy properties. ">Galaxy</a> instances satisfy the linking conditions in a given <a class="el" href="class_zbin.html" title="Class for storing redshift bin properties. ">Zbin</a> instance.  <a href="#aadc96488b7394c363cc38fce47841bc2">More...</a><br/></td></tr>
+<tr class="separator:aadc96488b7394c363cc38fce47841bc2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5eef5b0fd13c7f9e9029714d283c9582"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_fo_f.html#a5eef5b0fd13c7f9e9029714d283c9582">new_cluster</a> (const <a class="el" href="class_zbin.html">Zbin</a> &amp;, <a class="el" href="class_galaxy.html">Galaxy</a> &amp;, <a class="el" href="class_galaxy.html">Galaxy</a> &amp;)</td></tr>
+<tr class="memdesc:a5eef5b0fd13c7f9e9029714d283c9582"><td class="mdescLeft">&#160;</td><td class="mdescRight">This method creates a new <a class="el" href="class_cluster.html" title="Class for storing galaxy cluster properties and members. ">Cluster</a> instance.  <a href="#a5eef5b0fd13c7f9e9029714d283c9582">More...</a><br/></td></tr>
+<tr class="separator:a5eef5b0fd13c7f9e9029714d283c9582"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:afd890fe25b302db883c0d6694736b5d7"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_fo_f.html#afd890fe25b302db883c0d6694736b5d7">add_member</a> (const <a class="el" href="class_zbin.html">Zbin</a> &amp;, <a class="el" href="class_galaxy.html">Galaxy</a> &amp;, <a class="el" href="class_cluster.html">Cluster</a> &amp;)</td></tr>
+<tr class="memdesc:afd890fe25b302db883c0d6694736b5d7"><td class="mdescLeft">&#160;</td><td class="mdescRight">This method adds a new member <a class="el" href="class_galaxy.html" title="Class for storing galaxy properties. ">Galaxy</a> instance to an existing <a class="el" href="class_cluster.html" title="Class for storing galaxy cluster properties and members. ">Cluster</a> instance.  <a href="#afd890fe25b302db883c0d6694736b5d7">More...</a><br/></td></tr>
+<tr class="separator:afd890fe25b302db883c0d6694736b5d7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a32883fe8ea0a92e908829ce4da51701a"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_fo_f.html#a32883fe8ea0a92e908829ce4da51701a">find_friends</a> (const <a class="el" href="class_zbin.html">Zbin</a> &amp;, <a class="el" href="class_galaxy.html">Galaxy</a> &amp;, double, std::vector&lt; <a class="el" href="class_galaxy.html">Galaxy</a> &gt; &amp;, const <a class="el" href="class_kdtree.html">Kdtree</a> &amp;)</td></tr>
+<tr class="memdesc:a32883fe8ea0a92e908829ce4da51701a"><td class="mdescLeft">&#160;</td><td class="mdescRight">This method finds <a class="el" href="class_galaxy.html" title="Class for storing galaxy properties. ">Galaxy</a> instances linked to a given <a class="el" href="class_galaxy.html" title="Class for storing galaxy properties. ">Galaxy</a> instance in a given <a class="el" href="class_zbin.html" title="Class for storing redshift bin properties. ">Zbin</a> instance.  <a href="#a32883fe8ea0a92e908829ce4da51701a">More...</a><br/></td></tr>
+<tr class="separator:a32883fe8ea0a92e908829ce4da51701a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:adf4f9fbcb1b61656be1eb0e6aac5f52b"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_fo_f.html#adf4f9fbcb1b61656be1eb0e6aac5f52b">find_friends_of_friends</a> (const <a class="el" href="class_zbin.html">Zbin</a> &amp;, <a class="el" href="class_cluster.html">Cluster</a> &amp;, double, std::vector&lt; <a class="el" href="class_galaxy.html">Galaxy</a> &gt; &amp;, const <a class="el" href="class_kdtree.html">Kdtree</a> &amp;)</td></tr>
+<tr class="memdesc:adf4f9fbcb1b61656be1eb0e6aac5f52b"><td class="mdescLeft">&#160;</td><td class="mdescRight">This method finds <a class="el" href="class_galaxy.html" title="Class for storing galaxy properties. ">Galaxy</a> instances linked to the members of a given <a class="el" href="class_cluster.html" title="Class for storing galaxy cluster properties and members. ">Cluster</a> instance in a given <a class="el" href="class_zbin.html" title="Class for storing redshift bin properties. ">Zbin</a> instance.  <a href="#adf4f9fbcb1b61656be1eb0e6aac5f52b">More...</a><br/></td></tr>
+<tr class="separator:adf4f9fbcb1b61656be1eb0e6aac5f52b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pri-attribs"></a>
+Private Attributes</h2></td></tr>
+<tr class="memitem:a0bedc11a9b6d00c7a8cfbb4fdeb4bf2f"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_astro.html">Astro</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_fo_f.html#a0bedc11a9b6d00c7a8cfbb4fdeb4bf2f">astro</a></td></tr>
+<tr class="memdesc:a0bedc11a9b6d00c7a8cfbb4fdeb4bf2f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Include <a class="el" href="class_astro.html" title="Class containing basic functions required for astronomy. ">Astro</a> class.  <a href="#a0bedc11a9b6d00c7a8cfbb4fdeb4bf2f">More...</a><br/></td></tr>
+<tr class="separator:a0bedc11a9b6d00c7a8cfbb4fdeb4bf2f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3364bf53b7de9a1d6ea3dc58791fb747"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_fo_f.html#a3364bf53b7de9a1d6ea3dc58791fb747">cluster_count</a></td></tr>
+<tr class="memdesc:a3364bf53b7de9a1d6ea3dc58791fb747"><td class="mdescLeft">&#160;</td><td class="mdescRight">Count of current number of <a class="el" href="class_cluster.html" title="Class for storing galaxy cluster properties and members. ">Cluster</a> instances.  <a href="#a3364bf53b7de9a1d6ea3dc58791fb747">More...</a><br/></td></tr>
+<tr class="separator:a3364bf53b7de9a1d6ea3dc58791fb747"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:abc58c3c24c76861e3dd705fa0816f3d2"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_fo_f.html#abc58c3c24c76861e3dd705fa0816f3d2">link_r</a></td></tr>
+<tr class="memdesc:abc58c3c24c76861e3dd705fa0816f3d2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Transverse linking parameter.  <a href="#abc58c3c24c76861e3dd705fa0816f3d2">More...</a><br/></td></tr>
+<tr class="separator:abc58c3c24c76861e3dd705fa0816f3d2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa7427f0098db9a5a9cd16512d04e3fe7"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_fo_f.html#aa7427f0098db9a5a9cd16512d04e3fe7">link_z</a></td></tr>
+<tr class="memdesc:aa7427f0098db9a5a9cd16512d04e3fe7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Line-of-sight linking parameter.  <a href="#aa7427f0098db9a5a9cd16512d04e3fe7">More...</a><br/></td></tr>
+<tr class="separator:aa7427f0098db9a5a9cd16512d04e3fe7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af9163dfd2f251084a0de74553852b687"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_fo_f.html#af9163dfd2f251084a0de74553852b687">mode</a></td></tr>
+<tr class="memdesc:af9163dfd2f251084a0de74553852b687"><td class="mdescLeft">&#160;</td><td class="mdescRight"><a class="el" href="class_fo_f.html" title="Class for perfoming friends-of-friends cluster detection. ">FoF</a> mode ["spec"/"phot"].  <a href="#af9163dfd2f251084a0de74553852b687">More...</a><br/></td></tr>
+<tr class="separator:af9163dfd2f251084a0de74553852b687"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
-<a class="anchor" id="a40ca7bf140fb9b6c714d4737edaa2b7b"></a>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><p>Class for perfoming friends-of-friends cluster detection. </p>
+<p>This class produces a vector of <a class="el" href="class_cluster.html" title="Class for storing galaxy cluster properties and members. ">Cluster</a> instances by performing a friends-of-friends search in a given <a class="el" href="class_zbin.html" title="Class for storing redshift bin properties. ">Zbin</a> instance. </p>
+</div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
+<a class="anchor" id="a5062d1be7e4897cd0cdb185dfd47a0f3"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
           <td class="memname">FoF::FoF </td>
           <td>(</td>
-          <td class="paramtype">double&#160;</td>
-          <td class="paramname"><em>link_r_val</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
+          <td class="paramname"></td><td>)</td>
           <td></td>
-          <td class="paramtype">double&#160;</td>
-          <td class="paramname"><em>link_z_val</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">std::string&#160;</td>
-          <td class="paramname"><em>mode_val</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">const <a class="el" href="class_kdtree.html">Kdtree</a> &amp;&#160;</td>
-          <td class="paramname"><em>tree_val</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">const std::vector&lt; <a class="el" href="class_zbin.html">Zbin</a> &gt; &amp;&#160;</td>
-          <td class="paramname"><em>zbin_val</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">std::vector&lt; <a class="el" href="class_galaxy.html">Galaxy</a> &gt; &amp;&#160;</td>
-          <td class="paramname"><em>gal_val</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>&lt; Initialise <a class="el" href="class_fo_f.html">FoF</a> instance. </p>
+
+<p>Initialise <a class="el" href="class_fo_f.html" title="Class for perfoming friends-of-friends cluster detection. ">FoF</a> instance. </p>
 
 </div>
 </div>
@@ -139,6 +148,9 @@ Public Attributes</h2></td></tr>
 <a class="anchor" id="afd890fe25b302db883c0d6694736b5d7"></a>
 <div class="memitem">
 <div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
       <table class="memname">
         <tr>
           <td class="memname">void FoF::add_member </td>
@@ -164,14 +176,31 @@ Public Attributes</h2></td></tr>
           <td></td><td></td>
         </tr>
       </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
 </div><div class="memdoc">
-<p>Function to add a new member to an existing cluster. </p>
+
+<p>This method adds a new member <a class="el" href="class_galaxy.html" title="Class for storing galaxy properties. ">Galaxy</a> instance to an existing <a class="el" href="class_cluster.html" title="Class for storing galaxy cluster properties and members. ">Cluster</a> instance. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">zbin</td><td><a class="el" href="class_zbin.html" title="Class for storing redshift bin properties. ">Zbin</a> instance. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">gal</td><td><a class="el" href="class_galaxy.html" title="Class for storing galaxy properties. ">Galaxy</a> instance. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">cluster</td><td><a class="el" href="class_cluster.html" title="Class for storing galaxy cluster properties and members. ">Cluster</a> instance. </td></tr>
+  </table>
+  </dd>
+</dl>
 
 </div>
 </div>
 <a class="anchor" id="ae8d3a3f04fae117e01bd6617ecadbd20"></a>
 <div class="memitem">
 <div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
       <table class="memname">
         <tr>
           <td class="memname">bool FoF::bin_check </td>
@@ -191,14 +220,30 @@ Public Attributes</h2></td></tr>
           <td></td><td></td>
         </tr>
       </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
 </div><div class="memdoc">
-<p>Function that checks if a galaxy is compatible with a given redshift bin. </p>
+
+<p>This method checks if a <a class="el" href="class_galaxy.html" title="Class for storing galaxy properties. ">Galaxy</a> instance is compatible with a given <a class="el" href="class_zbin.html" title="Class for storing redshift bin properties. ">Zbin</a> instance. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">zbin</td><td><a class="el" href="class_zbin.html" title="Class for storing redshift bin properties. ">Zbin</a> instance. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">gal</td><td><a class="el" href="class_galaxy.html" title="Class for storing galaxy properties. ">Galaxy</a> instance. </td></tr>
+  </table>
+  </dd>
+</dl>
 
 </div>
 </div>
-<a class="anchor" id="a89a5417feafc3621fc057cdbd1895410"></a>
+<a class="anchor" id="a32883fe8ea0a92e908829ce4da51701a"></a>
 <div class="memitem">
 <div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
       <table class="memname">
         <tr>
           <td class="memname">void FoF::find_friends </td>
@@ -216,7 +261,19 @@ Public Attributes</h2></td></tr>
           <td class="paramkey"></td>
           <td></td>
           <td class="paramtype">double&#160;</td>
-          <td class="paramname"><em>rfriend</em>&#160;</td>
+          <td class="paramname"><em>rfriend</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">std::vector&lt; <a class="el" href="class_galaxy.html">Galaxy</a> &gt; &amp;&#160;</td>
+          <td class="paramname"><em>gal_list</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="el" href="class_kdtree.html">Kdtree</a> &amp;&#160;</td>
+          <td class="paramname"><em>tree</em>&#160;</td>
         </tr>
         <tr>
           <td></td>
@@ -224,20 +281,33 @@ Public Attributes</h2></td></tr>
           <td></td><td></td>
         </tr>
       </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
 </div><div class="memdoc">
-<p>Function to find galaxies linked to the galaxy in question.</p>
-<p>&lt; Loop through kd-tree nodes</p>
-<p>&lt; Check if galaxy is compatible with kd-tree node</p>
-<p>&lt; Loop through node members</p>
-<p>&lt; Check if galaxies are friends</p>
-<p>&lt; Create new cluster</p>
-<p>&lt; Add new member to existing cluster </p>
+
+<p>This method finds <a class="el" href="class_galaxy.html" title="Class for storing galaxy properties. ">Galaxy</a> instances linked to a given <a class="el" href="class_galaxy.html" title="Class for storing galaxy properties. ">Galaxy</a> instance in a given <a class="el" href="class_zbin.html" title="Class for storing redshift bin properties. ">Zbin</a> instance. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">zbin</td><td><a class="el" href="class_zbin.html" title="Class for storing redshift bin properties. ">Zbin</a> instance. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">gal</td><td><a class="el" href="class_galaxy.html" title="Class for storing galaxy properties. ">Galaxy</a> instance. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">rfriend</td><td>R_friend value. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">gal_list</td><td>Vector of <a class="el" href="class_galaxy.html" title="Class for storing galaxy properties. ">Galaxy</a> instances. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">tree</td><td>Vector of <a class="el" href="class_kdtree.html" title="Class for building a kd-tree in RA-DEC space. ">Kdtree</a> node instances. </td></tr>
+  </table>
+  </dd>
+</dl>
 
 </div>
 </div>
-<a class="anchor" id="adc9b1ea55e1bd10100b60014e44cd2c7"></a>
+<a class="anchor" id="adf4f9fbcb1b61656be1eb0e6aac5f52b"></a>
 <div class="memitem">
 <div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
       <table class="memname">
         <tr>
           <td class="memname">void FoF::find_friends_of_friends </td>
@@ -255,7 +325,74 @@ Public Attributes</h2></td></tr>
           <td class="paramkey"></td>
           <td></td>
           <td class="paramtype">double&#160;</td>
-          <td class="paramname"><em>rfriend</em>&#160;</td>
+          <td class="paramname"><em>rfriend</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">std::vector&lt; <a class="el" href="class_galaxy.html">Galaxy</a> &gt; &amp;&#160;</td>
+          <td class="paramname"><em>gal_list</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="el" href="class_kdtree.html">Kdtree</a> &amp;&#160;</td>
+          <td class="paramname"><em>tree</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>This method finds <a class="el" href="class_galaxy.html" title="Class for storing galaxy properties. ">Galaxy</a> instances linked to the members of a given <a class="el" href="class_cluster.html" title="Class for storing galaxy cluster properties and members. ">Cluster</a> instance in a given <a class="el" href="class_zbin.html" title="Class for storing redshift bin properties. ">Zbin</a> instance. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">zbin</td><td><a class="el" href="class_zbin.html" title="Class for storing redshift bin properties. ">Zbin</a> instance. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">cluster</td><td><a class="el" href="class_cluster.html" title="Class for storing galaxy cluster properties and members. ">Cluster</a> instance. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">rfriend</td><td>R_friend value. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">gal_list</td><td>Vector of <a class="el" href="class_galaxy.html" title="Class for storing galaxy properties. ">Galaxy</a> instances. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">tree</td><td>Vector of <a class="el" href="class_kdtree.html" title="Class for building a kd-tree in RA-DEC space. ">Kdtree</a> node instances. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a class="anchor" id="ab9e0bf8a685cd384065153d2d314da58"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void FoF::friends_of_friends </td>
+          <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>bin_num</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const std::vector&lt; <a class="el" href="class_zbin.html">Zbin</a> &gt; &amp;&#160;</td>
+          <td class="paramname"><em>zbin_list</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">std::vector&lt; <a class="el" href="class_galaxy.html">Galaxy</a> &gt; &amp;&#160;</td>
+          <td class="paramname"><em>gal_list</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="el" href="class_kdtree.html">Kdtree</a> &amp;&#160;</td>
+          <td class="paramname"><em>tree</em>&#160;</td>
         </tr>
         <tr>
           <td></td>
@@ -264,35 +401,26 @@ Public Attributes</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>Function to find the galaxies linked to existing cluster members.</p>
-<p>&lt; Loop through cluster members </p>
 
-</div>
-</div>
-<a class="anchor" id="ae5cf48e66c76193df9ae9b27a08a5086"></a>
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">void FoF::friends_of_friends </td>
-          <td>(</td>
-          <td class="paramtype">int&#160;</td>
-          <td class="paramname"><em>bin_num</em></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-<p>Funciton find friends-of-friends in a given redshift bin.</p>
-<p>&lt; Loop through galaxies</p>
-<p>&lt; Modify rfriend for spectroscopic mode</p>
-<p>&lt; Check if galaxy is already in a cluster (f-loop)</p>
-<p>&lt; Check if galaxy is now in a cluster (fof-loop) </p>
+<p>This method performs a friends-of-friends search for <a class="el" href="class_cluster.html" title="Class for storing galaxy cluster properties and members. ">Cluster</a> instances in a given <a class="el" href="class_zbin.html" title="Class for storing redshift bin properties. ">Zbin</a> instance. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">bin_num</td><td><a class="el" href="class_zbin.html" title="Class for storing redshift bin properties. ">Zbin</a> number. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">zbin_list</td><td>Vector of <a class="el" href="class_zbin.html" title="Class for storing redshift bin properties. ">Zbin</a> instances. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">gal_list</td><td>Vector of <a class="el" href="class_galaxy.html" title="Class for storing galaxy properties. ">Galaxy</a> instances. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">tree</td><td>Vector of <a class="el" href="class_kdtree.html" title="Class for building a kd-tree in RA-DEC space. ">Kdtree</a> node instances. </td></tr>
+  </table>
+  </dd>
+</dl>
 
 </div>
 </div>
 <a class="anchor" id="aadc96488b7394c363cc38fce47841bc2"></a>
 <div class="memitem">
 <div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
       <table class="memname">
         <tr>
           <td class="memname">bool FoF::friendship </td>
@@ -324,14 +452,32 @@ Public Attributes</h2></td></tr>
           <td></td><td></td>
         </tr>
       </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
 </div><div class="memdoc">
-<p>Function that checks if two galaxies are friends in a given redshift bin. </p>
+
+<p>This method checks if two <a class="el" href="class_galaxy.html" title="Class for storing galaxy properties. ">Galaxy</a> instances satisfy the linking conditions in a given <a class="el" href="class_zbin.html" title="Class for storing redshift bin properties. ">Zbin</a> instance. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">zbin</td><td><a class="el" href="class_zbin.html" title="Class for storing redshift bin properties. ">Zbin</a> instance. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">gal1</td><td><a class="el" href="class_galaxy.html" title="Class for storing galaxy properties. ">Galaxy</a> instance 1. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">gal2</td><td><a class="el" href="class_galaxy.html" title="Class for storing galaxy properties. ">Galaxy</a> instance 2. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">rfriend</td><td>R_friend value. </td></tr>
+  </table>
+  </dd>
+</dl>
 
 </div>
 </div>
 <a class="anchor" id="a5eef5b0fd13c7f9e9029714d283c9582"></a>
 <div class="memitem">
 <div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
       <table class="memname">
         <tr>
           <td class="memname">void FoF::new_cluster </td>
@@ -357,14 +503,31 @@ Public Attributes</h2></td></tr>
           <td></td><td></td>
         </tr>
       </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
 </div><div class="memdoc">
-<p>Function to create a new cluster. </p>
+
+<p>This method creates a new <a class="el" href="class_cluster.html" title="Class for storing galaxy cluster properties and members. ">Cluster</a> instance. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">zbin</td><td><a class="el" href="class_zbin.html" title="Class for storing redshift bin properties. ">Zbin</a> instance. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">gal1</td><td><a class="el" href="class_galaxy.html" title="Class for storing galaxy properties. ">Galaxy</a> instance 1. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">gal2</td><td><a class="el" href="class_galaxy.html" title="Class for storing galaxy properties. ">Galaxy</a> instance 2. </td></tr>
+  </table>
+  </dd>
+</dl>
 
 </div>
 </div>
 <a class="anchor" id="aca12fed9c211c8c81c2bacf5827f7bcc"></a>
 <div class="memitem">
 <div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
       <table class="memname">
         <tr>
           <td class="memname">bool FoF::node_check </td>
@@ -390,8 +553,22 @@ Public Attributes</h2></td></tr>
           <td></td><td></td>
         </tr>
       </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
 </div><div class="memdoc">
-<p>Function that checks if a galaxy is compatibile with a given kd-tree node. </p>
+
+<p>This method checks if a <a class="el" href="class_galaxy.html" title="Class for storing galaxy properties. ">Galaxy</a> instance is compatibile with a given <a class="el" href="class_kdtree.html" title="Class for building a kd-tree in RA-DEC space. ">Kdtree</a> node instance. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">gal</td><td><a class="el" href="class_galaxy.html" title="Class for storing galaxy properties. ">Galaxy</a> instance. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">node</td><td><a class="el" href="class_kdtree.html" title="Class for building a kd-tree in RA-DEC space. ">Kdtree</a> node instance. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">rfriend</td><td>R_friend value. </td></tr>
+  </table>
+  </dd>
+</dl>
 
 </div>
 </div>
@@ -408,13 +585,148 @@ Public Attributes</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>Function that removes clusters that have too few members.</p>
-<p>&lt; Loop through clusters</p>
-<p>&lt; Check if cluster has less than the minimum number of members </p>
+
+<p>This method removes <a class="el" href="class_cluster.html" title="Class for storing galaxy cluster properties and members. ">Cluster</a> instances that have too few member <a class="el" href="class_galaxy.html" title="Class for storing galaxy properties. ">Galaxy</a> instances. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">min_ngal</td><td>Minimum number of member <a class="el" href="class_galaxy.html" title="Class for storing galaxy properties. ">Galaxy</a> instances required. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a class="anchor" id="a501f899b1929ee106ffea8e34145fa74"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void FoF::setup </td>
+          <td>(</td>
+          <td class="paramtype">double&#160;</td>
+          <td class="paramname"><em>link_r_val</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">double&#160;</td>
+          <td class="paramname"><em>link_z_val</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const std::string &amp;&#160;</td>
+          <td class="paramname"><em>mode_val</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>This method sets-up a <a class="el" href="class_fo_f.html" title="Class for perfoming friends-of-friends cluster detection. ">FoF</a> instance. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">link_r_val</td><td>Transverse linking parameter value. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">link_z_val</td><td>Line-of-sight linking parameter value. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">mode_val</td><td><a class="el" href="class_fo_f.html" title="Class for perfoming friends-of-friends cluster detection. ">FoF</a> mode ["spec"/"phot"]. </td></tr>
+  </table>
+  </dd>
+</dl>
 
 </div>
 </div>
 <h2 class="groupheader">Member Data Documentation</h2>
+<a class="anchor" id="a0bedc11a9b6d00c7a8cfbb4fdeb4bf2f"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="class_astro.html">Astro</a> FoF::astro</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Include <a class="el" href="class_astro.html" title="Class containing basic functions required for astronomy. ">Astro</a> class. </p>
+
+</div>
+</div>
+<a class="anchor" id="a3364bf53b7de9a1d6ea3dc58791fb747"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">int FoF::cluster_count</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Count of current number of <a class="el" href="class_cluster.html" title="Class for storing galaxy cluster properties and members. ">Cluster</a> instances. </p>
+
+</div>
+</div>
+<a class="anchor" id="abc58c3c24c76861e3dd705fa0816f3d2"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">double FoF::link_r</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Transverse linking parameter. </p>
+
+</div>
+</div>
+<a class="anchor" id="aa7427f0098db9a5a9cd16512d04e3fe7"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">double FoF::link_z</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Line-of-sight linking parameter. </p>
+
+</div>
+</div>
 <a class="anchor" id="ac6eb8b7e045e596fc088d7b78a44e184"></a>
 <div class="memitem">
 <div class="memproto">
@@ -425,16 +737,40 @@ Public Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
+<p>Vector of <a class="el" href="class_cluster.html" title="Class for storing galaxy cluster properties and members. ">Cluster</a> instances. </p>
+
+</div>
+</div>
+<a class="anchor" id="af9163dfd2f251084a0de74553852b687"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::string FoF::mode</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p><a class="el" href="class_fo_f.html" title="Class for perfoming friends-of-friends cluster detection. ">FoF</a> mode ["spec"/"phot"]. </p>
+
 </div>
 </div>
 <hr/>The documentation for this class was generated from the following files:<ul>
-<li>/Users/Rowen/Documents/Codes/github/fof_cluster_finder/fof_cluster_finder/src/<a class="el" href="fof__class_8hpp_source.html">fof_class.hpp</a></li>
-<li>/Users/Rowen/Documents/Codes/github/fof_cluster_finder/fof_cluster_finder/src/<a class="el" href="fof__class_8cpp.html">fof_class.cpp</a></li>
+<li>/Users/Rowen/Documents/Codes/fof_cluster_finder/fof_cluster_finder/src/<a class="el" href="fof__class_8hpp_source.html">fof_class.hpp</a></li>
+<li>/Users/Rowen/Documents/Codes/fof_cluster_finder/fof_cluster_finder/src/<a class="el" href="fof__class_8cpp.html">fof_class.cpp</a></li>
 </ul>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Tue Jun 3 2014 17:37:37 for fof_cluster_finder by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Tue Aug 12 2014 12:30:54 for fof_cluster_finder by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.6
 </small></address>

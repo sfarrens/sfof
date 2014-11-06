@@ -4,7 +4,7 @@
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.6"/>
-<title>fof_cluster_finder: /Users/Rowen/Documents/Codes/github/fof_cluster_finder/fof_cluster_finder/src/merge_class.hpp Source File</title>
+<title>fof_cluster_finder: /Users/Rowen/Documents/Codes/fof_cluster_finder/fof_cluster_finder/src/merge_class.hpp Source File</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -30,7 +30,6 @@
     <ul class="tablist">
       <li><a href="index.html"><span>Main&#160;Page</span></a></li>
       <li><a href="pages.html"><span>Related&#160;Pages</span></a></li>
-      <li><a href="namespaces.html"><span>Packages</span></a></li>
       <li><a href="annotated.html"><span>Classes</span></a></li>
       <li class="current"><a href="files.html"><span>Files</span></a></li>
     </ul>
@@ -51,40 +50,57 @@
 <div class="title">merge_class.hpp</div>  </div>
 </div><!--header-->
 <div class="contents">
-<a href="merge__class_8hpp.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="comment">/*Class header for Galaxy*/</span></div>
-<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;</div>
-<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="preprocessor">#ifndef MERGE_CLASS_H</span></div>
-<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="preprocessor">#define MERGE_CLASS_H</span></div>
-<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;</div>
-<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="preprocessor">#include &lt;algorithm&gt;</span> </div>
-<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="preprocessor">#include &lt;vector&gt;</span></div>
-<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="cluster__class_8hpp.html">cluster_class.hpp</a>&quot;</span></div>
+<a href="merge__class_8hpp.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;</div>
+<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="preprocessor">#ifndef MERGE_CLASS_H</span></div>
+<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="preprocessor">#define MERGE_CLASS_H</span></div>
 <div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;</div>
-<div class="line"><a name="l00010"></a><span class="lineno"><a class="line" href="class_merge.html">   10</a></span>&#160;<span class="keyword">class </span><a class="code" href="class_merge.html">Merge</a> { </div>
-<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;<span class="keyword">private</span>:</div>
-<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;  <span class="keywordtype">bool</span> gal_in_clt (<span class="keyword">const</span> <a class="code" href="class_galaxy.html">Galaxy</a> &amp;, <span class="keyword">const</span> <a class="code" href="class_cluster.html">Cluster</a> &amp;);</div>
-<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;  <span class="keywordtype">bool</span> check_mem (<span class="keyword">const</span> <a class="code" href="class_cluster.html">Cluster</a> &amp;, <span class="keyword">const</span> <a class="code" href="class_cluster.html">Cluster</a> &amp;);</div>
-<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;  <span class="keywordtype">void</span> assimilate (<a class="code" href="class_cluster.html">Cluster</a> &amp;, <a class="code" href="class_cluster.html">Cluster</a> &amp;);</div>
-<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;  <span class="keywordtype">void</span> seek (std::vector&lt;Cluster&gt; &amp;);</div>
-<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;  <span class="keywordtype">void</span> destroy (std::vector&lt;Cluster&gt; &amp;);</div>
-<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;<span class="keyword">public</span>:</div>
-<div class="line"><a name="l00018"></a><span class="lineno"><a class="line" href="class_merge.html#adb9150195f4aaca77c3efdf237758ff3">   18</a></span>&#160;  <a class="code" href="class_merge.html#adb9150195f4aaca77c3efdf237758ff3">Merge</a> (std::vector&lt;Cluster&gt; &amp;<a class="code" href="namespacepython_1_1pymerge.html#a531b2ef7f8436d581c1dcb85609afb64">clusters</a>) {</div>
-<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;    seek(clusters);</div>
-<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;    destroy(clusters);</div>
-<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;  };</div>
-<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;};</div>
-<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;</div>
-<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;<span class="preprocessor">#endif </span><span class="comment">/* MERGE_CLASS_H */</span><span class="preprocessor"></span></div>
-<div class="ttc" id="class_galaxy_html"><div class="ttname"><a href="class_galaxy.html">Galaxy</a></div><div class="ttdef"><b>Definition:</b> galaxy_class.hpp:9</div></div>
-<div class="ttc" id="class_merge_html_adb9150195f4aaca77c3efdf237758ff3"><div class="ttname"><a href="class_merge.html#adb9150195f4aaca77c3efdf237758ff3">Merge::Merge</a></div><div class="ttdeci">Merge(std::vector&lt; Cluster &gt; &amp;clusters)</div><div class="ttdef"><b>Definition:</b> merge_class.hpp:18</div></div>
-<div class="ttc" id="class_merge_html"><div class="ttname"><a href="class_merge.html">Merge</a></div><div class="ttdef"><b>Definition:</b> merge_class.hpp:10</div></div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;<span class="preprocessor">#include &lt;algorithm&gt;</span> </div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;<span class="preprocessor">#include &lt;vector&gt;</span></div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="cluster__class_8hpp.html">cluster_class.hpp</a>&quot;</span></div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="exceptions_8hpp.html">exceptions.hpp</a>&quot;</span></div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;</div>
+<div class="line"><a name="l00024"></a><span class="lineno"><a class="line" href="class_merge.html">   24</a></span>&#160;<span class="keyword">class </span><a class="code" href="class_merge.html">Merge</a> { <span class="comment">// Class for merge functions</span></div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;</div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;<span class="keyword">public</span>:</div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;</div>
+<div class="line"><a name="l00032"></a><span class="lineno"><a class="line" href="class_merge.html#adb9150195f4aaca77c3efdf237758ff3">   32</a></span>&#160;  <a class="code" href="class_merge.html#adb9150195f4aaca77c3efdf237758ff3">Merge</a> (std::vector&lt;Cluster&gt; &amp;clusters) {</div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;    <span class="keywordflow">if</span> (clusters.empty())</div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;      <span class="keywordflow">throw</span> <a class="code" href="class_bad_argument_exception.html">BadArgumentException</a>(<span class="stringliteral">&quot;Merge&quot;</span>, <span class="stringliteral">&quot;clusters&quot;</span>, <span class="stringliteral">&quot;a valid vector&quot;</span>);</div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;    <a class="code" href="class_merge.html#a0d6d56d23dbdf9577c0185053a354138">seek</a>(clusters);</div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;    <a class="code" href="class_merge.html#a1ea09e56823b7115fc5412e28503f0dd">destroy</a>(clusters);</div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;  };</div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;</div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;<span class="keyword">private</span>:</div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;</div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;  <span class="keywordtype">bool</span> <a class="code" href="class_merge.html#a1d6b42a4f1854c0d5fdd858956b0da53">gal_in_clt</a> (<span class="keyword">const</span> <a class="code" href="class_galaxy.html">Galaxy</a> &amp;, <span class="keyword">const</span> <a class="code" href="class_cluster.html">Cluster</a> &amp;);</div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;</div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;  <span class="keywordtype">bool</span> <a class="code" href="class_merge.html#ab758d32c588ca66405c37aa553a43021">check_mem</a> (<span class="keyword">const</span> <a class="code" href="class_cluster.html">Cluster</a> &amp;, <span class="keyword">const</span> <a class="code" href="class_cluster.html">Cluster</a> &amp;);</div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;</div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;  <span class="keywordtype">void</span> <a class="code" href="class_merge.html#a72a6170612aae0ee32321890cc511565">assimilate</a> (<a class="code" href="class_cluster.html">Cluster</a> &amp;, <a class="code" href="class_cluster.html">Cluster</a> &amp;);</div>
+<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;</div>
+<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;  <span class="keywordtype">void</span> <a class="code" href="class_merge.html#a0d6d56d23dbdf9577c0185053a354138">seek</a> (std::vector&lt;Cluster&gt; &amp;);</div>
+<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;</div>
+<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;  <span class="keywordtype">void</span> <a class="code" href="class_merge.html#a1ea09e56823b7115fc5412e28503f0dd">destroy</a> (std::vector&lt;Cluster&gt; &amp;);</div>
+<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;</div>
+<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;};</div>
+<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;</div>
+<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;<span class="preprocessor">#endif // MERGE_CLASS_H</span></div>
+<div class="ttc" id="class_merge_html_ab758d32c588ca66405c37aa553a43021"><div class="ttname"><a href="class_merge.html#ab758d32c588ca66405c37aa553a43021">Merge::check_mem</a></div><div class="ttdeci">bool check_mem(const Cluster &amp;, const Cluster &amp;)</div><div class="ttdoc">This method checks if two given Cluster instances have any common member Galaxy instances. </div><div class="ttdef"><b>Definition:</b> merge_class.cpp:10</div></div>
+<div class="ttc" id="class_galaxy_html"><div class="ttname"><a href="class_galaxy.html">Galaxy</a></div><div class="ttdoc">Class for storing galaxy properties. </div><div class="ttdef"><b>Definition:</b> galaxy_class.hpp:24</div></div>
+<div class="ttc" id="class_merge_html_adb9150195f4aaca77c3efdf237758ff3"><div class="ttname"><a href="class_merge.html#adb9150195f4aaca77c3efdf237758ff3">Merge::Merge</a></div><div class="ttdeci">Merge(std::vector&lt; Cluster &gt; &amp;clusters)</div><div class="ttdoc">Initialise Merge instance. </div><div class="ttdef"><b>Definition:</b> merge_class.hpp:32</div></div>
+<div class="ttc" id="class_merge_html"><div class="ttname"><a href="class_merge.html">Merge</a></div><div class="ttdoc">Class for merging Cluster instances. </div><div class="ttdef"><b>Definition:</b> merge_class.hpp:24</div></div>
 <div class="ttc" id="cluster__class_8hpp_html"><div class="ttname"><a href="cluster__class_8hpp.html">cluster_class.hpp</a></div></div>
-<div class="ttc" id="namespacepython_1_1pymerge_html_a531b2ef7f8436d581c1dcb85609afb64"><div class="ttname"><a href="namespacepython_1_1pymerge.html#a531b2ef7f8436d581c1dcb85609afb64">python.pymerge.clusters</a></div><div class="ttdeci">list clusters</div><div class="ttdef"><b>Definition:</b> pymerge.py:69</div></div>
-<div class="ttc" id="class_cluster_html"><div class="ttname"><a href="class_cluster.html">Cluster</a></div><div class="ttdef"><b>Definition:</b> cluster_class.hpp:10</div></div>
+<div class="ttc" id="exceptions_8hpp_html"><div class="ttname"><a href="exceptions_8hpp.html">exceptions.hpp</a></div></div>
+<div class="ttc" id="class_merge_html_a1ea09e56823b7115fc5412e28503f0dd"><div class="ttname"><a href="class_merge.html#a1ea09e56823b7115fc5412e28503f0dd">Merge::destroy</a></div><div class="ttdeci">void destroy(std::vector&lt; Cluster &gt; &amp;)</div><div class="ttdoc">This method removes empty Cluster instances from the the list. </div><div class="ttdef"><b>Definition:</b> merge_class.cpp:43</div></div>
+<div class="ttc" id="class_cluster_html"><div class="ttname"><a href="class_cluster.html">Cluster</a></div><div class="ttdoc">Class for storing galaxy cluster properties and members. </div><div class="ttdef"><b>Definition:</b> cluster_class.hpp:26</div></div>
+<div class="ttc" id="class_merge_html_a72a6170612aae0ee32321890cc511565"><div class="ttname"><a href="class_merge.html#a72a6170612aae0ee32321890cc511565">Merge::assimilate</a></div><div class="ttdeci">void assimilate(Cluster &amp;, Cluster &amp;)</div><div class="ttdoc">This method merges the member Galaxy instances from Cluster instance 2 into Cluster instance 1 and re...</div><div class="ttdef"><b>Definition:</b> merge_class.cpp:20</div></div>
+<div class="ttc" id="class_bad_argument_exception_html"><div class="ttname"><a href="class_bad_argument_exception.html">BadArgumentException</a></div><div class="ttdef"><b>Definition:</b> exceptions.hpp:7</div></div>
+<div class="ttc" id="class_merge_html_a0d6d56d23dbdf9577c0185053a354138"><div class="ttname"><a href="class_merge.html#a0d6d56d23dbdf9577c0185053a354138">Merge::seek</a></div><div class="ttdeci">void seek(std::vector&lt; Cluster &gt; &amp;)</div><div class="ttdoc">This method searches for Cluster instances with common members. </div><div class="ttdef"><b>Definition:</b> merge_class.cpp:31</div></div>
+<div class="ttc" id="class_merge_html_a1d6b42a4f1854c0d5fdd858956b0da53"><div class="ttname"><a href="class_merge.html#a1d6b42a4f1854c0d5fdd858956b0da53">Merge::gal_in_clt</a></div><div class="ttdeci">bool gal_in_clt(const Galaxy &amp;, const Cluster &amp;)</div><div class="ttdoc">This method checks if a given Galaxy instance is a member of a given Cluster instance. </div><div class="ttdef"><b>Definition:</b> merge_class.cpp:5</div></div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Tue Jun 3 2014 17:37:37 for fof_cluster_finder by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Tue Aug 12 2014 12:30:54 for fof_cluster_finder by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.6
 </small></address>

@@ -1,43 +1,95 @@
-/*Class header for Kdtree*/
+/**
+ * @file kdtree_class.hpp
+ *
+ * @author Luca Toranatore, Samuel Farrens
+ */
 
 #ifndef KDTREE_CLASS_H
 #define KDTREE_CLASS_H
 
+/**
+ * @class Kdtree
+ *
+ * @brief Class for constructing a kd-tree.
+ *
+ * This class constructs a kd-tree.
+ *
+ */
+
+#include <cstdlib>
+#include <iostream>
+#include <sstream>
+#include <string>
 #include <algorithm>
 #include <string>
 #include <vector>
+#include <deque>
 #include "astro.hpp"
 #include "galaxy_class.hpp"
+#include "point_class.hpp"
 
-class Kdtree { //! Class structure for kd-tree properties
-private:
-  Astro astro;
+#define FLTC (1.0 + 1e-5)
+enum node_to_galaxy {External, Intersects, Internal};
+
+class Kdtree{ //! Class structure for kd-tree properties
+  
 public:
+
   class Kdtree_node{ //! Nested class structure for kd-tree node properties
+
   private:
     Astro astro;
+    
   public:
-    std::vector<Galaxy> members;
-    double ra, dec, size, radius;
-    Kdtree_node (const std::vector<Galaxy> &gals){
-      /**< Initialise kdtree_node instance. */
-      members = gals;
-      size = gals.size();
-      std::vector<double> ra_list, dec_list;
-      for (int i = 0; i < size; i++) {
-	ra_list.push_back(members[i].ra);
-	dec_list.push_back(members[i].dec);
-      }
-      ra = astro.mean(ra_list);
-      dec = astro.mean(dec_list);
-      radius = std::max(astro.angsep(ra, dec, astro.min(ra_list), astro.min(dec_list)), 
-			astro.angsep(ra, dec, astro.max(ra_list), astro.max(dec_list)));
-    };
+    Galaxy *Gal;
+    Kdtree_node *left, *right;
+    
+    class Point bottom_left, top_right;
+    class Point center;
+    double radius;
+    int axis;
+    unsigned int Ngalaxies;
+
+    void print_node_info(class Kdtree_node *, const std::vector<Galaxy> &);
+      
+    node_to_galaxy check_node(class Point &, double, int);    
+    
   }; /*End of Kdtree_node nested class*/
-  int max_depth;
-  std::vector<Kdtree_node> node_list; 
-  void set_kdtree (const std::vector<Galaxy> &, int);
-  void build_kdtree (const std::vector<Galaxy> &, int);
+
+private:
+  Astro astro;
+  
+public:
+  
+  class Kdtree_node *Nodes, *root;
+  std::vector<Galaxy> AllG;
+  std::vector<Galaxy*> GalPtrs;
+
+  Point MIN, MAX;
+  int NNodes, NMaxNodes, NLeaves;
+  double max_axis_inequality;
+
+  double sample_area;
+
+  class Kdtree_node* build_kdtree (std::vector<Galaxy*>::iterator begin,
+                                   std::vector<Galaxy*>::iterator end,
+                                   class Point [2],
+                                   int);
+
+  void set_Kdtree(std::vector<Galaxy> &, double);
+  
+  void write_Kdtree(const std::string &);
+  
+  void WalkTree(class Kdtree_node *, int);
+
+  void WalkTree(class Kdtree_node *, std::ofstream &);
+
+  int range_search(Point &, int, double, std::deque<Galaxy*> &) const;
+  
+  int range_search(Galaxy &, double, std::deque<Galaxy*> &) const;
+
+  int range_search_loop(Kdtree_node *, class Point &, int, double, node_to_galaxy, std::deque<Galaxy*> &) const;
+
 };
 
 #endif /* KDTREE_CLASS_H */

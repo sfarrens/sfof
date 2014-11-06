@@ -4,7 +4,7 @@
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.6"/>
-<title>fof_cluster_finder: /Users/Rowen/Documents/Codes/github/fof_cluster_finder/fof_cluster_finder/src/fileio_class.hpp Source File</title>
+<title>fof_cluster_finder: /Users/Rowen/Documents/Codes/fof_cluster_finder/fof_cluster_finder/src/fileio_class.hpp Source File</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -30,7 +30,6 @@
     <ul class="tablist">
       <li><a href="index.html"><span>Main&#160;Page</span></a></li>
       <li><a href="pages.html"><span>Related&#160;Pages</span></a></li>
-      <li><a href="namespaces.html"><span>Packages</span></a></li>
       <li><a href="annotated.html"><span>Classes</span></a></li>
       <li class="current"><a href="files.html"><span>Files</span></a></li>
     </ul>
@@ -51,56 +50,91 @@
 <div class="title">fileio_class.hpp</div>  </div>
 </div><!--header-->
 <div class="contents">
-<a href="fileio__class_8hpp.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="comment">/*Class header for Fileio*/</span></div>
-<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;</div>
-<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="preprocessor">#ifndef FILEIO_CLASS_H</span></div>
-<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="preprocessor">#define FILEIO_CLASS_H</span></div>
-<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;</div>
-<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="preprocessor">#include &lt;fitsio.h&gt;</span> <span class="comment">//*Include FITSIO packages*//</span></div>
-<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;</div>
-<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="preprocessor">#include &lt;fstream&gt;</span></div>
-<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="preprocessor">#include &lt;iomanip&gt;</span></div>
-<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="preprocessor">#include &lt;iostream&gt;</span></div>
-<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;<span class="preprocessor">#include &lt;sstream&gt;</span></div>
-<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;<span class="preprocessor">#include &lt;string&gt;</span></div>
-<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;<span class="preprocessor">#include &lt;vector&gt;</span></div>
-<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="astro_8hpp.html">astro.hpp</a>&quot;</span></div>
-<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="cluster__class_8hpp.html">cluster_class.hpp</a>&quot;</span></div>
-<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="galaxy__class_8hpp.html">galaxy_class.hpp</a>&quot;</span></div>
-<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="zbin__class_8hpp.html">zbin_class.hpp</a>&quot;</span></div>
-<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;</div>
-<div class="line"><a name="l00019"></a><span class="lineno"><a class="line" href="class_fileio.html">   19</a></span>&#160;<span class="keyword">class </span><a class="code" href="class_fileio.html">Fileio</a> { </div>
-<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;<span class="keyword">private</span>:</div>
-<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;  std::string cluster_file_name, member_file_name;</div>
-<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;<span class="keyword">public</span>:</div>
-<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;  <span class="keywordtype">void</span> <a class="code" href="class_fileio.html#a6aed60255d8290e92ee4393ee2508f7d">split</a> (<span class="keyword">const</span> std::string &amp;, std::vector&lt;std::string&gt; &amp;, </div>
-<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;          <span class="keyword">const</span> std::string &amp;);</div>
-<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;  <span class="keywordtype">void</span> <a class="code" href="class_fileio.html#aeab6d26c1c238480c79f71f6f0eb9e6e">read_ascii</a> (<span class="keyword">const</span> std::string &amp;, <span class="keyword">const</span> std::string &amp;, <span class="keywordtype">double</span>, </div>
-<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;           <span class="keywordtype">double</span>, <span class="keywordtype">double</span>, std::vector&lt;Galaxy&gt; &amp;);</div>
-<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;  <span class="keywordtype">void</span> <a class="code" href="class_fileio.html#abd1b489c1e2dc9425b904cfebfc78404">read_fits</a> (<span class="keyword">const</span> std::string &amp;, <span class="keyword">const</span> std::string &amp;, <span class="keywordtype">double</span>, </div>
-<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;          <span class="keywordtype">double</span>, <span class="keywordtype">double</span>, std::vector&lt;Galaxy&gt; &amp;);</div>
-<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;  <span class="keywordtype">void</span> <a class="code" href="class_fileio.html#a9b0c9fb1ac0c2ad82a51eb9a2092964c">output_file_names</a> (<span class="keyword">const</span> std::string &amp;, <span class="keyword">const</span> std::string &amp;,</div>
-<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;              <span class="keyword">const</span> std::string &amp;, <span class="keywordtype">double</span>, <span class="keywordtype">double</span>);</div>
-<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;  <span class="keywordtype">void</span> <a class="code" href="class_fileio.html#aa144e8b1160a0510e31a1f05bf384112">write_ascii</a> (<span class="keyword">const</span> std::vector&lt;Cluster&gt; &amp;);</div>
-<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;  <span class="keywordtype">void</span> <a class="code" href="class_fileio.html#ae52e63a106a09cba2983c77057aa6247">write_fits</a> (<span class="keyword">const</span> std::vector&lt;Cluster&gt; &amp;);</div>
-<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;};</div>
-<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;</div>
-<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;<span class="preprocessor">#endif </span><span class="comment">/* FILEIO_CLASS_H */</span><span class="preprocessor"></span></div>
+<a href="fileio__class_8hpp.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;</div>
+<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="preprocessor">#ifndef FILEIO_CLASS_H</span></div>
+<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="preprocessor">#define FILEIO_CLASS_H</span></div>
+<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;</div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;<span class="preprocessor">#include &lt;fitsio.h&gt;</span> <span class="comment">//*Include FITSIO packages*//</span></div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;</div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;<span class="preprocessor">#include &lt;fstream&gt;</span></div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;<span class="preprocessor">#include &lt;iomanip&gt;</span></div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;<span class="preprocessor">#include &lt;iostream&gt;</span></div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;<span class="preprocessor">#include &lt;sstream&gt;</span></div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;<span class="preprocessor">#include &lt;string&gt;</span></div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;<span class="preprocessor">#include &lt;vector&gt;</span></div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="astro_8hpp.html">astro.hpp</a>&quot;</span></div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="cluster__class_8hpp.html">cluster_class.hpp</a>&quot;</span></div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="galaxy__class_8hpp.html">galaxy_class.hpp</a>&quot;</span></div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="zbin__class_8hpp.html">zbin_class.hpp</a>&quot;</span></div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;</div>
+<div class="line"><a name="l00032"></a><span class="lineno"><a class="line" href="class_fileio.html">   32</a></span>&#160;<span class="keyword">class </span><a class="code" href="class_fileio.html">Fileio</a> { <span class="comment">// Class structure for file input and output</span></div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;</div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;<span class="keyword">public</span>:</div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160; </div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;  <span class="keywordtype">void</span> <a class="code" href="class_fileio.html#a9704a3f831a0bc53dc47885b7cb59723">set_up</a> (<span class="keywordtype">int</span>, <span class="keywordtype">int</span>, <span class="keywordtype">int</span>, <span class="keywordtype">int</span>);</div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;</div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;  <span class="keywordtype">void</span> <a class="code" href="class_fileio.html#a9704a3f831a0bc53dc47885b7cb59723">set_up</a> (<span class="keywordtype">int</span>, <span class="keywordtype">int</span>, <span class="keywordtype">int</span>, <span class="keywordtype">int</span>, <span class="keywordtype">int</span>);</div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;</div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;  <span class="keywordtype">void</span> <a class="code" href="class_fileio.html#a6aed60255d8290e92ee4393ee2508f7d">split</a> (<span class="keyword">const</span> std::string &amp;, std::vector&lt;std::string&gt; &amp;, </div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;          <span class="keyword">const</span> std::string &amp;);</div>
+<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;</div>
+<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;  <span class="keywordtype">void</span> <a class="code" href="class_fileio.html#aeab6d26c1c238480c79f71f6f0eb9e6e">read_ascii</a> (<span class="keyword">const</span> std::string &amp;, <span class="keyword">const</span> std::string &amp;, <span class="keywordtype">double</span>, </div>
+<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;           <span class="keywordtype">double</span>, <span class="keywordtype">double</span>, std::vector&lt;Galaxy&gt; &amp;);</div>
+<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;</div>
+<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;  <span class="keywordtype">void</span> <a class="code" href="class_fileio.html#abd1b489c1e2dc9425b904cfebfc78404">read_fits</a> (<span class="keyword">const</span> std::string &amp;, <span class="keyword">const</span> std::string &amp;, <span class="keywordtype">double</span>, </div>
+<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;          <span class="keywordtype">double</span>, <span class="keywordtype">double</span>, std::vector&lt;Galaxy&gt; &amp;);</div>
+<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;</div>
+<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;  <span class="keywordtype">void</span> <a class="code" href="class_fileio.html#ad3f945cdfc84d8abd576ce4384c33b72">output_cluster_name</a> (<span class="keyword">const</span> std::string &amp;, <span class="keyword">const</span> std::string &amp;,</div>
+<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;                <span class="keyword">const</span> std::string &amp;, <span class="keywordtype">double</span>, <span class="keywordtype">double</span>, </div>
+<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;                std::string &amp;);</div>
+<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;</div>
+<div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160;  <span class="keywordtype">void</span> <a class="code" href="class_fileio.html#abd3717bd499a204cd8167bdf4cfe1b93">output_member_name</a> (<span class="keyword">const</span> std::string &amp;, <span class="keyword">const</span> std::string &amp;,</div>
+<div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160;               <span class="keyword">const</span> std::string &amp;, <span class="keywordtype">double</span>, <span class="keywordtype">double</span>, </div>
+<div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160;               std::string &amp;);</div>
+<div class="line"><a name="l00117"></a><span class="lineno">  117</span>&#160;</div>
+<div class="line"><a name="l00125"></a><span class="lineno">  125</span>&#160;  <span class="keywordtype">void</span> <a class="code" href="class_fileio.html#aa8c1d0e5f52892ac9312e4d32ce7cc75">write_ascii</a> (<span class="keyword">const</span> std::vector&lt;Cluster&gt; &amp;, <span class="keyword">const</span> std::string &amp;, </div>
+<div class="line"><a name="l00126"></a><span class="lineno">  126</span>&#160;            <span class="keyword">const</span> std::string &amp;);</div>
+<div class="line"><a name="l00127"></a><span class="lineno">  127</span>&#160;</div>
+<div class="line"><a name="l00135"></a><span class="lineno">  135</span>&#160;  <span class="keywordtype">void</span> <a class="code" href="class_fileio.html#adda2a3257fa3f524cce9eb5f50851808">write_fits</a> (<span class="keyword">const</span> std::vector&lt;Cluster&gt; &amp;, <span class="keyword">const</span> std::string &amp;, </div>
+<div class="line"><a name="l00136"></a><span class="lineno">  136</span>&#160;           <span class="keyword">const</span> std::string &amp;);</div>
+<div class="line"><a name="l00137"></a><span class="lineno">  137</span>&#160;</div>
+<div class="line"><a name="l00138"></a><span class="lineno">  138</span>&#160;<span class="keyword">private</span>:</div>
+<div class="line"><a name="l00139"></a><span class="lineno">  139</span>&#160;</div>
+<div class="line"><a name="l00141"></a><span class="lineno"><a class="line" href="class_fileio.html#a8a4b3279dc6ee92622adb2597773da33">  141</a></span>&#160;  <span class="keywordtype">int</span> <a class="code" href="class_fileio.html#a8a4b3279dc6ee92622adb2597773da33">id_col</a>;</div>
+<div class="line"><a name="l00142"></a><span class="lineno">  142</span>&#160;</div>
+<div class="line"><a name="l00144"></a><span class="lineno"><a class="line" href="class_fileio.html#aa10965911fa86a522396f1c5d21660ca">  144</a></span>&#160;  <span class="keywordtype">int</span> <a class="code" href="class_fileio.html#aa10965911fa86a522396f1c5d21660ca">ra_col</a>;</div>
+<div class="line"><a name="l00145"></a><span class="lineno">  145</span>&#160;  </div>
+<div class="line"><a name="l00147"></a><span class="lineno"><a class="line" href="class_fileio.html#ab69c1fd5d6d90fc89313371c274cf01b">  147</a></span>&#160;  <span class="keywordtype">int</span> <a class="code" href="class_fileio.html#ab69c1fd5d6d90fc89313371c274cf01b">dec_col</a>;</div>
+<div class="line"><a name="l00148"></a><span class="lineno">  148</span>&#160;  </div>
+<div class="line"><a name="l00150"></a><span class="lineno"><a class="line" href="class_fileio.html#ae78f81530c111ad5d3bda8da48961745">  150</a></span>&#160;  <span class="keywordtype">int</span> <a class="code" href="class_fileio.html#ae78f81530c111ad5d3bda8da48961745">z_col</a>;</div>
+<div class="line"><a name="l00151"></a><span class="lineno">  151</span>&#160;</div>
+<div class="line"><a name="l00153"></a><span class="lineno"><a class="line" href="class_fileio.html#a909a4c2b965108d715fab5a88d91d1cc">  153</a></span>&#160;  <span class="keywordtype">int</span> <a class="code" href="class_fileio.html#a909a4c2b965108d715fab5a88d91d1cc">dz_col</a>;</div>
+<div class="line"><a name="l00154"></a><span class="lineno">  154</span>&#160;</div>
+<div class="line"><a name="l00155"></a><span class="lineno">  155</span>&#160;};</div>
+<div class="line"><a name="l00156"></a><span class="lineno">  156</span>&#160;</div>
+<div class="line"><a name="l00157"></a><span class="lineno">  157</span>&#160;<span class="preprocessor">#endif // FILEIO_CLASS_H</span></div>
 <div class="ttc" id="galaxy__class_8hpp_html"><div class="ttname"><a href="galaxy__class_8hpp.html">galaxy_class.hpp</a></div></div>
 <div class="ttc" id="zbin__class_8hpp_html"><div class="ttname"><a href="zbin__class_8hpp.html">zbin_class.hpp</a></div></div>
+<div class="ttc" id="class_fileio_html_a8a4b3279dc6ee92622adb2597773da33"><div class="ttname"><a href="class_fileio.html#a8a4b3279dc6ee92622adb2597773da33">Fileio::id_col</a></div><div class="ttdeci">int id_col</div><div class="ttdoc">Column number for galaxy ID. </div><div class="ttdef"><b>Definition:</b> fileio_class.hpp:141</div></div>
+<div class="ttc" id="class_fileio_html_ad3f945cdfc84d8abd576ce4384c33b72"><div class="ttname"><a href="class_fileio.html#ad3f945cdfc84d8abd576ce4384c33b72">Fileio::output_cluster_name</a></div><div class="ttdeci">void output_cluster_name(const std::string &amp;, const std::string &amp;, const std::string &amp;, double, double, std::string &amp;)</div><div class="ttdoc">This method sets the cluster output file name. </div><div class="ttdef"><b>Definition:</b> fileio_class.cpp:180</div></div>
+<div class="ttc" id="class_fileio_html_aa10965911fa86a522396f1c5d21660ca"><div class="ttname"><a href="class_fileio.html#aa10965911fa86a522396f1c5d21660ca">Fileio::ra_col</a></div><div class="ttdeci">int ra_col</div><div class="ttdoc">Column number for galaxy right ascension. </div><div class="ttdef"><b>Definition:</b> fileio_class.hpp:144</div></div>
 <div class="ttc" id="cluster__class_8hpp_html"><div class="ttname"><a href="cluster__class_8hpp.html">cluster_class.hpp</a></div></div>
-<div class="ttc" id="class_fileio_html"><div class="ttname"><a href="class_fileio.html">Fileio</a></div><div class="ttdef"><b>Definition:</b> fileio_class.hpp:19</div></div>
-<div class="ttc" id="class_fileio_html_ae52e63a106a09cba2983c77057aa6247"><div class="ttname"><a href="class_fileio.html#ae52e63a106a09cba2983c77057aa6247">Fileio::write_fits</a></div><div class="ttdeci">void write_fits(const std::vector&lt; Cluster &gt; &amp;)</div><div class="ttdef"><b>Definition:</b> fileio_class.cpp:147</div></div>
-<div class="ttc" id="class_fileio_html_aeab6d26c1c238480c79f71f6f0eb9e6e"><div class="ttname"><a href="class_fileio.html#aeab6d26c1c238480c79f71f6f0eb9e6e">Fileio::read_ascii</a></div><div class="ttdeci">void read_ascii(const std::string &amp;, const std::string &amp;, double, double, double, std::vector&lt; Galaxy &gt; &amp;)</div><div class="ttdef"><b>Definition:</b> fileio_class.cpp:18</div></div>
-<div class="ttc" id="class_fileio_html_a9b0c9fb1ac0c2ad82a51eb9a2092964c"><div class="ttname"><a href="class_fileio.html#a9b0c9fb1ac0c2ad82a51eb9a2092964c">Fileio::output_file_names</a></div><div class="ttdeci">void output_file_names(const std::string &amp;, const std::string &amp;, const std::string &amp;, double, double)</div><div class="ttdef"><b>Definition:</b> fileio_class.cpp:102</div></div>
-<div class="ttc" id="class_fileio_html_aa144e8b1160a0510e31a1f05bf384112"><div class="ttname"><a href="class_fileio.html#aa144e8b1160a0510e31a1f05bf384112">Fileio::write_ascii</a></div><div class="ttdeci">void write_ascii(const std::vector&lt; Cluster &gt; &amp;)</div><div class="ttdef"><b>Definition:</b> fileio_class.cpp:120</div></div>
-<div class="ttc" id="class_fileio_html_abd1b489c1e2dc9425b904cfebfc78404"><div class="ttname"><a href="class_fileio.html#abd1b489c1e2dc9425b904cfebfc78404">Fileio::read_fits</a></div><div class="ttdeci">void read_fits(const std::string &amp;, const std::string &amp;, double, double, double, std::vector&lt; Galaxy &gt; &amp;)</div><div class="ttdef"><b>Definition:</b> fileio_class.cpp:60</div></div>
+<div class="ttc" id="class_fileio_html"><div class="ttname"><a href="class_fileio.html">Fileio</a></div><div class="ttdoc">Class for file input and output. </div><div class="ttdef"><b>Definition:</b> fileio_class.hpp:32</div></div>
+<div class="ttc" id="class_fileio_html_adda2a3257fa3f524cce9eb5f50851808"><div class="ttname"><a href="class_fileio.html#adda2a3257fa3f524cce9eb5f50851808">Fileio::write_fits</a></div><div class="ttdeci">void write_fits(const std::vector&lt; Cluster &gt; &amp;, const std::string &amp;, const std::string &amp;)</div><div class="ttdoc">This method writes a list of the specified Cluster instances and a list of the corresponding member G...</div><div class="ttdef"><b>Definition:</b> fileio_class.cpp:254</div></div>
+<div class="ttc" id="class_fileio_html_aeab6d26c1c238480c79f71f6f0eb9e6e"><div class="ttname"><a href="class_fileio.html#aeab6d26c1c238480c79f71f6f0eb9e6e">Fileio::read_ascii</a></div><div class="ttdeci">void read_ascii(const std::string &amp;, const std::string &amp;, double, double, double, std::vector&lt; Galaxy &gt; &amp;)</div><div class="ttdoc">This method reads in an ASCII file and store the contents in a vector of Galaxy instances. </div><div class="ttdef"><b>Definition:</b> fileio_class.cpp:58</div></div>
+<div class="ttc" id="class_fileio_html_aa8c1d0e5f52892ac9312e4d32ce7cc75"><div class="ttname"><a href="class_fileio.html#aa8c1d0e5f52892ac9312e4d32ce7cc75">Fileio::write_ascii</a></div><div class="ttdeci">void write_ascii(const std::vector&lt; Cluster &gt; &amp;, const std::string &amp;, const std::string &amp;)</div><div class="ttdoc">This method writes a list of the specified Cluster instances and a list of the corresponding member G...</div><div class="ttdef"><b>Definition:</b> fileio_class.cpp:216</div></div>
+<div class="ttc" id="class_fileio_html_ab69c1fd5d6d90fc89313371c274cf01b"><div class="ttname"><a href="class_fileio.html#ab69c1fd5d6d90fc89313371c274cf01b">Fileio::dec_col</a></div><div class="ttdeci">int dec_col</div><div class="ttdoc">Column number for galaxy declination. </div><div class="ttdef"><b>Definition:</b> fileio_class.hpp:147</div></div>
+<div class="ttc" id="class_fileio_html_abd1b489c1e2dc9425b904cfebfc78404"><div class="ttname"><a href="class_fileio.html#abd1b489c1e2dc9425b904cfebfc78404">Fileio::read_fits</a></div><div class="ttdeci">void read_fits(const std::string &amp;, const std::string &amp;, double, double, double, std::vector&lt; Galaxy &gt; &amp;)</div><div class="ttdoc">This method reads in a FITS file and store the contents in a vector of Galaxy instances. </div><div class="ttdef"><b>Definition:</b> fileio_class.cpp:110</div></div>
 <div class="ttc" id="astro_8hpp_html"><div class="ttname"><a href="astro_8hpp.html">astro.hpp</a></div></div>
-<div class="ttc" id="class_fileio_html_a6aed60255d8290e92ee4393ee2508f7d"><div class="ttname"><a href="class_fileio.html#a6aed60255d8290e92ee4393ee2508f7d">Fileio::split</a></div><div class="ttdeci">void split(const std::string &amp;, std::vector&lt; std::string &gt; &amp;, const std::string &amp;)</div><div class="ttdef"><b>Definition:</b> fileio_class.cpp:5</div></div>
+<div class="ttc" id="class_fileio_html_abd3717bd499a204cd8167bdf4cfe1b93"><div class="ttname"><a href="class_fileio.html#abd3717bd499a204cd8167bdf4cfe1b93">Fileio::output_member_name</a></div><div class="ttdeci">void output_member_name(const std::string &amp;, const std::string &amp;, const std::string &amp;, double, double, std::string &amp;)</div><div class="ttdoc">This method sets the member output file name. </div><div class="ttdef"><b>Definition:</b> fileio_class.cpp:198</div></div>
+<div class="ttc" id="class_fileio_html_a9704a3f831a0bc53dc47885b7cb59723"><div class="ttname"><a href="class_fileio.html#a9704a3f831a0bc53dc47885b7cb59723">Fileio::set_up</a></div><div class="ttdeci">void set_up(int, int, int, int)</div><div class="ttdoc">This method sets the column numbers where galaxy properties are stored in the input file...</div><div class="ttdef"><b>Definition:</b> fileio_class.cpp:6</div></div>
+<div class="ttc" id="class_fileio_html_a6aed60255d8290e92ee4393ee2508f7d"><div class="ttname"><a href="class_fileio.html#a6aed60255d8290e92ee4393ee2508f7d">Fileio::split</a></div><div class="ttdeci">void split(const std::string &amp;, std::vector&lt; std::string &gt; &amp;, const std::string &amp;)</div><div class="ttdoc">This method splits a string into columns. </div><div class="ttdef"><b>Definition:</b> fileio_class.cpp:41</div></div>
+<div class="ttc" id="class_fileio_html_a909a4c2b965108d715fab5a88d91d1cc"><div class="ttname"><a href="class_fileio.html#a909a4c2b965108d715fab5a88d91d1cc">Fileio::dz_col</a></div><div class="ttdeci">int dz_col</div><div class="ttdoc">Column number for galaxy photometric redshift error. </div><div class="ttdef"><b>Definition:</b> fileio_class.hpp:153</div></div>
+<div class="ttc" id="class_fileio_html_ae78f81530c111ad5d3bda8da48961745"><div class="ttname"><a href="class_fileio.html#ae78f81530c111ad5d3bda8da48961745">Fileio::z_col</a></div><div class="ttdeci">int z_col</div><div class="ttdoc">Column number for galaxy redshift. </div><div class="ttdef"><b>Definition:</b> fileio_class.hpp:150</div></div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Tue Jun 3 2014 17:37:37 for fof_cluster_finder by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Tue Aug 12 2014 12:30:54 for fof_cluster_finder by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.6
 </small></address>
