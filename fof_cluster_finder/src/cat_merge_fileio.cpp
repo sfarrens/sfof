@@ -10,7 +10,7 @@ bool Merge_Fileio::existing_clt (int id, const std::vector<int> &list) {
 }
 
 void Merge_Fileio::read_file_list (const std::string &list, std::vector<Cluster> &cluster_list, 
-				   gal_container& gals, const std::string &input_mode) {
+				   gal_container &gals, const std::string &input_mode) {
   // Function to read a list of files.
   std::cout<<"File List: "<<list<<std::endl;
   std::ifstream read_file(list.c_str()); /* open file */
@@ -33,8 +33,8 @@ void Merge_Fileio::read_file_list (const std::string &list, std::vector<Cluster>
   read_file.close();
 }
 
-void Merge_Fileio::read_ascii (const std::string &fname, 
-			       std::vector<Cluster> &cluster_list,gal_container& gals) {
+void Merge_Fileio::read_ascii (const std::string &fname, std::vector<Cluster> &cluster_list, 
+			       gal_container &gals) {
   // Function to read in an ASCII file and store the contents in a vector of Cluster instances.
   std::cout<<"Reading: "<<fname<<std::endl;
   std::ifstream read_file(fname.c_str()); /* open file */
@@ -56,7 +56,7 @@ void Merge_Fileio::read_ascii (const std::string &fname,
       ra = atof(cols[3].c_str());
       dec = atof(cols[4].c_str());
       z = atof(cols[5].c_str());
-      auto ref = gals.insert(gal_container::value_type(id,Galaxy(gal_count, id, ra, dec, z)));/* intialise spec Galaxy */
+      auto ref = gals.insert(gal_container::value_type(id,Galaxy(gal_count, id, ra, dec, z))); /* intialise spec Galaxy */
       Galaxy* gal_here =  &ref.first->second;
       if (!existing_clt(clt_id, list_of_ids)) {
 	list_of_ids.push_back(clt_id);
@@ -71,8 +71,8 @@ void Merge_Fileio::read_ascii (const std::string &fname,
   read_file.close(); /* close file */
 }
 
-void Merge_Fileio::read_fits (const std::string &fname, 
-			std::vector<Cluster> &cluster_list,gal_container& gals) {
+void Merge_Fileio::read_fits (const std::string &fname, std::vector<Cluster> &cluster_list,
+			      gal_container &gals) {
   // Function to read in an FITS file and store the contents in a vector of Cluster instances.
   std::cout<<"Reading: "<<fname<<std::endl;
   std::ifstream read_file(fname.c_str()); /* open file */
@@ -148,7 +148,8 @@ void Merge_Fileio::output_file_names (const std::string &output, const std::stri
   std::cout<<"Cluster member properties being written to: "<<member_file_name<<std::endl;
 }
 
-void Merge_Fileio::read_bg_data (const std::string &file_name, std::vector<double> &z_vals, std::vector<double> &count_vals) {
+void Merge_Fileio::read_bg_data (const std::string &file_name, std::vector<double> &z_vals, 
+				 std::vector<double> &count_vals) {
   // Function to read background data from a file.
   std::cout<<"Reading background data from: "<<file_name<<std::endl;
   std::ifstream read_file(file_name.c_str()); /* open file */

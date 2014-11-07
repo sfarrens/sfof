@@ -80,11 +80,12 @@ public:
   /**
    * This method calculates the angular separation in radians between
    * two points.
-   * @param[in] Point1 Right ascension and Declination of first point.
-   * @param[in] Point2 Right ascension and Declination of second point.
+   * @param[in] P1 Right ascension and Declination of first point.
+   * @param[in] P2 Right ascension and Declination of second point.
    * @return Anugular separation in radians. 
    */
   double angsep (const Point &, const Point &);
+
   /**
    * This method calculates the mean value of a vector of doubles.
    * @param[in] elements Vector of double floating point values.

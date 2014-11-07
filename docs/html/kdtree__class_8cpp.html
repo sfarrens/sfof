@@ -29,7 +29,6 @@
   <div id="navrow1" class="tabs">
     <ul class="tablist">
       <li><a href="index.html"><span>Main&#160;Page</span></a></li>
-      <li><a href="pages.html"><span>Related&#160;Pages</span></a></li>
       <li><a href="annotated.html"><span>Classes</span></a></li>
       <li class="current"><a href="files.html"><span>Files</span></a></li>
     </ul>
@@ -53,32 +52,37 @@
 <div class="title">kdtree_class.cpp File Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
-<div class="textblock"><code>#include &quot;<a class="el" href="kdtree__class_8hpp_source.html">kdtree_class.hpp</a>&quot;</code><br/>
-<code>#include &lt;algorithm&gt;</code><br/>
+<div class="textblock"><code>#include &lt;fstream&gt;</code><br/>
+<code>#include &lt;iomanip&gt;</code><br/>
 <code>#include &lt;iostream&gt;</code><br/>
+<code>#include &quot;<a class="el" href="kdtree__class_8hpp_source.html">kdtree_class.hpp</a>&quot;</code><br/>
 </div><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="nested-classes"></a>
 Classes</h2></td></tr>
-<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_galaxy_comp_ra.html">GalaxyCompRa</a></td></tr>
-<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_galaxy_comp_dec.html">GalaxyCompDec</a></td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_galaxy_comp_coord.html">GalaxyCompCoord</a></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
 Functions</h2></td></tr>
-<tr class="memitem:ab88a8eabe24acd9e07de23229c37f941"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="kdtree__class_8cpp.html#ab88a8eabe24acd9e07de23229c37f941">sort_by_ra</a> (std::vector&lt; <a class="el" href="class_galaxy.html">Galaxy</a> * &gt;::iterator begin, std::vector&lt; <a class="el" href="class_galaxy.html">Galaxy</a> * &gt;::iterator end)</td></tr>
-<tr class="separator:ab88a8eabe24acd9e07de23229c37f941"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a6896e85ec7893b2358fb2f8d3136c304"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="kdtree__class_8cpp.html#a6896e85ec7893b2358fb2f8d3136c304">sort_by_dec</a> (std::vector&lt; <a class="el" href="class_galaxy.html">Galaxy</a> * &gt;::iterator begin, std::vector&lt; <a class="el" href="class_galaxy.html">Galaxy</a> * &gt;::iterator end)</td></tr>
-<tr class="separator:a6896e85ec7893b2358fb2f8d3136c304"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1d2ec6c12cd8aafccadc4bfc3f8dc0c0"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="kdtree__class_8cpp.html#a1d2ec6c12cd8aafccadc4bfc3f8dc0c0">mynth</a> (int N, int ax, std::vector&lt; <a class="el" href="class_galaxy.html">Galaxy</a> * &gt;::iterator begin, std::vector&lt; <a class="el" href="class_galaxy.html">Galaxy</a> * &gt;::iterator end)</td></tr>
+<tr class="separator:a1d2ec6c12cd8aafccadc4bfc3f8dc0c0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2e064687ce4ad423eaef4960a746805f"><td class="memItemLeft" align="right" valign="top">std::vector&lt; <a class="el" href="class_galaxy.html">Galaxy</a> * &gt;::iterator&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="kdtree__class_8cpp.html#a2e064687ce4ad423eaef4960a746805f">mymax</a> (int ax, std::vector&lt; <a class="el" href="class_galaxy.html">Galaxy</a> * &gt;::iterator begin, std::vector&lt; <a class="el" href="class_galaxy.html">Galaxy</a> * &gt;::iterator end)</td></tr>
+<tr class="separator:a2e064687ce4ad423eaef4960a746805f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Function Documentation</h2>
-<a class="anchor" id="a6896e85ec7893b2358fb2f8d3136c304"></a>
+<a class="anchor" id="a2e064687ce4ad423eaef4960a746805f"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">void sort_by_dec </td>
+          <td class="memname">std::vector&lt;<a class="el" href="class_galaxy.html">Galaxy</a>*&gt;::iterator mymax </td>
           <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>ax</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
           <td class="paramtype">std::vector&lt; <a class="el" href="class_galaxy.html">Galaxy</a> * &gt;::iterator&#160;</td>
           <td class="paramname"><em>begin</em>, </td>
         </tr>
@@ -98,13 +102,25 @@ Functions</h2></td></tr>
 
 </div>
 </div>
-<a class="anchor" id="ab88a8eabe24acd9e07de23229c37f941"></a>
+<a class="anchor" id="a1d2ec6c12cd8aafccadc4bfc3f8dc0c0"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">void sort_by_ra </td>
+          <td class="memname">void mynth </td>
           <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>N</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>ax</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
           <td class="paramtype">std::vector&lt; <a class="el" href="class_galaxy.html">Galaxy</a> * &gt;::iterator&#160;</td>
           <td class="paramname"><em>begin</em>, </td>
         </tr>
@@ -127,7 +143,7 @@ Functions</h2></td></tr>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Tue Aug 12 2014 12:30:54 for fof_cluster_finder by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Thu Nov 6 2014 16:03:10 for fof_cluster_finder by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.6
 </small></address>

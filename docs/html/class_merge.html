@@ -29,7 +29,6 @@
   <div id="navrow1" class="tabs">
     <ul class="tablist">
       <li><a href="index.html"><span>Main&#160;Page</span></a></li>
-      <li><a href="pages.html"><span>Related&#160;Pages</span></a></li>
       <li class="current"><a href="annotated.html"><span>Classes</span></a></li>
       <li><a href="files.html"><span>Files</span></a></li>
     </ul>
@@ -45,8 +44,7 @@
 </div><!-- top -->
 <div class="header">
   <div class="summary">
-<a href="#pub-methods">Public Member Functions</a> &#124;
-<a href="#pri-methods">Private Member Functions</a> &#124;
+<a href="#pub-static-methods">Static Public Member Functions</a> &#124;
 <a href="class_merge-members.html">List of all members</a>  </div>
   <div class="headertitle">
 <div class="title">Merge Class Reference</div>  </div>
@@ -58,60 +56,23 @@
 
 <p><code>#include &lt;<a class="el" href="merge__class_8hpp_source.html">merge_class.hpp</a>&gt;</code></p>
 <table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
-Public Member Functions</h2></td></tr>
-<tr class="memitem:adb9150195f4aaca77c3efdf237758ff3"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_merge.html#adb9150195f4aaca77c3efdf237758ff3">Merge</a> (std::vector&lt; <a class="el" href="class_cluster.html">Cluster</a> &gt; &amp;clusters)</td></tr>
-<tr class="memdesc:adb9150195f4aaca77c3efdf237758ff3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Initialise <a class="el" href="class_merge.html" title="Class for merging Cluster instances. ">Merge</a> instance.  <a href="#adb9150195f4aaca77c3efdf237758ff3">More...</a><br/></td></tr>
-<tr class="separator:adb9150195f4aaca77c3efdf237758ff3"><td class="memSeparator" colspan="2">&#160;</td></tr>
-</table><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pri-methods"></a>
-Private Member Functions</h2></td></tr>
-<tr class="memitem:a1d6b42a4f1854c0d5fdd858956b0da53"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_merge.html#a1d6b42a4f1854c0d5fdd858956b0da53">gal_in_clt</a> (const <a class="el" href="class_galaxy.html">Galaxy</a> &amp;, const <a class="el" href="class_cluster.html">Cluster</a> &amp;)</td></tr>
-<tr class="memdesc:a1d6b42a4f1854c0d5fdd858956b0da53"><td class="mdescLeft">&#160;</td><td class="mdescRight">This method checks if a given <a class="el" href="class_galaxy.html" title="Class for storing galaxy properties. ">Galaxy</a> instance is a member of a given <a class="el" href="class_cluster.html" title="Class for storing galaxy cluster properties and members. ">Cluster</a> instance.  <a href="#a1d6b42a4f1854c0d5fdd858956b0da53">More...</a><br/></td></tr>
-<tr class="separator:a1d6b42a4f1854c0d5fdd858956b0da53"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ab758d32c588ca66405c37aa553a43021"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_merge.html#ab758d32c588ca66405c37aa553a43021">check_mem</a> (const <a class="el" href="class_cluster.html">Cluster</a> &amp;, const <a class="el" href="class_cluster.html">Cluster</a> &amp;)</td></tr>
-<tr class="memdesc:ab758d32c588ca66405c37aa553a43021"><td class="mdescLeft">&#160;</td><td class="mdescRight">This method checks if two given <a class="el" href="class_cluster.html" title="Class for storing galaxy cluster properties and members. ">Cluster</a> instances have any common member <a class="el" href="class_galaxy.html" title="Class for storing galaxy properties. ">Galaxy</a> instances.  <a href="#ab758d32c588ca66405c37aa553a43021">More...</a><br/></td></tr>
-<tr class="separator:ab758d32c588ca66405c37aa553a43021"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a72a6170612aae0ee32321890cc511565"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_merge.html#a72a6170612aae0ee32321890cc511565">assimilate</a> (<a class="el" href="class_cluster.html">Cluster</a> &amp;, <a class="el" href="class_cluster.html">Cluster</a> &amp;)</td></tr>
-<tr class="memdesc:a72a6170612aae0ee32321890cc511565"><td class="mdescLeft">&#160;</td><td class="mdescRight">This method merges the member <a class="el" href="class_galaxy.html" title="Class for storing galaxy properties. ">Galaxy</a> instances from <a class="el" href="class_cluster.html" title="Class for storing galaxy cluster properties and members. ">Cluster</a> instance 2 into <a class="el" href="class_cluster.html" title="Class for storing galaxy cluster properties and members. ">Cluster</a> instance 1 and removes duplicates.  <a href="#a72a6170612aae0ee32321890cc511565">More...</a><br/></td></tr>
-<tr class="separator:a72a6170612aae0ee32321890cc511565"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a0d6d56d23dbdf9577c0185053a354138"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_merge.html#a0d6d56d23dbdf9577c0185053a354138">seek</a> (std::vector&lt; <a class="el" href="class_cluster.html">Cluster</a> &gt; &amp;)</td></tr>
-<tr class="memdesc:a0d6d56d23dbdf9577c0185053a354138"><td class="mdescLeft">&#160;</td><td class="mdescRight">This method searches for <a class="el" href="class_cluster.html" title="Class for storing galaxy cluster properties and members. ">Cluster</a> instances with common members.  <a href="#a0d6d56d23dbdf9577c0185053a354138">More...</a><br/></td></tr>
-<tr class="separator:a0d6d56d23dbdf9577c0185053a354138"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a1ea09e56823b7115fc5412e28503f0dd"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_merge.html#a1ea09e56823b7115fc5412e28503f0dd">destroy</a> (std::vector&lt; <a class="el" href="class_cluster.html">Cluster</a> &gt; &amp;)</td></tr>
-<tr class="memdesc:a1ea09e56823b7115fc5412e28503f0dd"><td class="mdescLeft">&#160;</td><td class="mdescRight">This method removes empty <a class="el" href="class_cluster.html" title="Class for storing galaxy cluster properties and members. ">Cluster</a> instances from the the list.  <a href="#a1ea09e56823b7115fc5412e28503f0dd">More...</a><br/></td></tr>
-<tr class="separator:a1ea09e56823b7115fc5412e28503f0dd"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-static-methods"></a>
+Static Public Member Functions</h2></td></tr>
+<tr class="memitem:a1895365ef45e3bfe87f43ae4fb78cdf4"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_merge.html#a1895365ef45e3bfe87f43ae4fb78cdf4">join_uf</a> (std::vector&lt; <a class="el" href="class_cluster.html">Cluster</a> &gt; &amp;)</td></tr>
+<tr class="memdesc:a1895365ef45e3bfe87f43ae4fb78cdf4"><td class="mdescLeft">&#160;</td><td class="mdescRight">This method uses the union-find algorithm to create union-find groups in agreement with the <a class="el" href="class_cluster.html" title="Class for storing galaxy cluster properties and members. ">Cluster</a> members.  <a href="#a1895365ef45e3bfe87f43ae4fb78cdf4">More...</a><br/></td></tr>
+<tr class="separator:a1895365ef45e3bfe87f43ae4fb78cdf4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4bf6633aebf26edb2aa54148ef41c80e"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_merge.html#a4bf6633aebf26edb2aa54148ef41c80e">rearrange_clusters</a> (std::vector&lt; <a class="el" href="class_galaxy.html">Galaxy</a> &gt; &amp;, std::vector&lt; <a class="el" href="class_cluster.html">Cluster</a> &gt; &amp;)</td></tr>
+<tr class="memdesc:a4bf6633aebf26edb2aa54148ef41c80e"><td class="mdescLeft">&#160;</td><td class="mdescRight">This method creates <a class="el" href="class_cluster.html" title="Class for storing galaxy cluster properties and members. ">Cluster</a> instances following the <a class="el" href="class_union_find.html">UnionFind</a> data in each <a class="el" href="class_galaxy.html" title="Class for storing galaxy properties. ">Galaxy</a>.  <a href="#a4bf6633aebf26edb2aa54148ef41c80e">More...</a><br/></td></tr>
+<tr class="separator:a4bf6633aebf26edb2aa54148ef41c80e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac722c2a95247a22a1d2b8e54186c55cf"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_merge.html#ac722c2a95247a22a1d2b8e54186c55cf">rearrange_clusters</a> (std::map&lt; unsigned long, <a class="el" href="class_galaxy.html">Galaxy</a> &gt; &amp;, std::vector&lt; <a class="el" href="class_cluster.html">Cluster</a> &gt; &amp;)</td></tr>
+<tr class="memdesc:ac722c2a95247a22a1d2b8e54186c55cf"><td class="mdescLeft">&#160;</td><td class="mdescRight">This method creates <a class="el" href="class_cluster.html" title="Class for storing galaxy cluster properties and members. ">Cluster</a> instances following the <a class="el" href="class_union_find.html">UnionFind</a> data in each <a class="el" href="class_galaxy.html" title="Class for storing galaxy properties. ">Galaxy</a>.  <a href="#ac722c2a95247a22a1d2b8e54186c55cf">More...</a><br/></td></tr>
+<tr class="separator:ac722c2a95247a22a1d2b8e54186c55cf"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Class for merging <a class="el" href="class_cluster.html" title="Class for storing galaxy cluster properties and members. ">Cluster</a> instances. </p>
 <p>This class merges <a class="el" href="class_cluster.html" title="Class for storing galaxy cluster properties and members. ">Cluster</a> instances that have common <a class="el" href="class_galaxy.html" title="Class for storing galaxy properties. ">Galaxy</a> instances. </p>
-</div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
-<a class="anchor" id="adb9150195f4aaca77c3efdf237758ff3"></a>
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">Merge::Merge </td>
-          <td>(</td>
-          <td class="paramtype">std::vector&lt; <a class="el" href="class_cluster.html">Cluster</a> &gt; &amp;&#160;</td>
-          <td class="paramname"><em>clusters</em></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Initialise <a class="el" href="class_merge.html" title="Class for merging Cluster instances. ">Merge</a> instance. </p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramdir">[in]</td><td class="paramname">clusters</td><td>Vector of <a class="el" href="class_cluster.html" title="Class for storing galaxy cluster properties and members. ">Cluster</a> instances. </td></tr>
-  </table>
-  </dd>
-</dl>
-
-</div>
-</div>
-<h2 class="groupheader">Member Function Documentation</h2>
-<a class="anchor" id="a72a6170612aae0ee32321890cc511565"></a>
+</div><h2 class="groupheader">Member Function Documentation</h2>
+<a class="anchor" id="a1895365ef45e3bfe87f43ae4fb78cdf4"></a>
 <div class="memitem">
 <div class="memproto">
 <table class="mlabels">
@@ -119,16 +80,48 @@ Private Member Functions</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">void Merge::assimilate </td>
+          <td class="memname">void Merge::join_uf </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="class_cluster.html">Cluster</a> &amp;&#160;</td>
-          <td class="paramname"><em>clt1</em>, </td>
+          <td class="paramtype">std::vector&lt; <a class="el" href="class_cluster.html">Cluster</a> &gt; &amp;&#160;</td>
+          <td class="paramname"><em>clusters</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>This method uses the union-find algorithm to create union-find groups in agreement with the <a class="el" href="class_cluster.html" title="Class for storing galaxy cluster properties and members. ">Cluster</a> members. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">clusters</td><td>vector of <a class="el" href="class_cluster.html" title="Class for storing galaxy cluster properties and members. ">Cluster</a> instances. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a class="anchor" id="a4bf6633aebf26edb2aa54148ef41c80e"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Merge::rearrange_clusters </td>
+          <td>(</td>
+          <td class="paramtype">std::vector&lt; <a class="el" href="class_galaxy.html">Galaxy</a> &gt; &amp;&#160;</td>
+          <td class="paramname"><em>gals</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype"><a class="el" href="class_cluster.html">Cluster</a> &amp;&#160;</td>
-          <td class="paramname"><em>clt2</em>&#160;</td>
+          <td class="paramtype">std::vector&lt; <a class="el" href="class_cluster.html">Cluster</a> &gt; &amp;&#160;</td>
+          <td class="paramname"><em>clus_vec</em>&#160;</td>
         </tr>
         <tr>
           <td></td>
@@ -138,23 +131,23 @@ Private Member Functions</h2></td></tr>
       </table>
   </td>
   <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
   </tr>
 </table>
 </div><div class="memdoc">
 
-<p>This method merges the member <a class="el" href="class_galaxy.html" title="Class for storing galaxy properties. ">Galaxy</a> instances from <a class="el" href="class_cluster.html" title="Class for storing galaxy cluster properties and members. ">Cluster</a> instance 2 into <a class="el" href="class_cluster.html" title="Class for storing galaxy cluster properties and members. ">Cluster</a> instance 1 and removes duplicates. </p>
+<p>This method creates <a class="el" href="class_cluster.html" title="Class for storing galaxy cluster properties and members. ">Cluster</a> instances following the <a class="el" href="class_union_find.html">UnionFind</a> data in each <a class="el" href="class_galaxy.html" title="Class for storing galaxy properties. ">Galaxy</a>. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramdir">[in]</td><td class="paramname">clt1</td><td><a class="el" href="class_cluster.html" title="Class for storing galaxy cluster properties and members. ">Cluster</a> instance 1. </td></tr>
-    <tr><td class="paramdir">[in]</td><td class="paramname">clt2</td><td><a class="el" href="class_cluster.html" title="Class for storing galaxy cluster properties and members. ">Cluster</a> instance 2. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">gals</td><td>of <a class="el" href="class_galaxy.html" title="Class for storing galaxy properties. ">Galaxy</a> instances to iterate. </td></tr>
+    <tr><td class="paramdir">[out]</td><td class="paramname">clus_vec</td><td>of <a class="el" href="class_cluster.html" title="Class for storing galaxy cluster properties and members. ">Cluster</a> instances to be used to store new clusters. Previous content is cleared. </td></tr>
   </table>
   </dd>
 </dl>
 
 </div>
 </div>
-<a class="anchor" id="ab758d32c588ca66405c37aa553a43021"></a>
+<a class="anchor" id="ac722c2a95247a22a1d2b8e54186c55cf"></a>
 <div class="memitem">
 <div class="memproto">
 <table class="mlabels">
@@ -162,16 +155,16 @@ Private Member Functions</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">bool Merge::check_mem </td>
+          <td class="memname">void Merge::rearrange_clusters </td>
           <td>(</td>
-          <td class="paramtype">const <a class="el" href="class_cluster.html">Cluster</a> &amp;&#160;</td>
-          <td class="paramname"><em>clt1</em>, </td>
+          <td class="paramtype">std::map&lt; unsigned long, <a class="el" href="class_galaxy.html">Galaxy</a> &gt; &amp;&#160;</td>
+          <td class="paramname"><em>gals</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">const <a class="el" href="class_cluster.html">Cluster</a> &amp;&#160;</td>
-          <td class="paramname"><em>clt2</em>&#160;</td>
+          <td class="paramtype">std::vector&lt; <a class="el" href="class_cluster.html">Cluster</a> &gt; &amp;&#160;</td>
+          <td class="paramname"><em>clus_vec</em>&#160;</td>
         </tr>
         <tr>
           <td></td>
@@ -181,123 +174,16 @@ Private Member Functions</h2></td></tr>
       </table>
   </td>
   <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
   </tr>
 </table>
 </div><div class="memdoc">
 
-<p>This method checks if two given <a class="el" href="class_cluster.html" title="Class for storing galaxy cluster properties and members. ">Cluster</a> instances have any common member <a class="el" href="class_galaxy.html" title="Class for storing galaxy properties. ">Galaxy</a> instances. </p>
+<p>This method creates <a class="el" href="class_cluster.html" title="Class for storing galaxy cluster properties and members. ">Cluster</a> instances following the <a class="el" href="class_union_find.html">UnionFind</a> data in each <a class="el" href="class_galaxy.html" title="Class for storing galaxy properties. ">Galaxy</a>. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramdir">[in]</td><td class="paramname">clt1</td><td><a class="el" href="class_cluster.html" title="Class for storing galaxy cluster properties and members. ">Cluster</a> instance 1. </td></tr>
-    <tr><td class="paramdir">[in]</td><td class="paramname">clt2</td><td><a class="el" href="class_cluster.html" title="Class for storing galaxy cluster properties and members. ">Cluster</a> instance 2. </td></tr>
-  </table>
-  </dd>
-</dl>
-
-</div>
-</div>
-<a class="anchor" id="a1ea09e56823b7115fc5412e28503f0dd"></a>
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">void Merge::destroy </td>
-          <td>(</td>
-          <td class="paramtype">std::vector&lt; <a class="el" href="class_cluster.html">Cluster</a> &gt; &amp;&#160;</td>
-          <td class="paramname"><em>clusters</em></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">private</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p>This method removes empty <a class="el" href="class_cluster.html" title="Class for storing galaxy cluster properties and members. ">Cluster</a> instances from the the list. </p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramdir">[in]</td><td class="paramname">clusters</td><td>Vector of <a class="el" href="class_cluster.html" title="Class for storing galaxy cluster properties and members. ">Cluster</a> instances. </td></tr>
-  </table>
-  </dd>
-</dl>
-
-</div>
-</div>
-<a class="anchor" id="a1d6b42a4f1854c0d5fdd858956b0da53"></a>
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">bool Merge::gal_in_clt </td>
-          <td>(</td>
-          <td class="paramtype">const <a class="el" href="class_galaxy.html">Galaxy</a> &amp;&#160;</td>
-          <td class="paramname"><em>gal</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">const <a class="el" href="class_cluster.html">Cluster</a> &amp;&#160;</td>
-          <td class="paramname"><em>clt</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">private</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p>This method checks if a given <a class="el" href="class_galaxy.html" title="Class for storing galaxy properties. ">Galaxy</a> instance is a member of a given <a class="el" href="class_cluster.html" title="Class for storing galaxy cluster properties and members. ">Cluster</a> instance. </p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramdir">[in]</td><td class="paramname">gal</td><td><a class="el" href="class_galaxy.html" title="Class for storing galaxy properties. ">Galaxy</a> instance. </td></tr>
-    <tr><td class="paramdir">[in]</td><td class="paramname">clt</td><td><a class="el" href="class_cluster.html" title="Class for storing galaxy cluster properties and members. ">Cluster</a> instance. </td></tr>
-  </table>
-  </dd>
-</dl>
-
-</div>
-</div>
-<a class="anchor" id="a0d6d56d23dbdf9577c0185053a354138"></a>
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">void Merge::seek </td>
-          <td>(</td>
-          <td class="paramtype">std::vector&lt; <a class="el" href="class_cluster.html">Cluster</a> &gt; &amp;&#160;</td>
-          <td class="paramname"><em>clusters</em></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">private</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p>This method searches for <a class="el" href="class_cluster.html" title="Class for storing galaxy cluster properties and members. ">Cluster</a> instances with common members. </p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramdir">[in]</td><td class="paramname">clusters</td><td>Vector of <a class="el" href="class_cluster.html" title="Class for storing galaxy cluster properties and members. ">Cluster</a> instances. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">gals</td><td>of <a class="el" href="class_galaxy.html" title="Class for storing galaxy properties. ">Galaxy</a> instances to iterate. </td></tr>
+    <tr><td class="paramdir">[out]</td><td class="paramname">clus_vec</td><td>of <a class="el" href="class_cluster.html" title="Class for storing galaxy cluster properties and members. ">Cluster</a> instances to be used to store new clusters. Previous content is cleared. </td></tr>
   </table>
   </dd>
 </dl>
@@ -311,7 +197,7 @@ Private Member Functions</h2></td></tr>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Tue Aug 12 2014 12:30:54 for fof_cluster_finder by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Thu Nov 6 2014 16:03:10 for fof_cluster_finder by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.6
 </small></address>

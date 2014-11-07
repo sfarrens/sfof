@@ -53,7 +53,6 @@ void Fileio::split (const std::string &str, std::vector<std::string> &tokens,
     lastPos = str.find_first_not_of(delimiter, pos); /* Skip delimiters. Note the "not_of" */         
     pos=str.find_first_of(delimiter, lastPos); /* Find next "non-delimiter" */            
   }
-  return tokens.size();
 }
 
 void Fileio::read_ascii (const std::string &fname, const std::string &mode, double z_min, 
@@ -98,8 +97,6 @@ void Fileio::read_ascii (const std::string &fname, const std::string &mode, doub
 	  }
 	}
       }
-      else
-        std::cout<<"malformed line in ascii file: "<<line<<std::endl;
       cols.clear(); /* clear column vector */
     }
   }

@@ -23,26 +23,35 @@
 #include "exceptions.hpp"
 
 class Merge { // Class for merge functions
+
 public:
+
   /**
-    * This method uses the union-find algorithm to create union-find groups in agreement with the
-    * Cluster members.
+    * This method uses the union-find algorithm to create union-find 
+    * groups in agreement with the Cluster members.
+    * @param[in] clusters vector of Cluster instances.
     */
   static void join_uf(std::vector<Cluster> &);
 
   /**
-    * This method creates the Clusters following the UnionFind data in each Galaxy.
-    * @param[in] vector of Galaxy where iterate.
-    * @param[out] vector of Cluster to be used to store new clusters. previously content is cleared.
+    * This method creates Cluster instances following the UnionFind data 
+    * in each Galaxy.
+    * @param[in] gals of Galaxy instances to iterate.
+    * @param[out] clus_vec of Cluster instances to be used to store new clusters. 
+    * Previous content is cleared.
     */
-  static void rearrange_clusters(std::vector<Galaxy>&, std::vector<Cluster>&);
+  static void rearrange_clusters(std::vector<Galaxy> &, 
+				 std::vector<Cluster> &);
 
   /**
-    * This method creates the Clusters following the UnionFind data in each Galaxy.
-    * @param[in] map of Galaxy where iterate.
-    * @param[out] vector of Cluster to be used to store new clusters. previously content is cleared.
+    * This method creates Cluster instances following the UnionFind data 
+    * in each Galaxy.
+    * @param[in] gals of Galaxy instances to iterate.
+    * @param[out] clus_vec of Cluster instances to be used to store new clusters.
+    * Previous content is cleared.
     */
-  static void rearrange_clusters(std::map<unsigned long, Galaxy>&, std::vector<Cluster>&);
+  static void rearrange_clusters(std::map<unsigned long, Galaxy> &, 
+				 std::vector<Cluster> &);
 
 };
 

@@ -22,19 +22,22 @@
 #include "exceptions.hpp"
 
 class UnionFind{ //! Class structure for union find algorithm
+
 private:
+  
+    /// UnionFind parent.
     UnionFind* parent;
 
 public:
 
     /**
-    * This method initialize the union-find structure as singleton.
+    * This method initializes the union-find structure as a singleton.
     */
     UnionFind(): parent(nullptr){}
 
     /**
      * This method finds the representative element of the UF structure,
-     * performing the path compression in the meanwhile.
+     * while performing the path compression.
      * @return the representative UnionFind of the group.
      */
     UnionFind * find(){
@@ -46,8 +49,8 @@ public:
     }
 
     /**
-    * This method joins the UnionFind passed as argument
-    * @param[in] UnionFind to join
+    * This method joins the UnionFind passed as an argument.
+    * @param[in] u UnionFind to join
     */
     void join(UnionFind* u){
         UnionFind* a = find();
@@ -78,7 +81,8 @@ public:
     /// Zbin instance corresponding to Galaxy instance.
     int bin;
 
-    /// coordinates of the Galaxy instance: the entries corresponds to Right ascension and Declination respectively
+    /// coordinates of the Galaxy instance: the entries corresponds to Right 
+    /// ascension and Declination respectively
     Point P;
 
     /// Redshift of Galaxy instance.

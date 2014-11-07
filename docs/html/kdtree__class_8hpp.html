@@ -29,7 +29,6 @@
   <div id="navrow1" class="tabs">
     <ul class="tablist">
       <li><a href="index.html"><span>Main&#160;Page</span></a></li>
-      <li><a href="pages.html"><span>Related&#160;Pages</span></a></li>
       <li><a href="annotated.html"><span>Classes</span></a></li>
       <li class="current"><a href="files.html"><span>Files</span></a></li>
     </ul>
@@ -47,34 +46,88 @@
 </div><!-- top -->
 <div class="header">
   <div class="summary">
-<a href="#nested-classes">Classes</a>  </div>
+<a href="#nested-classes">Classes</a> &#124;
+<a href="#define-members">Macros</a> &#124;
+<a href="#enum-members">Enumerations</a>  </div>
   <div class="headertitle">
 <div class="title">kdtree_class.hpp File Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
-<div class="textblock"><code>#include &lt;algorithm&gt;</code><br/>
+<div class="textblock"><code>#include &lt;cstdlib&gt;</code><br/>
+<code>#include &lt;iostream&gt;</code><br/>
+<code>#include &lt;sstream&gt;</code><br/>
 <code>#include &lt;string&gt;</code><br/>
+<code>#include &lt;algorithm&gt;</code><br/>
 <code>#include &lt;vector&gt;</code><br/>
+<code>#include &lt;deque&gt;</code><br/>
 <code>#include &quot;<a class="el" href="astro_8hpp_source.html">astro.hpp</a>&quot;</code><br/>
 <code>#include &quot;<a class="el" href="galaxy__class_8hpp_source.html">galaxy_class.hpp</a>&quot;</code><br/>
+<code>#include &quot;<a class="el" href="point__class_8hpp_source.html">point_class.hpp</a>&quot;</code><br/>
 </div>
 <p><a href="kdtree__class_8hpp_source.html">Go to the source code of this file.</a></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="nested-classes"></a>
 Classes</h2></td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_kdtree.html">Kdtree</a></td></tr>
-<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Class for building a kd-tree in RA-DEC space.  <a href="class_kdtree.html#details">More...</a><br/></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Class for constructing a kd-tree.  <a href="class_kdtree.html#details">More...</a><br/></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_kdtree_1_1_kdtree__node.html">Kdtree::Kdtree_node</a></td></tr>
-<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Class for storing <a class="el" href="class_kdtree_1_1_kdtree__node.html" title="Class for storing Kdtree_node properties. ">Kdtree_node</a> properties.  <a href="class_kdtree_1_1_kdtree__node.html#details">More...</a><br/></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Class structure for kd-tree properties.  <a href="class_kdtree_1_1_kdtree__node.html#details">More...</a><br/></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="define-members"></a>
+Macros</h2></td></tr>
+<tr class="memitem:a80164da69f159ae998999da34138417a"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="kdtree__class_8hpp.html#a80164da69f159ae998999da34138417a">FLTC</a>&#160;&#160;&#160;(1.0 + 1e-5)</td></tr>
+<tr class="separator:a80164da69f159ae998999da34138417a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="enum-members"></a>
+Enumerations</h2></td></tr>
+<tr class="memitem:a9cce7d5c4bc5e218aae856cc66feccb4"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="kdtree__class_8hpp.html#a9cce7d5c4bc5e218aae856cc66feccb4">node_to_galaxy</a> { <a class="el" href="kdtree__class_8hpp.html#a9cce7d5c4bc5e218aae856cc66feccb4a977cc667a6db29d9dd079d6b6d3b8e9b">External</a>, 
+<a class="el" href="kdtree__class_8hpp.html#a9cce7d5c4bc5e218aae856cc66feccb4a9fa0ceb92c5122148ef9e10d53d12bc1">Intersects</a>, 
+<a class="el" href="kdtree__class_8hpp.html#a9cce7d5c4bc5e218aae856cc66feccb4aa992d66faf4c155dfd78ec168fc25f8a">Internal</a>
+ }</td></tr>
+<tr class="separator:a9cce7d5c4bc5e218aae856cc66feccb4"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><dl class="section author"><dt>Author</dt><dd>Samuel Farrens + Stefano Sartor </dd></dl>
-</div></div><!-- contents -->
+<div class="textblock"><dl class="section author"><dt>Author</dt><dd>Luca Toranatore, Samuel Farrens </dd></dl>
+</div><h2 class="groupheader">Macro Definition Documentation</h2>
+<a class="anchor" id="a80164da69f159ae998999da34138417a"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define FLTC&#160;&#160;&#160;(1.0 + 1e-5)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<h2 class="groupheader">Enumeration Type Documentation</h2>
+<a class="anchor" id="a9cce7d5c4bc5e218aae856cc66feccb4"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">enum <a class="el" href="kdtree__class_8hpp.html#a9cce7d5c4bc5e218aae856cc66feccb4">node_to_galaxy</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<table class="fieldtable">
+<tr><th colspan="2">Enumerator</th></tr><tr><td class="fieldname"><a class="anchor" id="a9cce7d5c4bc5e218aae856cc66feccb4a977cc667a6db29d9dd079d6b6d3b8e9b"></a>External&#160;</td><td class="fielddoc">
+</td></tr>
+<tr><td class="fieldname"><a class="anchor" id="a9cce7d5c4bc5e218aae856cc66feccb4a9fa0ceb92c5122148ef9e10d53d12bc1"></a>Intersects&#160;</td><td class="fielddoc">
+</td></tr>
+<tr><td class="fieldname"><a class="anchor" id="a9cce7d5c4bc5e218aae856cc66feccb4aa992d66faf4c155dfd78ec168fc25f8a"></a>Internal&#160;</td><td class="fielddoc">
+</td></tr>
+</table>
+
+</div>
+</div>
+</div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Tue Aug 12 2014 12:30:54 for fof_cluster_finder by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Thu Nov 6 2014 16:03:10 for fof_cluster_finder by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.6
 </small></address>

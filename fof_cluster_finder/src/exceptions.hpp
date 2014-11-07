@@ -4,6 +4,7 @@
 #include <stdexcept>
 #include <string>
 
+//! Class for bad argument exceptions.
 class BadArgumentException : public std::invalid_argument
 {
 public:
@@ -17,6 +18,7 @@ protected:
 
 };
 
+//! Class for domain exceptions.
 class DomainException : public std::domain_error
 {
 public:
@@ -28,6 +30,7 @@ protected:
 
 };
 
+//! Class for runtime exceptions.
 class RuntimeException : public std::runtime_error
 {
 public:

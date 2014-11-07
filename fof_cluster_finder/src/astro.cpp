@@ -61,7 +61,6 @@ double Astro::angsep (const Point &P1, const Point &P2) {
 		cos(deg2rad(P2.P[1])) * cos(deg2rad(P1.P[0]) - deg2rad(P2.P[0])));
 }
 
-
 double Astro::angsep (double ra1, double dec1, double ra2, double dec2) {
   // Function that returns the angular separation (in radians) between two points.
   if (ra1 < 0 || ra1 > 360)

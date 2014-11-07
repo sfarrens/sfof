@@ -29,7 +29,6 @@
   <div id="navrow1" class="tabs">
     <ul class="tablist">
       <li><a href="index.html"><span>Main&#160;Page</span></a></li>
-      <li><a href="pages.html"><span>Related&#160;Pages</span></a></li>
       <li><a href="annotated.html"><span>Classes</span></a></li>
       <li class="current"><a href="files.html"><span>Files</span></a></li>
     </ul>
@@ -54,43 +53,40 @@
 <div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="preprocessor">#ifndef COMP_H</span></div>
 <div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="preprocessor">#define COMP_H</span></div>
 <div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;</div>
-<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;<span class="preprocessor">#include &lt;iostream&gt;</span></div>
-<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;<span class="preprocessor">#include &lt;math.h&gt;</span></div>
-<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;<span class="preprocessor">#include &lt;time.h&gt;</span></div>
-<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;<span class="preprocessor">#include &lt;stdio.h&gt;</span></div>
-<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;</div>
-<div class="line"><a name="l00021"></a><span class="lineno"><a class="line" href="class_comp.html">   21</a></span>&#160;<span class="keyword">class </span><a class="code" href="class_comp.html">Comp</a> { <span class="comment">// Class structure for computational functions</span></div>
-<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;</div>
-<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;<span class="keyword">public</span>:</div>
-<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;</div>
-<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;  <span class="keywordtype">void</span> <a class="code" href="class_comp.html#a4235cb29127e3e99a13b6502a63612c7">start_time</a>();</div>
-<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;</div>
-<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;  <span class="keywordtype">void</span> <a class="code" href="class_comp.html#a5fa108a29ec93c5e741e6ba386c8ea61">end_time</a>();</div>
-<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;</div>
-<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;  <span class="keywordtype">void</span> <a class="code" href="class_comp.html#a1eee83b61508a5d2a7051b739a0e87f1">print_time</a>();</div>
-<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;</div>
-<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;<span class="keyword">private</span>:</div>
-<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;  </div>
-<div class="line"><a name="l00043"></a><span class="lineno"><a class="line" href="class_comp.html#a2306240d4a8f160f116143e95fa49a09">   43</a></span>&#160;  time_t <a class="code" href="class_comp.html#a2306240d4a8f160f116143e95fa49a09">start</a>;</div>
-<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;</div>
-<div class="line"><a name="l00046"></a><span class="lineno"><a class="line" href="class_comp.html#a63d67f4d1c3c1e0acb27f24d56526036">   46</a></span>&#160;  time_t <a class="code" href="class_comp.html#a63d67f4d1c3c1e0acb27f24d56526036">end</a>;</div>
-<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;  </div>
-<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;  <span class="keywordtype">void</span> <a class="code" href="class_comp.html#a67ac4bde7764be2ba2293fe5d4a92eeb">d_h_m_s</a>(<span class="keywordtype">double</span>, <span class="keywordtype">double</span> &amp;, <span class="keywordtype">double</span> &amp;, <span class="keywordtype">double</span> &amp;, <span class="keywordtype">double</span> &amp;);</div>
-<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;</div>
-<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;};</div>
-<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;</div>
-<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;<span class="preprocessor">#endif // COMP_H</span></div>
-<div class="ttc" id="class_comp_html"><div class="ttname"><a href="class_comp.html">Comp</a></div><div class="ttdoc">Class containing basic functions used in generic codes. </div><div class="ttdef"><b>Definition:</b> comp.hpp:21</div></div>
-<div class="ttc" id="class_comp_html_a63d67f4d1c3c1e0acb27f24d56526036"><div class="ttname"><a href="class_comp.html#a63d67f4d1c3c1e0acb27f24d56526036">Comp::end</a></div><div class="ttdeci">time_t end</div><div class="ttdoc">End walltime. </div><div class="ttdef"><b>Definition:</b> comp.hpp:46</div></div>
-<div class="ttc" id="class_comp_html_a4235cb29127e3e99a13b6502a63612c7"><div class="ttname"><a href="class_comp.html#a4235cb29127e3e99a13b6502a63612c7">Comp::start_time</a></div><div class="ttdeci">void start_time()</div><div class="ttdoc">This method sets the start walltime. </div><div class="ttdef"><b>Definition:</b> comp.cpp:5</div></div>
-<div class="ttc" id="class_comp_html_a1eee83b61508a5d2a7051b739a0e87f1"><div class="ttname"><a href="class_comp.html#a1eee83b61508a5d2a7051b739a0e87f1">Comp::print_time</a></div><div class="ttdeci">void print_time()</div><div class="ttdoc">This method prints the elapsed walltime. </div><div class="ttdef"><b>Definition:</b> comp.cpp:22</div></div>
-<div class="ttc" id="class_comp_html_a67ac4bde7764be2ba2293fe5d4a92eeb"><div class="ttname"><a href="class_comp.html#a67ac4bde7764be2ba2293fe5d4a92eeb">Comp::d_h_m_s</a></div><div class="ttdeci">void d_h_m_s(double, double &amp;, double &amp;, double &amp;, double &amp;)</div><div class="ttdoc">This method converts the walltime to days, hours, miutes and seconds. </div><div class="ttdef"><b>Definition:</b> comp.cpp:13</div></div>
-<div class="ttc" id="class_comp_html_a2306240d4a8f160f116143e95fa49a09"><div class="ttname"><a href="class_comp.html#a2306240d4a8f160f116143e95fa49a09">Comp::start</a></div><div class="ttdeci">time_t start</div><div class="ttdoc">Start walltime. </div><div class="ttdef"><b>Definition:</b> comp.hpp:43</div></div>
-<div class="ttc" id="class_comp_html_a5fa108a29ec93c5e741e6ba386c8ea61"><div class="ttname"><a href="class_comp.html#a5fa108a29ec93c5e741e6ba386c8ea61">Comp::end_time</a></div><div class="ttdeci">void end_time()</div><div class="ttdoc">This method sets the end walltime. </div><div class="ttdef"><b>Definition:</b> comp.cpp:9</div></div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;<span class="preprocessor">#include &lt;time.h&gt;</span></div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;</div>
+<div class="line"><a name="l00018"></a><span class="lineno"><a class="line" href="class_comp.html">   18</a></span>&#160;<span class="keyword">class </span><a class="code" href="class_comp.html">Comp</a> { <span class="comment">// Class structure for computational functions</span></div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;</div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;<span class="keyword">public</span>:</div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;</div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;  <span class="keywordtype">void</span> <a class="code" href="class_comp.html#a4235cb29127e3e99a13b6502a63612c7">start_time</a>();</div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;</div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;  <span class="keywordtype">void</span> <a class="code" href="class_comp.html#a5fa108a29ec93c5e741e6ba386c8ea61">end_time</a>();</div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;</div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;  <span class="keywordtype">void</span> <a class="code" href="class_comp.html#a1eee83b61508a5d2a7051b739a0e87f1">print_time</a>();</div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;</div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;<span class="keyword">private</span>:</div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;  </div>
+<div class="line"><a name="l00040"></a><span class="lineno"><a class="line" href="class_comp.html#a2306240d4a8f160f116143e95fa49a09">   40</a></span>&#160;  time_t <a class="code" href="class_comp.html#a2306240d4a8f160f116143e95fa49a09">start</a>;</div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;</div>
+<div class="line"><a name="l00043"></a><span class="lineno"><a class="line" href="class_comp.html#a63d67f4d1c3c1e0acb27f24d56526036">   43</a></span>&#160;  time_t <a class="code" href="class_comp.html#a63d67f4d1c3c1e0acb27f24d56526036">end</a>;</div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;  </div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;  <span class="keywordtype">void</span> <a class="code" href="class_comp.html#a67ac4bde7764be2ba2293fe5d4a92eeb">d_h_m_s</a>(<span class="keywordtype">double</span>, <span class="keywordtype">double</span> &amp;, <span class="keywordtype">double</span> &amp;, <span class="keywordtype">double</span> &amp;, <span class="keywordtype">double</span> &amp;);</div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;</div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;};</div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;</div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;<span class="preprocessor">#endif // COMP_H</span></div>
+<div class="ttc" id="class_comp_html"><div class="ttname"><a href="class_comp.html">Comp</a></div><div class="ttdoc">Class containing basic functions used in generic codes. </div><div class="ttdef"><b>Definition:</b> comp.hpp:18</div></div>
+<div class="ttc" id="class_comp_html_a63d67f4d1c3c1e0acb27f24d56526036"><div class="ttname"><a href="class_comp.html#a63d67f4d1c3c1e0acb27f24d56526036">Comp::end</a></div><div class="ttdeci">time_t end</div><div class="ttdoc">End walltime. </div><div class="ttdef"><b>Definition:</b> comp.hpp:43</div></div>
+<div class="ttc" id="class_comp_html_a4235cb29127e3e99a13b6502a63612c7"><div class="ttname"><a href="class_comp.html#a4235cb29127e3e99a13b6502a63612c7">Comp::start_time</a></div><div class="ttdeci">void start_time()</div><div class="ttdoc">This method sets the start walltime. </div><div class="ttdef"><b>Definition:</b> comp.cpp:7</div></div>
+<div class="ttc" id="class_comp_html_a1eee83b61508a5d2a7051b739a0e87f1"><div class="ttname"><a href="class_comp.html#a1eee83b61508a5d2a7051b739a0e87f1">Comp::print_time</a></div><div class="ttdeci">void print_time()</div><div class="ttdoc">This method prints the elapsed walltime. </div><div class="ttdef"><b>Definition:</b> comp.cpp:24</div></div>
+<div class="ttc" id="class_comp_html_a67ac4bde7764be2ba2293fe5d4a92eeb"><div class="ttname"><a href="class_comp.html#a67ac4bde7764be2ba2293fe5d4a92eeb">Comp::d_h_m_s</a></div><div class="ttdeci">void d_h_m_s(double, double &amp;, double &amp;, double &amp;, double &amp;)</div><div class="ttdoc">This method converts the walltime to days, hours, miutes and seconds. </div><div class="ttdef"><b>Definition:</b> comp.cpp:15</div></div>
+<div class="ttc" id="class_comp_html_a2306240d4a8f160f116143e95fa49a09"><div class="ttname"><a href="class_comp.html#a2306240d4a8f160f116143e95fa49a09">Comp::start</a></div><div class="ttdeci">time_t start</div><div class="ttdoc">Start walltime. </div><div class="ttdef"><b>Definition:</b> comp.hpp:40</div></div>
+<div class="ttc" id="class_comp_html_a5fa108a29ec93c5e741e6ba386c8ea61"><div class="ttname"><a href="class_comp.html#a5fa108a29ec93c5e741e6ba386c8ea61">Comp::end_time</a></div><div class="ttdeci">void end_time()</div><div class="ttdoc">This method sets the end walltime. </div><div class="ttdef"><b>Definition:</b> comp.cpp:11</div></div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Tue Aug 12 2014 12:30:54 for fof_cluster_finder by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Thu Nov 6 2014 16:03:10 for fof_cluster_finder by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.6
 </small></address>

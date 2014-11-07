@@ -46,25 +46,30 @@ public:
    * @param[in] list File name containing the list of input file names.
    * @param[out] cluster_list Vector of Cluster instances.
    * @param[in] input_mode Input mode ["ascii"/"fits"].
+   * @param[in] gals Map to Galaxy instances.
    */
-  void read_file_list (const std::string &, std::vector<Cluster> &, gal_container&,
-		       const std::string &);
+  void read_file_list (const std::string &, std::vector<Cluster> &, 
+		       gal_container &, const std::string &);
 
   /**
    * This method reads in an ASCII file and store the contents in a vector 
    * of Cluster instances.
    * @param[in] fname Input file name.
    * @param[out] cluster_list Vector of Cluster instances.
+   * @param[in] gals Map to Galaxy instances.
    */
-  void read_ascii (const std::string &, std::vector<Cluster> &, gal_container&);
+  void read_ascii (const std::string &, std::vector<Cluster> &, 
+		   gal_container &);
 
   /**
    * This method reads in an FITS file and store the contents in a vector 
    * of Cluster instances.
    * @param[in] fname Input file name.
    * @param[out] cluster_list Vector of Cluster instances.
+   * @param[in] gals Map to Galaxy instances.
    */
-  void read_fits (const std::string &, std::vector<Cluster> &, gal_container&);
+  void read_fits (const std::string &, std::vector<Cluster> &, 
+		  gal_container &);
 
   /**
    * This method sets the output file names.
@@ -78,10 +83,12 @@ public:
 
   /**
    * This reads backround data.
-   * @param[in] background data file name.
-   * @param[out] Spline instance.
+   * @param[in] file_name Background data file name.
+   * @param[out] z_vals Redshift values from background data file.
+   * @param[out] count_vals Count values from background data file.
    */
-  void read_bg_data (const std::string &, std::vector<double> &, std::vector<double> &);
+  void read_bg_data (const std::string &, std::vector<double> &, 
+		     std::vector<double> &);
 
 private:
   

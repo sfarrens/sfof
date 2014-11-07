@@ -1,7 +1,7 @@
 fof_cluster_finder
 ==================
 
-@author Samuel Farrens
+@author Samuel Farrens, Stefano Sartor, Luca Tornatore
 
 Introduction
 ------------
@@ -14,9 +14,9 @@ The code is written in C++ and implements OMP to loop through the
 photo-z bins.
 
 Larger catalogues can be split into overlapping pieces using the
-PYCATCUT python script. These pieces can than be run through the FoF
-independently and the subsequent results merged using the PYMERGE
-python script.
+cat\_split.cpp code. These pieces can than be run through the FoF
+independently and the subsequent results merged using the cat\_merge.cpp
+code.
 
 Configuration Parameters
 ------------------------
@@ -31,10 +31,4 @@ And here...
 Dependencies
 ------------
 
-FOF_OMP requires: CFITSIO and OMP
-
-PYCATCUT requires: NUMPY
-
-PYMERGE requires: NUMPY
-
-@todo Make Euclid friendly.
+FOF_OMP requires: BOOST, CFITSIO and OMP
