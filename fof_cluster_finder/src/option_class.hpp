@@ -101,14 +101,14 @@ public:
   /// Output file name.
   std::string output_file;
 
-  /// Option to print Zbin data ["yes"/"no"].
-  std::string print_bin_data;
+  /// Option to print Zbin data.
+  bool print_bin_data;
 
-  /// Option to print kd-tree data ["yes"/"no"].
-  std::string print_kdtree_data;
+  /// Option to print kd-tree data.
+  bool print_kdtree_data;
 
-  /// Option to print background data ["yes"/"no"].
-  std::string print_bg_data;
+  /// Option to print background data.
+  bool print_bg_data;
 
   /// Input file name for background data.
   std::string bg_data;

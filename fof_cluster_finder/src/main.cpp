@@ -56,7 +56,7 @@ void Main::assign_linking_param () {
     for(int i = 0; i < num_bins; i++)
       zbins[i].assign_rfriend(r_ref); 
   }
-  if(opt.print_bin_data == "yes") {
+  if(opt.print_bin_data) {
     std::string z_bin_data = opt.input_file + ".z_bin_data.dat";
     //const char* z_bin_data = opt.input_file.c_str() + ".z_bin_data.dat";
     std::cout<<"Printing redshift bin data to "<<z_bin_data<<"."<<std::endl;
@@ -74,7 +74,7 @@ void Main::make_kdtree () {
   std::cout<<"Building kd-tree."<<std::endl;
   tree.set_Kdtree(galaxies, 0.3);
   std::string kdtree_data = opt.input_file + ".kdtree_data.dat";
-  if(opt.print_kdtree_data == "yes") 
+  if(opt.print_kdtree_data) 
     tree.write_Kdtree(kdtree_data);
 }
 
@@ -87,7 +87,7 @@ void Main::background_counts () {
     count_vals.push_back(double(zbins[i].count) / (tree.sample_area * 3600));
   }  
   spline.set_points(z_vals, count_vals);
-  if(opt.print_bg_data == "yes") {
+  if(opt.print_bg_data) {
     std::string bg_data = opt.input_file + ".bg_data.dat";
     std::cout<<"Printing background data to "<<bg_data<<"."<<std::endl;
     std::ofstream bg_out(bg_data);
@@ -193,12 +193,12 @@ void Main::output_results () {
 
 int main (int argc, char *argv[]) {
   try {
-    std::cout<<"=================================================="<<std::endl;
-    std::cout<<"* FRIENDS-OF-FRIENDS CLUSTER DETECTION INITIATED *"<<std::endl;
-    std::cout<<"=================================================="<<std::endl;
     Main run_code;
     run_code.comp.start_time();
     run_code.read_options(argc, argv);
+    std::cout<<"=================================================="<<std::endl;
+    std::cout<<"* FRIENDS-OF-FRIENDS CLUSTER DETECTION INITIATED *"<<std::endl;
+    std::cout<<"=================================================="<<std::endl;
     run_code.read_data();
     run_code.set_up_zbins();
     run_code.assign_linking_param();
