@@ -89,12 +89,12 @@ void Fileio::read_ascii (const std::string &fname, const std::string &mode, doub
 	  count++;
 	}
 	else {
-	  dz = atof(cols[dz_col].c_str());
-	  if (dz <= z_max) { /* check if photo-z error is below accepted threshold */
+	  dz = atof(cols[dz_col].c_str());	  
+	  if (dz <= dz_max) { /* check if photo-z error is below accepted threshold */
 	    Galaxy phot_gal(count, id, ra, dec, z, dz); /* intialise phot Galaxy */
 	    gals.push_back(phot_gal); /* store phot Galaxy instance in vector */
 	    count++;
-	  }
+	  }	  
 	}
       }
       cols.clear(); /* clear column vector */
@@ -241,6 +241,7 @@ void Fileio::write_ascii (const std::vector<Cluster> &cluster_list, const std::s
       write_members<<std::fixed<<std::setprecision(3);
       write_members<<std::setw(6)<<cluster_list[i].num<<" ";
       write_members<<std::setw(6)<<cluster_list[i].ngal<<" ";
+      write_members<<std::setw(6)<<cluster_list[i].z<<" ";
       write_members<<std::setw(12)<<cluster_list[i].mem[j]->id<<" ";
       write_members<<std::setw(7)<<cluster_list[i].mem[j]->P.P[0]<<" ";
       write_members<<std::setw(7)<<std::showpos<<cluster_list[i].mem[j]->P.P[1]<<" ";
@@ -264,7 +265,7 @@ void Fileio::write_fits (const std::vector<Cluster> &cluster_list, const std::st
   int tint, current_pos = 0, status = 0;
   unsigned long tlong;
   double tdouble;
-  const int cluster_fields = 11, member_fields = 6;
+  const int cluster_fields = 11, member_fields = 7;
   char *cluster_types[cluster_fields], *member_types[member_fields];
   char *cluster_forms[cluster_fields], *member_forms[member_fields];
   cluster_types[0] = const_cast<char *>("NUM");     cluster_forms[0] = const_cast<char *>("J");
@@ -280,10 +281,11 @@ void Fileio::write_fits (const std::vector<Cluster> &cluster_list, const std::st
   cluster_types[10] = const_cast<char *>("AREA");   cluster_forms[10] = const_cast<char *>("E");
   member_types[0] = const_cast<char *>("C_NUM");    member_forms[0] = const_cast<char *>("J");
   member_types[1] = const_cast<char *>("C_NGAL");   member_forms[1] = const_cast<char *>("J");
-  member_types[2] = const_cast<char *>("G_ID");     member_forms[2] = const_cast<char *>("J");
-  member_types[3] = const_cast<char *>("G_RA");     member_forms[3] = const_cast<char *>("E");
-  member_types[4] = const_cast<char *>("G_DEC");    member_forms[4] = const_cast<char *>("E");
-  member_types[5] = const_cast<char *>("G_Z");      member_forms[5] = const_cast<char *>("E");
+  member_types[2] = const_cast<char *>("C_Z");      member_forms[2] = const_cast<char *>("E");
+  member_types[3] = const_cast<char *>("G_ID");     member_forms[3] = const_cast<char *>("J");
+  member_types[4] = const_cast<char *>("G_RA");     member_forms[4] = const_cast<char *>("E");
+  member_types[5] = const_cast<char *>("G_DEC");    member_forms[5] = const_cast<char *>("E");
+  member_types[6] = const_cast<char *>("G_Z");      member_forms[6] = const_cast<char *>("E");
   fits_create_file(&fptr1, cluster_file_name.c_str(), &status); /*create new FITS file*/
   if(status != 0){
     std::cout<<"Error! Cannot create cluster FITS file."<<std::endl;
