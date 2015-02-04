@@ -52,10 +52,10 @@ void Merge_Fileio::read_ascii (const std::string &fname, std::vector<Cluster> &c
       fileio.split(line, cols, " "); /* split line into columns */
       gal_count++;
       clt_id = atof(cols[0].c_str());
-      id = strtoul(cols[2].c_str(), NULL, 0);
-      ra = atof(cols[3].c_str());
-      dec = atof(cols[4].c_str());
-      z = atof(cols[5].c_str());
+      id = strtoul(cols[3].c_str(), NULL, 0);
+      ra = atof(cols[4].c_str());
+      dec = atof(cols[5].c_str());
+      z = atof(cols[6].c_str());
       auto ref = gals.insert(gal_container::value_type(id,Galaxy(gal_count, id, ra, dec, z))); /* intialise spec Galaxy */
       Galaxy* gal_here =  &ref.first->second;
       if (!existing_clt(clt_id, list_of_ids)) {
@@ -106,10 +106,10 @@ void Merge_Fileio::read_fits (const std::string &fname, std::vector<Cluster> &cl
 	  }
 	}
 	clt_id = atof(cols[0].c_str());
-	id = strtoul(cols[2].c_str(), NULL, 0);
-	ra = atof(cols[3].c_str());
-	dec = atof(cols[4].c_str());
-	z = atof(cols[5].c_str());
+	id = strtoul(cols[3].c_str(), NULL, 0);
+	ra = atof(cols[4].c_str());
+	dec = atof(cols[5].c_str());
+	z = atof(cols[6].c_str());
       auto ref = gals.insert(gal_container::value_type(id,Galaxy(gal_count, id, ra, dec, z)));/* intialise spec Galaxy */
       Galaxy* gal_here =  &ref.first->second;
 	if (!existing_clt(clt_id, list_of_ids)) {
