@@ -33,7 +33,7 @@ bool FoF::bin_check (const Zbin &zbin, const Galaxy &gal) {
 
 bool FoF::friendship (const Zbin &zbin, const Galaxy &gal1, const Galaxy &gal2, double rfriend) {
   // Function that checks if two galaxies are friends in a given redshift bin.
-   if (rfriend < 0)
+  if (rfriend < 0)
     throw BadArgumentException("FoF::node_check", "rfriend", ">= 0.0");
   bool final_check;
   bool check0 = gal1.num != gal2.num;

@@ -52,7 +52,7 @@ void Main::assign_linking_param () {
   else {
     int z_ref_index = astro.find_bin(opt.z_ref, opt.z_min, opt.z_bin_size);
     double r_ref = pow(double(zbins[z_ref_index].count) 
-		       / (opt.z_bin_size * zbins[z_ref_index].dvdz), 0.5) * opt.link_r;
+    		       / (opt.z_bin_size * zbins[z_ref_index].dvdz), 0.5) * opt.link_r;
     for(int i = 0; i < num_bins; i++)
       zbins[i].assign_rfriend(r_ref); 
   }
@@ -162,7 +162,7 @@ void Main::assign_cluster_props () {
     clusters[i].unique();
     /* Assign properties */
     clusters[i].assign_props();
-    clusters[i].assign_sn(spline(clusters[i].z));
+    clusters[i].assign_sn(fabs(spline(clusters[i].z)));
   }
   /* Sort clusters by number of members */
   std::sort(clusters.begin(), clusters.end());
