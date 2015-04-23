@@ -225,27 +225,27 @@ void Fileio::write_ascii (const std::vector<Cluster> &cluster_list, const std::s
   std::ofstream write_clusters (cluster_file_name.c_str());
   std::ofstream write_members (member_file_name.c_str());
   for(int i = 0; i < cluster_list.size(); i++) {
-    write_clusters<<std::fixed<<std::setprecision(3);
-    write_clusters<<std::setw(6)<<cluster_list[i].num<<" ";
-    write_clusters<<std::setw(7)<<cluster_list[i].ra<<" ";
-    write_clusters<<std::setw(5)<<cluster_list[i].ra_err<<" ";
-    write_clusters<<std::setw(7)<<std::showpos<<cluster_list[i].dec<<" ";
-    write_clusters<<std::setw(5)<<std::noshowpos<<cluster_list[i].dec_err<<" ";
-    write_clusters<<std::setw(5)<<cluster_list[i].z<<" ";
-    write_clusters<<std::setw(5)<<cluster_list[i].z_err<<" ";
-    write_clusters<<std::setw(6)<<cluster_list[i].ngal<<" ";
-    write_clusters<<std::setw(6)<<cluster_list[i].sn<<" ";
-    write_clusters<<std::setw(5)<<cluster_list[i].size<<" ";
-    write_clusters<<std::setw(7)<<cluster_list[i].area<<"\n";
+    write_clusters<<std::fixed<<std::setprecision(5);
+    write_clusters<<std::setw(8)<<cluster_list[i].num<<" ";
+    write_clusters<<std::setw(9)<<cluster_list[i].ra<<" ";
+    write_clusters<<std::setw(7)<<cluster_list[i].ra_err<<" ";
+    write_clusters<<std::setw(9)<<std::showpos<<cluster_list[i].dec<<" ";
+    write_clusters<<std::setw(7)<<std::noshowpos<<cluster_list[i].dec_err<<" ";
+    write_clusters<<std::setw(7)<<cluster_list[i].z<<" ";
+    write_clusters<<std::setw(7)<<cluster_list[i].z_err<<" ";
+    write_clusters<<std::setw(8)<<cluster_list[i].ngal<<" ";
+    write_clusters<<std::setw(10)<<cluster_list[i].sn<<" ";
+    write_clusters<<std::setw(7)<<cluster_list[i].size<<" ";
+    write_clusters<<std::setw(9)<<cluster_list[i].area<<"\n";
     for(int j = 0; j < cluster_list[i].ngal; j++) {
-      write_members<<std::fixed<<std::setprecision(3);
-      write_members<<std::setw(6)<<cluster_list[i].num<<" ";
-      write_members<<std::setw(6)<<cluster_list[i].ngal<<" ";
-      write_members<<std::setw(6)<<cluster_list[i].z<<" ";
+      write_members<<std::fixed<<std::setprecision(5);
+      write_members<<std::setw(8)<<cluster_list[i].num<<" ";
+      write_members<<std::setw(8)<<cluster_list[i].ngal<<" ";
+      write_members<<std::setw(8)<<cluster_list[i].z<<" ";
       write_members<<std::setw(12)<<cluster_list[i].mem[j]->id<<" ";
-      write_members<<std::setw(7)<<cluster_list[i].mem[j]->P.P[0]<<" ";
-      write_members<<std::setw(7)<<std::showpos<<cluster_list[i].mem[j]->P.P[1]<<" ";
-      write_members<<std::setw(5)<<std::noshowpos<<cluster_list[i].mem[j]->z<<"\n";
+      write_members<<std::setw(9)<<cluster_list[i].mem[j]->P.P[0]<<" ";
+      write_members<<std::setw(9)<<std::showpos<<cluster_list[i].mem[j]->P.P[1]<<" ";
+      write_members<<std::setw(7)<<std::noshowpos<<cluster_list[i].mem[j]->z<<"\n";
     }
   }
   write_clusters.close();
