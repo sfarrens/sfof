@@ -39,21 +39,75 @@
 <div class="title">fof_cluster_finder Documentation</div>  </div>
 </div><!--header-->
 <div class="contents">
-<div class="textblock"><dl class="section author"><dt>Author</dt><dd>Samuel Farrens, Stefano Sartor, Luca Tornatore</dd></dl>
+<div class="textblock"><dl class="section author"><dt>Authors</dt><dd>Samuel Farrens, Stefano Sartor, Luca Tornatore</dd></dl>
 <h2>Introduction </h2>
 <p>FOF_OMP is a friends-of-friends galaxy cluster detection algorithm that operates in either spectroscopic or photometric redshift space. The linking parameters, both transverse and along the line-of-sight, change as a function of redshift to account for selection effects.</p>
-<p>The code is written in C++ and implements OMP to loop through the photo-z bins.</p>
+<p>The code is written in C++ and implements OMP to loop through the photometric redshift bins.</p>
 <p>Larger catalogues can be split into overlapping pieces using the <a class="el" href="cat__split_8cpp.html">cat_split.cpp</a> code. These pieces can than be run through the <a class="el" href="class_fo_f.html" title="Class for perfoming friends-of-friends cluster detection. ">FoF</a> independently and the subsequent results merged using the <a class="el" href="cat__merge_8cpp.html">cat_merge.cpp</a> code.</p>
-<h2>Configuration Parameters </h2>
-<p>And here...</p>
-<h2>Class Overview </h2>
-<p>And here...</p>
 <h2>Dependencies </h2>
-<p>FOF_OMP requires: BOOST, CFITSIO and OMP </p>
+<p>The codes (<a class="el" href="main_8cpp.html">main.cpp</a>, <a class="el" href="cat__split_8cpp.html">cat_split.cpp</a>, <a class="el" href="cat__merge_8cpp.html">cat_merge.cpp</a>) require the following packages:</p>
+<ul>
+<li><a href="http://www.cmake.org/" target="_blank">CMake</a></li>
+<li><a href="http://www.boost.org/" target="_blank">Boost</a></li>
+<li><a href="http://heasarc.gsfc.nasa.gov/fitsio/" target="_blank">CFITSIO</a></li>
+<li><a href="http://openmp.org/wp/" target="_blank">OMP</a></li>
+<li><a href="https://gcc.gnu.org/projects/cxx0x.html" target="_blank">C++0x/C++11</a></li>
+</ul>
+<h2>Compilation </h2>
+<p>To compile the codes simply run:</p>
+<blockquote class="doxtable">
+<p>cmake CMakeLists.txt</p>
+<p></p>
+</blockquote>
+<p>On some systems it may be neccesary to specify the paths to packages. This can be done with the following options:</p>
+<ul>
+<li>To specify the CFITSIO directory: <blockquote class="doxtable">
+<p>-DCFITSIO_ROOT_DIR</p>
+<p></p>
+</blockquote>
+</li>
+<li>To specify the Boost directory: <blockquote class="doxtable">
+<p>-DBOOST_ROOT</p>
+<p></p>
+</blockquote>
+</li>
+</ul>
+<h2>Execution </h2>
+<p><b><a class="el" href="class_main.html" title="Class for running the FoF algorithm. ">Main</a> Code</b></p>
+<p>The friends-of-friends (<a class="el" href="class_fo_f.html" title="Class for perfoming friends-of-friends cluster detection. ">FoF</a>) algorithm can be run in two different modes (spectroscopic or photometric) depending on the type of input data.</p>
+<h2>Code Options </h2>
+<ul>
+<li><code>-h [ --help ]</code>: This option produces the help message with all the code options and exits.</li>
+<li><code>-v [ --version ]</code>: This option prints the current version of the code and exits.</li>
+<li><code>-p [ --parameters ]</code>: This option prints the values assigned to each of the code parameters and exits.</li>
+<li><code>-c [ --config ]</code>: This option specifies the configuration file name. The default file name is param_file.ini.</li>
+<li><code>-i [ --input_file ]</code>: This option specifies the input file name.</li>
+<li><code>--output_clusters</code>: This option specifies the output file name of the cluster properties.</li>
+<li><code>--output_members</code>: This option specifies the ouput file name of the cluster member properties</li>
+<li><code>--link_r</code>: This option specifies the value of the transverse linking parameter.</li>
+<li><code>--link_z</code>: This option specifies the value of the Line-of-sight linking parameter.</li>
+<li><code>--input_mode</code>: This option specifies the input file format. The options permitted are ascii or fits. The default value is ascii.</li>
+<li><code>--output_mode</code>: This option specifies the output file format. The options permitted are ascii or fits. The default value is ascii.</li>
+<li><code>--fof_mode</code>: This option specifies the <a class="el" href="class_fo_f.html" title="Class for perfoming friends-of-friends cluster detection. ">FoF</a> redshift mode. The options permitted are spec or phot. The default value is phot.</li>
+<li><code>--link_mode</code>: This option specifies the <a class="el" href="class_fo_f.html" title="Class for perfoming friends-of-friends cluster detection. ">FoF</a> linking mode. The options permitted are fixed or dynamic. The default value is dynamic.</li>
+<li><code>--min_ngal</code>: This option specifies the minimum number of galaxies members required to form a cluster. The default value is 10.</li>
+<li><code>--z_min</code>: This option specifies the low redshift limit of the sample. The default value is 0.0.</li>
+<li><code>--z_max</code>: This option specifies the high redshift limit of the sample. The default value is 3.0.</li>
+<li><code>--z_bin_size</code>: This option specifies the size of redshift bins. The default value is 0.01.</li>
+<li><code>--z_ref</code>: This option specifies the reference redshift for calculations. The default value is 0.5.</li>
+<li><code>--dz_max</code>: This option specifies the maximum photometric redshift error allowed. The default value is 0.05.</li>
+<li><code>--c</code>: This option specifies the speed of light in km/s. The default value is 2.997e5.</li>
+<li><code>--H0</code>: This option specifies the value of the Hubble parameter in km/s/Mpc. The default value is 100.0.</li>
+<li><code>--omega_m</code>: This option specifies the value of the matter density of the Universe. The default value is 0.3.</li>
+<li><code>--omega_l</code>: This option specifies the value of the dark energy density of the Universe. The default value is 0.7.</li>
+<li><code>--print_bin_data</code>: This option specifies that the redshift bin data should be printed to a file.</li>
+<li><code>--print_kdtree_data</code>: This option specifies that the kd-tree data should be printed to a file.</li>
+<li><code>--print_bg_data</code>: This option specifies that the background field data should be printed to a file. </li>
+</ul>
 </div></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Thu Nov 6 2014 16:03:10 for fof_cluster_finder by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Fri Apr 24 2015 16:15:15 for fof_cluster_finder by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.6
 </small></address>
