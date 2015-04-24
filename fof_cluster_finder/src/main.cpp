@@ -4,7 +4,7 @@
 
 void Main::read_options (int argc, char *argv[]) {
   // Function to read code options.
-  double version_number = 3.0;
+  double version_number = 3.1;
   param_file = "param_file.ini";
   opt.read_opts(argc, argv, version_number);
 }
@@ -25,11 +25,18 @@ void Main::read_data () {
 
 void Main::set_up_zbins () {
   // Function to set up the redshift bins.
+  if (!opt.nz_data.empty()) {
+    std::vector<double> z_vals, count_vals;
+    fileio.read_nz_data(opt.nz_data, z_vals, count_vals);
+    spline_nz.set_points(z_vals, count_vals);
+  }
   num_bins = astro.num_bins(opt.z_min, opt.z_max, opt.z_bin_size);
   for(int i = 0; i < num_bins; i++){
     Zbin zbin(i, opt.z_min + (i + 0.5) * opt.z_bin_size, opt.z_bin_size);
     zbin.assign_dist(opt.c, opt.H0, opt.omega_m, opt.omega_l);
     zbins.push_back(zbin);
+    if (!opt.nz_data.empty()) 
+      zbins[i].count = spline_nz(zbins[i].z);
   }
   for(int i = 0; i < galaxies.size(); i++) {
     galaxies[i].assign_bin(opt.z_min, opt.z_bin_size);
@@ -39,7 +46,8 @@ void Main::set_up_zbins () {
     }
     else
       galaxies[i].set_cluster_status(zbins.size());
-    zbins[galaxies[i].bin].count++;
+    if (opt.nz_data.empty())
+      zbins[galaxies[i].bin].count++;
   }
 }
 
@@ -86,7 +94,7 @@ void Main::background_counts () {
     z_vals.push_back(zbins[i].z);
     count_vals.push_back(double(zbins[i].count) / (tree.sample_area * 3600));
   }  
-  spline.set_points(z_vals, count_vals);
+  spline_bg.set_points(z_vals, count_vals);
   if(opt.print_bg_data) {
     std::string bg_data = opt.input_file + ".bg_data.dat";
     std::cout<<"Printing background data to "<<bg_data<<"."<<std::endl;
@@ -162,7 +170,7 @@ void Main::assign_cluster_props () {
     clusters[i].unique();
     /* Assign properties */
     clusters[i].assign_props();
-    clusters[i].assign_sn(fabs(spline(clusters[i].z)));
+    clusters[i].assign_sn(fabs(spline_bg(clusters[i].z)));
   }
   /* Sort clusters by number of members */
   std::sort(clusters.begin(), clusters.end());

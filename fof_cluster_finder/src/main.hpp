@@ -117,7 +117,7 @@ private:
   Option opt;
 
   /// Include Spline.
-  Spline spline;
+  Spline spline_nz, spline_bg;
 
   /// Number of redshift bins.
   int num_bins;

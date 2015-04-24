@@ -342,3 +342,24 @@ void Fileio::write_fits (const std::vector<Cluster> &cluster_list, const std::st
   fits_close_file(fptr1, &status); /*close FITS file*/
   fits_close_file(fptr2, &status); /*close FITS file*/
 }
+
+void Fileio::read_nz_data (const std::string &file_name, std::vector<double> &z_vals, 
+				 std::vector<double> &count_vals) {
+  // Function to read N(z) data from a file.
+  std::cout<<"Reading N(z) data from: "<<file_name<<std::endl;
+  std::ifstream read_file(file_name.c_str()); /* open file */
+  if(read_file.fail())
+    throw BadArgumentException("Merge_Fileio::read_file_list", "file_name", "a valid file name");
+  std::string line;
+  std::vector<std::string> cols;    
+  while(std::getline(read_file, line)) { /* read each line */
+    if(line.length() >= 1 && 
+       line.find("#") == std::string::npos) { /* skip empty lines and lines starting with # */
+      split(line, cols, " "); /* split line into columns */
+      z_vals.push_back(atof(cols[0].c_str()));
+      count_vals.push_back(atof(cols[1].c_str()));
+      cols.clear(); /* clear column vector */
+    }
+  }
+  read_file.close(); /* close file */
+}

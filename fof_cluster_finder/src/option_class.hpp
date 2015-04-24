@@ -7,6 +7,11 @@
 #ifndef OPTION_CLASS_H
 #define OPTION_CLASS_H
 
+#include <fstream>
+#include <iomanip>
+#include <iostream>
+#include <string>
+
 /**
  * @class Option
  *
@@ -15,8 +20,6 @@
  * This class reads the code options as arguments or from a
  * parameter file.
  */
-
-#include "fileio_class.hpp"
 
 class Option { // Class for code options
 
@@ -55,6 +58,9 @@ public:
 
   /// Maxmimum photometric redshift error allowed.
   double dz_max;
+
+  /// Input file name for N(z) data.
+  std::string nz_data;
 
   /// Speed of light [km/s].
   double c;
@@ -149,11 +155,7 @@ public:
    */
   void read_split_opts (int, char *[], double);
 
-
 private:
-
-  /// Include Fileio class.
-  Fileio fileio;
 
   /**
    * This method prints the code version number.

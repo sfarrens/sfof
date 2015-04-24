@@ -136,6 +136,15 @@ public:
   void write_fits (const std::vector<Cluster> &, const std::string &, 
 		   const std::string &);
 
+  /**
+   * This method reads N(z) data from a file.
+   * @param[in] file_name N(z) data file name.
+   * @param[out] z_vals Redshift values from N(z) data file.
+   * @param[out] count_vals Count values from N(z) data file.
+   */
+  void read_nz_data (const std::string &, std::vector<double> &, 
+		     std::vector<double> &);
+
 private:
 
   /// Column number for galaxy ID.

@@ -1,7 +1,6 @@
 /*Class for code options*/
 
 #include "option_class.hpp"
-#include <iostream> 
 #include <boost/program_options.hpp>
 namespace po = boost::program_options;
 
@@ -14,6 +13,7 @@ void Option::version(double version_number) {
 
 void Option::print_parameters() {
   // Function that prints current code parameter values.
+  std::cout<<"=================================================="<<std::endl;
   std::cout<<"Code Parameters:"<<std::endl;
   std::cout<<" - input_file = "<<input_file<<std::endl;
   std::cout<<" - output_clusters = "<<output_clusters<<std::endl;
@@ -30,11 +30,11 @@ void Option::print_parameters() {
   std::cout<<" - z_bin_size = "<<z_bin_size<<std::endl;
   std::cout<<" - z_ref = "<<z_ref<<std::endl;
   std::cout<<" - dz_max = "<<dz_max<<std::endl;
+  std::cout<<" - nz_data = "<<nz_data<<std::endl;
   std::cout<<" - c = "<<c<<std::endl;
   std::cout<<" - H0 = "<<H0<<std::endl;
   std::cout<<" - omega_m = "<<omega_m<<std::endl;
   std::cout<<" - omega_l = "<<omega_l<<std::endl;
-  exit(0);
 }
 
 void Option::read_opts(int argc, char *argv[], double version_number) {
@@ -85,6 +85,8 @@ void Option::read_opts(int argc, char *argv[], double version_number) {
      "Reference redshift for calculations.")
     ("dz_max", po::value<double>(&dz_max)->default_value(0.06, "0.06"), 
      "Maxmimum photo-z error allowed.")
+    ("nz_data", po::value<std::string>(&nz_data),
+     "Input file name for N(z) data.")
     ("c", po::value<double>(&c)->default_value(2.997e5, "2.997e5"), 
      "Speed of light in km/s.")
     ("H0", po::value<double>(&H0)->default_value(100, "100.00"), 
