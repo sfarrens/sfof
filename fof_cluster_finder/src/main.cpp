@@ -92,14 +92,14 @@ void Main::background_counts () {
   std::vector<double> z_vals, count_vals;
   for (int i = 0; i < zbins.size(); i++) {
     z_vals.push_back(zbins[i].z);
-    count_vals.push_back(double(zbins[i].count) / (tree.sample_area * 3600));
+    count_vals.push_back(double(zbins[i].count) / (tree.sample_area * 3600.0));
   }  
   spline_bg.set_points(z_vals, count_vals);
   if(opt.print_bg_data) {
     std::string bg_data = opt.input_file + ".bg_data.dat";
     std::cout<<"Printing background data to "<<bg_data<<"."<<std::endl;
     std::ofstream bg_out(bg_data);
-    bg_out<<"#Z[1] Counts[2]"<<std::endl;
+    bg_out<<"#Z[1] BG_Density[2]"<<std::endl;
     for(int i = 0; i < z_vals.size(); i++) 
       bg_out<<z_vals[i]<<" "<<count_vals[i]<<std::endl;
     bg_out.close();

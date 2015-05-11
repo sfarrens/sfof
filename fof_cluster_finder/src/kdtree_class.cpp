@@ -114,12 +114,13 @@ void Kdtree::set_Kdtree(std::vector<Galaxy> &Gals, double max_inq = 0.3) {
 
   // KD-Tree Sample Area
   sample_area = std::abs(root->bottom_left.P[0] - root->top_right.P[0]) *
-    std::abs(root->bottom_left.P[1] * root->top_right.P[1]);      
+    std::abs(root->bottom_left.P[1] - root->top_right.P[1]);      
   
   std::cout << "   - with " << NNodes << " nodes and " << NLeaves << " leaves." << std::endl;
   std::cout << "   - [xmin, ymin][xmax, ymax] are : [" << root->bottom_left.P[0] << ", " 
 	    << root->bottom_left.P[1] << "][" << root->top_right.P[0] <<", " << root->top_right.P[1] 
 	    << "]" << std::endl;
+  std::cout << "   - sample area: " << sample_area << " deg^2." << std::endl;
   return;
 };
 

@@ -40,7 +40,7 @@ void Cluster::assign_props () {
     z_err = astro.stderr_median(g_z);
     for(int i = 0; i < ngal; i++)
       sum += astro.rad2deg(astro.angsep(ra, dec, g_ra[i], g_dec[i]));
-    size = (sum * 60) / double(ngal);
+    size = (sum * 60.0) / double(ngal);
     area = M_PI * pow(size, 2);
   }
 }
