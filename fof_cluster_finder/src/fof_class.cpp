@@ -3,8 +3,6 @@
 // [Header files]
 #include "fof_class.hpp"
 
-#include <iostream>
-
 void FoF::setup (double link_r_val, double link_z_val, const std::string &mode_val) { 
   // Function to set-up a FoF instance.
   if (link_r_val <= 0)
