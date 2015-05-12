@@ -3,6 +3,8 @@
 // [Header files]
 #include "fof_class.hpp"
 
+#include <iostream>
+
 void FoF::setup (double link_r_val, double link_z_val, const std::string &mode_val) { 
   // Function to set-up a FoF instance.
   if (link_r_val <= 0)
@@ -16,16 +18,13 @@ void FoF::setup (double link_r_val, double link_z_val, const std::string &mode_v
   mode = mode_val;
 }
 
-bool FoF::bin_check (const Zbin &zbin, const Galaxy &gal) {
+bool FoF::bin_check (int bin_num, const std::vector<int> &gal_bins) {
   // Function that checks if a galaxy is compatible with a given redshift bin.
   if (mode == "spec")
     return true;
   else {
-    if (std::abs(gal.z - zbin.z) < link_z * gal.dz)
-      return true;
-    else if (std::abs(std::abs(gal.z - zbin.z) - (link_z * gal.dz)) 
-	     < std::numeric_limits<double>::epsilon())
-      return true;
+    if(std::find(gal_bins.begin(), gal_bins.end(), bin_num) != gal_bins.end())
+      return true; 
     else
       return false;
   }
@@ -37,7 +36,7 @@ bool FoF::friendship (const Zbin &zbin, const Galaxy &gal1, const Galaxy &gal2, 
     throw BadArgumentException("FoF::node_check", "rfriend", ">= 0.0");
   bool final_check;
   bool check0 = gal1.num != gal2.num;
-  bool check1 = bin_check(zbin, gal2);
+  bool check1 = bin_check(zbin.num, gal2.bins);
   bool check2 = !gal2.in_cluster[zbin.num];
   double dist = astro.angsep(gal1.P, gal2.P);
   bool check3 = dist <= rfriend;    
@@ -127,7 +126,7 @@ int FoF::friends_of_friends (int bin_num, const std::vector<Zbin> &zbin_list,
     /* Modify rfriend for spectroscopic mode */
     if (mode == "spec") rfriend = zbin_list[gal_list[i].bin].link_r / gal_list[i].da;
     /* Check if galaxy is already in a cluster (f-loop) */
-    if(!gal_list[i].in_cluster[zbin.num] && bin_check(zbin, gal_list[i])) { 
+    if(!gal_list[i].in_cluster[zbin.num] && bin_check(zbin.num, gal_list[i].bins)) { 
       unused_nodes += find_friends(zbin, gal_list[i], rfriend, gal_list, tree);
       /* Check if galaxy is now in a cluster (fof-loop) */
       if(gal_list[i].in_cluster[zbin.num])

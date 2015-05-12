@@ -88,7 +88,9 @@ private:
    * @param[in] zbin Zbin instance.
    * @param[in] gal Galaxy instance.
    */
-  bool bin_check (const Zbin &, const Galaxy &);
+  //bool bin_check (const Zbin &, const Galaxy &);
+  bool bin_check (int, const std::vector<int> &);
+  
 
   /**
    * This method checks if two Galaxy instances satisfy the linking conditions in a 

@@ -80,6 +80,7 @@ public:
 
     /// Zbin instance corresponding to Galaxy instance.
     int bin;
+    std::vector<int> bins;
 
     /// coordinates of the Galaxy instance: the entries corresponds to Right 
     /// ascension and Declination respectively
@@ -168,6 +169,15 @@ public:
      * @param[in] bin_size Redshift bin size.
      */
     void assign_bin (double, double);
+
+     /**
+     * This method assigns the Zbin instances corresponding to
+     * the Galaxy instance.
+     * @param[in] min_value Minimum value in redshift range.
+     * @param[in] bin_size Redshift bin size.
+     * @param[in] link_z L-O-S linking parameter.
+     */
+    void assign_bins (double, double, double);
 
     /**
      * This method sets the initial Cluster instance membership
