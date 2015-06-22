@@ -56,6 +56,13 @@ public:
    * This method closes all of the split files.
    */
   void close_files ();
+
+  /**
+   * This method checks the ra and dec of a given object.
+   * @param[in] ra Right ascension of galaxy.
+   * @param[in] dec Declination of galaxy.
+   */
+  void check_pos (double, double);
   
   /**
    * This method determines to which split file a given galaxy

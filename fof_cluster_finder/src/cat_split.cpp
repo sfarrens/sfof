@@ -1,5 +1,6 @@
 #include <algorithm>
 #include <iostream>
+#include <string>
 #include "cat_split.hpp"
 #include "exceptions.hpp"
 
@@ -49,6 +50,7 @@ void Cat_Split::set_up () {
   std::cout<<"Number of bins in Dec: "<<opt.n_dec_bins<<std::endl;
   std::cout<<"Bin size in RA: "<<ra_bin_size<<std::endl;
   std::cout<<"Bin size in Dec: "<<dec_bin_size<<std::endl;
+  std::cout<<"Number of output files: "<<number_of_files<<std::endl;
 }
 
 void Cat_Split::open_files () {
@@ -65,7 +67,22 @@ void Cat_Split::close_files () {
     file_list[i] -> close();
 }
 
+void Cat_Split::check_pos (double ra, double dec) {
+  
+  if (ra < opt.ra_lower || ra >= opt.ra_upper)
+    throw RuntimeException("Cat_Split::check_pos", "ra (" + std::to_string(ra) + ")",
+			   "within specified limits");
+
+  if (dec < opt.dec_lower || dec >= opt.dec_upper)
+    throw RuntimeException("Cat_Split::check_pos", "dec (" + std::to_string(dec) + ")",
+			   "within specified limits");
+
+}
+
 void Cat_Split::find_bin (double ra, double dec, std::vector<int> &bins) {
+  
+  check_pos(ra, dec);
+
   double ra_bin_low = (fabs(ra - opt.ra_lower) / ra_bin_size) - opt.ra_overlap / ra_bin_size;
   double ra_bin_up = (fabs(ra - opt.ra_lower) / ra_bin_size);
   double dec_bin_low = (fabs(dec - opt.dec_lower) / dec_bin_size) - opt.dec_overlap / dec_bin_size;
@@ -77,22 +94,25 @@ void Cat_Split::find_bin (double ra, double dec, std::vector<int> &bins) {
   bins.push_back(int(ra_bin_up) + int(dec_bin_up) * opt.n_ra_bins);
   std::sort(bins.begin(), bins.end());
   bins.erase(std::unique(bins.begin(), bins.end()), bins.end()); 
+
 }
 
 void Cat_Split::read_ascii () { 
+
   double ra, dec;
   std::string line;
   std::vector<int> bins; std::vector<std::string> cols; 
   std::ifstream read_file(opt.input_file.c_str()); /* open file */
-  if(read_file.good()) 
-    while(std::getline(read_file, line)) { /* read each line */
-      if(line.length() >= 1 && 
+
+  if (read_file.good()) 
+    while (std::getline(read_file, line)) { /* read each line */
+      if (line.length() >= 1 && 
 	 line.find("#") == std::string::npos) { /* skip empty lines and lines starting with # */
 	fileio.split(line, cols, " "); /* split line into columns */
 	ra = atof(cols[1].c_str());
 	dec = atof(cols[2].c_str());
 	find_bin(ra, dec, bins);
-	for(int i = 0; i < bins.size(); i++) {
+	for (int i = 0; i < bins.size(); i++) {
 	  *file_list[bins[i]]<<line<<std::endl;
 	}
 	cols.clear();
@@ -101,6 +121,7 @@ void Cat_Split::read_ascii () {
     }
   else
     throw RuntimeException("Cat_Split::set_up", "opt.input_file", "be valid");
+
 }
 
 int main (int argc, char *argv[]) {
