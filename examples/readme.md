@@ -1,7 +1,13 @@
 Examples
 ==================
 
-@authors Samuel Farrens
+@author Samuel Farrens
+
+Set Up
+-
+
+In order to run the following examples the codes need to be compiled
+following the instructions provided in [docs](../docs/readme.md).
 
 Spec Test
 ------------
