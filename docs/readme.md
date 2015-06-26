@@ -26,7 +26,8 @@ following packages:
 
 * <a href="http://www.cmake.org/" target="_blank">CMake</a> 
 
-* <a href="http://www.boost.org/" target="_blank">Boost</a> 
+* <a href="http://www.boost.org/" target="_blank">Boost</a> (Note:
+   Must be built witha  C++11 compatible compiler e.g. gcc)
 
 * <a href="http://heasarc.gsfc.nasa.gov/fitsio/" target="_blank">CFITSIO</a> 
 
@@ -44,11 +45,25 @@ To compile the codes simply run:
 On some systems it may be neccesary to specify the paths to
 packages. This can be done with the following options:
 
-* To specify the CFITSIO directory:
-> -DCFITSIO_ROOT_DIR 
+* To specify the CFITSIO directory use the following option after the
+cmake command:
+> -DCFITSIO_ROOT_DIR
+`e.g cmake CMakeLists.txt -DCFITSIO_ROOT_DIR=/usr/cfitsio/`
 
-* To specify the Boost directory:
+* To specify the Boost directory use the following option after the
+cmake comamnd:
 > -DBOOST_ROOT
+`e.g cmake CMakeLists.txt -DCFITSIO_ROOT_DIR=/usr/boost/`
+
+* The C and C++ compilers can also be specified using the following
+  options before the cmake command:
+> CC
+> CXX
+`e.g CC=gcc-4.9.0 CXX=g++-4.9.0 cmake CMakeLists.txt`
+
+Upon successful compilation of the code three executables will be
+generated in the fof\_cluster\_finder subdirectory: main, cat\_split
+and cat\_merge.
 
 Execution
 ------------
@@ -59,7 +74,25 @@ The friends-of-friends (FoF) algorithm can be run in two different
 modes (spectroscopic or photometric) depending on the type of input
 data.
 
-**Code Options**
+*Input Format*
+
+The expected input file formats (ASCII or FITS) for the
+corresponding modes are as follows:
+
+* `Spectroscopic Mode`:
+  1. Galaxy ID
+  2. Galaxy Right Ascension
+  3. Galaxy Declination
+  4. Galaxy Redshift
+
+* `Photometric Mode`:
+  1. Galaxy ID
+  2. Galaxy Right Ascension
+  3. Galaxy Declination
+  4. Galaxy Photometric Redshift
+  5. Galaxy Photometric Redshift Error
+
+*Code Options*
 
 * ` -h [ --help ]`: This option produces the help message with all the
   code options and exits.
