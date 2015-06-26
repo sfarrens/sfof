@@ -21,13 +21,13 @@ If GCC is used then the Boost libraries also need to be built with GCC. This can
 
 > ./bootstrap.sh --prefix=<PATH> --with-toolset=gcc
 
-`e.g. ./bootstrap.sh --prefix=/home/boost --with-toolset=gcc`
+`e.g. >> ./bootstrap.sh --prefix=/home/boost --with-toolset=gcc`
 
 * Upon completion a file called *project-config.jam* will be generated. Edit line 13 (*using gcc ;*) of this file as follows:
 
 ` using gcc : <VERSION> : <PATH>g++-<VERSION> : <linker-type>darwin ; `
 
-`e.g. using gcc : 4.9.0 : /usr/bin/g++-4.9.0 : <linker-type>darwin ; `
+`e.g.  using gcc : 4.9.0 : /usr/bin/g++-4.9.0 : <linker-type>darwin ; `
 
 * Run the b2 script as follows:
 
@@ -40,4 +40,4 @@ After building the Boost libraries simply run cmake and specifying the use of GC
 
 > cmake -DBOOST_ROOT=<PATH>
 
-`e.g. CC=/usr/bin/gcc-4.9.0 CXX=/usr/bin/g++-4.9.0 cmake -DBOOST_ROOT=/home/boost`
+`e.g. >> CC=/usr/bin/gcc-4.9.0 CXX=/usr/bin/g++-4.9.0 cmake -DBOOST_ROOT=/home/boost`
