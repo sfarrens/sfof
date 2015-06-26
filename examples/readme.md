@@ -20,7 +20,7 @@ input for spectroscopic data, which has the following format:
 
 A configuraiton file (param_file.ini) is already provided. Simply run the following:
 
-> main
+> \>> main
 
 The resulting output files can then be compared with the expected
 outputs provided in expected_output.
@@ -36,7 +36,7 @@ input for spectroscopic data, which has the following format:
 
 A configuraiton file (param_file.ini) is already provided. Simply run the following:
 
-> main
+> \>> main
 
 The resulting output files can then be compared with the expected
 outputs provided in expected_output.

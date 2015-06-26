@@ -39,7 +39,7 @@ Compilation
 
 To compile the codes simply run:
 
-> cmake CMakeLists.txt
+> \>> cmake CMakeLists.txt
 
 On some systems it may be neccesary to specify the paths to
 packages. This can be done with the following options:
@@ -106,18 +106,18 @@ arguments.
 If a configuration file is available the code can be run simply as
 follows:
 
-> main
+> \>> main
 
 All configuration file options can be overridden by providing a command
 line argument. For example to ignore a file name specified in the
 configuration file the following option can be used:
 
-> main --input_file FILE_NAME
+> \>> main --input_file FILE_NAME
 
 All of the code options are listed below, but can be viewed by
 running:
 
-> main --help
+> \>> main --help
 
 The majority of the code options have defualt values that will be
 applicable to most data sets. The only options that need to be
@@ -126,7 +126,7 @@ parameter values. For example to run the code in photometric mode on a
 data set that is well sampled around z=0.5 and does not extend beyond
 z=3.0 the following command would be sufficient to run the code:
 
-> main -i FILE_NAME --link_r 0.06 --link_z 1.1
+> \>> main -i FILE_NAME --link_r 0.06 --link_z 1.1
 
 See [examples](../examples/readme.md) for example data sets and
 configuration files to test the code.

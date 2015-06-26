@@ -31,13 +31,13 @@ If GCC is used then the Boost libraries also need to be built with GCC. This can
 
 * Run the b2 script as follows:
 
-> ./b2 install
+> \>> ./b2 install
 
 Installing fof\_cluster\_finder
 -
 
 After building the Boost libraries simply run cmake and specifying the use of GCC and the path to Boost as follows:
 
-> cmake -DBOOST_ROOT=<PATH>
+> \>> cmake -DBOOST_ROOT=<PATH>
 
 `e.g. >> CC=/usr/bin/gcc-4.9.0 CXX=/usr/bin/g++-4.9.0 cmake -DBOOST_ROOT=/home/boost`
