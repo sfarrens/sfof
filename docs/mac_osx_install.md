@@ -19,7 +19,7 @@ If GCC is used then the Boost libraries also need to be built with GCC. This can
 
 * Inside the boost\_1\_58\_0 directory run the *bootstrap.sh* script specifying a path to where the libraries are to be installed as follows:
 
-> >> ./bootstrap.sh --prefix=<PATH> --with-toolset=gcc
+> \>> ./bootstrap.sh --prefix=<PATH> --with-toolset=gcc
 
 `e.g. >> ./bootstrap.sh --prefix=/home/boost --with-toolset=gcc`
 
