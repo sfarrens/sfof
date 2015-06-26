@@ -68,13 +68,13 @@ and cat\_merge.
 Execution
 ------------
 
-**Main Code**
+#Main Code
 
 The friends-of-friends (FoF) algorithm can be run in two different
 modes (spectroscopic or photometric) depending on the type of input
 data.
 
-*Input Format*
+**Input Format**
 
 The expected input file formats (ASCII or FITS) for the
 corresponding modes are as follows:
@@ -92,7 +92,37 @@ corresponding modes are as follows:
   4. Galaxy Photometric Redshift
   5. Galaxy Photometric Redshift Error
 
-*Code Options*
+**Run**
+
+The code options can be provided either in a parameter file (Note: the
+defult parameter file name is param_file.ini) or directly as
+arguments.
+
+If a parameter file is available the code can be run simply as
+follows:
+
+> main
+
+All parameter file options can be overridden by providing a command
+line argument:
+
+> main --input_file FILE_NAME
+
+All of the code options are listed below, but can be viewed by
+running:
+
+> main --help
+
+The majority of the code options have defualt values that will be
+applicable to most data sets. The only options that need to be
+specified for every run are the input file name and the linking
+parameter values. For example to run the code in photometric mode on a
+data set that is well sampled around z=0.5 and does not extend beyond
+z=3.0 the following command would be sufficient to run the code:
+
+> main -i FILE_NAME --link_r 0.06 --link_z 1.1
+
+**Code Options**
 
 * ` -h [ --help ]`: This option produces the help message with all the
   code options and exits.
