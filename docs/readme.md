@@ -100,7 +100,7 @@ corresponding modes are as follows:
 **Run**
 
 The code options can be provided either in a configuration file (Note: the
-defult configuration file name is param_file.ini) or directly as
+defult configuration file name is *param_file.ini*) or directly as
 arguments.
 
 If a configuration file is available the code can be run simply as
