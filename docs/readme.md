@@ -56,9 +56,10 @@ Execution
 **Main Code**
 
 The friends-of-friends (FoF) algorithm can be run in two different
-modes (spectroscopic or photometric) depending on the type of input data.
+modes (spectroscopic or photometric) depending on the type of input
+data.
 
-#Code Options
+**Code Options**
 
 * ` -h [ --help ]`: This option produces the help message with all the
   code options and exits.
