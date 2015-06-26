@@ -104,7 +104,8 @@ follows:
 > main
 
 All parameter file options can be overridden by providing a command
-line argument:
+line argument. For example to ignore a file name specified in the
+parameter file the following option can be used:
 
 > main --input_file FILE_NAME
 
@@ -121,6 +122,9 @@ data set that is well sampled around z=0.5 and does not extend beyond
 z=3.0 the following command would be sufficient to run the code:
 
 > main -i FILE_NAME --link_r 0.06 --link_z 1.1
+
+See [examples](../examples/readme.md) for example data sets to test
+the code.
 
 **Code Options**
 
