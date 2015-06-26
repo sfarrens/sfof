@@ -26,8 +26,8 @@ following packages:
 
 * <a href="http://www.cmake.org/" target="_blank">CMake</a> 
 
-* <a href="http://www.boost.org/" target="_blank">Boost</a> (Note:
-   Must be built witha  C++11 compatible compiler e.g. gcc)
+* <a href="http://www.boost.org/" target="_blank">Boost</a> *(Note:
+   Must be built with a  C++11 compatible compiler e.g. gcc)*
 
 * <a href="http://heasarc.gsfc.nasa.gov/fitsio/" target="_blank">CFITSIO</a> 
 
@@ -48,17 +48,18 @@ packages. This can be done with the following options:
 * To specify the CFITSIO directory use the following option after the
 cmake command:
 > -DCFITSIO_ROOT_DIR
+
 `e.g cmake CMakeLists.txt -DCFITSIO_ROOT_DIR=/usr/cfitsio/`
 
 * To specify the Boost directory use the following option after the
 cmake comamnd:
 > -DBOOST_ROOT
+
 `e.g cmake CMakeLists.txt -DCFITSIO_ROOT_DIR=/usr/boost/`
 
 * The C and C++ compilers can also be specified using the following
   options before the cmake command:
-> CC
-> CXX
+> CC & CXX
 `e.g CC=gcc-4.9.0 CXX=g++-4.9.0 cmake CMakeLists.txt`
 
 Upon successful compilation of the code three executables will be
@@ -123,8 +124,8 @@ z=3.0 the following command would be sufficient to run the code:
 
 > main -i FILE_NAME --link_r 0.06 --link_z 1.1
 
-See [examples](../examples/readme.md) for example data sets to test
-the code.
+See [examples](../examples/readme.md) for example data sets and
+parameter files to test the code.
 
 **Code Options**
 
