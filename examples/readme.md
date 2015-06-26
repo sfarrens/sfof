@@ -18,7 +18,7 @@ input for spectroscopic data, which has the following format:
 
 `Galaxy_ID Galaxy_RA Galaxy_Dec Galaxy_z`
 
-A parameter file (param_file.ini) is already provided. Simply run the following:
+A configuraiton file (param_file.ini) is already provided. Simply run the following:
 
 > main
 
@@ -34,7 +34,7 @@ input for spectroscopic data, which has the following format:
 
 `Galaxy_ID Galaxy_RA Galaxy_Dec Galaxy_zphot Galaxy_zphot_err`
 
-A parameter file (param_file.ini) is already provided. Simply run the following:
+A configuraiton file (param_file.ini) is already provided. Simply run the following:
 
 > main
 
