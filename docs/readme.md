@@ -26,8 +26,7 @@ following packages:
 
 * <a href="http://www.cmake.org/" target="_blank">CMake</a> 
 
-* <a href="http://www.boost.org/" target="_blank">Boost</a> *(Note:
-   Must be built with a  C++11 compatible compiler e.g. gcc)*
+* <a href="http://www.boost.org/" target="_blank">Boost</a> 
 
 * <a href="http://heasarc.gsfc.nasa.gov/fitsio/" target="_blank">CFITSIO</a> 
 
@@ -67,6 +66,10 @@ Upon successful compilation of the code three executables will be
 generated in the fof\_cluster\_finder subdirectory: main, cat\_split
 and cat\_merge.
 
+**Mac OSX**
+
+For help with comilation on Mac OSX see [here](./mac_osx_install.md).
+
 Execution
 ------------
 
@@ -96,18 +99,18 @@ corresponding modes are as follows:
 
 **Run**
 
-The code options can be provided either in a parameter file (Note: the
-defult parameter file name is param_file.ini) or directly as
+The code options can be provided either in a configuration file (Note: the
+defult configuration file name is param_file.ini) or directly as
 arguments.
 
-If a parameter file is available the code can be run simply as
+If a configuration file is available the code can be run simply as
 follows:
 
 > main
 
-All parameter file options can be overridden by providing a command
+All configuration file options can be overridden by providing a command
 line argument. For example to ignore a file name specified in the
-parameter file the following option can be used:
+configuration file the following option can be used:
 
 > main --input_file FILE_NAME
 
@@ -126,7 +129,7 @@ z=3.0 the following command would be sufficient to run the code:
 > main -i FILE_NAME --link_r 0.06 --link_z 1.1
 
 See [examples](../examples/readme.md) for example data sets and
-parameter files to test the code.
+configuration files to test the code.
 
 **Code Options**
 
