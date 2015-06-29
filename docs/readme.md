@@ -144,7 +144,7 @@ as follows:
 
 **Singal-to-Noise**
 
-S/N = N
+S/N = (N<sub>gal</sub> - A * Bg) / (A * Bg)<sup>0.5<sup>
 
 **Run**
 
