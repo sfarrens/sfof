@@ -18,6 +18,8 @@ cat\_split.cpp code. These pieces can than be run through the FoF
 independently and the subsequent results merged using the cat\_merge.cpp
 code.
 
+See [Main Code](#main_anchor)
+
 Dependencies
 ------------
 
@@ -74,6 +76,7 @@ Execution
 ------------
 
 #Main Code
+<a name="main_anchor"></a>
 
 The friends-of-friends (FoF) algorithm can be run in two different
 modes (spectroscopic or photometric) depending on the type of input
@@ -96,6 +99,36 @@ corresponding modes are as follows:
   3. Galaxy Declination
   4. Galaxy Photometric Redshift
   5. Galaxy Photometric Redshift Error
+
+**Output Format**
+
+The code produces two output files. The first contains the properties
+of the detected cluster candidates and the second contains the
+properties of the member galaxies that belong to each of these
+candidates according to the FoF. The formats for the output files are
+as follows:
+
+* `Cluster Prorperties`:
+  1. Cluster ID
+  2. Cluster Right Ascension [degrees] (median of members)
+  3. Cluster Right Ascension Error [degrees] (error on median)
+  4. Cluster Declination [degrees] (median of members)
+  5. Cluster Declination Error [degrees] (error on median)
+  6. Cluster Redshift (median of members)
+  7. Cluster Redshift Error (error on median)
+  8. Cluster N<sub>gal</sub> (i.e. number of members)
+  9. Cluster Signal-to-noise ratio (see below for calculation)
+  10. Cluster radius [arcmin] (average distance of members from centre)
+  11. Cluser area [arcmin<sup>2<\sup>]
+
+* `Member Prorperties`:
+  1. Cluster ID
+  2. Cluster N<sub>gal</sub>
+  3. Cluster Redshift
+  4. Galaxy ID
+  5. Galaxy Right Ascension [degrees]
+  6. Galxy Declination [degrees]
+  7. Galxy Redshift
 
 **Run**
 
@@ -223,7 +256,13 @@ only read ASCII files.
 
 The input ASCII file can contain any number of columns, but the code
 expects to find the right ascension and declination of the galaxies in columns
-2 and 3 respectively.
+2 and 3 respectively. Additionally, if the resulting pieces are to be
+used as inputs for the main code then the the input should
+adhere to the same format as that for the main code (see above).
+
+**Ouput Format**
+
+The code output will retain the exact same format as that of the input.
 
 **Run**
 
@@ -280,11 +319,21 @@ larger catalogue.
 
 The input file is simply a list of the main code members output files.
 
-`*e.g.*`
+`e.g.`
+
 `piece_00_members_0.046_0.9_phot.dat`
+
 `piece_01_members_0.046_0.9_phot.dat`
+
 `piece_02_members_0.046_0.9_phot.dat`
+
 `piece_03_members_0.046_0.9_phot.dat`
+
+**Output Format**
+
+The output format is exactly the same as that of the main code (see
+above). If, however, the background data is not provided the
+signal-to-noise ratio for each cluster candidate will be set to 0.0.
 
 **Run**
 
