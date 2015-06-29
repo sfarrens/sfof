@@ -65,13 +65,11 @@ cmake command:
 
 * To specify the Boost directory use the following option after the
 cmake comamnd:
-
 > -DBOOST_ROOT
 `e.g cmake CMakeLists.txt -DCFITSIO_ROOT_DIR=/usr/boost/`
 
 * The C and C++ compilers can also be specified using the following
   options before the cmake command:
-  
 > CC & CXX
 `e.g CC=gcc-4.9.0 CXX=g++-4.9.0 cmake CMakeLists.txt`
 
