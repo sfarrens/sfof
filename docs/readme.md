@@ -12,7 +12,7 @@ Contents
 4. [Execution](#exe_anchor)
    1. [Main Code](#main_anchor)
    2. [Cat_Split Code](#split_anchor)
-   3. [Cat_Split Code](#merge_anchor)
+   3. [Cat_Merge Code](#merge_anchor)
 
 <a name="intro_anchor"></a>
 Introduction
