@@ -212,3 +212,110 @@ options permitted are ascii or fits. The default value is ascii.
 
 *  `--print_bg_data`:  This option specifies that the background field
    data should be printed to a file.
+
+#Cat_Split Code
+
+This code divides galaxy catalogues into overlapping pieces to
+facilitate the running of the FoF code (main). At present the code can
+only read ASCII files.
+
+**Input Format**
+
+The input ASCII file can contain any number of columns, but the code
+expects to find the right ascension and declination of the galaxies in columns
+2 and 3 respectively.
+
+**Run**
+
+To run the code the following properties need to be specified:
+
+1. The input file name.
+2. The limits (in RA and Dec) of the input catalogue.
+3. The total number of pieces required.
+4. The desired amount of overlap between pieces. (Default value is 0.5 degrees)
+
+For example, the following command will split the input file2 (100
+deg<sup>2</sup>) into 4 pieces with an overlap of 0.5 degrees between each piece:
+
+> \>> cat_split --input_file FILE_NAME --ra_lower 30.0 --ra_upper 4.0
+> --dec_lower 10.0 --dec_upper 20.0 --ra_bins 2 --dec_bins 2
+
+**Code Options**
+
+* ` -h [ --help ]`: This option produces the help message with all the
+  code options and exits.
+
+* ` -v [ --version ]`: This option prints the current version of the
+  code and exits.
+ 
+* ` -i [ --input_file ]`: This option specifies the input file name.
+
+* ` --ra_lower`: Lower limit in right ascension of the catalogue.
+
+* ` --ra_upper`: Upper limit in right ascension of the catalogue.
+
+* ` --dec_lower`: Lower limit in declination of the catalogue.
+
+* ` --dec_upper`: Upper limit in declination of the catalogue.
+
+* ` --ra_overlap`: Overlap in right ascension between pieces. The
+  default is 0.5 degrees.
+
+* ` --dec_overlap`: Overlap in declination between bins. The
+  default is 0.5 degrees.
+
+* ` --n_ra_bins`: Number of bins in right ascension.
+
+* ` --n_dec_bins`: Number of bins in declination.
+
+* ` --n_procs`: Number of processes. Use this option instead of
+  *n\_ra\_bins* and *n\_dec\_bins* to define the total number of bins.
+
+#Cat_Merge Code
+
+This code merges together the FoF outputs from various pieces of a
+larger catalogue.
+
+**Input Format**
+
+The input file is simply a list of the main code members output files.
+
+`*e.g.*`
+`piece_00_members_0.046_0.9_phot.dat`
+`piece_01_members_0.046_0.9_phot.dat`
+`piece_02_members_0.046_0.9_phot.dat`
+`piece_03_members_0.046_0.9_phot.dat`
+
+**Run**
+
+To run simply specify the input file name and the desired output file
+name as follows:
+
+> \>> cat_merge --input_file FILE_NAME --ouput_file MERGED_CLUSTERS
+
+In order to provide signal-to-noise ratio values for each of the
+clusters the *bg_data* option must also be used as follows:
+
+> \>> cat_merge --input_file FILE_NAME --ouput_file MERGED_CLUSTERS
+> --bg_data BG_DATA_FILE
+
+**Code Options**
+
+* ` -h [ --help ]`: This option produces the help message with all the
+  code options and exits.
+
+* ` -v [ --version ]`: This option prints the current version of the
+  code and exits.
+ 
+* ` -i [ --input_file ]`: This option specifies the input file name.
+
+* ` -o [ --output_file ]`: This option specifies the output file name.
+
+* `--input_mode`: This option specifies the input file format. The
+options permitted are ascii or fits. The default value is ascii.
+
+* `--output_mode`: This option specifies the output file format. The
+options permitted are ascii or fits. The default value is ascii.
+
+*  `--bg_data`:  This option specifies the file name containing the background field
+   data. (*i.e.* the output from the main code option *print\_bg\_data*)
