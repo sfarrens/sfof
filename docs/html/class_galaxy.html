@@ -73,6 +73,9 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a0ae806f5fb35193da76e02c08a89d97f"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_galaxy.html#a0ae806f5fb35193da76e02c08a89d97f">assign_bin</a> (double, double)</td></tr>
 <tr class="memdesc:a0ae806f5fb35193da76e02c08a89d97f"><td class="mdescLeft">&#160;</td><td class="mdescRight">This method assigns the <a class="el" href="class_zbin.html" title="Class for storing redshift bin properties. ">Zbin</a> instance corresponding to the <a class="el" href="class_galaxy.html" title="Class for storing galaxy properties. ">Galaxy</a> instance.  <a href="#a0ae806f5fb35193da76e02c08a89d97f">More...</a><br/></td></tr>
 <tr class="separator:a0ae806f5fb35193da76e02c08a89d97f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8a0b540697c81b2299087f0621aedcab"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_galaxy.html#a8a0b540697c81b2299087f0621aedcab">assign_bins</a> (double, double, double)</td></tr>
+<tr class="memdesc:a8a0b540697c81b2299087f0621aedcab"><td class="mdescLeft">&#160;</td><td class="mdescRight">This method assigns the <a class="el" href="class_zbin.html" title="Class for storing redshift bin properties. ">Zbin</a> instances corresponding to the <a class="el" href="class_galaxy.html" title="Class for storing galaxy properties. ">Galaxy</a> instance.  <a href="#a8a0b540697c81b2299087f0621aedcab">More...</a><br/></td></tr>
+<tr class="separator:a8a0b540697c81b2299087f0621aedcab"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a8ad5639c3bcb81b33f8066a85b868463"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_galaxy.html#a8ad5639c3bcb81b33f8066a85b868463">set_cluster_status</a> (int)</td></tr>
 <tr class="memdesc:a8ad5639c3bcb81b33f8066a85b868463"><td class="mdescLeft">&#160;</td><td class="mdescRight">This method sets the initial <a class="el" href="class_cluster.html" title="Class for storing galaxy cluster properties and members. ">Cluster</a> instance membership of the <a class="el" href="class_galaxy.html" title="Class for storing galaxy properties. ">Galaxy</a> instance to False.  <a href="#a8ad5639c3bcb81b33f8066a85b868463">More...</a><br/></td></tr>
 <tr class="separator:a8ad5639c3bcb81b33f8066a85b868463"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -88,6 +91,8 @@ Public Attributes</h2></td></tr>
 <tr class="memitem:a1f05bdd93103f82a98f1a5620bd38a10"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_galaxy.html#a1f05bdd93103f82a98f1a5620bd38a10">bin</a></td></tr>
 <tr class="memdesc:a1f05bdd93103f82a98f1a5620bd38a10"><td class="mdescLeft">&#160;</td><td class="mdescRight"><a class="el" href="class_zbin.html" title="Class for storing redshift bin properties. ">Zbin</a> instance corresponding to <a class="el" href="class_galaxy.html" title="Class for storing galaxy properties. ">Galaxy</a> instance.  <a href="#a1f05bdd93103f82a98f1a5620bd38a10">More...</a><br/></td></tr>
 <tr class="separator:a1f05bdd93103f82a98f1a5620bd38a10"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae6d7145bb065aeee9d4e5632e16f688c"><td class="memItemLeft" align="right" valign="top">std::vector&lt; int &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_galaxy.html#ae6d7145bb065aeee9d4e5632e16f688c">bins</a></td></tr>
+<tr class="separator:ae6d7145bb065aeee9d4e5632e16f688c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a11f810f67b5c1d29e1d4d7e024e632e6"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_point.html">Point</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_galaxy.html#a11f810f67b5c1d29e1d4d7e024e632e6">P</a></td></tr>
 <tr class="memdesc:a11f810f67b5c1d29e1d4d7e024e632e6"><td class="mdescLeft">&#160;</td><td class="mdescRight">coordinates of the <a class="el" href="class_galaxy.html" title="Class for storing galaxy properties. ">Galaxy</a> instance: the entries corresponds to Right ascension and Declination respectively  <a href="#a11f810f67b5c1d29e1d4d7e024e632e6">More...</a><br/></td></tr>
 <tr class="separator:a11f810f67b5c1d29e1d4d7e024e632e6"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -289,6 +294,48 @@ Friends</h2></td></tr>
 
 </div>
 </div>
+<a class="anchor" id="a8a0b540697c81b2299087f0621aedcab"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Galaxy::assign_bins </td>
+          <td>(</td>
+          <td class="paramtype">double&#160;</td>
+          <td class="paramname"><em>min_value</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">double&#160;</td>
+          <td class="paramname"><em>bin_size</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">double&#160;</td>
+          <td class="paramname"><em>delta_z</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>This method assigns the <a class="el" href="class_zbin.html" title="Class for storing redshift bin properties. ">Zbin</a> instances corresponding to the <a class="el" href="class_galaxy.html" title="Class for storing galaxy properties. ">Galaxy</a> instance. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">min_value</td><td>Minimum value in redshift range. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">bin_size</td><td>Redshift bin size. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">delta_z</td><td>Bin width. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
 <a class="anchor" id="ab1caedf784bbd0a5f70d026d7cc57e24"></a>
 <div class="memitem">
 <div class="memproto">
@@ -474,6 +521,18 @@ Friends</h2></td></tr>
 
 </div>
 </div>
+<a class="anchor" id="ae6d7145bb065aeee9d4e5632e16f688c"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::vector&lt;int&gt; Galaxy::bins</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
 <a class="anchor" id="a2012ec50e37e91a42ae2acd2a4ff961c"></a>
 <div class="memitem">
 <div class="memproto">
@@ -630,7 +689,7 @@ Friends</h2></td></tr>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Fri Apr 24 2015 16:15:15 for fof_cluster_finder by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Mon Jun 29 2015 13:46:47 for fof_cluster_finder by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.6
 </small></address>

@@ -73,8 +73,8 @@ cmake comamnd:
 `e.g CC=gcc-4.9.0 CXX=g++-4.9.0 cmake CMakeLists.txt`
 
 Upon successful compilation of the code three executables will be
-generated in the fof\_cluster\_finder subdirectory: main, cat\_split
-and cat\_merge.
+generated in the fof\_cluster\_finder subdirectory: Main, Cat\_Split
+and Cat\_Merge.
 
 **Mac OSX**
 
@@ -130,7 +130,7 @@ as follows:
   8. Cluster N<sub>gal</sub> (i.e. number of members)
   9. Cluster Signal-to-noise ratio (see below for calculation)
   10. Cluster radius \[arcmin\] (average distance of members from centre)
-  11. Cluser area \[arcmin<sup>2</sup>\]
+  11. Cluster area \[arcmin<sup>2</sup>\]
 
 * `Member Prorperties`:
   1. Cluster ID
@@ -138,8 +138,8 @@ as follows:
   3. Cluster Redshift
   4. Galaxy ID
   5. Galaxy Right Ascension \[degrees\]
-  6. Galxy Declination \[degrees\]
-  7. Galxy Redshift
+  6. Galaxy Declination \[degrees\]
+  7. Galaxy Redshift
 
 **Singal-to-Noise**
 
@@ -272,7 +272,7 @@ options permitted are ascii or fits. The default value is ascii.
 #Cat_Split Code
 
 This code divides galaxy catalogues into overlapping pieces to
-facilitate the running of the FoF code (main). At present the code can
+facilitate the running of the FoF code (Main). At present the code can
 only read ASCII files.
 
 **Input Format**
@@ -280,8 +280,8 @@ only read ASCII files.
 The input ASCII file can contain any number of columns, but the code
 expects to find the right ascension and declination of the galaxies in columns
 2 and 3 respectively. Additionally, if the resulting pieces are to be
-used as inputs for the main code then the the input should
-adhere to the same format as that for the main code (see
+used as inputs for the Main code then the the input should
+adhere to the same format as that for the Main code (see
 [above](#main_input)).
 
 **Ouput Format**
@@ -342,7 +342,7 @@ larger catalogue.
 
 **Input Format**
 
-The input file is simply a list of the main code members output files.
+The input file is simply a list of the Main code members output files.
 
 `e.g.`
 
@@ -356,7 +356,7 @@ The input file is simply a list of the main code members output files.
 
 **Output Format**
 
-The output format is exactly the same as that of the main code (see
+The output format is exactly the same as that of the Main code (see
 [above](#main_output)). If, however, the background data is not provided the
 signal-to-noise ratio for each cluster candidate will be set to 0.0.
 
@@ -392,4 +392,4 @@ options permitted are ascii or fits. The default value is ascii.
 options permitted are ascii or fits. The default value is ascii.
 
 *  `--bg_data`:  This option specifies the file name containing the background field
-   data. (*i.e.* the output from the main code option *print\_bg\_data*)
+   data. (*i.e.* the output from the Main code option *print\_bg\_data*)

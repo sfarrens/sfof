@@ -72,6 +72,9 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:aecb86c2c1d5094134fbb6645d2f1ada5"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_cat___split.html#aecb86c2c1d5094134fbb6645d2f1ada5">close_files</a> ()</td></tr>
 <tr class="memdesc:aecb86c2c1d5094134fbb6645d2f1ada5"><td class="mdescLeft">&#160;</td><td class="mdescRight">This method closes all of the split files.  <a href="#aecb86c2c1d5094134fbb6645d2f1ada5">More...</a><br/></td></tr>
 <tr class="separator:aecb86c2c1d5094134fbb6645d2f1ada5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab9372a1fabe1212abf2d0dcb3309224b"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_cat___split.html#ab9372a1fabe1212abf2d0dcb3309224b">check_pos</a> (double, double)</td></tr>
+<tr class="memdesc:ab9372a1fabe1212abf2d0dcb3309224b"><td class="mdescLeft">&#160;</td><td class="mdescRight">This method checks the ra and dec of a given object.  <a href="#ab9372a1fabe1212abf2d0dcb3309224b">More...</a><br/></td></tr>
+<tr class="separator:ab9372a1fabe1212abf2d0dcb3309224b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ac06827f786d81a9a75d9ea64de23baec"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_cat___split.html#ac06827f786d81a9a75d9ea64de23baec">find_bin</a> (double, double, std::vector&lt; int &gt; &amp;)</td></tr>
 <tr class="memdesc:ac06827f786d81a9a75d9ea64de23baec"><td class="mdescLeft">&#160;</td><td class="mdescRight">This method determines to which split file a given galaxy should be written.  <a href="#ac06827f786d81a9a75d9ea64de23baec">More...</a><br/></td></tr>
 <tr class="separator:ac06827f786d81a9a75d9ea64de23baec"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -110,6 +113,41 @@ Private Attributes</h2></td></tr>
 <div class="textblock"><p>Class for splitting galaxy catalogues. </p>
 <p>This class splits a catalogue of galaxies into overlapping pieces. </p>
 </div><h2 class="groupheader">Member Function Documentation</h2>
+<a class="anchor" id="ab9372a1fabe1212abf2d0dcb3309224b"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Cat_Split::check_pos </td>
+          <td>(</td>
+          <td class="paramtype">double&#160;</td>
+          <td class="paramname"><em>ra</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">double&#160;</td>
+          <td class="paramname"><em>dec</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>This method checks the ra and dec of a given object. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">ra</td><td>Right ascension of galaxy. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">dec</td><td>Declination of galaxy. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
 <a class="anchor" id="aecb86c2c1d5094134fbb6645d2f1ada5"></a>
 <div class="memitem">
 <div class="memproto">
@@ -409,7 +447,7 @@ Private Attributes</h2></td></tr>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Fri Apr 24 2015 16:15:15 for fof_cluster_finder by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Mon Jun 29 2015 13:46:47 for fof_cluster_finder by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.6
 </small></address>
