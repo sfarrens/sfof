@@ -144,7 +144,14 @@ as follows:
 
 **Singal-to-Noise**
 
+The singal-to-noise ratio is calculated as follows:
+
 S/N = (N<sub>gal</sub> - A * Bg) / (A * Bg)<sup>0.5<sup>
+
+where A is the cluster area and Bg is the background level at the
+cluster redshift. Unless an N(z) is provided the code simply takes the
+number of objects at the cluster redshift divided by the catalogue
+area as Bg.
 
 **Run**
 
