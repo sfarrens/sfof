@@ -36,7 +36,7 @@ If GCC is used then the Boost libraries also need to be built with GCC. This can
 Installing fof\_cluster\_finder
 -
 
-After building the Boost libraries simply run cmake and specifying the use of GCC and the path to Boost as follows:
+After building the Boost libraries simply run cmake specifying the use of GCC and the path to Boost as follows:
 
 > \>> cmake -DBOOST_ROOT=\<PATH\>
 

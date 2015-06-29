@@ -30,7 +30,7 @@ Phot Test
 
 The directory phot\_test provides a simple example of how to run the
 code in photometric mode. The file *test\_phot.dat* shows the expected
-input for spectroscopic data, which has the following format:
+input for photometric data, which has the following format:
 
 `Galaxy_ID Galaxy_RA Galaxy_Dec Galaxy_zphot Galaxy_zphot_err`
 
