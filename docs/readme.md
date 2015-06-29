@@ -123,7 +123,7 @@ as follows:
 * `Cluster Prorperties`:
   1. Cluster ID
   2. Cluster Right Ascension \[degrees\] (median of members)
-  3. Cluster Right Ascension Error [degrees] (error on median)
+  3. Cluster Right Ascension Error \[degrees\] (error on median)
   4. Cluster Declination \[degrees\] (median of members)
   5. Cluster Declination Error \[degrees\] (error on median)
   6. Cluster Redshift (median of members)
@@ -141,6 +141,14 @@ as follows:
   5. Galaxy Right Ascension \[degrees\]
   6. Galxy Declination \[degrees\]
   7. Galxy Redshift
+
+**Singal-to-Noise**
+
+$$
+
+\frac{S}{N} = \frac{N_{gal} - A}{\sqrt{AB}}}
+
+$$
 
 **Run**
 
