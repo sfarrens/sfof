@@ -144,9 +144,7 @@ as follows:
 
 **Singal-to-Noise**
 
-
-$$\frac{S}{N} = \frac{N_{gal} - A}{\sqrt{AB}}}$$
-
+S/N = N
 
 **Run**
 
