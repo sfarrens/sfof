@@ -60,7 +60,6 @@ packages. This can be done with the following options:
 
 * To specify the CFITSIO directory use the following option after the
 cmake command:
-
 > -DCFITSIO_ROOT_DIR
 `e.g cmake CMakeLists.txt -DCFITSIO_ROOT_DIR=/usr/cfitsio/`
 
