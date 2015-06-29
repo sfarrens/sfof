@@ -131,7 +131,7 @@ as follows:
   8. Cluster N<sub>gal</sub> (i.e. number of members)
   9. Cluster Signal-to-noise ratio (see below for calculation)
   10. Cluster radius [arcmin] (average distance of members from centre)
-  11. Cluser area [arcmin<sup>2<\sup>]
+  11. Cluser area [arcmin<sup>2</sup>]
 
 * `Member Prorperties`:
   1. Cluster ID
@@ -287,7 +287,7 @@ To run the code the following properties need to be specified:
 3. The total number of pieces required.
 4. The desired amount of overlap between pieces. (Default value is 0.5 degrees)
 
-For example, the following command will split the input file2 (100
+For example, the following command will split the input file (100
 deg<sup>2</sup>) into 4 pieces with an overlap of 0.5 degrees between each piece:
 
 > \>> cat_split --input_file FILE_NAME --ra_lower 30.0 --ra_upper 4.0
