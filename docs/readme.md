@@ -4,10 +4,9 @@ fof_cluster_finder
 @authors Samuel Farrens, Stefano Sartor, Luca Tornatore
 
 Contents
--
-
+------------
 1. [Introduction](#intro_anchor)
-2. [Dependencies](#depend_anchor)
+2. [Dependenies](#depend_anchor)
 3. [Compilation](#compile_anchor)
 4. [Execution](#exe_anchor)
    1. [Main Code](#main_anchor)
@@ -53,7 +52,7 @@ Compilation
 
 To compile the codes simply run:
 
-> \>> cmake CMakeLists.txt
+> \>\> cmake CMakeLists.txt
 
 On some systems it may be neccesary to specify the paths to
 packages. This can be done with the following options:
@@ -95,7 +94,7 @@ data.
 <a name="main_input"></a>
 **Input Format**
 
-The expected input file formats (ASCII or FITS) for the
+The expected input file formats \(ASCII or FITS\) for the
 corresponding modes are as follows:
 
 * `Spectroscopic Mode`:
@@ -146,7 +145,7 @@ as follows:
 
 The singal-to-noise ratio is calculated as follows:
 
-S/N = (N<sub>gal</sub> - A * Bg) / (A * Bg)<sup>0.5<sup>
+S/N = (N<sub>gal</sub> - A * Bg) / (A * Bg)<sup>0.5</sup>
 
 where A is the cluster area and Bg is the background level at the
 cluster redshift. Unless an N(z) is provided the code simply takes the
@@ -162,18 +161,18 @@ arguments.
 If a configuration file is available the code can be run simply as
 follows:
 
-> \>> main
+> \>\> main
 
 All configuration file options can be overridden by providing a command
 line argument. For example to ignore a file name specified in the
 configuration file the following option can be used:
 
-> \>> main --input_file FILE_NAME
+> \>\> main --input_file FILE_NAME
 
 All of the code options are listed below, but can be viewed by
 running:
 
-> \>> main --help
+> \>\> main --help
 
 The majority of the code options have defualt values that will be
 applicable to most data sets. The only options that need to be
@@ -182,7 +181,7 @@ parameter values. For example to run the code in photometric mode on a
 data set that is well sampled around z=0.5 and does not extend beyond
 z=3.0 the following command would be sufficient to run the code:
 
-> \>> main -i FILE_NAME --link_r 0.06 --link_z 1.1
+> \>\> main -i FILE_NAME --link_r 0.06 --link_z 1.1
 
 See [examples](../examples/readme.md) for example data sets and
 configuration files to test the code.
@@ -301,7 +300,7 @@ To run the code the following properties need to be specified:
 For example, the following command will split the input file (100
 deg<sup>2</sup>) into 4 pieces with an overlap of 0.5 degrees between each piece:
 
-> \>> cat_split --input_file FILE_NAME --ra_lower 30.0 --ra_upper 4.0
+> \>\> cat_split --input_file FILE_NAME --ra_lower 30.0 --ra_upper 4.0
 > --dec_lower 10.0 --dec_upper 20.0 --ra_bins 2 --dec_bins 2
 
 **Code Options**
@@ -366,12 +365,12 @@ signal-to-noise ratio for each cluster candidate will be set to 0.0.
 To run simply specify the input file name and the desired output file
 name as follows:
 
-> \>> cat_merge --input_file FILE_NAME --ouput_file MERGED_CLUSTERS
+> \>\> cat_merge --input_file FILE_NAME --ouput_file MERGED_CLUSTERS
 
 In order to provide signal-to-noise ratio values for each of the
 clusters the *bg_data* option must also be used as follows:
 
-> \>> cat_merge --input_file FILE_NAME --ouput_file MERGED_CLUSTERS
+> \>\> cat_merge --input_file FILE_NAME --ouput_file MERGED_CLUSTERS
 > --bg_data BG_DATA_FILE
 
 **Code Options**
