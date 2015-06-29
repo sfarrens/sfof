@@ -3,6 +3,18 @@ fof_cluster_finder
 
 @authors Samuel Farrens, Stefano Sartor, Luca Tornatore
 
+Contents
+-
+
+1. [Introduction](#intro_anchor)
+2. [Dependencies](#depend_anchor)
+3. [Compilation](#compile_anchor)
+4. [Execution](#exe_anchor)
+   1. [Main Code](#main_anchor)
+   2. [Cat_Split Code](#split_anchor)
+   3. [Cat_Split Code](#merge_anchor)
+
+<a name="intro_anchor"></a>
 Introduction
 ------------
 FOF_OMP is a friends-of-friends galaxy cluster detection algorithm that operates in
@@ -18,8 +30,7 @@ cat\_split.cpp code. These pieces can than be run through the FoF
 independently and the subsequent results merged using the cat\_merge.cpp
 code.
 
-See [Main Code](#main_anchor)
-
+<a name="depend_anchor"></a>
 Dependencies
 ------------
 
@@ -36,6 +47,7 @@ following packages:
 
 * <a href="https://gcc.gnu.org/projects/cxx0x.html" target="_blank">C++0x/C++11</a>
 
+<a name="compile_anchor"></a>
 Compilation
 ------------
 
@@ -72,16 +84,18 @@ and cat\_merge.
 
 For help with comilation on Mac OSX see [here](./mac_osx_install.md).
 
+<a name="exe_anchor"></a>
 Execution
 ------------
 
-#Main Code
 <a name="main_anchor"></a>
+#Main Code
 
 The friends-of-friends (FoF) algorithm can be run in two different
 modes (spectroscopic or photometric) depending on the type of input
 data.
 
+<a name="main_input"></a>
 **Input Format**
 
 The expected input file formats (ASCII or FITS) for the
@@ -100,6 +114,7 @@ corresponding modes are as follows:
   4. Galaxy Photometric Redshift
   5. Galaxy Photometric Redshift Error
 
+<a name="main_output"></a>
 **Output Format**
 
 The code produces two output files. The first contains the properties
@@ -246,6 +261,7 @@ options permitted are ascii or fits. The default value is ascii.
 *  `--print_bg_data`:  This option specifies that the background field
    data should be printed to a file.
 
+<a name="split_anchor"></a>
 #Cat_Split Code
 
 This code divides galaxy catalogues into overlapping pieces to
@@ -258,7 +274,8 @@ The input ASCII file can contain any number of columns, but the code
 expects to find the right ascension and declination of the galaxies in columns
 2 and 3 respectively. Additionally, if the resulting pieces are to be
 used as inputs for the main code then the the input should
-adhere to the same format as that for the main code (see above).
+adhere to the same format as that for the main code (see
+[above](#main_input)).
 
 **Ouput Format**
 
@@ -310,6 +327,7 @@ deg<sup>2</sup>) into 4 pieces with an overlap of 0.5 degrees between each piece
 * ` --n_procs`: Number of processes. Use this option instead of
   *n\_ra\_bins* and *n\_dec\_bins* to define the total number of bins.
 
+<a name="merge_anchor"></a>
 #Cat_Merge Code
 
 This code merges together the FoF outputs from various pieces of a
@@ -332,7 +350,7 @@ The input file is simply a list of the main code members output files.
 **Output Format**
 
 The output format is exactly the same as that of the main code (see
-above). If, however, the background data is not provided the
+[above](#main_output)). If, however, the background data is not provided the
 signal-to-noise ratio for each cluster candidate will be set to 0.0.
 
 **Run**
