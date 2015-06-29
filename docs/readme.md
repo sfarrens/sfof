@@ -122,24 +122,24 @@ as follows:
 
 * `Cluster Prorperties`:
   1. Cluster ID
-  2. Cluster Right Ascension [degrees] (median of members)
+  2. Cluster Right Ascension \[degrees\] (median of members)
   3. Cluster Right Ascension Error [degrees] (error on median)
-  4. Cluster Declination [degrees] (median of members)
-  5. Cluster Declination Error [degrees] (error on median)
+  4. Cluster Declination \[degrees\] (median of members)
+  5. Cluster Declination Error \[degrees\] (error on median)
   6. Cluster Redshift (median of members)
   7. Cluster Redshift Error (error on median)
   8. Cluster N<sub>gal</sub> (i.e. number of members)
   9. Cluster Signal-to-noise ratio (see below for calculation)
-  10. Cluster radius [arcmin] (average distance of members from centre)
-  11. Cluser area [arcmin<sup>2</sup>]
+  10. Cluster radius \[arcmin\] (average distance of members from centre)
+  11. Cluser area \[arcmin<sup>2</sup>\]
 
 * `Member Prorperties`:
   1. Cluster ID
   2. Cluster N<sub>gal</sub>
   3. Cluster Redshift
   4. Galaxy ID
-  5. Galaxy Right Ascension [degrees]
-  6. Galxy Declination [degrees]
+  5. Galaxy Right Ascension \[degrees\]
+  6. Galxy Declination \[degrees\]
   7. Galxy Redshift
 
 **Run**
