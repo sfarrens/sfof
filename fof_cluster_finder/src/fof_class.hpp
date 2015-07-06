@@ -85,10 +85,9 @@ private:
   /**
    * This method checks if a Galaxy instance is compatible with a given 
    * Zbin instance.
-   * @param[in] zbin Zbin instance.
-   * @param[in] gal Galaxy instance.
+   * @param[in] bin_num Bin number.
+   * @param[in] gal_bins Galaxy bins.
    */
-  //bool bin_check (const Zbin &, const Galaxy &);
   bool bin_check (int, const std::vector<int> &);
   
 

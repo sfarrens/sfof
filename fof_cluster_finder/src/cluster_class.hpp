@@ -51,10 +51,10 @@ public:
   /// Redshift error of Cluster instance.
   double z_err;
 
-  /// Size of Cluster instance in arcminutes.
+  /// Size of Cluster instance in specified units.
   double size;
 
-  /// Area of Cluster instance in arcminutes squared.
+  /// Area of Cluster instance in specified units.
   double area;
 
   /// Signal-to-noise of Cluster instance.
@@ -122,9 +122,16 @@ public:
   /**
    * This method assigns a signal-to-noise value to a Cluster
    * instance given a value of the expected background number density.
-   * @param bg_expect background number density [n_gal / arcmin^2]
+   * @param[in] bg_expect Background number density [n_gal / arcmin^2]
    */
   void assign_sn (double);
+
+  /**
+   * This method updates the units of the cluster size to those
+   * specified.
+   * @param[in] size_units Cluster size units.
+   */
+  void update_size (const std::string);
 
   /**
    * This method clears all members from a Cluster instance.

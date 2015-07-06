@@ -24,6 +24,7 @@ void Option::print_parameters() {
   std::cout<<" - output_mode = "<<output_mode<<std::endl;
   std::cout<<" - fof_mode = "<<fof_mode<<std::endl;
   std::cout<<" - link_mode = "<<link_mode<<std::endl;
+  std::cout<<" - size_units = "<<size_units<<std::endl;
   std::cout<<" - min_ngal = "<<min_ngal<<std::endl;
   std::cout<<" - z_min = "<<z_min<<std::endl;
   std::cout<<" - z_max = "<<z_max<<std::endl;
@@ -73,6 +74,8 @@ void Option::read_opts(int argc, char *argv[], double version_number) {
      "Friends-of-friends redshift mode [spec/phot].")
     ("link_mode", po::value<std::string>(&link_mode)->default_value("dynamic"), 
      "Friends-of-friends linking mode [fixed/dynamic].")
+    ("size_units", po::value<std::string>(&size_units)->default_value("arcmin"), 
+     "Cluster size units [arcmin/deg/Mpc].")
     ("min_ngal", po::value<int>(&min_ngal)->default_value(10, "10"), 
      "Minimum number of cluster galaxies members.")
     ("z_min", po::value<double>(&z_min)->default_value(0.0, "0.00"), 
@@ -174,6 +177,8 @@ void Option::read_merge_opts(int argc, char *argv[], double version_number) {
      "File input mode [ascii/fits].")
     ("output_mode", po::value<std::string>(&output_mode)->default_value("ascii"), 
      "File output mode [ascii/fits].")
+    ("size_units", po::value<std::string>(&size_units)->default_value("arcmin"), 
+     "Cluster size units [arcmin/deg/Mpc].")
     ("bg_data", po::value<std::string>(&bg_data),
      "Input file name for background data.");
   

@@ -227,8 +227,13 @@ void Main::assign_cluster_props () {
     clusters[i].unique();
     /* Assign properties */
     clusters[i].assign_props();
+    /* Calculate distance to cluster */
+    if (opt.size_units == "Mpc") 
+      clusters[i].assign_dist(opt.c, opt.H0, opt.omega_m, opt.omega_l);
     /* Assign signal-to-noise using background density */
     clusters[i].assign_sn(fabs(spline_bg(clusters[i].z)));
+    /* Update cluster size units */
+    clusters[i].update_size(opt.size_units);
   }
 
   /* Sort clusters by number of members */

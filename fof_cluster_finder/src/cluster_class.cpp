@@ -60,6 +60,15 @@ void Cluster::assign_sn (double bg_expect) {
     sn = (double(ngal) - (area * bg_expect)) / pow((area * bg_expect), 0.5);
 }
 
+void Cluster::update_size (const std::string size_units) {
+  // Change cluster size units.
+  if (size_units == "deg")
+    size = size / 60.0;
+  else if (size_units == "Mpc")
+    size = astro.deg2rad(size / 60.0) * da;
+  area = M_PI * pow(size, 2);
+}
+
 void Cluster::clear () {
   // Clear all members from Cluster instance.
   mem.clear();

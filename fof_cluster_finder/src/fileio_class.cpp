@@ -213,7 +213,8 @@ void Fileio::output_member_name (const std::string &fname, const std::string &mo
   member_file_name = member_file_stream.str();
 }
 
-void Fileio::write_ascii (const std::vector<Cluster> &cluster_list, const std::string &cluster_file_name, 
+void Fileio::write_ascii (const std::vector<Cluster> &cluster_list, 
+			  const std::string &cluster_file_name, 
 			  const std::string &member_file_name) {
   // Funtion to output Cluster intances to an ASCII file.
   if (cluster_list.empty())

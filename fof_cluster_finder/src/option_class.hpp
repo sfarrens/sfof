@@ -131,6 +131,9 @@ public:
   /// FoF linking mode ["dynamic"/"fixed"].
   std::string link_mode;
 
+  /// Cluser size units ["arcmin"/"deg"/"Mpc"].
+  std::string size_units;
+
   /**
    * This method reads options provided as arguments for Main.
    * @param[in] argc Argument count.

@@ -175,7 +175,7 @@ public:
      * the Galaxy instance.
      * @param[in] min_value Minimum value in redshift range.
      * @param[in] bin_size Redshift bin size.
-     * @param[in] link_z L-O-S linking parameter.
+     * @param[in] delta_z Bin width.
      */
     void assign_bins (double, double, double);
 
