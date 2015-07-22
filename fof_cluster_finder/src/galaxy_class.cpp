@@ -27,7 +27,7 @@ void Galaxy::assign_bins (double min_value, double bin_size, double delta_z) {
     throw BadArgumentException("Galaxy::assign_bin", "min_value", ">= 0.0");
   if (bin_size <= 0)
     throw BadArgumentException("Galaxy::assign_bin", "bin_size", "> 0.0");
-  for(double x = z - delta_z * dz; x <= z + delta_z * dz; x += bin_size)
+  for(double x = z - delta_z * z_err; x <= z + delta_z * z_err; x += bin_size)
     if(x >= 0.0) bins.push_back(astro.find_bin(x, min_value, bin_size));
 }
 

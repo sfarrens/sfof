@@ -57,7 +57,7 @@ public:
   double z_ref;
 
   /// Maxmimum photometric redshift error allowed.
-  double dz_max;
+  double z_err_max;
 
   /// Input file name for N(z) data.
   std::string nz_data;

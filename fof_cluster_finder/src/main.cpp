@@ -23,11 +23,11 @@ void Main::read_data () {
   /* Read in FITS file. */
   if(opt.input_mode == "fits") 
     fileio.read_fits(opt.input_file, opt.fof_mode, opt.z_min, 
-		     opt.z_max, opt.dz_max, galaxies);
+		     opt.z_max, opt.z_err_max, galaxies);
   /* Read in ASCII file. */
   else if(opt.input_mode == "ascii")
     fileio.read_ascii(opt.input_file, opt.fof_mode, opt.z_min, 
-		      opt.z_max, opt.dz_max, galaxies);  
+		      opt.z_max, opt.z_err_max, galaxies);  
 
 }
 

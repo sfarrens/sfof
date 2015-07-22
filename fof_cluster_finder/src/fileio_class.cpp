@@ -20,7 +20,7 @@ void Fileio::set_up (int id_col_val, int ra_col_val, int dec_col_val,
 }
 
 void Fileio::set_up (int id_col_val, int ra_col_val, int dec_col_val, 
-		     int z_col_val, int dz_col_val) {
+		     int z_col_val, int z_err_col_val) {
   if (id_col_val <= 0)
     throw BadArgumentException("Fileio::set_up", "id_col_val", "> 0");
   if (ra_col_val <= 0)
@@ -29,13 +29,13 @@ void Fileio::set_up (int id_col_val, int ra_col_val, int dec_col_val,
     throw BadArgumentException("Fileio::set_up", "dec_col_val", "> 0");
   if (z_col_val <= 0)
     throw BadArgumentException("Fileio::set_up", "z_col_val", "> 0");
-  if (dz_col_val <= 0)
-    throw BadArgumentException("Fileio::set_up", "dz_col_val", "> 0");
+  if (z_err_col_val <= 0)
+    throw BadArgumentException("Fileio::set_up", "z_err_col_val", "> 0");
   id_col = id_col_val - 1;
   ra_col = ra_col_val - 1;
   dec_col = dec_col_val - 1;
   z_col = z_col_val - 1;
-  dz_col = dz_col_val - 1;
+  z_err_col = z_err_col_val - 1;
 }
 
 void Fileio::split (const std::string &str, std::vector<std::string> &tokens, 
@@ -56,7 +56,7 @@ void Fileio::split (const std::string &str, std::vector<std::string> &tokens,
 }
 
 void Fileio::read_ascii (const std::string &fname, const std::string &mode, double z_min, 
-			 double z_max, double dz_max, std::vector<Galaxy> &gals) { 
+			 double z_max, double z_err_max, std::vector<Galaxy> &gals) { 
   // Function to read in an ASCII file and store the contents in a vector of Galaxy instances.
   if (mode != "spec" && mode != "phot")
     throw BadArgumentException("Fileio::read_ascii", "mode", "a valid option [spec/phot]");
@@ -64,14 +64,14 @@ void Fileio::read_ascii (const std::string &fname, const std::string &mode, doub
     throw BadArgumentException("Fileio::read_ascii", "z_min", ">= 0.0");
   if (z_max <= 0)
     throw BadArgumentException("Fileio::read_ascii", "z_max", "> 0.0");
-  if (dz_max <= 0)
-    throw BadArgumentException("Fileio::read_ascii", "dz_max", "> 0.0");
+  if (z_err_max <= 0)
+    throw BadArgumentException("Fileio::read_ascii", "z_err_max", "> 0.0");
   std::ifstream read_file(fname.c_str()); /* open file */
   if (!read_file.good())
     throw BadArgumentException("Fileio::read_ascii", "fname", "a valid file name");
   int count = 0;
   unsigned long id;
-  double ra, dec, z, dz;
+  double ra, dec, z, z_err;
   std::string line;
   std::vector<std::string> cols; 
   while (std::getline(read_file, line)) { /* read each line */
@@ -89,9 +89,9 @@ void Fileio::read_ascii (const std::string &fname, const std::string &mode, doub
 	  count++;
 	}
 	else {
-	  dz = atof(cols[dz_col].c_str());	  
-	  if (dz <= dz_max) { /* check if photo-z error is below accepted threshold */
-	    Galaxy phot_gal(count, id, ra, dec, z, dz); /* intialise phot Galaxy */
+	  z_err = atof(cols[z_err_col].c_str());	  
+	  if (z_err <= z_err_max) { /* check if photo-z error is below accepted threshold */
+	    Galaxy phot_gal(count, id, ra, dec, z, z_err); /* intialise phot Galaxy */
 	    gals.push_back(phot_gal); /* store phot Galaxy instance in vector */
 	    count++;
 	  }	  
@@ -104,11 +104,11 @@ void Fileio::read_ascii (const std::string &fname, const std::string &mode, doub
   std::cout<<"Reading ASCII file with "<<gals.size()<<" galaxies."<<std::endl;
   std::cout<<" * only accepting galaxies with:"<<std::endl;
   std::cout<<"   - ("<<z_min<<" <= z <= "<<z_max<<")"<<std::endl;
-  if(mode == "phot") std::cout<<"   - (dz <= "<<dz_max<<")"<<std::endl;
+  if(mode == "phot") std::cout<<"   - (z_err <= "<<z_err_max<<")"<<std::endl;
 }
 
 void Fileio::read_fits (const std::string &fname, const std::string &mode, double z_min,
-			double z_max, double dz_max, std::vector<Galaxy> &gals) { 
+			double z_max, double z_err_max, std::vector<Galaxy> &gals) { 
   // Function to read in an FITS file and store the contents in a vector of Galaxy instances.
   if (mode != "spec" && mode != "phot")
     throw BadArgumentException("Fileio::read_fits", "mode", "a valid option [spec/phot]");
@@ -116,14 +116,14 @@ void Fileio::read_fits (const std::string &fname, const std::string &mode, doubl
     throw BadArgumentException("Fileio::read_fits", "z_min", ">= 0.0");
   if (z_max <= 0)
     throw BadArgumentException("Fileio::read_fits", "z_max", "> 0.0");
-  if (dz_max <= 0)
-    throw BadArgumentException("Fileio::read_fits", "dz_max", "> 0.0");
+  if (z_err_max <= 0)
+    throw BadArgumentException("Fileio::read_fits", "z_err_max", "> 0.0");
   std::ifstream read_file(fname.c_str()); /* open file */
   if (!read_file.good())
     throw BadArgumentException("Fileio::read_fits", "fname", "a valid file name");
   read_file.close();
   unsigned long id;
-  double ra, dec, z, dz;
+  double ra, dec, z, z_err;
   fitsfile *fptr;
   int count = 0, n_cols, status = 0, hdunum, hdutype, anynul, typecode;
   long n_rows, repeat, width;
@@ -157,9 +157,9 @@ void Fileio::read_fits (const std::string &fname, const std::string &mode, doubl
 	    count++;
 	  }
 	  else {
-	    dz = atof(cols[dz_col].c_str());
-	    if (dz <= z_max) { /* check if photo-z error is below accepted threshold */
-	      Galaxy phot_gal(count, id, ra, dec, z, dz); /* intialise phot Galaxy */
+	    z_err = atof(cols[z_err_col].c_str());
+	    if (z_err <= z_max) { /* check if photo-z error is below accepted threshold */
+	      Galaxy phot_gal(count, id, ra, dec, z, z_err); /* intialise phot Galaxy */
 	      gals.push_back(phot_gal); /* store phot Galaxy instance in vector */
 	      count++;
 	    }
@@ -174,7 +174,7 @@ void Fileio::read_fits (const std::string &fname, const std::string &mode, doubl
   std::cout<<"Reading FITS file with "<<gals.size()<<" objects."<<std::endl;
   std::cout<<" * only accepting galaxies with:"<<std::endl;
   std::cout<<"   - ("<<z_min<<" <= z <= "<<z_max<<")"<<std::endl;
-  if(mode == "phot") std::cout<<"   - (dz <= "<<dz_max<<")"<<std::endl;
+  if(mode == "phot") std::cout<<"   - (z_err <= "<<z_err_max<<")"<<std::endl;
 }
 
 void Fileio::output_cluster_name (const std::string &fname, const std::string &mode, 
@@ -226,7 +226,7 @@ void Fileio::write_ascii (const std::vector<Cluster> &cluster_list,
   std::ofstream write_clusters (cluster_file_name.c_str());
   std::ofstream write_members (member_file_name.c_str());
   write_clusters<<"# ID[1] RA[2] RA_ERR[3] DEC[4] DEC_ERR[5] Z[6] Z_ERR[7] NGAL[8] SN[9] RADIUS[10] AREA[11]\n";
-  write_members<<"# C_ID[1] C_NGAL[2] C_Z[3] G_ID[4] G_RA[5] G_DEC[6] G_Z[7]\n";
+  write_members<<"# C_ID[1] C_NGAL[2] C_Z[3] G_ID[4] G_RA[5] G_DEC[6] G_Z[7] G_Z_ERR[7]\n";
   for(int i = 0; i < cluster_list.size(); i++) {
     write_clusters<<std::fixed<<std::setprecision(5);
     write_clusters<<std::setw(8)<<cluster_list[i].num<<" ";
@@ -248,7 +248,8 @@ void Fileio::write_ascii (const std::vector<Cluster> &cluster_list,
       write_members<<std::setw(12)<<cluster_list[i].mem[j]->id<<" ";
       write_members<<std::setw(9)<<cluster_list[i].mem[j]->P.P[0]<<" ";
       write_members<<std::setw(9)<<std::showpos<<cluster_list[i].mem[j]->P.P[1]<<" ";
-      write_members<<std::setw(7)<<std::noshowpos<<cluster_list[i].mem[j]->z<<"\n";
+      write_members<<std::setw(7)<<std::noshowpos<<cluster_list[i].mem[j]->z<<" ";
+      write_members<<std::setw(7)<<cluster_list[i].mem[j]->z_err<<"\n";
     }
   }
   write_clusters.close();
@@ -268,7 +269,7 @@ void Fileio::write_fits (const std::vector<Cluster> &cluster_list, const std::st
   int tint, current_pos = 0, status = 0;
   unsigned long tlong;
   double tdouble;
-  const int cluster_fields = 11, member_fields = 7;
+  const int cluster_fields = 11, member_fields = 8;
   char *cluster_types[cluster_fields], *member_types[member_fields];
   char *cluster_forms[cluster_fields], *member_forms[member_fields];
   cluster_types[0] = const_cast<char *>("NUM");     cluster_forms[0] = const_cast<char *>("J");
@@ -289,6 +290,7 @@ void Fileio::write_fits (const std::vector<Cluster> &cluster_list, const std::st
   member_types[4] = const_cast<char *>("G_RA");     member_forms[4] = const_cast<char *>("E");
   member_types[5] = const_cast<char *>("G_DEC");    member_forms[5] = const_cast<char *>("E");
   member_types[6] = const_cast<char *>("G_Z");      member_forms[6] = const_cast<char *>("E");
+  member_types[7] = const_cast<char *>("G_Z_ERR");  member_forms[7] = const_cast<char *>("E");
   fits_create_file(&fptr1, cluster_file_name.c_str(), &status); /*create new FITS file*/
   if(status != 0){
     std::cout<<"Error! Cannot create cluster FITS file."<<std::endl;
@@ -339,6 +341,8 @@ void Fileio::write_fits (const std::vector<Cluster> &cluster_list, const std::st
       tdouble = cluster_list[i - 1].mem[j - 1]->P.P[1];
       fits_write_col(fptr2, TDOUBLE, 5, current_pos, 1, 1, &tdouble, &status);
       tdouble = cluster_list[i - 1].mem[j - 1]->z;
+      fits_write_col(fptr2, TDOUBLE, 6, current_pos, 1, 1, &tdouble, &status);
+      tdouble = cluster_list[i - 1].mem[j - 1]->z_err;
       fits_write_col(fptr2, TDOUBLE, 6, current_pos, 1, 1, &tdouble, &status);
     }
   }

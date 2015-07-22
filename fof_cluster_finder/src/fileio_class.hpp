@@ -51,7 +51,7 @@ public:
    * @param[in] ra_col_val Column number for galaxy right ascension.
    * @param[in] dec_col_val Column number for galaxy declination.
    * @param[in] z_col_val Column number for galaxy photometric redshift.
-   * @param[in] dz_col_val Column number for galaxy photometric redshift error.
+   * @param[in] z_err_col_val Column number for galaxy photometric redshift error.
    */
   void set_up (int, int, int, int, int);
 
@@ -71,7 +71,7 @@ public:
    * @param[in] mode FoF mode ["spec"/"phot"].
    * @param[in] z_min Minimum redshift allowed.
    * @param[in] z_max Maximum redshift allowed.
-   * @param[in] dz_max Maximum photometric redshift error allowed.
+   * @param[in] z_err_max Maximum photometric redshift error allowed.
    * @param[out] gals Vector of Galaxy instances.
    */
   void read_ascii (const std::string &, const std::string &, double, 
@@ -84,7 +84,7 @@ public:
    * @param[in] mode FoF mode ["spec"/"phot"].
    * @param[in] z_min Minimum redshift allowed.
    * @param[in] z_max Maximum redshift allowed.
-   * @param[in] dz_max Maximum photometric redshift error allowed.
+   * @param[in] z_err_max Maximum photometric redshift error allowed.
    * @param[out] gals Vector of Galaxy instances.
    */
   void read_fits (const std::string &, const std::string &, double, 
@@ -160,7 +160,7 @@ private:
   int z_col;
 
   /// Column number for galaxy photometric redshift error.
-  int dz_col;
+  int z_err_col;
 
 };
 

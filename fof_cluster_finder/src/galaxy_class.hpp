@@ -90,7 +90,7 @@ public:
     double z;
 
     /// Photometric redshift error of Galaxy instance.
-    double dz;
+    double z_err;
 
     /// Angular diameter distance of Galaxy instance.
     double da;
@@ -134,20 +134,20 @@ public:
      * @param[in] ra_val Galaxy right ascension.
      * @param[in] dec_val Galaxy declination.
      * @param[in] z_val Galaxy photometric redshift.
-     * @param[in] dz_val Galaxy photometric redshift error.
+     * @param[in] z_err_val Galaxy photometric redshift error.
      */
     Galaxy(int num_val,  unsigned long id_val, double ra_val, double dec_val,
-            double z_val, double dz_val) {
+            double z_val, double z_err_val) {
         if (z_val < 0)
             throw BadArgumentException("Galaxy", "z_val", ">= 0.0");
-        if (dz_val < 0)
-            throw BadArgumentException("Galaxy", "dz_val", ">= 0.0");
+        if (z_err_val < 0)
+            throw BadArgumentException("Galaxy", "z_err_val", ">= 0.0");
         num = num_val;
         id = id_val;
         P.P[0] = ra_val;
         P.P[1] = dec_val;
         z = z_val;
-        dz = dz_val;
+        z_err = z_err_val;
         da = 0;
         bin = 0;
     };

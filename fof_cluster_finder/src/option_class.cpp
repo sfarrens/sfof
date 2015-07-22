@@ -30,7 +30,7 @@ void Option::print_parameters() {
   std::cout<<" - z_max = "<<z_max<<std::endl;
   std::cout<<" - z_bin_size = "<<z_bin_size<<std::endl;
   std::cout<<" - z_ref = "<<z_ref<<std::endl;
-  std::cout<<" - dz_max = "<<dz_max<<std::endl;
+  std::cout<<" - z_err_max = "<<z_err_max<<std::endl;
   std::cout<<" - nz_data = "<<nz_data<<std::endl;
   std::cout<<" - c = "<<c<<std::endl;
   std::cout<<" - H0 = "<<H0<<std::endl;
@@ -86,7 +86,7 @@ void Option::read_opts(int argc, char *argv[], double version_number) {
      "Size of redshift bins.")
     ("z_ref", po::value<double>(&z_ref)->default_value(0.50, "0.50"), 
      "Reference redshift for calculations.")
-    ("dz_max", po::value<double>(&dz_max)->default_value(0.06, "0.06"), 
+    ("z_err_max", po::value<double>(&z_err_max)->default_value(0.06, "0.06"), 
      "Maxmimum photo-z error allowed.")
     ("nz_data", po::value<std::string>(&nz_data),
      "Input file name for N(z) data.")
