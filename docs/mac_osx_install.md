@@ -33,6 +33,12 @@ If GCC is used then the Boost libraries also need to be built with GCC. This can
 
 > \>> ./b2 install
 
+*NOTE: From OSX 10.10 and onwards it may be neccesary to add the
+following option:*
+
+> \>> ./b2 cxxflags="-stdlib=libstdc++" install
+
+
 Installing fof\_cluster\_finder
 -
 
