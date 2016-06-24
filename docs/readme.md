@@ -36,11 +36,11 @@ Dependencies
 The codes (main.cpp, cat\_split.cpp, cat\_merge.cpp) require the
 following packages:
 
-* <a href="http://www.cmake.org/" target="_blank">CMake</a> 
+* <a href="http://www.cmake.org/" target="_blank">CMake</a>
 
-* <a href="http://www.boost.org/" target="_blank">Boost</a> 
+* <a href="http://www.boost.org/" target="_blank">Boost</a>
 
-* <a href="http://heasarc.gsfc.nasa.gov/fitsio/" target="_blank">CFITSIO</a> 
+* <a href="http://heasarc.gsfc.nasa.gov/fitsio/" target="_blank">CFITSIO</a>
 
 * <a href="http://openmp.org/wp/" target="_blank">OMP</a>
 
@@ -199,7 +199,7 @@ configuration files to test the code.
 
 * ` -c [ --config ]`: This option specifies the configuration file
   name. The default file name is param_file.ini.
- 
+
 * ` -i [ --input_file ]`: This option specifies the input file name.
 
 * ` --output_clusters`: This option specifies the output file name of
@@ -222,13 +222,16 @@ options permitted are ascii or fits. The default value is ascii.
 
 * `--fof_mode`: This option specifies the FoF redshift mode. The options
   permitted are spec or phot. The default value is phot.
-  
+
 *  `--link_mode`: This option specifies the FoF linking mode. The
    options permitted are fixed or dynamic. The default value is dynamic.
-   
+
 *  `--min_ngal`:  This option specifies the minimum number of galaxies
    members required to form a cluster. The default value is 10.
-   
+
+*  `--max_ngal`:  This option specifies the maximum number of galaxies
+  members allowed to form a cluster. The default value is 10000.
+
 *  `--z_min`: This option specifies the low redshift limit of the
    sample. The default value is 0.0.
 
@@ -245,7 +248,7 @@ options permitted are ascii or fits. The default value is ascii.
    error allowed. The default value is 0.05.
 
 *  `--nz_data`: This option specifies the file name for a predefined
-   N(z) distribution. 
+   N(z) distribution.
 
 *  `--c`: This option specifies the speed of light in km/s. The default
    value is 2.997e5.
@@ -310,7 +313,7 @@ deg<sup>2</sup>) into 4 pieces with an overlap of 0.5 degrees between each piece
 
 * ` -v [ --version ]`: This option prints the current version of the
   code and exits.
- 
+
 * ` -i [ --input_file ]`: This option specifies the input file name.
 
 * ` --ra_lower`: Lower limit in right ascension of the catalogue.
@@ -380,7 +383,7 @@ clusters the *bg_data* option must also be used as follows:
 
 * ` -v [ --version ]`: This option prints the current version of the
   code and exits.
- 
+
 * ` -i [ --input_file ]`: This option specifies the input file name.
 
 * ` -o [ --output_file ]`: This option specifies the output file name.
