@@ -3,7 +3,7 @@
 // [Header files]
 #include "fof_class.hpp"
 
-void FoF::setup (double link_r_val, double link_z_val, const std::string &mode_val) { 
+void FoF::setup (double link_r_val, double link_z_val, const std::string &mode_val) {
   // Function to set-up a FoF instance.
   if (link_r_val <= 0)
     throw BadArgumentException("FoF::setup", "link_r_val", "> 0.0");
@@ -22,7 +22,7 @@ bool FoF::bin_check (int bin_num, const std::vector<int> &gal_bins) {
     return true;
   else {
     if(std::find(gal_bins.begin(), gal_bins.end(), bin_num) != gal_bins.end())
-      return true; 
+      return true;
     else
       return false;
   }
@@ -37,7 +37,7 @@ bool FoF::friendship (const Zbin &zbin, const Galaxy &gal1, const Galaxy &gal2, 
   bool check1 = bin_check(zbin.num, gal2.bins);
   bool check2 = !gal2.in_cluster[zbin.num];
   double dist = astro.angsep(gal1.P, gal2.P);
-  bool check3 = dist <= rfriend;    
+  bool check3 = dist <= rfriend;
   if (mode == "spec") {
     bool check4 = fabs(gal1.v - gal2.v) <= (link_z / (1 + gal1.z));
     final_check = check0 && check1 && check2 && check3 && check4;
@@ -62,23 +62,30 @@ void FoF::add_member (const Zbin &zbin, Galaxy* gal, Cluster &cluster) {
   // Function to add a new member to an existing cluster.
   gal->in_cluster[zbin.num] = true;
   cluster.add_gal(gal);
+
+  if (cluster.mem.size() > max_ngal)
+    throw RuntimeException("FoF::add_member",
+      "cluster has exceded member limit.");
+
 }
 
-int FoF::find_friends (const Zbin &zbin, Galaxy &gal, double rfriend, std::vector<Galaxy> &gal_list, const Kdtree &tree) {
+int FoF::find_friends (const Zbin &zbin, Galaxy &gal,
+                       double rfriend, std::vector<Galaxy> &gal_list,
+                       const Kdtree &tree) {
   //! Function to find galaxies linked to the galaxy in question.
   /**< Loop through kd-tree nodes */
 
   std::deque<Galaxy*> myfriends;
   int unused_nodes;
-  
+
   unused_nodes = tree.range_search(gal, rfriend, myfriends);
-  
+
   std::deque<Galaxy*>::iterator itr;
   for(itr=myfriends.begin(); itr != myfriends.end(); itr++) {
     int gal_now = (*itr)->num;
     if(friendship(zbin, gal, gal_list[gal_now], rfriend)) {
       /**< Create new cluster */
-      if(!gal.in_cluster[zbin.num]) { 
+      if(!gal.in_cluster[zbin.num]) {
         new_cluster(zbin, &gal, &gal_list[gal_now]);
         //std::cout << "== nc zbin " << zbin.num << " gal " << gal_now << std::endl;
       }
@@ -89,13 +96,13 @@ int FoF::find_friends (const Zbin &zbin, Galaxy &gal, double rfriend, std::vecto
       }
     }
   }
-  
+
   myfriends.clear();
   return unused_nodes;
 }
 
-int FoF::find_friends_of_friends (const Zbin &zbin, Cluster &cluster, 
-				   double rfriend, std::vector<Galaxy> &gal_list, 
+int FoF::find_friends_of_friends (const Zbin &zbin, Cluster &cluster,
+				   double rfriend, std::vector<Galaxy> &gal_list,
 				   const Kdtree &tree){
   // Function to find the galaxies linked to existing cluster members.
   /* Loop through cluster members */
@@ -106,7 +113,7 @@ int FoF::find_friends_of_friends (const Zbin &zbin, Cluster &cluster,
   return unused_nodes;
 }
 
-int FoF::friends_of_friends (int bin_num, const std::vector<Zbin> &zbin_list, 
+int FoF::friends_of_friends (int bin_num, const std::vector<Zbin> &zbin_list,
 			      std::vector<Galaxy> &gal_list, const Kdtree &tree) {
   // Funciton find friends-of-friends in a given redshift bin.
   if (bin_num < 0)
@@ -124,7 +131,7 @@ int FoF::friends_of_friends (int bin_num, const std::vector<Zbin> &zbin_list,
     /* Modify rfriend for spectroscopic mode */
     if (mode == "spec") rfriend = zbin_list[gal_list[i].bin].link_r / gal_list[i].da;
     /* Check if galaxy is already in a cluster (f-loop) */
-    if(!gal_list[i].in_cluster[zbin.num] && bin_check(zbin.num, gal_list[i].bins)) { 
+    if(!gal_list[i].in_cluster[zbin.num] && bin_check(zbin.num, gal_list[i].bins)) {
       unused_nodes += find_friends(zbin, gal_list[i], rfriend, gal_list, tree);
       /* Check if galaxy is now in a cluster (fof-loop) */
       if(gal_list[i].in_cluster[zbin.num])

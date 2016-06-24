@@ -26,6 +26,7 @@ void Option::print_parameters() {
   std::cout<<" - link_mode = "<<link_mode<<std::endl;
   std::cout<<" - size_units = "<<size_units<<std::endl;
   std::cout<<" - min_ngal = "<<min_ngal<<std::endl;
+  std::cout<<" - max_ngal = "<<max_ngal<<std::endl;
   std::cout<<" - z_min = "<<z_min<<std::endl;
   std::cout<<" - z_max = "<<z_max<<std::endl;
   std::cout<<" - z_bin_size = "<<z_bin_size<<std::endl;
@@ -56,47 +57,49 @@ void Option::read_opts(int argc, char *argv[], double version_number) {
      "Input file name.")
     ("output_clusters", po::value<std::string>(&output_clusters),
      "Output clusters file name.")
-    ("output_members", po::value<std::string>(&output_members), 
+    ("output_members", po::value<std::string>(&output_members),
      "Output members file name.")
-    ("link_r", po::value<double>(&link_r), 
+    ("link_r", po::value<double>(&link_r),
      "Transverse linking parameter value.")
-    ("link_z", po::value<double>(&link_z), 
+    ("link_z", po::value<double>(&link_z),
      "Line-of-sight linking parameter value.");
-  
+
   /* Define Configuration Options */
   po::options_description config("Configuration Options");
   config.add_options()
-    ("input_mode", po::value<std::string>(&input_mode)->default_value("ascii"), 
+    ("input_mode", po::value<std::string>(&input_mode)->default_value("ascii"),
      "File input mode [ascii/fits].")
-    ("output_mode", po::value<std::string>(&output_mode)->default_value("ascii"), 
+    ("output_mode", po::value<std::string>(&output_mode)->default_value("ascii"),
      "File output mode [ascii/fits].")
-    ("fof_mode", po::value<std::string>(&fof_mode)->default_value("phot"), 
+    ("fof_mode", po::value<std::string>(&fof_mode)->default_value("phot"),
      "Friends-of-friends redshift mode [spec/phot].")
-    ("link_mode", po::value<std::string>(&link_mode)->default_value("dynamic"), 
+    ("link_mode", po::value<std::string>(&link_mode)->default_value("dynamic"),
      "Friends-of-friends linking mode [fixed/dynamic].")
-    ("size_units", po::value<std::string>(&size_units)->default_value("arcmin"), 
+    ("size_units", po::value<std::string>(&size_units)->default_value("arcmin"),
      "Cluster size units [arcmin/deg/Mpc].")
-    ("min_ngal", po::value<int>(&min_ngal)->default_value(10, "10"), 
+    ("min_ngal", po::value<int>(&min_ngal)->default_value(10, "10"),
      "Minimum number of cluster galaxies members.")
-    ("z_min", po::value<double>(&z_min)->default_value(0.0, "0.00"), 
+    ("max_ngal", po::value<int>(&max_ngal)->default_value(10000, "10000"),
+     "Maximum number of cluster galaxies members.")
+    ("z_min", po::value<double>(&z_min)->default_value(0.0, "0.00"),
      "Minimum redshift of sample.")
-    ("z_max", po::value<double>(&z_max)->default_value(3.0, "3.00"), 
+    ("z_max", po::value<double>(&z_max)->default_value(3.0, "3.00"),
      "Maximum redshift of sample.")
-    ("z_bin_size", po::value<double>(&z_bin_size)->default_value(0.01, "0.01"), 
+    ("z_bin_size", po::value<double>(&z_bin_size)->default_value(0.01, "0.01"),
      "Size of redshift bins.")
-    ("z_ref", po::value<double>(&z_ref)->default_value(0.50, "0.50"), 
+    ("z_ref", po::value<double>(&z_ref)->default_value(0.50, "0.50"),
      "Reference redshift for calculations.")
-    ("z_err_max", po::value<double>(&z_err_max)->default_value(0.06, "0.06"), 
+    ("z_err_max", po::value<double>(&z_err_max)->default_value(0.06, "0.06"),
      "Maxmimum photo-z error allowed.")
     ("nz_data", po::value<std::string>(&nz_data),
      "Input file name for N(z) data.")
-    ("c", po::value<double>(&c)->default_value(2.997e5, "2.997e5"), 
+    ("c", po::value<double>(&c)->default_value(2.997e5, "2.997e5"),
      "Speed of light in km/s.")
-    ("H0", po::value<double>(&H0)->default_value(100, "100.00"), 
+    ("H0", po::value<double>(&H0)->default_value(100, "100.00"),
      "Hubble parameter in km/s/Mpc.")
-    ("omega_m", po::value<double>(&omega_m)->default_value(0.30, "0.30"), 
+    ("omega_m", po::value<double>(&omega_m)->default_value(0.30, "0.30"),
      "Matter density.")
-    ("omega_l", po::value<double>(&omega_l)->default_value(0.70, "0.70"), 
+    ("omega_l", po::value<double>(&omega_l)->default_value(0.70, "0.70"),
      "Dark energy density.");
 
   /* Define Additional Options */
@@ -105,15 +108,15 @@ void Option::read_opts(int argc, char *argv[], double version_number) {
     ("print_bin_data", "Print redshift bin data.")
     ("print_kdtree_data", "Print kd-tree data.")
     ("print_bg_data", "Print background data.");
- 
+
   /* Command Line Options */
   po::options_description cmdline_options("\nFRIENDS-OF-FRIENDS CLUSTER DETECTION ALGORITHM\n\nCode Options");
   cmdline_options.add(helps).add(runs).add(config).add(adds);
-  
+
   /* Configuration File Options */
   po::options_description config_file_options;
   config_file_options.add(runs).add(config);
-  
+
   /* Define Variables Map */
   po::variables_map v_map;
   store(po::command_line_parser(argc, argv).options(cmdline_options).run(), v_map);
@@ -125,41 +128,41 @@ void Option::read_opts(int argc, char *argv[], double version_number) {
     store(parse_config_file(read_config, config_file_options), v_map);
     notify(v_map);
   }
-  else 
-    std::cout<<"Warning: configuration file ["<<config_file.c_str()<<"] not found."<<std::endl; 
-  
+  else
+    std::cout<<"Warning: configuration file ["<<config_file.c_str()<<"] not found."<<std::endl;
+
   /* Print Help */
   if (v_map.count("help")) {
     std::cout << cmdline_options << "\n";
     exit(0);
   }
-  
+
   /* Print Version */
   if (v_map.count("version"))
-    version(version_number);    
+    version(version_number);
 
   /* Print Parameters */
   if (v_map.count("parameters"))
-    print_parameters();   
+    print_parameters();
 
   /* Print Bin Data */
   if (v_map.count("print_bin_data"))
-    print_bin_data = true;  
+    print_bin_data = true;
   else
-    print_bin_data = false;  
+    print_bin_data = false;
 
   /* Print kd-tree Data */
   if (v_map.count("print_kdtree_data"))
-    print_kdtree_data = true;  
+    print_kdtree_data = true;
   else
-    print_kdtree_data = false;  
+    print_kdtree_data = false;
 
   /* Print Background Data */
   if (v_map.count("print_bg_data"))
-    print_bg_data = true;  
+    print_bg_data = true;
   else
-    print_bg_data = false;  
-  
+    print_bg_data = false;
+
 }
 
 void Option::read_merge_opts(int argc, char *argv[], double version_number) {
@@ -173,15 +176,15 @@ void Option::read_merge_opts(int argc, char *argv[], double version_number) {
      "Input file name.")
     ("output_file,o", po::value<std::string>(&output_file),
      "Output file name.")
-    ("input_mode", po::value<std::string>(&input_mode)->default_value("ascii"), 
+    ("input_mode", po::value<std::string>(&input_mode)->default_value("ascii"),
      "File input mode [ascii/fits].")
-    ("output_mode", po::value<std::string>(&output_mode)->default_value("ascii"), 
+    ("output_mode", po::value<std::string>(&output_mode)->default_value("ascii"),
      "File output mode [ascii/fits].")
-    ("size_units", po::value<std::string>(&size_units)->default_value("arcmin"), 
+    ("size_units", po::value<std::string>(&size_units)->default_value("arcmin"),
      "Cluster size units [arcmin/deg/Mpc].")
     ("bg_data", po::value<std::string>(&bg_data),
      "Input file name for background data.");
-  
+
   /* Define Variables Map */
   po::variables_map v_map;
   store(po::command_line_parser(argc, argv).options(opts).run(), v_map);
@@ -192,10 +195,10 @@ void Option::read_merge_opts(int argc, char *argv[], double version_number) {
     std::cout << opts << "\n";
     exit(0);
   }
-  
+
   /* Print Version */
   if (v_map.count("version"))
-    version(version_number);    
+    version(version_number);
 }
 
 void Option::read_split_opts(int argc, char *argv[], double version_number) {
@@ -225,7 +228,7 @@ void Option::read_split_opts(int argc, char *argv[], double version_number) {
      "Number of declination bins.")
     ("n_procs", po::value<int>(&n_procs)->default_value(0),
      "Number of processes.");
-  
+
   /* Define Variables Map */
   po::variables_map v_map;
   store(po::command_line_parser(argc, argv).options(opts).run(), v_map);
@@ -236,8 +239,8 @@ void Option::read_split_opts(int argc, char *argv[], double version_number) {
     std::cout << opts << "\n";
     exit(0);
   }
-  
+
   /* Print Version */
   if (v_map.count("version"))
-    version(version_number);    
+    version(version_number);
 }

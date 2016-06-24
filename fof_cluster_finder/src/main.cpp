@@ -5,7 +5,7 @@
 void Main::read_options (int argc, char *argv[]) {
   // Function to read code options.
 
-  double version_number = 3.1;
+  double version_number = 3.2;
 
   param_file = "param_file.ini";
   opt.read_opts(argc, argv, version_number);
@@ -21,13 +21,13 @@ void Main::read_data () {
     fileio.set_up(1, 2, 3, 4, 5);
 
   /* Read in FITS file. */
-  if(opt.input_mode == "fits") 
-    fileio.read_fits(opt.input_file, opt.fof_mode, opt.z_min, 
+  if(opt.input_mode == "fits")
+    fileio.read_fits(opt.input_file, opt.fof_mode, opt.z_min,
 		     opt.z_max, opt.z_err_max, galaxies);
   /* Read in ASCII file. */
   else if(opt.input_mode == "ascii")
-    fileio.read_ascii(opt.input_file, opt.fof_mode, opt.z_min, 
-		      opt.z_max, opt.z_err_max, galaxies);  
+    fileio.read_ascii(opt.input_file, opt.fof_mode, opt.z_min,
+		      opt.z_max, opt.z_err_max, galaxies);
 
 }
 
@@ -49,10 +49,10 @@ void Main::set_up_zbins () {
     Zbin zbin(i, opt.z_min + (i + 0.5) * opt.z_bin_size, opt.z_bin_size);
     zbin.assign_dist(opt.c, opt.H0, opt.omega_m, opt.omega_l);
     zbins.push_back(zbin);
-    if (!opt.nz_data.empty()) 
+    if (!opt.nz_data.empty())
       zbins[i].count = spline_nz(zbins[i].z);
   }
-  
+
   /* Assign Zbin instances to Galaxy instances. */
   for (int i = 0; i < galaxies.size(); i++) {
     galaxies[i].assign_bin(opt.z_min, opt.z_bin_size);
@@ -77,13 +77,13 @@ void Main::assign_linking_param () {
   /* Set reference linking value from reference z */
   if(opt.link_mode == "fixed")
     for(int i = 0; i < num_bins; i++)
-      zbins[i].assign_fixed_rfriend(opt.link_r); 
+      zbins[i].assign_fixed_rfriend(opt.link_r);
   else {
     int z_ref_index = astro.find_bin(opt.z_ref, opt.z_min, opt.z_bin_size);
-    double r_ref = pow(double(zbins[z_ref_index].count) 
+    double r_ref = pow(double(zbins[z_ref_index].count)
     		       / (opt.z_bin_size * zbins[z_ref_index].dvdz), 0.5) * opt.link_r;
     for(int i = 0; i < num_bins; i++)
-      zbins[i].assign_rfriend(r_ref); 
+      zbins[i].assign_rfriend(r_ref);
   }
 
   /* Print redshift bin data to file */
@@ -93,7 +93,7 @@ void Main::assign_linking_param () {
     std::cout<<"Printing redshift bin data to "<<z_bin_data<<"."<<std::endl;
     std::ofstream zbin_out(z_bin_data);
     zbin_out<<"#Num[1] Z[2] Link_R[3] R_Friend[4] Count[5]"<<std::endl;
-    for(int i = 0; i < num_bins; i++) 
+    for(int i = 0; i < num_bins; i++)
       zbin_out<<zbins[i].num<<" "<<zbins[i].z<<" "<<zbins[i].link_r<<" "
 	       <<zbins[i].rfriend<<" "<<zbins[i].count<<std::endl;
     zbin_out.close();
@@ -111,7 +111,7 @@ void Main::make_kdtree () {
 
   /* Print kd-tree data to file */
   std::string kdtree_data = opt.input_file + ".kdtree_data.dat";
-  if(opt.print_kdtree_data) 
+  if(opt.print_kdtree_data)
     tree.write_Kdtree(kdtree_data);
 
 }
@@ -126,7 +126,7 @@ void Main::background_counts () {
   for (int i = 0; i < zbins.size(); i++) {
     z_vals.push_back(zbins[i].z);
     count_vals.push_back(double(zbins[i].count) / (tree.sample_area * 3600.0));
-  }  
+  }
 
   /* Fit spline to background density. */
   spline_bg.set_points(z_vals, count_vals);
@@ -137,7 +137,7 @@ void Main::background_counts () {
     std::cout<<"Printing background data to "<<bg_data<<"."<<std::endl;
     std::ofstream bg_out(bg_data);
     bg_out<<"#Z[1] BG_Density[2]"<<std::endl;
-    for(int i = 0; i < z_vals.size(); i++) 
+    for(int i = 0; i < z_vals.size(); i++)
       bg_out<<z_vals[i]<<" "<<count_vals[i]<<std::endl;
     bg_out.close();
   }
@@ -157,7 +157,7 @@ void Main::find_friends () {
   /* Create vector of FoF instances. */
   std::vector<FoF> fof_list;
   for (int i = 0; i < nbins; i++) {
-    FoF fof_bin;
+    FoF fof_bin(opt.max_ngal);
     fof_list.push_back(fof_bin);
   }
 
@@ -171,7 +171,9 @@ void Main::find_friends () {
     std::cout<<" OMP: Using "<<nts<<" threads."<<std::endl;
 #pragma omp for reduction(+:unused_nodes)
     for (int i = 0; i < nbins; i++) {
-      std::cout<<"ID: "<<tid<<" finding clusters at z = "<<zbins[i].z<<"; ";
+      if (nbins == 1) std::cout<<"ID: "<<tid<<" finding clusters; ";
+      else
+        std::cout<<"ID: "<<tid<<" finding clusters at z = "<<zbins[i].z<<"; ";
       fof_list[i].setup(opt.link_r, opt.link_z, opt.fof_mode);
       unused_nodes += fof_list[i].friends_of_friends(i, zbins, galaxies, tree);
       fof_list[i].remove(opt.min_ngal);
@@ -182,7 +184,7 @@ void Main::find_friends () {
   /* End OMP */
 
   /* Create vector of cluster candidates. */
-  for (int i = 0; i < nbins; i++) 
+  for (int i = 0; i < nbins; i++)
     for (int j = 0; j < fof_list[i].list_of_clusters.size(); j++) {
       fof_list[i].list_of_clusters[j].rename(cluster_count);
       clusters.push_back(fof_list[i].list_of_clusters[j]);
@@ -192,12 +194,12 @@ void Main::find_friends () {
 }
 
 void Main::check_results() {
-  // Function that checks how many cluster canidates 
+  // Function that checks how many cluster canidates
   // have been detected.
 
   if (clusters.size() > 0)
     merge_clusters();
-  else 
+  else
     std::cout<<"No clusters deteced in sample!"<<std::endl;
 
 }
@@ -206,7 +208,7 @@ void Main::merge_clusters () {
   // Function that merges clusters with members in common.
 
   std::cout<<"Merging "<<clusters.size()<<" candidates."<<std::endl;
-  
+
   /* Merge clusters */
   Merge::join_uf(clusters);
   Merge::rearrange_clusters(galaxies, clusters);
@@ -228,7 +230,7 @@ void Main::assign_cluster_props () {
     /* Assign properties */
     clusters[i].assign_props();
     /* Calculate distance to cluster */
-    if (opt.size_units == "Mpc") 
+    if (opt.size_units == "Mpc")
       clusters[i].assign_dist(opt.c, opt.H0, opt.omega_m, opt.omega_l);
     /* Assign signal-to-noise using background density */
     clusters[i].assign_sn(fabs(spline_bg(clusters[i].z)));
@@ -241,7 +243,7 @@ void Main::assign_cluster_props () {
   std::reverse(clusters.begin(), clusters.end());
 
   /* Rename clusters */
-  for(int i = 0; i < clusters.size(); i++) 
+  for(int i = 0; i < clusters.size(); i++)
     clusters[i].rename(i + 1);
 
   output_results();
@@ -253,25 +255,25 @@ void Main::output_results () {
 
   /* Create clusters output file name. */
   if(opt.output_clusters.empty())
-    fileio.output_cluster_name(opt.input_file, opt.fof_mode, 
-			     opt.output_mode, opt.link_r, opt.link_z, 
+    fileio.output_cluster_name(opt.input_file, opt.fof_mode,
+			     opt.output_mode, opt.link_r, opt.link_z,
 			     opt.output_clusters);
 
   /* Create members output file name. */
   if(opt.output_members.empty())
-    fileio.output_member_name(opt.input_file, opt.fof_mode, 
-			     opt.output_mode, opt.link_r, opt.link_z, 
+    fileio.output_member_name(opt.input_file, opt.fof_mode,
+			     opt.output_mode, opt.link_r, opt.link_z,
 			     opt.output_members);
 
   std::cout<<"Cluster properties being written to: "<<opt.output_clusters<<std::endl;
   std::cout<<"Cluster member properties being written to: "<<opt.output_members<<std::endl;
 
   /* Write output to FITS file. */
-  if(opt.output_mode == "fits") 
+  if(opt.output_mode == "fits")
     fileio.write_fits(clusters, opt.output_clusters, opt.output_members);
   /* Write output to ASCII file. */
-  else if(opt.output_mode == "ascii") 
-    fileio.write_ascii(clusters, opt.output_clusters, opt.output_members);  
+  else if(opt.output_mode == "ascii")
+    fileio.write_ascii(clusters, opt.output_clusters, opt.output_members);
 
 }
 
