@@ -48,7 +48,6 @@ BOOST_AUTO_TEST_CASE( test_Options_and_Galaxies )
   int i;
   Option opt;
   std::vector<Galaxy> gals;
-  std::string param_file_name = "../examples/param_file.unit_test.ini";
 
   double version_number = 1.0;
   
@@ -69,9 +68,9 @@ BOOST_AUTO_TEST_CASE( test_Options_and_Galaxies )
   else
     fileio.set_up(1, 2, 3, 4, 5);
   if(opt.input_mode == "ascii")
-    fileio.read_ascii(opt.input_file, opt.fof_mode, opt.z_min, opt.z_max, opt.dz_max, gals);
+    fileio.read_ascii(opt.input_file, opt.fof_mode, opt.z_min, opt.z_max, opt.z_err_max, gals);
   else if(opt.input_mode == "fits")
-    fileio.read_fits(opt.input_file, opt.fof_mode, opt.z_min, opt.z_max, opt.dz_max, gals);
+    fileio.read_fits(opt.input_file, opt.fof_mode, opt.z_min, opt.z_max, opt.z_err_max, gals);
   
   BOOST_CHECK( gals.size() > 0);
   
