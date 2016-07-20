@@ -25,16 +25,19 @@ class Option { // Class for code options
 
 public:
 
-  /// Minimum number of member Galaxy instances required to form a 
+  /// Minimum number of member Galaxy instances required to form a
   /// Cluster instance.
   int min_ngal;
+
+  /// Maximum number of member Galaxy allowed to form a Cluster instance.
+  int max_ngal;
 
   /// Number of bins in right ascension.
   int n_ra_bins;
 
   /// Number of bins in declination.
   int n_dec_bins;
-  
+
   /// Number of processes.
   int n_procs;
 
@@ -48,7 +51,7 @@ public:
   double z_bin_size;
 
   /// Minimum redshift allowed.
-  double z_min; 
+  double z_min;
 
   /// Maximum redshift allowed.
   double z_max;
@@ -103,7 +106,7 @@ public:
 
   /// Output member file name.
   std::string output_members;
-  
+
   /// Output file name.
   std::string output_file;
 

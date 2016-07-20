@@ -28,7 +28,6 @@ void Main::read_data () {
   else if(opt.input_mode == "ascii")
     fileio.read_ascii(opt.input_file, opt.fof_mode, opt.z_min,
 		      opt.z_max, opt.z_err_max, galaxies);
-
 }
 
 void Main::set_up_zbins () {
@@ -88,10 +87,11 @@ void Main::assign_linking_param () {
 
   /* Print redshift bin data to file */
   if(opt.print_bin_data) {
-    std::string z_bin_data = opt.input_file + ".z_bin_data.dat";
-    //const char* z_bin_data = opt.input_file.c_str() + ".z_bin_data.dat";
-    std::cout<<"Printing redshift bin data to "<<z_bin_data<<"."<<std::endl;
-    std::ofstream zbin_out(z_bin_data);
+    std::stringstream z_bin_data;
+    z_bin_data<<opt.input_file<<"_z_bin_data_"<<opt.link_r<<"_"<<opt.link_z
+              <<"_"<<opt.fof_mode<<".dat";
+    std::cout<<"Printing redshift bin data to "<<z_bin_data.str()<<"."<<std::endl;
+    std::ofstream zbin_out(z_bin_data.str());
     zbin_out<<"#Num[1] Z[2] Link_R[3] R_Friend[4] Count[5]"<<std::endl;
     for(int i = 0; i < num_bins; i++)
       zbin_out<<zbins[i].num<<" "<<zbins[i].z<<" "<<zbins[i].link_r<<" "
@@ -133,9 +133,11 @@ void Main::background_counts () {
 
   /* Print background data to file. */
   if(opt.print_bg_data) {
-    std::string bg_data = opt.input_file + ".bg_data.dat";
-    std::cout<<"Printing background data to "<<bg_data<<"."<<std::endl;
-    std::ofstream bg_out(bg_data);
+    std::stringstream bg_data;
+    bg_data<<opt.input_file<<"_bg_data_"<<opt.link_r<<"_"<<opt.link_z
+              <<"_"<<opt.fof_mode<<".dat";
+    std::cout<<"Printing background data to "<<bg_data.str()<<"."<<std::endl;
+    std::ofstream bg_out(bg_data.str());
     bg_out<<"#Z[1] BG_Density[2]"<<std::endl;
     for(int i = 0; i < z_vals.size(); i++)
       bg_out<<z_vals[i]<<" "<<count_vals[i]<<std::endl;

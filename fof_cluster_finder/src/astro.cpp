@@ -6,13 +6,14 @@
 #include "astro.hpp"
 #include "exceptions.hpp"
 
-int Astro::find_bin (double value, double min_value, double bin_size) { 
+int Astro::find_bin (double value, double min_value, double bin_size) {
   // Find bin corresponding to the input value given the minimum
   // value in range and the bin size.
   if (bin_size <= 0)
     throw BadArgumentException("Astro::find_bin", "bin_size", "> 0.0");
-  if (value < min_value)
+  if (value < min_value) {
     throw BadArgumentException("Astro::find_bin", "value", ">= min_value");
+  }
   return floorf((value - min_value) / bin_size);
 }
 
@@ -26,7 +27,7 @@ int Astro::num_bins (double min_value, double max_value, double bin_size) {
 }
 
 bool Astro::within (double value, double min_value, double max_value) {
-  // Deterimine whether or not a value is within the limits 
+  // Deterimine whether or not a value is within the limits
   // provided.
   if (max_value <= min_value)
     throw BadArgumentException("Astro::within", "max_value", "> min_value");
@@ -57,7 +58,7 @@ double Astro::angsep (const Point &P1, const Point &P2) {
   if(P1.P[0] == P2.P[0] && P1.P[1] == P2.P[1])
     return 0.0;
   else
-    return acos(sin(deg2rad(P1.P[1])) * sin(deg2rad(P2.P[1])) + cos(deg2rad(P1.P[1])) * 
+    return acos(sin(deg2rad(P1.P[1])) * sin(deg2rad(P2.P[1])) + cos(deg2rad(P1.P[1])) *
 		cos(deg2rad(P2.P[1])) * cos(deg2rad(P1.P[0]) - deg2rad(P2.P[0])));
 }
 
@@ -74,7 +75,7 @@ double Astro::angsep (double ra1, double dec1, double ra2, double dec2) {
   if(ra1 == ra2 && dec1 == dec2)
     return 0.0;
   else
-    return acos(sin(deg2rad(dec1)) * sin(deg2rad(dec2)) + cos(deg2rad(dec1)) * 
+    return acos(sin(deg2rad(dec1)) * sin(deg2rad(dec2)) + cos(deg2rad(dec1)) *
 		cos(deg2rad(dec2)) * cos(deg2rad(ra1) - deg2rad(ra2)));
 }
 
@@ -122,7 +123,7 @@ double Astro::stderr_mean (const std::vector<double> &elements) {
 }
 
 double Astro::stderr_median (const std::vector<double> &elements) {
-  // Function that computes the standard error of the median of a 
+  // Function that computes the standard error of the median of a
   // vector of doubles.
   return 1.253 * stderr_mean(elements);
 }

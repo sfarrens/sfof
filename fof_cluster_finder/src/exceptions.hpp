@@ -34,8 +34,9 @@ protected:
 class RuntimeException : public std::runtime_error
 {
 public:
-    RuntimeException(const std::string& context, const std::string& member_name, 
+    RuntimeException(const std::string& context, const std::string& member_name,
 		      const std::string& expected);
+    RuntimeException(const std::string& context, const std::string& error);
     virtual ~RuntimeException() throw(){}
     virtual const char* what() const throw();
 protected:

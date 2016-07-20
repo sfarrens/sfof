@@ -3,7 +3,7 @@
 #include "fileio_class.hpp"
 #include "exceptions.hpp"
 
-void Fileio::set_up (int id_col_val, int ra_col_val, int dec_col_val, 
+void Fileio::set_up (int id_col_val, int ra_col_val, int dec_col_val,
 		     int z_col_val) {
   if (id_col_val <= 0)
     throw BadArgumentException("Fileio::set_up", "id_col_val", "> 0");
@@ -19,7 +19,7 @@ void Fileio::set_up (int id_col_val, int ra_col_val, int dec_col_val,
   z_col = z_col_val - 1;
 }
 
-void Fileio::set_up (int id_col_val, int ra_col_val, int dec_col_val, 
+void Fileio::set_up (int id_col_val, int ra_col_val, int dec_col_val,
 		     int z_col_val, int z_err_col_val) {
   if (id_col_val <= 0)
     throw BadArgumentException("Fileio::set_up", "id_col_val", "> 0");
@@ -38,25 +38,25 @@ void Fileio::set_up (int id_col_val, int ra_col_val, int dec_col_val,
   z_err_col = z_err_col_val - 1;
 }
 
-void Fileio::split (const std::string &str, std::vector<std::string> &tokens, 
+void Fileio::split (const std::string &str, std::vector<std::string> &tokens,
 		    const std::string &delimiter) {
   // Function to split a string read in from a file into columns.
   if (str.empty())
     throw BadArgumentException("Fileio::split", "str", "a valid string");
   if (delimiter.empty())
     throw BadArgumentException("Fileio::split", "delimiter", "a valid string");
-  std::string::size_type lastPos, pos;      
+  std::string::size_type lastPos, pos;
   lastPos = str.find_first_not_of(delimiter, 0); /* pos = find first "non-delimiter" */
   pos = str.find_first_of(delimiter, lastPos);
   while (std::string::npos != pos || std::string::npos != lastPos){
-    tokens.push_back(str.substr(lastPos, pos-lastPos)); /* Found a token, add it to the vector. */     
-    lastPos = str.find_first_not_of(delimiter, pos); /* Skip delimiters. Note the "not_of" */         
-    pos=str.find_first_of(delimiter, lastPos); /* Find next "non-delimiter" */            
+    tokens.push_back(str.substr(lastPos, pos-lastPos)); /* Found a token, add it to the vector. */
+    lastPos = str.find_first_not_of(delimiter, pos); /* Skip delimiters. Note the "not_of" */
+    pos=str.find_first_of(delimiter, lastPos); /* Find next "non-delimiter" */
   }
 }
 
-void Fileio::read_ascii (const std::string &fname, const std::string &mode, double z_min, 
-			 double z_max, double z_err_max, std::vector<Galaxy> &gals) { 
+void Fileio::read_ascii (const std::string &fname, const std::string &mode, double z_min,
+			 double z_max, double z_err_max, std::vector<Galaxy> &gals) {
   // Function to read in an ASCII file and store the contents in a vector of Galaxy instances.
   if (mode != "spec" && mode != "phot")
     throw BadArgumentException("Fileio::read_ascii", "mode", "a valid option [spec/phot]");
@@ -73,9 +73,9 @@ void Fileio::read_ascii (const std::string &fname, const std::string &mode, doub
   unsigned long id;
   double ra, dec, z, z_err;
   std::string line;
-  std::vector<std::string> cols; 
+  std::vector<std::string> cols;
   while (std::getline(read_file, line)) { /* read each line */
-    if(line.length() >= 1 && 
+    if(line.length() >= 1 &&
        line.find("#") == std::string::npos) { /* skip empty lines and lines starting with # */
       split(line, cols, " "); /* split line into columns */
       id = strtoul(cols[id_col].c_str(), NULL, 0);
@@ -83,19 +83,18 @@ void Fileio::read_ascii (const std::string &fname, const std::string &mode, doub
       dec = atof(cols[dec_col].c_str());
       z = atof(cols[z_col].c_str());
       if (z >= z_min && z <= z_max) { /* check if galaxy is within redshift limits*/
-	if(mode == "spec") {
-	  Galaxy spec_gal(count, id, ra, dec, z); /* intialise spec Galaxy */
-	  gals.push_back(spec_gal); /* store spec Galaxy instance in vector */
-	  count++;
-	}
-	else {
-	  z_err = atof(cols[z_err_col].c_str());	  
-	  if (z_err <= z_err_max) { /* check if photo-z error is below accepted threshold */
-	    Galaxy phot_gal(count, id, ra, dec, z, z_err); /* intialise phot Galaxy */
-	    gals.push_back(phot_gal); /* store phot Galaxy instance in vector */
-	    count++;
-	  }	  
-	}
+				if(mode == "spec") {
+	  			Galaxy spec_gal(count, id, ra, dec, z); /* intialise spec Galaxy */
+	  			gals.push_back(spec_gal); /* store spec Galaxy instance in vector */
+	  			count++;
+				} else {
+	  			z_err = atof(cols[z_err_col].c_str());
+	  			if (z_err <= z_err_max) { /* check if photo-z error is below accepted threshold */
+	    			Galaxy phot_gal(count, id, ra, dec, z, z_err); /* intialise phot Galaxy */
+	    			gals.push_back(phot_gal); /* store phot Galaxy instance in vector */
+	    			count++;
+	  			}
+				}
       }
       cols.clear(); /* clear column vector */
     }
@@ -108,7 +107,7 @@ void Fileio::read_ascii (const std::string &fname, const std::string &mode, doub
 }
 
 void Fileio::read_fits (const std::string &fname, const std::string &mode, double z_min,
-			double z_max, double z_err_max, std::vector<Galaxy> &gals) { 
+			double z_max, double z_err_max, std::vector<Galaxy> &gals) {
   // Function to read in an FITS file and store the contents in a vector of Galaxy instances.
   if (mode != "spec" && mode != "phot")
     throw BadArgumentException("Fileio::read_fits", "mode", "a valid option [spec/phot]");
@@ -166,7 +165,7 @@ void Fileio::read_fits (const std::string &fname, const std::string &mode, doubl
 	  }
 	}
 	cols.clear(); /* clear column vector */
-      }      
+      }
     }
     fits_close_file(fptr, &status); /* close FITS file */
   }
@@ -177,7 +176,7 @@ void Fileio::read_fits (const std::string &fname, const std::string &mode, doubl
   if(mode == "phot") std::cout<<"   - (z_err <= "<<z_err_max<<")"<<std::endl;
 }
 
-void Fileio::output_cluster_name (const std::string &fname, const std::string &mode, 
+void Fileio::output_cluster_name (const std::string &fname, const std::string &mode,
 				  const std::string &output, double link_r, double link_z,
 				  std::string &cluster_file_name) {
   // Function to set up cluster output file name.
@@ -188,14 +187,14 @@ void Fileio::output_cluster_name (const std::string &fname, const std::string &m
   if (output != "ascii" && output != "fits")
     throw BadArgumentException("Fileio::output_cluster_name", "output", "a valid option [ascii/fits]");
   std::stringstream cluster_file_stream, member_file_stream;
-  if(output == "ascii") 
+  if(output == "ascii")
     cluster_file_stream<<fname<<"_clusters_"<<link_r<<"_"<<link_z<<"_"<<mode<<".dat";
-  else if(output == "fits") 
+  else if(output == "fits")
     cluster_file_stream<<fname<<"_clusters_"<<link_r<<"_"<<link_z<<"_"<<mode<<".fits";
   cluster_file_name = cluster_file_stream.str();
 }
 
-void Fileio::output_member_name (const std::string &fname, const std::string &mode, 
+void Fileio::output_member_name (const std::string &fname, const std::string &mode,
 				 const std::string &output, double link_r, double link_z,
 				 std::string &member_file_name) {
   // Function to set up member output file name.
@@ -206,15 +205,15 @@ void Fileio::output_member_name (const std::string &fname, const std::string &mo
   if (output != "ascii" && output != "fits")
     throw BadArgumentException("Fileio::output_member_name", "output", "a valid option [ascii/fits]");
   std::stringstream cluster_file_stream, member_file_stream;
-  if(output == "ascii") 
-    member_file_stream<<fname<<"_members_"<<link_r<<"_"<<link_z<<"_"<<mode<<".dat"; 
-  else if(output == "fits") 
-    member_file_stream<<fname<<"_members_"<<link_r<<"_"<<link_z<<"_"<<mode<<".fits"; 
+  if(output == "ascii")
+    member_file_stream<<fname<<"_members_"<<link_r<<"_"<<link_z<<"_"<<mode<<".dat";
+  else if(output == "fits")
+    member_file_stream<<fname<<"_members_"<<link_r<<"_"<<link_z<<"_"<<mode<<".fits";
   member_file_name = member_file_stream.str();
 }
 
-void Fileio::write_ascii (const std::vector<Cluster> &cluster_list, 
-			  const std::string &cluster_file_name, 
+void Fileio::write_ascii (const std::vector<Cluster> &cluster_list,
+			  const std::string &cluster_file_name,
 			  const std::string &member_file_name) {
   // Funtion to output Cluster intances to an ASCII file.
   if (cluster_list.empty())
@@ -256,7 +255,7 @@ void Fileio::write_ascii (const std::vector<Cluster> &cluster_list,
   write_members.close();
 }
 
-void Fileio::write_fits (const std::vector<Cluster> &cluster_list, const std::string &cluster_file_name, 
+void Fileio::write_fits (const std::vector<Cluster> &cluster_list, const std::string &cluster_file_name,
 			  const std::string &member_file_name) {
   // Funtion to output Cluster intances to an FITS file.
   if (cluster_list.empty())
@@ -301,10 +300,10 @@ void Fileio::write_fits (const std::vector<Cluster> &cluster_list, const std::st
     std::cout<<"Error! Cannot create member FITS file."<<std::endl;
     exit(-1);
   }
-  fits_create_tbl(fptr1, BINARY_TBL, 0, cluster_fields, cluster_types, 
-		  cluster_forms, NULL, NULL, &status); /*create new FITS table*/ 
-  fits_create_tbl(fptr2, BINARY_TBL, 0, member_fields, member_types, 
-		  member_forms, NULL, NULL, &status); /*create new FITS table*/ 
+  fits_create_tbl(fptr1, BINARY_TBL, 0, cluster_fields, cluster_types,
+		  cluster_forms, NULL, NULL, &status); /*create new FITS table*/
+  fits_create_tbl(fptr2, BINARY_TBL, 0, member_fields, member_types,
+		  member_forms, NULL, NULL, &status); /*create new FITS table*/
   for(int i = 1; i <= cluster_list.size(); i++) {
     tint = cluster_list[i - 1].num;
     fits_write_col(fptr1, TUINT, 1, i, 1, 1, &tint, &status);
@@ -335,7 +334,7 @@ void Fileio::write_fits (const std::vector<Cluster> &cluster_list, const std::st
       tint = cluster_list[i - 1].ngal;
       fits_write_col(fptr2, TUINT, 2, current_pos, 1, 1, &tint, &status);
       tlong = cluster_list[i - 1].mem[j - 1]->id;
-      fits_write_col(fptr2, TULONG, 3, current_pos, 1, 1, &tlong, &status); 
+      fits_write_col(fptr2, TULONG, 3, current_pos, 1, 1, &tlong, &status);
       tdouble = cluster_list[i - 1].mem[j - 1]->P.P[0];
       fits_write_col(fptr2, TDOUBLE, 4, current_pos, 1, 1, &tdouble, &status);
       tdouble = cluster_list[i - 1].mem[j - 1]->P.P[1];
@@ -350,7 +349,7 @@ void Fileio::write_fits (const std::vector<Cluster> &cluster_list, const std::st
   fits_close_file(fptr2, &status); /*close FITS file*/
 }
 
-void Fileio::read_nz_data (const std::string &file_name, std::vector<double> &z_vals, 
+void Fileio::read_nz_data (const std::string &file_name, std::vector<double> &z_vals,
 				 std::vector<double> &count_vals) {
   // Function to read N(z) data from a file.
   std::cout<<"Reading N(z) data from: "<<file_name<<std::endl;
@@ -358,9 +357,9 @@ void Fileio::read_nz_data (const std::string &file_name, std::vector<double> &z_
   if(read_file.fail())
     throw BadArgumentException("Merge_Fileio::read_file_list", "file_name", "a valid file name");
   std::string line;
-  std::vector<std::string> cols;    
+  std::vector<std::string> cols;
   while(std::getline(read_file, line)) { /* read each line */
-    if(line.length() >= 1 && 
+    if(line.length() >= 1 &&
        line.find("#") == std::string::npos) { /* skip empty lines and lines starting with # */
       split(line, cols, " "); /* split line into columns */
       z_vals.push_back(atof(cols[0].c_str()));

@@ -54,7 +54,7 @@ void Cluster::assign_sn (double bg_expect) {
     throw RuntimeException("Cluster::assign_sn", "ngal", "> 0.0");
   if (area < 0)
     throw RuntimeException("Cluster::assign_sn", "area", ">= 0.0");
-  if(bg_expect == 0) 
+  if(bg_expect == 0)
     sn = -1.0;
   else
     sn = (double(ngal) - (area * bg_expect)) / pow((area * bg_expect), 0.5);
@@ -82,6 +82,5 @@ void Cluster::rename (int num_val) {
 void Cluster::unique () {
   // Remove duplicate elements from a cluster instance.
   std::sort(mem.begin(), mem.end());
-  mem.erase(std::unique(mem.begin(), mem.end()), mem.end()); 
+  mem.erase(std::unique(mem.begin(), mem.end()), mem.end());
 }
-
