@@ -50,9 +50,19 @@ following packages:
 Compilation
 ------------
 
-To compile the codes simply run:
+To compile the codes first run:
 
 > \>\> cmake CMakeLists.txt
+
+which will generate a makefile. Then run:
+
+> \>\> make
+
+Upon successful compilation of the code three executables will be
+generated in the *fof\_cluster\_finder* subdirectory: Main, Cat\_Split
+and Cat\_Merge.
+
+**Cmake Issues**
 
 On some systems it may be neccesary to specify the paths to
 packages. This can be done with the following options:
@@ -71,10 +81,6 @@ cmake comamnd:
   options before the cmake command:
 > CC & CXX
 `e.g CC=gcc-4.9.0 CXX=g++-4.9.0 cmake CMakeLists.txt`
-
-Upon successful compilation of the code three executables will be
-generated in the fof\_cluster\_finder subdirectory: Main, Cat\_Split
-and Cat\_Merge.
 
 **Mac OSX**
 
@@ -228,9 +234,6 @@ options permitted are ascii or fits. The default value is ascii.
 
 *  `--min_ngal`:  This option specifies the minimum number of galaxies
    members required to form a cluster. The default value is 10.
-
-*  `--max_ngal`:  This option specifies the maximum number of galaxies
-  members allowed to form a cluster. The default value is 10000.
 
 *  `--z_min`: This option specifies the low redshift limit of the
    sample. The default value is 0.0.
