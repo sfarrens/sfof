@@ -12,7 +12,7 @@
  *
  * @brief Class for perfoming friends-of-friends cluster detection.
  *
- * This class produces a vector of Cluster instances by performing a 
+ * This class produces a vector of Cluster instances by performing a
  * friends-of-friends search in a given Zbin instance.
  */
 
@@ -31,10 +31,11 @@ public:
   /// Vector of Cluster instances.
   std::vector<Cluster> list_of_clusters;
 
-  /** 
+  /**
    * Initialise FoF instance.
    */
-  FoF() { 
+  FoF(int max_ngal_val) {
+    max_ngal = max_ngal_val;
     cluster_count = -1;
     link_r = 0;
     link_z = 0;
@@ -55,7 +56,7 @@ public:
   void remove (int);
 
   /**
-   * This method performs a friends-of-friends search for Cluster instances in a given 
+   * This method performs a friends-of-friends search for Cluster instances in a given
    * Zbin instance.
    * @param[in] bin_num Zbin number.
    * @param[in] zbin_list Vector of Zbin instances.
@@ -73,9 +74,12 @@ private:
   /// Count of current number of Cluster instances.
   int cluster_count;
 
+  /// Maximum number of cluster members.
+  int max_ngal;
+
   /// Transverse linking parameter.
   double link_r;
-  
+
   /// Line-of-sight linking parameter.
   double link_z;
 
@@ -83,16 +87,16 @@ private:
   std::string mode;
 
   /**
-   * This method checks if a Galaxy instance is compatible with a given 
+   * This method checks if a Galaxy instance is compatible with a given
    * Zbin instance.
    * @param[in] bin_num Bin number.
    * @param[in] gal_bins Galaxy bins.
    */
   bool bin_check (int, const std::vector<int> &);
-  
+
 
   /**
-   * This method checks if two Galaxy instances satisfy the linking conditions in a 
+   * This method checks if two Galaxy instances satisfy the linking conditions in a
    * given Zbin instance.
    * @param[in] zbin Zbin instance.
    * @param[in] gal1 Galaxy instance 1.
@@ -116,7 +120,7 @@ private:
    * @param[in] cluster Cluster instance.
    */
   void add_member (const Zbin &, Galaxy* , Cluster &);
-  
+
   /**
    * This method finds Galaxy instances linked to a given Galaxy instance in a given
    * Zbin instance.
@@ -129,7 +133,7 @@ private:
   int find_friends (const Zbin &, Galaxy &, double, std::vector<Galaxy> &, const Kdtree &);
 
   /**
-   * This method finds Galaxy instances linked to the members of a given Cluster 
+   * This method finds Galaxy instances linked to the members of a given Cluster
    * instance in a given Zbin instance.
    * @param[in] zbin Zbin instance.
    * @param[in] cluster Cluster instance.
