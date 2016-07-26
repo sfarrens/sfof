@@ -53,45 +53,57 @@ The vast majority of this code has been written from scratch by Samuel Farrens. 
 <a name="method_anchor"></a>
 ## Scientific Background and Method
 
-<img src="docs/images/fof_1.png" width="400" align="right">
-
 ### Angular Percolation
 
-Unlike a standard FoF this algorithm percolates in angular space. The distance between two galaxies is calculated as follows:
+<img src="docs/images/fof_1.png" width="400" align="right">
 
-> D = arcos(sin(Dec1)sin(Dec2) + cos(Dec1)cos(Dec2)cos(RA1-RA2))
+Unlike a standard FoF this algorithm percolates in angular space. The angular distance in radians between two galaxies is calculated as follows:
+
+> D = arcos(sin(Dec<sub>1</sub>)sin(Dec<sub>2</sub>) + cos(Dec<sub>1</sub>)cos(Dec<sub>2</sub>)cos(RA<sub>1</sub>-RA<sub>2</sub>))
 
 For two galaxies in a given redshift bin to be considered friends (*i.e.* linked) they must satisfy the following condition:
 
-> D <= D_friend(z)
+> D <= D<sub>friend</sub>(z)
 
-where *D_friend(z)* is the transverse linking length for a given redshift bin.
+where *D<sub>friend</sub>(z)* is the transverse linking length in radians for a given redshift bin.
 
 ### Redshift Binning
+
+This section is only relevant for *fof_mode = dynamic*.
 
 The first task the code performs is to bin all of the input galaxies by redshift. This is used to calculate *dn/dz* where *dn* is the number of galaxies in a given bin and *dz* is the bin width. Each galaxy is only counted once for this calculation, thus for photometric data the peak photometric redshift value of the galaxy is used.
 
 `NOTE: If a predefined N(z) is provided, then these values are used for the dn/dz calculation.`
 
-The differential comoving volume as a function of redshift, *dV/dz*, and the agular diameter distance, *da*, are then calculated for each bin using the values of *H0*, *Omega_M* and *Omega_L* provided.
+The differential comoving volume as a function of redshift, *dV/dz*, and the agular diameter distance, *da*, are then calculated for each bin using the values of *H0*, *Omega<sub>M</sub>* and *Omega<sub>L</sub>* provided.
 
-Finally the angular linking length, *D_friend*, for each bin is defined as:
+Finally the angular linking length, *D<sub>friend</sub>(z)*, for each bin is defined as:
 
-> D_friend(z) = ((dn(z)/dz x dz/dV(z)) ^ -0.5 x r_ref) / da(z)
+> D<sub>friend</sub>(z) = ((dn(z)/dz x dz/dV(z)) ^ -0.5 x r<sub>ref</sub>) / da(z)
 
-where *r_ref* is:
+where *r<sub>ref</sub>* is:
 
-> r_ref = (dn(z_ref)/dz x dz/dV(z_ref)) ^ 0.5 x link_r
+> r<sub>ref</sub> = (dn(z<sub>ref</sub>)/dz x dz/dV(z<sub>ref</sub>)) ^ 0.5 x link<sub>r</sub>
 
-and  *z_ref* is the specified reference redshift. This calculation ensures that:
+*z<sub>ref</sub>* is the specified reference redshift and *link<sub>r</sub>* is the input transverse linking parameter. This calculation ensures that:
 
-> D_friend(z_ref) = link_r / da(z_ref)
+> D<sub>friend</sub>(z<sub>ref</sub>) = link<sub>r</sub> / da(z<sub>ref</sub>)
 
-and that for bins with less galaxies (*e.g.* at higher redshifts when selection effects have a stronger impact) the value of *D_friend* will increase, while for bins with more galaxies the value of *D_friend* will decrease.
+and that for bins with less galaxies (*e.g.* at higher redshifts when selection effects have a stronger impact) the value of *D<sub>friend</sub>(z)* will increase, while for bins with more galaxies the value of *D<sub>friend</sub>(z)* will decrease. This produces *N<sub>gal</sub>* values that are more redshift independent.
 
-## Something...
+### Spectroscopic Line-of-Sight Linking
 
 <img src="docs/images/fof_2.png" width="400" align="middle">
+
+In spectroscopic mode the line-of-sight linking length is calculated as follows:
+
+> z<sub>friend</sub> = link<sub>z</sub> / (1 + z)
+
+For two galaxies to be friends they must satisfy:
+
+> |z<sub>1</sub> - z<sub>2</sub>| <= z<sub>friend</sub>
+
+### Photometric Line-of-Sight Linking
 
 <img src="docs/images/fof_3.png" width="300" align="middle">
 
@@ -99,7 +111,7 @@ and that for bins with less galaxies (*e.g.* at higher redshifts when selection 
 
 The singal-to-noise ratio is calculated as follows:
 
-S/N = (N<sub>gal</sub> - A * Bg) / (A * Bg)<sup>0.5</sup>
+> S/N = (N<sub>gal</sub> - A * Bg) / (A * Bg)<sup>0.5</sup>
 
 where A is the cluster area and Bg is the background level at the
 cluster redshift. Unless an N(z) is provided the code simply takes the
