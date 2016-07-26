@@ -119,13 +119,32 @@ In this mode percolation is performed in 2 dimensions for each redshift bin inde
 
 When the percolation has finished for all of the bins proto-clusters with common members are merged to form the final detections.
 
-### Singal-to-Noise
+### Cluster properties
 
-The singal-to-noise ratio is calculated as follows:
+**Centre**
+
+The cluster centre (RA, Dec, z) is calculated as the median of the galaxy members. The errors all calculated as the standard error on the median (*i.e.* sigma/n^0.5).
+
+**Richness**
+
+The cluster richness is calculated a the number of member galaxies.
+
+**Singal-to-Noise**
+
+The cluster singal-to-noise ratio is calculated as follows:
 
 > S/N = (N<sub>gal</sub> - A * Bg) / (A * Bg)<sup>0.5</sup>
 
-where A is the cluster area and Bg is the background level at the
-cluster redshift. Unless an N(z) is provided the code simply takes the
-number of objects at the cluster redshift divided by the catalogue
-area as Bg.
+where *A* is the cluster area and *Bg* is the background level at the cluster redshift. Unless an *N(z)* is provided the code simply takes the number of objects at the cluster redshift divided by the catalogue area as *Bg*.
+
+**Radius**
+
+The cluster radius is calculated as the distance from the cluster center to the position of the farthest member in the units specified.
+
+**Area**
+
+The cluster area is calculated as:
+
+> pi x radius ^ 2
+
+in the units specified.
