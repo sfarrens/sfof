@@ -1,4 +1,4 @@
-# Installation
+# Installation and Execution
 
 > Author: **Samuel Farrens**
 
@@ -74,7 +74,7 @@ cmake comamnd:
 `e.g CC=gcc-4.9.0 CXX=g++-4.9.0 cmake CMakeLists.txt`
 
 <a name="osx_anchor"></a>
-### Mac OSX
+### Mac OSX Issues
 
 For help with comilation on Mac OSX see [here](./mac_osx_install.md).
 
