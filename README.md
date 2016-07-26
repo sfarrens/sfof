@@ -53,13 +53,24 @@ The vast majority of this code has been written from scratch by Samuel Farrens. 
 <a name="method_anchor"></a>
 ## Scientific Background and Method
 
-### Redshift Binning
-
-The first task the code performs is to bin all of the input galaxies by redshift. This is used to calculate $$\frac{dn}{dz}$$
-
 ### Angular Percolation
 
 <img src="docs/images/fof_1.png" width="400" align="right">
+
+### Redshift Binning
+
+The first task the code performs is to bin all of the input galaxies by redshift. This is used to calculate *dn/dz* where *dn* is the number of galaxies in a given bin and *dz* is the bin width. Each galaxy is only counted once for this calculation, thus for photometric data the peak photometric redshift value of the galaxy is used.
+
+`NOTE: If a predefined N(z) is provided, then these values are used for the dn/dz calculation.`
+
+The differential comoving volume as a function of redshift, *dV/dz*, and the agular diameter distance, *da*, is then calculated for each bin using the values of *H0*, *Omega_M* and *Omega_L* provided.
+
+Finally the angular linking length, *D_friend*, for each bin is defined as:
+
+> D_friend = ((dn/dz x dz/dV) ^ -0.5 x C_friend) / da
+
+where *C_friend* is the value of *D_friend* at the reference redshift, *z_ref*.
+
 
 
 <img src="docs/images/fof_2.png" width="400" align="middle">
