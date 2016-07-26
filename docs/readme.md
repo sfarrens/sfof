@@ -5,7 +5,7 @@
 > Year: **2016**
 
 ## Contents
-------------
+
 1. [Introduction](#intro_anchor)
 1. [Dependenies](#depend_anchor)
 1. [Compilation](#compile_anchor)
@@ -16,12 +16,11 @@
 
 <a name="intro_anchor"></a>
 ## Introduction
-------------
+
 This section provides details for installing and running the FoF algorithm.
 
 <a name="depend_anchor"></a>
 ## Dependencies
-------------
 
 The codes (main.cpp, cat\_split.cpp, cat\_merge.cpp) require the
 following packages:
@@ -38,7 +37,6 @@ following packages:
 
 <a name="compile_anchor"></a>
 ## Compilation
-------------
 
 To compile the codes first run:
 
@@ -78,7 +76,6 @@ For help with comilation on Mac OSX see [here](./mac_osx_install.md).
 
 <a name="exe_anchor"></a>
 ## Execution
-------------
 
 <a name="main_anchor"></a>
 ### Main Code
@@ -233,6 +230,8 @@ options permitted are *ascii* or *fits*. The default value is *ascii*.
 
 * ` --print_bg_data`: This option specifies that the background field data should be printed to a file.
 
+------------
+
 <a name="split_anchor"></a>
 ### Cat_Split Code
 
@@ -295,6 +294,8 @@ default is 0.5 degrees.
 * ` --n_dec_bins`: Number of bins in declination.
 
 * ` --n_procs`: Number of processes. Use this option instead of *n\_ra\_bins* and *n\_dec\_bins* to define the total number of bins.
+
+------------
 
 <a name="merge_anchor"></a>
 ### Cat_Merge Code
