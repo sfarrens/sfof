@@ -21,7 +21,7 @@
   1. [Optimisation](#optimisation_anchor)
 1. [Installation and Execution](./docs/readme.md)
 1. [Examples](./examples/)
-1. [Doxygen Documentation](http://htmlpreview.github.com/?https://github.com/sfarrens/fof_cluster_finder/blob/master/docs/html/index.html).
+1. [Doxygen Documentation](http://htmlpreview.github.com/?https://github.com/sfarrens/fof_cluster_finder/blob/master/docs/html/index.html)
 
 
 <a name="intro_anchor"></a>
