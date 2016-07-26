@@ -148,3 +148,21 @@ The cluster area is calculated as:
 > pi x radius ^ 2
 
 in the units specified.
+
+### Optimisation
+
+**• k-d Tree**
+
+The code make us of an angular <a href="https://en.wikipedia.org/wiki/K-d_tree" target="_blank">*k-d* Tree</a> (implemented by Luca Tornatore) to reduce the number of calculations required.
+
+**• Union-Find**
+
+The code also makes use of a <a href="https://en.wikipedia.org/wiki/Disjoint-set_data_structure" target="_blank">union-find data structure</a> (implemented by Stefano Sartor) to speed up the processes of merging proto-clusters.
+
+**• OpenMP**
+
+<a href="https://en.wikipedia.org/wiki/OpenMP" target="_blank">OpenMP</a> is used to perform the redshift bin percolations in parallel.
+
+**• Splitting**
+
+The *cat_split.cpp* code can be used to divide large data sets into overlapping pieces that can be processed individually. The *cat_merge.cpp* code can then reassemble the full catalogue using the results with little to no loss of information.
