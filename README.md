@@ -53,7 +53,14 @@ The vast majority of this code has been written from scratch by Samuel Farrens. 
 <a name="method_anchor"></a>
 ## Scientific Background and Method
 
-<img src="docs/images/fof_1.png" width="400" align="middle">
+### Redshift Binning
+
+The first task the code performs is to bin all of the input galaxies by redshift. This is used to calculate $$\frac{dn}{dz}$$
+
+### Angular Percolation
+
+<img src="docs/images/fof_1.png" width="400" align="right">
+
 
 <img src="docs/images/fof_2.png" width="400" align="middle">
 
