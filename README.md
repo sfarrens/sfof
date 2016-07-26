@@ -93,7 +93,7 @@ and that for bins with less galaxies (*e.g.* at higher redshifts when selection 
 
 ### Spectroscopic Line-of-Sight Linking
 
-<img src="docs/images/fof_2.png" width="400" align="middle">
+<img src="docs/images/fof_2.png" width="400" align="right">
 
 In spectroscopic mode the line-of-sight linking length is calculated as follows:
 
