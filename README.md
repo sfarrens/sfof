@@ -107,7 +107,7 @@ In this sense the percolation is peformed in 3 dimensions.
 
 ### Photometric Line-of-Sight Linking
 
-<img src="docs/images/fof_3.png" width="200" align="right">
+<img src="docs/images/fof_3.png" width="200" align="left">
 
 In photometric mode a galaxy is allocated to a redshift bin if it satisfies the following:
 
