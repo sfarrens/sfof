@@ -93,7 +93,7 @@ and that for bins with less galaxies (*e.g.* at higher redshifts when selection 
 
 ### Spectroscopic Line-of-Sight Linking
 
-<img src="docs/images/fof_2.png" width="400" align="right">
+<img src="docs/images/fof_2.png" width="300" align="right">
 
 In spectroscopic mode the line-of-sight linking length is calculated as follows:
 
@@ -105,7 +105,7 @@ For two galaxies to be friends they must satisfy:
 
 ### Photometric Line-of-Sight Linking
 
-<img src="docs/images/fof_3.png" width="300" align="middle">
+<img src="docs/images/fof_3.png" width="200" align="right">
 
 ### Singal-to-Noise
 
