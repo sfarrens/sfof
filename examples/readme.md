@@ -1,18 +1,17 @@
-Examples
-==================
+# Examples
 
-@author Samuel Farrens
+> Author: **Samuel Farrens**
 
-Set Up
--
+> Year: **2016**
+
+## Set Up
 
 In order to run the following examples the codes need to be compiled
 following the instructions provided in [docs](../docs/readme.md).
 
-Spec Test
-------------
+## Spec Test
 
-The directory spec\_test provides a simple example of how to run the
+The directory *spec\_test* provides a simple example of how to run the
 code in spectroscopic mode. The file *test\_spec.dat* shows the expected
 input for spectroscopic data, which has the following format:
 
@@ -23,12 +22,11 @@ A configuraiton file (*param_file.ini*) is already provided. Simply run the foll
 > \>> main
 
 The resulting output files can then be compared with the expected
-outputs provided in expected_output.
+outputs provided in *expected_output*.
 
-Phot Test
-------------
+## Phot Test
 
-The directory phot\_test provides a simple example of how to run the
+The directory *phot\_test* provides a simple example of how to run the
 code in photometric mode. The file *test\_phot.dat* shows the expected
 input for photometric data, which has the following format:
 
@@ -39,4 +37,4 @@ A configuraiton file (*param_file.ini*) is already provided. Simply run the foll
 > \>> main
 
 The resulting output files can then be compared with the expected
-outputs provided in expected_output.
+outputs provided in *expected_output*.
