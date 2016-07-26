@@ -40,7 +40,7 @@ any purpose.
 
 I would kindly request that any scientific publications making use of this software cite <a href="http://adsabs.harvard.edu/abs/2011MNRAS.417.1402F" target="_blank">Farrens et. al (2011)</a>.
 
-<a name="contributors_anchor"></a>
+<a name="contribute_anchor"></a>
 ## Contributors
 
 The vast majority of this code has been written from scratch by Samuel Farrens. Additional contributions have been made by:
