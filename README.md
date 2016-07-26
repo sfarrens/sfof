@@ -73,15 +73,15 @@ The first task the code performs is to bin all of the input galaxies by redshift
 
 `NOTE: If a predefined N(z) is provided, then these values are used for the dn/dz calculation.`
 
-The differential comoving volume as a function of redshift, *dV/dz*, and the agular diameter distance, *da*, is then calculated for each bin using the values of *H0*, *Omega_M* and *Omega_L* provided.
+The differential comoving volume as a function of redshift, *dV/dz*, and the agular diameter distance, *da*, are then calculated for each bin using the values of *H0*, *Omega_M* and *Omega_L* provided.
 
 Finally the angular linking length, *D_friend*, for each bin is defined as:
 
 > D_friend = ((dn/dz x dz/dV) ^ -0.5 x C_friend) / da
 
-where *C_friend* is the value of *D_friend* at the reference redshift, *z_ref*.
+where *C_friend* is the value of *D_friend* at the reference redshift, *z_ref*. In other words, the value of *D_friend* at *z_ref* will be the input value of *link_r*.
 
-
+## Something...
 
 <img src="docs/images/fof_2.png" width="400" align="middle">
 
