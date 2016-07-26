@@ -14,6 +14,7 @@
 1. [Notice](#note_anchor)
 1. [Contributors](#contributors_anchor)
 1. [Scientific Background and Method](#method_anchor)
+  * [Angular Percolation](#percolate_anchor)
 1. [Installation and Execution](./docs/readme.md)
 1. [Examples](./examples/readme.md)
 
@@ -53,6 +54,7 @@ The vast majority of this code has been written from scratch by Samuel Farrens. 
 <a name="method_anchor"></a>
 ## Scientific Background and Method
 
+<a name="percolate_anchor"></a>
 ### Angular Percolation
 
 <img src="docs/images/fof_1.png" width="400" align="right">
@@ -67,6 +69,7 @@ For two galaxies in a given redshift bin to be considered friends (*i.e.* linked
 
 where *D<sub>friend</sub>(z)* is the transverse linking length in radians for a given redshift bin.
 
+<a name="binning_anchor"></a>
 ### Redshift Binning
 
 This section is only relevant for *fof_mode = dynamic*.
@@ -91,7 +94,10 @@ where *r<sub>ref</sub>* is:
 
 and that for bins with less galaxies (*e.g.* at higher redshifts when selection effects have a stronger impact) the value of *D<sub>friend</sub>(z)* will increase, while for bins with more galaxies the value of *D<sub>friend</sub>(z)* will decrease. This produces *N<sub>gal</sub>* values that are more redshift independent.
 
-### Spectroscopic Line-of-Sight Linking
+<a name="los_anchor"></a>
+### Line-of-Sight Linking
+
+**• Spectroscopic Data**
 
 <img src="docs/images/fof_2.png" width="300" align="right">
 
@@ -105,7 +111,7 @@ For two galaxies to be friends they must satisfy:
 
 In this sense the percolation is peformed in 3 dimensions.
 
-### Photometric Line-of-Sight Linking
+**• Photometric Data**
 
 <img src="docs/images/fof_3.png" width="200" align="left">
 
@@ -119,6 +125,7 @@ In this mode percolation is performed in 2 dimensions for each redshift bin inde
 
 When the percolation has finished for all of the bins proto-clusters with common members are merged to form the final detections.
 
+<a name="props_anchor"></a>
 ### Cluster properties
 
 **• Centre**
@@ -149,6 +156,7 @@ The cluster area is calculated as:
 
 in the units specified.
 
+<a name="optimisation_anchor"></a>
 ### Optimisation
 
 **• k-d Tree**
