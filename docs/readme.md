@@ -169,7 +169,7 @@ z=3.0 the following command would be sufficient to run the code:
 
 > \>\> main -i FILE_NAME --link_r 0.06 --link_z 1.1
 
-See [examples](../examples/readme.md) for example data sets and
+See [examples](../examples/) for example data sets and
 configuration files to test the code.
 
 **Code Options**
