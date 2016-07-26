@@ -14,7 +14,7 @@
 1. [Notice](#note_anchor)
 1. [Contributors](#contribute_anchor)
 1. [Scientific Background and Method](#method_anchor)
-1. [Installation](./docs/readme.md)
+1. [Installation and Execution](./docs/readme.md)
 1. [Examples](./examples/readme.md)
 
 <a name="intro_anchor"></a>
@@ -52,6 +52,10 @@ The vast majority of this code has been written from scratch by Samuel Farrens. 
 
 <a name="method_anchor"></a>
 ## Scientific Background and Method
+
+<img src="docs/images/fof_1.png" width="400" align="middle">
+<img src="docs/images/fof_2.png" width="400" align="middle">
+<img src="docs/images/fof_3.png" width="300" align="middle">
 
 ### Singal-to-Noise
 
