@@ -14,7 +14,11 @@
 1. [Notice](#note_anchor)
 1. [Contributors](#contributors_anchor)
 1. [Scientific Background and Method](#method_anchor)
-  * [Angular Percolation](#percolate_anchor)
+  1. [Angular Percolation](#percolate_anchor)
+  1. [Redshift Binning](#binning_anchor)
+  1. [Line-of-Sight Linking](#los_anchor)
+  1. [Cluster Properties](#props_anchor)
+  1. [Optimisation](#optimisation_anchor)
 1. [Installation and Execution](./docs/readme.md)
 1. [Examples](./examples/readme.md)
 
