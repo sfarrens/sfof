@@ -53,9 +53,13 @@ The vast majority of this code has been written from scratch by Samuel Farrens. 
 <a name="method_anchor"></a>
 ## Scientific Background and Method
 
+<img src="docs/images/fof_1.png" width="400" align="right">
+
 ### Angular Percolation
 
-<img src="docs/images/fof_1.png" width="400" align="right">
+Unlike a standard FoF this algorithm percolates in angular space. The distance between two galaxies is calculated as follows:
+
+> D=arcos(sin(Dec1)sin(Dec2) + cos(Dec1)cos(Dec2)cos(RA1-RA2))
 
 ### Redshift Binning
 
