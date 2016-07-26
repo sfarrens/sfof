@@ -10,11 +10,27 @@
 
 ## Contents
 
+1. [Introduction](#intro_anchor)
 1. [Notice](#note_anchor)
 1. [Contributors](#contribute_anchor)
 1. [Scientific Background and Method](#method_anchor)
 1. [Installation](./docs/readme.md)
 1. [Examples](./examples/readme.md)
+
+<a name="intro_anchor"></a>
+## Introduction
+FOF_OMP is a friends-of-friends galaxy cluster detection algorithm that operates in
+either spectroscopic or photometric redshift space. The linking parameters,
+both transverse and along the line-of-sight, change as a function of
+redshift to account for selection effects.
+
+The code is written in C++ and implements OMP to loop through the
+photometric redshift bins.
+
+Larger catalogues can be split into overlapping pieces using the
+cat\_split.cpp code. These pieces can than be run through the FoF
+independently and the subsequent results merged using the cat\_merge.cpp
+code.
 
 <a name="note_anchor"></a>
 ## Notice
@@ -22,7 +38,7 @@
 This software is fully open source and all are welcome to use or modify it for
 any purpose.
 
-I would kindly request that any scientific publications making use of this software cite <a href="http://adsabs.harvard.edu/abs/2011MNRAS.417.1402F" target="_blank">Farrens et. al (2011)</a>
+I would kindly request that any scientific publications making use of this software cite <a href="http://adsabs.harvard.edu/abs/2011MNRAS.417.1402F" target="_blank">Farrens et. al (2011)</a>.
 
 <a name="contributors_anchor"></a>
 ## Contributors
@@ -37,4 +53,13 @@ The vast majority of this code has been written from scratch by Samuel Farrens. 
 <a name="method_anchor"></a>
 ## Scientific Background and Method
 
-*COMING SOON...*
+### Singal-to-Noise
+
+The singal-to-noise ratio is calculated as follows:
+
+S/N = (N<sub>gal</sub> - A * Bg) / (A * Bg)<sup>0.5</sup>
+
+where A is the cluster area and Bg is the background level at the
+cluster redshift. Unless an N(z) is provided the code simply takes the
+number of objects at the cluster redshift divided by the catalogue
+area as Bg.

@@ -1,53 +1,43 @@
-fof_cluster_finder
-==================
+# Installation
 
-@authors Samuel Farrens, Stefano Sartor, Luca Tornatore
+> Author: **Samuel Farrens**
 
-Contents
+> Year: **2016**
+
+## Contents
 ------------
 1. [Introduction](#intro_anchor)
-2. [Dependenies](#depend_anchor)
-3. [Compilation](#compile_anchor)
-4. [Execution](#exe_anchor)
+1. [Dependenies](#depend_anchor)
+1. [Compilation](#compile_anchor)
+1. [Execution](#exe_anchor)
    1. [Main Code](#main_anchor)
-   2. [Cat_Split Code](#split_anchor)
-   3. [Cat_Merge Code](#merge_anchor)
+   1. [Cat_Split Code](#split_anchor)
+   1. [Cat_Merge Code](#merge_anchor)
 
 <a name="intro_anchor"></a>
-Introduction
+## Introduction
 ------------
-FOF_OMP is a friends-of-friends galaxy cluster detection algorithm that operates in
-either spectroscopic or photometric redshift space. The linking parameters,
-both transverse and along the line-of-sight, change as a function of
-redshift to account for selection effects.
-
-The code is written in C++ and implements OMP to loop through the
-photometric redshift bins.
-
-Larger catalogues can be split into overlapping pieces using the
-cat\_split.cpp code. These pieces can than be run through the FoF
-independently and the subsequent results merged using the cat\_merge.cpp
-code.
+This section provides details for installing and running the FoF algorithm.
 
 <a name="depend_anchor"></a>
-Dependencies
+## Dependencies
 ------------
 
 The codes (main.cpp, cat\_split.cpp, cat\_merge.cpp) require the
 following packages:
 
-* <a href="http://www.cmake.org/" target="_blank">CMake</a>
+* <a href="http://www.cmake.org/" target="_blank">CMake</a> [Tested with v3.3.2]
 
-* <a href="http://www.boost.org/" target="_blank">Boost</a>
+* <a href="http://www.boost.org/" target="_blank">Boost</a> [Tested with v1.58]
 
 * <a href="http://heasarc.gsfc.nasa.gov/fitsio/" target="_blank">CFITSIO</a>
 
-* <a href="http://openmp.org/wp/" target="_blank">OMP</a>
+* <a href="http://openmp.org/wp/" target="_blank">OMP</a> [Tested with GCC v4.9.2]
 
-* <a href="https://gcc.gnu.org/projects/cxx0x.html" target="_blank">C++0x/C++11</a>
+* <a href="https://gcc.gnu.org/projects/cxx0x.html" target="_blank">C++0x/C++11</a> [Tested with GCC v4.9.2]
 
 <a name="compile_anchor"></a>
-Compilation
+## Compilation
 ------------
 
 To compile the codes first run:
@@ -87,11 +77,11 @@ cmake comamnd:
 For help with comilation on Mac OSX see [here](./mac_osx_install.md).
 
 <a name="exe_anchor"></a>
-Execution
+## Execution
 ------------
 
 <a name="main_anchor"></a>
-#Main Code
+### Main Code
 
 The friends-of-friends (FoF) algorithm can be run in two different
 modes (spectroscopic or photometric) depending on the type of input
@@ -147,17 +137,6 @@ as follows:
   6. Galaxy Declination \[degrees\]
   7. Galaxy Redshift
 
-**Singal-to-Noise**
-
-The singal-to-noise ratio is calculated as follows:
-
-S/N = (N<sub>gal</sub> - A * Bg) / (A * Bg)<sup>0.5</sup>
-
-where A is the cluster area and Bg is the background level at the
-cluster redshift. Unless an N(z) is provided the code simply takes the
-number of objects at the cluster redshift divided by the catalogue
-area as Bg.
-
 **Run**
 
 The code options can be provided either in a configuration file (Note: the
@@ -194,88 +173,68 @@ configuration files to test the code.
 
 **Code Options**
 
-* ` -h [ --help ]`: This option produces the help message with all the
-  code options and exits.
+* ` -h [ --help ]`: This option produces the help message with all the code options and exits.
 
-* ` -v [ --version ]`: This option prints the current version of the
-  code and exits.
+* ` -v [ --version ]`: This option prints the current version of the code and exits.
 
-* ` -p [ --parameters ]`: This option prints the values assigned to each
-  of the code parameters.
+* ` -p [ --parameters ]`: This option prints the values assigned to each of the code parameters.
 
-* ` -c [ --config ]`: This option specifies the configuration file
-  name. The default file name is param_file.ini.
+* ` -c [ --config ]`: This option specifies the configuration file name. The default file name is *param_file.ini*.
 
 * ` -i [ --input_file ]`: This option specifies the input file name.
 
-* ` --output_clusters`: This option specifies the output file name of
-  the cluster properties.
+* ` --output_clusters`: This option specifies the output file name of the cluster properties.
 
-* `--output_members`: This option specifies the ouput file name of the
-  cluster member properties
+* ` --output_members`: This option specifies the ouput file name of the cluster member properties.
 
-* `--link_r`: This option specifies the value of the transverse
-  linking parameter.
+* ` --link_r`: This option specifies the value of the transverse linking parameter.
 
-* `--link_z`: This option specifies the value of the Line-of-sight
-  linking parameter.
+* ` --link_z`: This option specifies the value of the line-of-sight linking parameter.
 
-* `--input_mode`: This option specifies the input file format. The
-options permitted are ascii or fits. The default value is ascii.
+* ` --input_mode`: This option specifies the input file format. The
+options permitted are *ascii* or *fits*. The default value is *ascii*.
 
-* `--output_mode`: This option specifies the output file format. The
-options permitted are ascii or fits. The default value is ascii.
+* ` --output_mode`: This option specifies the output file format. The
+options permitted are *ascii* or *fits*. The default value is *ascii*.
 
-* `--fof_mode`: This option specifies the FoF redshift mode. The options
-  permitted are spec or phot. The default value is phot.
+* ` --fof_mode`: This option specifies the FoF redshift mode. The options permitted are *spec* (for a spectroscopic data set) or *phot* (for a photometric data set). The default value is *phot*.
 
-*  `--link_mode`: This option specifies the FoF linking mode. The
-   options permitted are fixed or dynamic. The default value is dynamic.
+* ` --link_mode`: This option specifies the FoF linking mode. The options permitted are *fixed* (for a fixed linking parameter value) or *dynamic* (for a redshift dependent linking parameter value). The default value is *dynamic*.
 
-*  `--min_ngal`:  This option specifies the minimum number of galaxies
-   members required to form a cluster. The default value is 10.
+* ` --size_units`: This option specifies the cluster size units in the output. The options permitted are *arcmin*, *deg* or *Mpc*. The default value is *arcmin*.
 
-*  `--z_min`: This option specifies the low redshift limit of the
-   sample. The default value is 0.0.
+* ` --min_ngal`:  This option specifies the minimum number of galaxies members required to form a cluster in a given redshift bin. The default value is *10*.
 
-*  `--z_max`: This option specifies the high redshift limit of  the
-   sample. The default value is 3.0.
+* ` --max_ngal`:  This option specifies the maximum number of galaxies members allowed to form a cluster in a given redshift bin. The default value is *10000*.
 
-*  `--z_bin_size`: This option specifies the size of redshift bins. The
-   default value is 0.01.
+* ` --z_min`: This option specifies the low redshift limit of the sample. The default value is *0.0*.
 
-*  `--z_ref`: This option specifies the reference redshift for
-   calculations. The default value is 0.5.
+* ` --z_max`: This option specifies the high redshift limit of the sample. The default value is *3.0*.
 
-*  `--dz_max`: This option specifies the maximum photometric redshift
-   error allowed. The default value is 0.05.
+* ` --z_bin_size`: This option specifies the size of redshift bins. The default value is *0.01*.
 
-*  `--nz_data`: This option specifies the file name for a predefined
-   N(z) distribution.
+* ` --z_ref`: This option specifies the reference redshift for calculations. The default value is *0.5*.
 
-*  `--c`: This option specifies the speed of light in km/s. The default
-   value is 2.997e5.
+* ` --z_err_max`: This option specifies the maximum photometric redshift error allowed for each galaxy. The default value is *0.05*.
 
-*  `--H0`: This option specifies the value of the Hubble parameter in
-   km/s/Mpc. The default value is 100.0.
+* ` --nz_data`: This option specifies the file name for a predefined N(z) distribution. If unused the N(z) distribution is calculated from the input data.
 
-*  `--omega_m`: This option specifies the value of the matter density of
-   the Universe. The default value is 0.3.
+* ` --c`: This option specifies the speed of light in km/s. The default value is *2.997e5*.
 
-*  `--omega_l`: This option specifies the value of the dark energy
-   density of the Universe. The default value is 0.7.
+* ` --H0`: This option specifies the value of the Hubble parameter in km/s/Mpc. The default value is *100.0*.
 
-*  `--print_bin_data`: This option specifies that the redshift bin data
-   should be printed to a file.
+* ` --omega_m`: This option specifies the value of the matter density of the Universe. The default value is *0.3*.
 
-*  `--print_kdtree_data`:  This option specifies that the kd-tree data
-   should be printed to a file.
+* ` --omega_l`: This option specifies the value of the dark energy density of the Universe. The default value is *0.7*.
 
-*  `--print_bg_data`:  This option specifies that the background field
-   data should be printed to a file.
+* ` --print_bin_data`: This option specifies that the redshift bin data should be printed to a file.
+
+* ` --print_kdtree_data`: This option specifies that the kd-tree data should be printed to a file.
+
+* ` --print_bg_data`: This option specifies that the background field data should be printed to a file.
 
 <a name="split_anchor"></a>
-#Cat_Split Code
+### Cat_Split Code
 
 This code divides galaxy catalogues into overlapping pieces to
 facilitate the running of the FoF code (Main). At present the code can
@@ -311,11 +270,9 @@ deg<sup>2</sup>) into 4 pieces with an overlap of 0.5 degrees between each piece
 
 **Code Options**
 
-* ` -h [ --help ]`: This option produces the help message with all the
-  code options and exits.
+* ` -h [ --help ]`: This option produces the help message with all the code options and exits.
 
-* ` -v [ --version ]`: This option prints the current version of the
-  code and exits.
+* ` -v [ --version ]`: This option prints the current version of the code and exits.
 
 * ` -i [ --input_file ]`: This option specifies the input file name.
 
@@ -328,20 +285,19 @@ deg<sup>2</sup>) into 4 pieces with an overlap of 0.5 degrees between each piece
 * ` --dec_upper`: Upper limit in declination of the catalogue.
 
 * ` --ra_overlap`: Overlap in right ascension between pieces. The
-  default is 0.5 degrees.
+default is 0.5 degrees.
 
 * ` --dec_overlap`: Overlap in declination between bins. The
-  default is 0.5 degrees.
+default is 0.5 degrees.
 
 * ` --n_ra_bins`: Number of bins in right ascension.
 
 * ` --n_dec_bins`: Number of bins in declination.
 
-* ` --n_procs`: Number of processes. Use this option instead of
-  *n\_ra\_bins* and *n\_dec\_bins* to define the total number of bins.
+* ` --n_procs`: Number of processes. Use this option instead of *n\_ra\_bins* and *n\_dec\_bins* to define the total number of bins.
 
 <a name="merge_anchor"></a>
-#Cat_Merge Code
+### Cat_Merge Code
 
 This code merges together the FoF outputs from various pieces of a
 larger catalogue.
@@ -381,21 +337,18 @@ clusters the *bg_data* option must also be used as follows:
 
 **Code Options**
 
-* ` -h [ --help ]`: This option produces the help message with all the
-  code options and exits.
+* ` -h [ --help ]`: This option produces the help message with all the code options and exits.
 
 * ` -v [ --version ]`: This option prints the current version of the
-  code and exits.
+code and exits.
 
 * ` -i [ --input_file ]`: This option specifies the input file name.
 
 * ` -o [ --output_file ]`: This option specifies the output file name.
 
-* `--input_mode`: This option specifies the input file format. The
-options permitted are ascii or fits. The default value is ascii.
+* ` --input_mode`: This option specifies the input file format. The
+options permitted are *ascii* or *fits*. The default value is *ascii*.
 
-* `--output_mode`: This option specifies the output file format. The
-options permitted are ascii or fits. The default value is ascii.
+* ` --output_mode`: This option specifies the output file format. The options permitted are *ascii* or *fits*. The default value is *ascii*.
 
-*  `--bg_data`:  This option specifies the file name containing the background field
-   data. (*i.e.* the output from the Main code option *print\_bg\_data*)
+* ` --bg_data`:  This option specifies the file name containing the background field data. (*i.e.* the output from the Main code option *print\_bg\_data*)
