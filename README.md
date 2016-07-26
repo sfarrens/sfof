@@ -77,9 +77,17 @@ The differential comoving volume as a function of redshift, *dV/dz*, and the agu
 
 Finally the angular linking length, *D_friend*, for each bin is defined as:
 
-> D_friend = ((dn/dz x dz/dV) ^ -0.5 x C_friend) / da
+> D_friend(z) = ((dn(z)/dz x dz/dV(z)) ^ -0.5 x r_ref) / da(z)
 
-where *C_friend* is the value of *D_friend* at the reference redshift, *z_ref*. In other words, the value of *D_friend* at *z_ref* will be the input value of *link_r*.
+where *r_ref* is:
+
+> r_ref = (dn(z_ref)/dz x dz/dV(z_ref)) ^ 0.5 x link_r
+
+and  *z_ref* is the specified reference redshift. This calculation ensures that:
+
+> D_friend(z_ref) = link_r / da(z_ref)
+
+and that for bins with less galaxies (*e.g.* at higher redshifts when selection effects have a stronger impact) the value of *D_friend* will increase, while for bins with more galaxies the value of *D_friend* will decrease.
 
 ## Something...
 
