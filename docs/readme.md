@@ -9,10 +9,12 @@
 1. [Introduction](#intro_anchor)
 1. [Dependenies](#depend_anchor)
 1. [Compilation](#compile_anchor)
+  1. [CMake Issues](#cmake_anchor)
+  1. [Mac OSX Issues](#osx_anchor)
 1. [Execution](#exe_anchor)
-   1. [Main Code](#main_anchor)
-   1. [Cat_Split Code](#split_anchor)
-   1. [Cat_Merge Code](#merge_anchor)
+  1. [Main Code](#main_anchor)
+  1. [Cat_Split Code](#split_anchor)
+  1. [Cat_Merge Code](#merge_anchor)
 
 <a name="intro_anchor"></a>
 ## Introduction
@@ -50,7 +52,8 @@ Upon successful compilation of the code three executables will be
 generated in the *fof\_cluster\_finder* subdirectory: Main, Cat\_Split
 and Cat\_Merge.
 
-**Cmake Issues**
+<a name="cmake_anchor"></a>
+### CMake Issues
 
 On some systems it may be neccesary to specify the paths to
 packages. This can be done with the following options:
@@ -70,7 +73,8 @@ cmake comamnd:
 > CC & CXX
 `e.g CC=gcc-4.9.0 CXX=g++-4.9.0 cmake CMakeLists.txt`
 
-**Mac OSX**
+<a name="osx_anchor"></a>
+### Mac OSX
 
 For help with comilation on Mac OSX see [here](./mac_osx_install.md).
 
