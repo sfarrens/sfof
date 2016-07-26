@@ -61,6 +61,12 @@ Unlike a standard FoF this algorithm percolates in angular space. The distance b
 
 > D = arcos(sin(Dec1)sin(Dec2) + cos(Dec1)cos(Dec2)cos(RA1-RA2))
 
+For two galaxies in a given redshift bin to be considered friends (*i.e.* linked) they must satisfy the following condition:
+
+> D <= D_friend(z)
+
+where *D_friend(z)* is the transverse linking length for a given redshift bin.
+
 ### Redshift Binning
 
 The first task the code performs is to bin all of the input galaxies by redshift. This is used to calculate *dn/dz* where *dn* is the number of galaxies in a given bin and *dz* is the bin width. Each galaxy is only counted once for this calculation, thus for photometric data the peak photometric redshift value of the galaxy is used.
