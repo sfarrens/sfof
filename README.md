@@ -121,15 +121,15 @@ When the percolation has finished for all of the bins proto-clusters with common
 
 ### Cluster properties
 
-**Centre**
+**• Centre**
 
-The cluster centre (RA, Dec, z) is calculated as the median of the galaxy members. The errors all calculated as the standard error on the median (*i.e.* sigma/n^0.5).
+The cluster centre (RA, Dec, z) is calculated as the median of the galaxy members. The errors are calculated as the standard error on the median (*i.e.* sigma/n^0.5).
 
-**Richness**
+**• Richness**
 
 The cluster richness is calculated a the number of member galaxies.
 
-**Singal-to-Noise**
+**• Singal-to-Noise**
 
 The cluster singal-to-noise ratio is calculated as follows:
 
@@ -137,11 +137,11 @@ The cluster singal-to-noise ratio is calculated as follows:
 
 where *A* is the cluster area and *Bg* is the background level at the cluster redshift. Unless an *N(z)* is provided the code simply takes the number of objects at the cluster redshift divided by the catalogue area as *Bg*.
 
-**Radius**
+**• Radius**
 
 The cluster radius is calculated as the distance from the cluster center to the position of the farthest member in the units specified.
 
-**Area**
+**• Area**
 
 The cluster area is calculated as:
 
