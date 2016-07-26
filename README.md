@@ -20,7 +20,7 @@
   1. [Cluster Properties](#props_anchor)
   1. [Optimisation](#optimisation_anchor)
 1. [Installation and Execution](./docs/readme.md)
-1. [Examples](./examples/readme.md)
+1. [Examples](./examples/)
 
 <a name="intro_anchor"></a>
 ## Introduction
