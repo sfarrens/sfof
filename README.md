@@ -54,7 +54,9 @@ The vast majority of this code has been written from scratch by Samuel Farrens. 
 ## Scientific Background and Method
 
 <img src="docs/images/fof_1.png" width="400" align="middle">
+
 <img src="docs/images/fof_2.png" width="400" align="middle">
+
 <img src="docs/images/fof_3.png" width="300" align="middle">
 
 ### Singal-to-Noise
