@@ -23,7 +23,6 @@ This section provides details for installing and running the FoF algorithm.
 
 Detailed information about class methods and functions can be found [here](http://htmlpreview.github.com/?https://github.com/sfarrens/fof_cluster_finder/blob/master/docs/html/index.html).
 
-
 <a name="depend_anchor"></a>
 ## Dependencies
 
