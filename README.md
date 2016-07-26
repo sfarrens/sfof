@@ -13,7 +13,8 @@
 1. [Notice](#note_anchor)
 1. [Contributors](#contribute_anchor)
 1. [Scientific Background and Method](#method_anchor)
-1. [Code Set-up](./docs/readme.md)
+1. [Installation](./docs/readme.md)
+1. [Examples](./examples/readme.md)
 
 <a name="note_anchor"></a>
 ## Notice
@@ -21,8 +22,7 @@
 This software is fully open source and all are welcome to use or modify it for
 any purpose.
 
-I would kindly request that any scientific publications making use of this software cite
-[Farrens et. al (2011)](http://adsabs.harvard.edu/abs/2011MNRAS.417.1402F).
+I would kindly request that any scientific publications making use of this software cite <a href="http://adsabs.harvard.edu/abs/2011MNRAS.417.1402F" target="_blank">Farrens et. al (2011)</a>
 
 <a name="contributors_anchor"></a>
 ## Contributors
