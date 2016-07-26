@@ -103,9 +103,21 @@ For two galaxies to be friends they must satisfy:
 
 > |z<sub>1</sub> - z<sub>2</sub>| <= z<sub>friend</sub>
 
+In this sense the percolation is peformed in 3 dimensions.
+
 ### Photometric Line-of-Sight Linking
 
 <img src="docs/images/fof_3.png" width="200" align="right">
+
+In photometric mode a galaxy is allocated to a redshift bin if it satisfies the following:
+
+> |z<sub>gal</sub> - z<sub>bin</sub>| <= z<sub>gal_err</sub> x link<sub>z</sub>
+
+In this case *link<sub>z</sub>* is a factor that determines how much the galaxies smear along the line-of-sight.
+
+In this mode percolation is performed in 2 dimensions for each redshift bin independently. As galaxies can exist in multiple bins it is possible to form "proto-clusters" in different bins with similar members.
+
+When the percolation has finished for all of the bins proto-clusters with common members are merged to form the final detections.
 
 ### Singal-to-Noise
 
