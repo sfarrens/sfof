@@ -225,7 +225,7 @@ void Fileio::write_ascii (const std::vector<Cluster> &cluster_list,
   std::ofstream write_clusters (cluster_file_name.c_str());
   std::ofstream write_members (member_file_name.c_str());
   write_clusters<<"# ID[1] RA[2] RA_ERR[3] DEC[4] DEC_ERR[5] Z[6] Z_ERR[7] NGAL[8] SN[9] RADIUS[10] AREA[11]\n";
-  write_members<<"# C_ID[1] C_NGAL[2] C_Z[3] G_ID[4] G_RA[5] G_DEC[6] G_Z[7] G_Z_ERR[7]\n";
+  write_members<<"# C_ID[1] C_NGAL[2] C_Z[3] G_ID[4] G_RA[5] G_DEC[6] G_Z[7] G_Z_ERR[8]\n";
   for(int i = 0; i < cluster_list.size(); i++) {
     write_clusters<<std::fixed<<std::setprecision(5);
     write_clusters<<std::setw(8)<<cluster_list[i].num<<" ";
