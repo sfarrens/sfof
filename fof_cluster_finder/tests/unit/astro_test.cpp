@@ -9,7 +9,7 @@
 
 #define BOOST_TEST_DYN_LINK
 #define BOOST_TEST_MODULE MasterTestSuite
-#include <boost/test/included/unit_test.hpp>
+#include <boost/test/unit_test.hpp>
 #include <boost/test/parameterized_test.hpp>
 #include "../../src/astro.hpp"
 #include "../../src/exceptions.hpp"
@@ -69,7 +69,7 @@ BOOST_AUTO_TEST_CASE( mean )
   std::vector<double> test;
   BOOST_CHECK_THROW( astro.mean(test) == 0, BadArgumentException );
   for (int i = 0; i < 10; i++) test.push_back(i);
-  BOOST_CHECK( std::abs(astro.mean(test) - 4.5) 
+  BOOST_CHECK( std::abs(astro.mean(test) - 4.5)
 	       <= std::numeric_limits<double>::epsilon() );
 }
 
@@ -81,7 +81,7 @@ BOOST_AUTO_TEST_CASE( median )
   std::vector<double> test;
   BOOST_CHECK_THROW( astro.median(test) == 0, BadArgumentException );
   for (int i = 0; i < 10; i++) test.push_back(i);
-  BOOST_CHECK( std::abs(astro.median(test) - 4.5) 
+  BOOST_CHECK( std::abs(astro.median(test) - 4.5)
 	       <= std::numeric_limits<double>::epsilon() );
 }
 
@@ -93,7 +93,7 @@ BOOST_AUTO_TEST_CASE( variance )
   std::vector<double> test;
   BOOST_CHECK_THROW( astro.variance(test) == 0, BadArgumentException );
   for (int i = 0; i < 10; i++) test.push_back(i);
-  BOOST_CHECK( std::abs(astro.variance(test) - 8.25) 
+  BOOST_CHECK( std::abs(astro.variance(test) - 8.25)
 	       <= std::numeric_limits<double>::epsilon() );
 
 }

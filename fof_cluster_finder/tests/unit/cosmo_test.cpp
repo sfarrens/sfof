@@ -9,7 +9,7 @@
 
 #define BOOST_TEST_DYN_LINK
 #define BOOST_TEST_MODULE MasterTestSuite
-#include <boost/test/included/unit_test.hpp>
+#include <boost/test/unit_test.hpp>
 #include <boost/test/parameterized_test.hpp>
 #include <limits>
 #include "../../src/cosmo.hpp"
@@ -38,7 +38,7 @@ BOOST_AUTO_TEST_CASE( set_up )
 BOOST_AUTO_TEST_CASE( angdidis )
 {
   BOOST_CHECK( cosmo.angdidis(0.0) == 0.0 );
-  BOOST_CHECK( std::abs(cosmo.angdidis(1.0) - 0.375) 
+  BOOST_CHECK( std::abs(cosmo.angdidis(1.0) - 0.375)
 	       <= std::numeric_limits<double>::epsilon() );
 }
 
@@ -47,7 +47,7 @@ BOOST_AUTO_TEST_CASE( angdidis )
  */
 BOOST_AUTO_TEST_CASE( angdidis2 )
 {
-  BOOST_CHECK( std::abs(cosmo.angdidis2(0.0, 1.0) - 0.375) 
+  BOOST_CHECK( std::abs(cosmo.angdidis2(0.0, 1.0) - 0.375)
 	       <= std::numeric_limits<double>::epsilon() );
   BOOST_CHECK_THROW( cosmo.angdidis2(1.0, 0.0), BadArgumentException );
 }
