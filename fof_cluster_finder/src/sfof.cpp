@@ -1,6 +1,6 @@
 /*Main Code*/
 
-#include "main.hpp"
+#include "sfof.hpp"
 
 void Main::read_options (int argc, char *argv[]) {
   // Function to read code options.

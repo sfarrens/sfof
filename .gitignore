@@ -1,0 +1,5 @@
+# Ignore scripts
+*.sh
+
+# Ignore builds
+build/
