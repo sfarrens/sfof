@@ -4,7 +4,7 @@
 
 > Year: **2016**
 
-> Version: **3.2**
+> Version: **3.2.1**
 
 > Email: **[samuel.farrens@gmail.com](mailto:samuel.farrens@gmail.com)**
 

@@ -32,18 +32,18 @@
 enum node_to_galaxy {External, Intersects, Internal};
 
 class Kdtree{ //! Class structure for kd-tree properties
-  
+
 public:
 
   class Kdtree_node{ //! Nested class structure for kd-tree node properties
 
   private:
     Astro astro;
-    
+
   public:
     Galaxy *Gal;
     Kdtree_node *left, *right;
-    
+
     class Point bottom_left, top_right;
     class Point center;
     double radius;
@@ -51,16 +51,16 @@ public:
     unsigned int Ngalaxies;
 
     void print_node_info(class Kdtree_node *, const std::vector<Galaxy> &);
-      
-    node_to_galaxy check_node(class Point &, double, int);    
-    
+
+    node_to_galaxy check_node(class Point &, double, int);
+
   }; /*End of Kdtree_node nested class*/
 
 private:
   Astro astro;
-  
+
 public:
-  
+
   class Kdtree_node *Nodes, *root;
   std::vector<Galaxy> AllG;
   std::vector<Galaxy*> GalPtrs;
@@ -77,15 +77,15 @@ public:
                                    int);
 
   void set_Kdtree(std::vector<Galaxy> &, double);
-  
+
   void write_Kdtree(const std::string &);
-  
+
   void WalkTree(class Kdtree_node *, int);
 
   void WalkTree(class Kdtree_node *, std::ofstream &);
 
   int range_search(Point &, int, double, std::deque<Galaxy*> &) const;
-  
+
   int range_search(Galaxy &, double, std::deque<Galaxy*> &) const;
 
   int range_search_loop(Kdtree_node *, class Point &, int, double, node_to_galaxy, std::deque<Galaxy*> &) const;

@@ -3,6 +3,8 @@
 #include <fstream>
 #include <iomanip>
 #include <iostream>
+#include <stdlib.h>
+#include <cmath>
 #include "kdtree_class.hpp"
 
 
@@ -43,7 +45,7 @@ node_to_galaxy Kdtree::Kdtree_node::check_node(Point &origin, double sradius, in
             return Intersects;
         }
     }
-    
+
 void Kdtree::write_Kdtree(const std::string &output_file) {
   std::ofstream kdtree_file (output_file);
   kdtree_file << std::fixed << std::setprecision(6);
@@ -54,10 +56,10 @@ void Kdtree::write_Kdtree(const std::string &output_file) {
       // writes the # of the node
       kdtree_file << i << " ";
       // writes coordiantes: center, xdelta, ydelta, radius
-      kdtree_file << Nodes[i].center.P[0] << " " << Nodes[i].center.P[1] << " " 
+      kdtree_file << Nodes[i].center.P[0] << " " << Nodes[i].center.P[1] << " "
 		  << xdelta << " " << ydelta << " " << Nodes[i].radius << " ";
       // writes the splitting axis and the ratio of maximum side over the minimum side
-      kdtree_file << Nodes[i].axis << " " << std::max(xdelta, ydelta) / std::min(xdelta, ydelta) 
+      kdtree_file << Nodes[i].axis << " " << std::max(xdelta, ydelta) / std::min(xdelta, ydelta)
 		  << std::endl;
     }
   }
@@ -65,7 +67,7 @@ void Kdtree::write_Kdtree(const std::string &output_file) {
 }
 
 void Kdtree::set_Kdtree(std::vector<Galaxy> &Gals, double max_inq = 0.3) {
-    
+
   std::vector<Galaxy*>::iterator itr;
   Point box[2];
 #ifdef TIMING
@@ -82,7 +84,7 @@ void Kdtree::set_Kdtree(std::vector<Galaxy> &Gals, double max_inq = 0.3) {
 
   for(int i=0; i < Gals.size(); i++)
     GalPtrs.push_back(G++);
-  
+
   NMaxNodes = Gals.size()*2 + 1;
   Nodes = new Kdtree_node [NMaxNodes];
 
@@ -98,14 +100,14 @@ void Kdtree::set_Kdtree(std::vector<Galaxy> &Gals, double max_inq = 0.3) {
     }
     itr++;
   }
-          
-#ifdef TIMING    
+
+#ifdef TIMING
   for( int i = 0; i < N_TIMING; i++)
     timing[i] = 0;
 #endif
-#ifdef TIMING      
+#ifdef TIMING
   t0 = clock();
-#endif                
+#endif
   root = build_kdtree(GalPtrs.begin(), GalPtrs.end(), box, 0);
 #ifdef TIMING
   t1 = clock();
@@ -114,11 +116,11 @@ void Kdtree::set_Kdtree(std::vector<Galaxy> &Gals, double max_inq = 0.3) {
 
   // KD-Tree Sample Area
   sample_area = std::abs(root->bottom_left.P[0] - root->top_right.P[0]) *
-    std::abs(root->bottom_left.P[1] - root->top_right.P[1]);      
-  
+    std::abs(root->bottom_left.P[1] - root->top_right.P[1]);
+
   std::cout << "   - with " << NNodes << " nodes and " << NLeaves << " leaves." << std::endl;
-  std::cout << "   - [xmin, ymin][xmax, ymax] are : [" << root->bottom_left.P[0] << ", " 
-	    << root->bottom_left.P[1] << "][" << root->top_right.P[0] <<", " << root->top_right.P[1] 
+  std::cout << "   - [xmin, ymin][xmax, ymax] are : [" << root->bottom_left.P[0] << ", "
+	    << root->bottom_left.P[1] << "][" << root->top_right.P[0] <<", " << root->top_right.P[1]
 	    << "]" << std::endl;
   std::cout << "   - sample area: " << sample_area << " deg^2." << std::endl;
   return;
@@ -129,7 +131,7 @@ void Kdtree::set_Kdtree(std::vector<Galaxy> &Gals, double max_inq = 0.3) {
 
 
 #if __cplusplus >= 201103L
-  
+
 inline void mynth( int N, int ax,
                      std::vector<Galaxy*>::iterator begin,
                      std::vector<Galaxy*>::iterator end) {
@@ -179,12 +181,12 @@ Kdtree::Kdtree_node* Kdtree::build_kdtree(std::vector<Galaxy*>::iterator begin,
   unsigned long long elems = end - begin;
   unsigned long long half;
   double split_value;
-  
+
   if(elems == 0) {
     std::cout << "kdtree building error" << std::endl;
     exit(3);
   }
-  
+
   if(elems == 1)
     {
       Nodes[NNodes].Gal = (*begin);
@@ -193,7 +195,7 @@ Kdtree::Kdtree_node* Kdtree::build_kdtree(std::vector<Galaxy*>::iterator begin,
       Nodes[NNodes].bottom_left = (*begin)->P;
       Nodes[NNodes].top_right = (*begin)->P;
       Nodes[NNodes].Ngalaxies = 1;
-      NLeaves++;       
+      NLeaves++;
     }
   else
     {
@@ -203,12 +205,12 @@ Kdtree::Kdtree_node* Kdtree::build_kdtree(std::vector<Galaxy*>::iterator begin,
 
       mylengths.P[0] = (box[0].P[1] - box[0].P[0]); // length of axis 0
       mylengths.P[1] = (box[1].P[1] - box[1].P[0]); // length of axis 0
-      
+
       if( fabs(mylengths.P[0] - mylengths.P[1]) / (std::max(mylengths.P[0], mylengths.P[1])) > max_axis_inequality)
         axis = (mylengths.P[1] > mylengths.P[0]);
       else
         axis = depth % 2;
-      
+
       //std::nth_element(begin, begin+elems/2, end, [&](Galaxy *G1, Galaxy *G2)->bool {return G1->P.P[axis] < G2->P.P[axis];});
       mynth(elems, axis, begin, end);
 
@@ -219,7 +221,7 @@ Kdtree::Kdtree_node* Kdtree::build_kdtree(std::vector<Galaxy*>::iterator begin,
 
       //itr = std::max_element(begin, half_node, [&](Galaxy *G1, Galaxy *G2)->bool {return G1->P.P[axis] < G2->P.P[axis];});
       itr = mymax(axis, begin, half_node);
-      
+
       mybox[axis].P[0] = box[axis].P[0];
       mybox[axis].P[1] = (*itr)->P.P[axis];
       Kdtree::Kdtree_node* leftN = Kdtree::build_kdtree(begin, half_node, mybox, depth+1);
@@ -227,7 +229,7 @@ Kdtree::Kdtree_node* Kdtree::build_kdtree(std::vector<Galaxy*>::iterator begin,
       mybox[axis].P[0] = split_value;
       mybox[axis].P[1] = box[axis].P[1];
       Kdtree::Kdtree_node* rightN = Kdtree::build_kdtree(half_node, end, mybox, depth+1);
-      
+
 
       Nodes[NNodes].Gal = NULL;
       Nodes[NNodes].left = leftN;
@@ -244,7 +246,7 @@ Kdtree::Kdtree_node* Kdtree::build_kdtree(std::vector<Galaxy*>::iterator begin,
       Nodes[NNodes].center.P[1] = (Nodes[NNodes].top_right.P[1] + Nodes[NNodes].bottom_left.P[1]) / 2.0;
       Nodes[NNodes].radius = astro.angsep(Nodes[NNodes].center, Nodes[NNodes].top_right);
     }
-  
+
   NNodes++;
   if(NNodes > NMaxNodes)
     {
@@ -254,13 +256,13 @@ Kdtree::Kdtree_node* Kdtree::build_kdtree(std::vector<Galaxy*>::iterator begin,
     }
 
 
-  return &Nodes[NNodes-1];  
+  return &Nodes[NNodes-1];
 }
 
 
 void Kdtree::WalkTree(class Kdtree_node *start, int mode)
   {
-    
+
     if(start != NULL)
       {
         if(mode & 1)
@@ -277,7 +279,7 @@ void Kdtree::WalkTree(class Kdtree_node *start, int mode)
             if((start->Gal)->P.P[1] > MAX.P[1])
               MAX.P[1] = (start->Gal->P).P[1];
           }
-        
+
         if(start->left != NULL)
           WalkTree(start->left, mode);
         if(start->right != NULL)
@@ -290,7 +292,7 @@ int Kdtree::range_search(Point &origin, int num, double link_r, std::deque<Galax
 {
   return range_search_loop(root, origin, num, link_r, Intersects, GalList);
 }
-  
+
 int Kdtree::range_search(Galaxy &G, double link_r, std::deque<Galaxy*> &GalList) const
 {
   return range_search_loop(root, G.P, G.num, link_r, Intersects, GalList);
@@ -298,13 +300,13 @@ int Kdtree::range_search(Galaxy &G, double link_r, std::deque<Galaxy*> &GalList)
 
 int Kdtree::range_search_loop(Kdtree_node *start, class Point &origin, int num, double radius, node_to_galaxy status, std::deque<Galaxy*> &GalList) const
 {
-    
+
     node_to_galaxy lstatus, rstatus;
     int ret = 0;
-    
+
     if(status == External)
       return 1;
-    
+
     if(start -> Gal != NULL) {
       if( ((start->Gal)->num != num) &&
           ((status == Internal) ||
@@ -322,7 +324,7 @@ int Kdtree::range_search_loop(Kdtree_node *start, class Point &origin, int num, 
         lstatus = (start -> left) -> check_node(origin, radius, num);
         rstatus = (start -> right) -> check_node(origin, radius, num);
       }
-      
+
       if(lstatus > External){
         int save = GalList.size();
         ret = range_search_loop(start->left, origin, num, radius, lstatus, GalList);
@@ -336,7 +338,6 @@ int Kdtree::range_search_loop(Kdtree_node *start, class Point &origin, int num, 
           ret++;
       }
     }
-    
+
     return ret;
   };
-

@@ -9,7 +9,25 @@ message(STATUS "CMake Build Type: ${CMAKE_BUILD_TYPE}")
 set(CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH} "${CMAKE_CURRENT_SOURCE_DIR}/aux/")
 
 find_package(CFITSIO REQUIRED)
-find_package(OpenMP REQUIRED)
+
+if("${CMAKE_CXX_COMPILER_ID}" MATCHES "Clang")
+	if(EXISTS "/usr/local/Cellar/libomp")
+		message(STATUS "Found Homebrew package libomp")
+	else()
+		message(FATAL_ERROR "Could not find Homebrew package libomp")
+	endif()
+	set(OpenMP_INCLUDE_PATH "/usr/local/include")
+	set(OpenMP_LIB_PATH "/usr/local/lib")
+	set(OpenMP_CXX_FLAGS "-Xpreprocessor -fopenmp -lomp")
+	set(OpenMP_CXX_LIB_NAMES "omp")
+	set(OpenMP_CXX_LIBRARIES "${OpenMP_LIB_PATH}/libomp.dylib")
+	include_directories(${OpenMP_INCLUDE_PATH})
+	link_directories(${OpenMP_LIB_PATH})
+else()
+	message(STATUS "Searching for OpenMP ${CMAKE_CXX_COMPILER_ID}")
+	find_package(OpenMP REQUIRED)
+endif()
+
 find_package(Boost COMPONENTS system filesystem unit_test_framework
 program_options REQUIRED)
 
