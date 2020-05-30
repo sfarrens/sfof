@@ -25,6 +25,14 @@ matrix:
             - cfitsio
             - boost
           update: true
+    - stage: deploy
+      script: doxygen docs/Doxyfile
+      provider: pages
+      skip_cleanup: true
+      local_dir: docs/html
+      github_token: $GH_REPO_TOKEN
+      on:
+        branch: master
 
 before_install:
     - mkdir build
@@ -33,7 +41,10 @@ before_install:
 install:
     - cmake ..
     - make
-    - make install
+    - if [ $TRAVIS_OS_NAME = 'osx' ];
+      then make install;
+      else sudo make install;
+      fi
 
 script:
     - ctest
