@@ -26,7 +26,9 @@ matrix:
             - boost
           update: true
     - stage: deploy
-      script: doxygen docs/Doxyfile
+      before_install: cd docs
+      install: pwd
+      script: doxygen Doxyfile
       provider: pages
       skip_cleanup: true
       local_dir: docs/html
