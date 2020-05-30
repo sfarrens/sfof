@@ -1,7 +1,7 @@
 language: c++
 sudo: required
 
-matrix:
+jobs:
   include:
     - os: linux
       dist: xenial
@@ -26,9 +26,16 @@ matrix:
             - boost
           update: true
     - stage: deploy
-      before_install: cd docs
-      install: pwd
-      script: doxygen Doxyfile
+      before_install: skip
+      install: skip
+      script: doxygen docs/Doxyfile
+      deploy:
+        provider: pages
+        skip_cleanup: true
+        local_dir: docs/html
+        github_token: $GH_REPO_TOKEN
+        on:
+          branch: master
       addons:
         apt:
           packages:
@@ -48,11 +55,3 @@ install:
 
 script:
     - ctest
-
-deploy:
-  provider: pages
-  skip_cleanup: true
-  local_dir: docs/html
-  github_token: $GH_REPO_TOKEN
-  on:
-    branch: master
