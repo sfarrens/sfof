@@ -1,0 +1,38 @@
+language: c++
+sudo: required
+
+matrix:
+  include:
+    - os: linux
+      dist: xenial
+      compiler: gcc
+      name: "Linux Xenial"
+      addons:
+        apt:
+          packages:
+            - boost
+            - cfitsio
+    - os: osx
+      osx_image: xcode11.3
+      language: shell
+      name: "macOS 10.14"
+      addons:
+        homebrew:
+          packages:
+            - cmake
+            - libomp
+            - cfitsio
+            - boost
+          update: true
+
+before_install:
+    - mkdir build
+    - cd build
+
+install:
+    - cmake ..
+    - make
+    - make install
+
+script:
+    - ctest
