@@ -1,4 +1,5 @@
 cmake_minimum_required(VERSION 3.0)
+project(sfof)
 enable_testing()
 if(CMAKE_BUILD_TYPE STREQUAL "")
   set(CMAKE_BUILD_TYPE "Release")
