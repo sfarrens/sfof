@@ -2,4 +2,4 @@
 *.sh
 
 # Ignore builds
-build/
+build*

@@ -1,0 +1,58 @@
+language: c++
+sudo: required
+
+matrix:
+  include:
+    - os: linux
+      dist: xenial
+      compiler: gcc
+      name: "Linux Xenial"
+      addons:
+        apt:
+          packages:
+            - cmake
+            - libboost-all-dev
+            - libcfitsio3-dev
+    - os: osx
+      osx_image: xcode11.3
+      language: shell
+      name: "macOS 10.14"
+      addons:
+        homebrew:
+          packages:
+            - cmake
+            - libomp
+            - cfitsio
+            - boost
+          update: true
+    - stage: deploy
+      before_install: cd docs
+      install: pwd
+      script: doxygen Doxyfile
+      addons:
+        apt:
+          packages:
+            - doxygen
+
+before_install:
+    - mkdir build
+    - cd build
+
+install:
+    - cmake ..
+    - make
+    - if [ $TRAVIS_OS_NAME = 'osx' ];
+      then make install;
+      else sudo make install;
+      fi
+
+script:
+    - ctest
+
+deploy:
+  provider: pages
+  skip_cleanup: true
+  local_dir: docs/html
+  github_token: $GH_REPO_TOKEN
+  on:
+    branch: master

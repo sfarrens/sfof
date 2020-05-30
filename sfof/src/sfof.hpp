@@ -1,5 +1,5 @@
 /**
- * @file main.hpp
+ * @file sfof.hpp
  *
  * @author Samuel Farrens
  */
