@@ -49,7 +49,7 @@ before_install:
     - cd build
 
 install:
-    - cmake ..
+    - cmake .. -DCMAKE_BUILD_TYPE=Debug
     - make
     - if [ $TRAVIS_OS_NAME = 'osx' ];
       then make install;
