@@ -14,8 +14,8 @@
    1. [macOS Issues](#macOS-Issues)
 1. [Execution](#Execution)
    1. [SFoF Code](#SFoF-Code)
-   1. [Cat_Split Code](#Cat-Split-Code)
-   1. [Cat_Merge Code](#Cat-Merge-Code)
+   1. [Cat_Split Code](#Cat_Split-Code)
+   1. [Cat_Merge Code](#Cat_Merge-Code)
 
 ## Introduction
 
@@ -29,13 +29,9 @@ The codes (`main.cpp`, `cat_split.cpp`, `cat_merge.cp`) require the
 following packages:
 
 * [CMake](http://www.cmake.org/)
-
 * [Boost](http://www.boost.org/)
-
 * [CFITSIO](http://heasarc.gsfc.nasa.gov/fitsio/)
-
 * [OMP](http://openmp.org/wp/)
-
 * [C++0x/C++11](https://gcc.gnu.org/projects/cxx0x.html)
 
 ## Installation
