@@ -1,6 +1,10 @@
 language: c++
 sudo: required
 
+branches:
+  only:
+    - master
+
 jobs:
   include:
     - os: linux
