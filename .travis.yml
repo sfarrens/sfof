@@ -68,5 +68,5 @@ script:
 
 after_success:
     - if [ $TRAVIS_OS_NAME = 'linux' ];
-      then coveralls --gcov gcov-9;
+      then coveralls --root .. --gcov gcov-9;
       fi
