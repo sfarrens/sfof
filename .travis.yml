@@ -4,15 +4,22 @@ sudo: required
 jobs:
   include:
     - os: linux
-      dist: xenial
+      dist: bionic
       compiler: gcc
       name: "Linux Xenial"
+      env:
+        - CC=gcc-9
+        - CXX=g++-9
       addons:
         apt:
+          sources:
+            - sourceline: 'ppa:ubuntu-toolchain-r/test'
           packages:
+            - gcc-9
+            - g++-9
             - cmake
             - libboost-all-dev
-            - libcfitsio3-dev
+            - libcfitsio-dev
     - os: osx
       osx_image: xcode11.3
       language: shell
@@ -42,11 +49,14 @@ jobs:
             - doxygen
 
 before_install:
+    - if [ $TRAVIS_OS_NAME = 'linux' ];
+      then pip install --user cpp-coveralls;
+      fi
     - mkdir build
     - cd build
 
 install:
-    - cmake ..
+    - cmake .. -DCMAKE_BUILD_TYPE=Debug
     - make
     - if [ $TRAVIS_OS_NAME = 'osx' ];
       then make install;
@@ -54,4 +64,9 @@ install:
       fi
 
 script:
-    - ctest
+    - make test
+
+after_success:
+    - if [ $TRAVIS_OS_NAME = 'linux' ];
+      then coveralls --gcov gcov-9;
+      fi
