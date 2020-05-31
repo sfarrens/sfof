@@ -7,9 +7,14 @@ jobs:
       dist: xenial
       compiler: gcc
       name: "Linux Xenial"
+      env:
+        - CC=gcc-9
+        - CXX=g++-9
       addons:
         apt:
           packages:
+            - gcc-9
+            - g++-9
             - cmake
             - libboost-all-dev
             - libcfitsio3-dev
@@ -61,5 +66,5 @@ script:
 
 after_success:
     - if [ $TRAVIS_OS_NAME = 'linux' ];
-      then coveralls;
+      then alias gcov="gcov-9" && coveralls;
       fi
