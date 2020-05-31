@@ -12,7 +12,6 @@
    1. [Homebrew Formula](#Homebrew-Formula)
    1. [From Source](#From-Source)
    1. [CMake Options](#CMake-Options)
-   1. [macOS Help](./mac_osx_install.md)
 1. [Execution](#Execution)
    1. [SFoF Code](#SFoF-Code)
    1. [Cat_Split Code](#Cat_Split-Code)
