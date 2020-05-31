@@ -9,9 +9,9 @@
 1. [Dependencies](#Dependencies)
 1. [Installation](#Installation)
    1. [Docker Image](#Docker-Image)
+   1. [Homebrew Formula](#Homebrew-Formula)
    1. [From Source](#From-Source)
    1. [CMake Options](#CMake-Options)
-   1. [macOS Issues](#macOS-Issues)
 1. [Execution](#Execution)
    1. [SFoF Code](#SFoF-Code)
    1. [Cat_Split Code](#Cat_Split-Code)
@@ -44,13 +44,32 @@ If you have [Docker](https://www.docker.com/) installed, you can pull the latest
 $ docker pull sfarrens/sfof
 ```
 
-To run this image on data in the current directory, simply run:
+To run this image on data in your current working directory, simply run:
 
 ```bash
 $ docker run -v ${PWD}:/workdir -it sfarrens/sfof /bin/bash -c "cd workdir && sfof"
 ```
 
 The reference to `${PWD}` can be replaced by the path to any directory on your system and options can be passed to `sfof` inside the double quotes.
+
+### Homebrew Formula
+
+If you are using macOS and have [Homebrew](https://brew.sh/) installed, then you can install SFoF by simply running:
+
+```bash
+$ brew tap sfarrens/sf
+$ brew install sfof
+```
+
+which will install the executables to `/usr/local/bin`.
+
+The Homebrew formula for this package can be found [here](https://github.com/sfarrens/homebrew-sf/blob/master/sfof.rb).
+
+If you prefer to build the package from source, it is recommended to at least install the dependencies with Homebrew.
+
+```bash
+$ brew install cmake boost cfitsio libomp
+```
 
 ### From Source
 
@@ -92,6 +111,8 @@ $ mask install
 
 > Note: On some systems it may be necessary to run `sudo make install`.
 
+See the [these tips](./mac_osx_install.md) for help installing from source on macOS.
+
 ### CMake Options
 
 On some systems it may be neccessary to specify the paths to
@@ -115,10 +136,6 @@ cmake comamnd: `-DBOOST_ROOT` *e.g*
   ```bash
   CC=gcc-9 CXX=g++-9 cmake ..
   ```
-
-### macOS Issues
-
-For help with comilation on macOS see [here](./mac_osx_install.md).
 
 ## Execution
 
