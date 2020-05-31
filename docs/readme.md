@@ -1,4 +1,4 @@
-# Installation and Execution
+# SFoF Installation and Execution
 
 > Author: **Samuel Farrens**  
 > Email: **[samuel.farrens@cea.fr](mailto:samuel.farrens@cea.fr)**  
@@ -6,10 +6,10 @@
 ## Contents
 
 1. [Introduction](#Introduction)
-1. [Dependenies](#Dependenies)
+1. [Dependencies](#Dependencies)
 1. [Installation](#Installation)
-   1. [From Source](#From-Source)
    1. [Docker Image](#Docker-Image)
+   1. [From Source](#From-Source)
    1. [CMake Options](#CMake-Options)
    1. [macOS Issues](#macOS-Issues)
 1. [Execution](#Execution)
@@ -19,9 +19,9 @@
 
 ## Introduction
 
-This section provides details for installing and running the FoF algorithm.
+This section provides details for installing and running the SFoF algorithm.
 
-Detailed information about class methods and functions can be found [here](http://htmlpreview.github.com/?https://github.com/sfarrens/fof_cluster_finder/blob/master/docs/html/index.html).
+Detailed information about class methods and functions can be found [here](http://sfarrens.github.io/sfof/).
 
 ## Dependencies
 
@@ -362,8 +362,7 @@ The input file is simply a list of the SFoF code members output files.
 
 **Output Format**
 
-The output format is exactly the same as that of the SFoF code (see
-[above](#SFoF Code)). If, however, the background data is not provided the signal-to-noise ratio for each cluster candidate will be set to `0.0`.
+The output format is exactly the same as that of the SFoF code (see [above](#SFoF-Code)). If, however, the background data is not provided the signal-to-noise ratio for each cluster candidate will be set to `0.0`.
 
 **Run**
 
