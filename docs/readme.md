@@ -1,115 +1,149 @@
-# Installation and Execution
+# SFoF Installation and Execution
 
-> Author: **Samuel Farrens**
-
-> Year: **2016**
-
+> Author: **Samuel Farrens**  
+> Email: **[samuel.farrens@cea.fr](mailto:samuel.farrens@cea.fr)**  
+> Version: **4.0**  
 ## Contents
 
-1. [Introduction](#intro_anchor)
-1. [Dependenies](#depend_anchor)
-1. [Compilation](#compile_anchor)
-  1. [CMake Issues](#cmake_anchor)
-  1. [Mac OSX Issues](#osx_anchor)
-1. [Execution](#exe_anchor)
-  1. [Main Code](#main_anchor)
-  1. [Cat_Split Code](#split_anchor)
-  1. [Cat_Merge Code](#merge_anchor)
+1. [Introduction](#Introduction)
+1. [Dependencies](#Dependencies)
+1. [Installation](#Installation)
+   1. [Docker Image](#Docker-Image)
+   1. [From Source](#From-Source)
+   1. [CMake Options](#CMake-Options)
+   1. [macOS Issues](#macOS-Issues)
+1. [Execution](#Execution)
+   1. [SFoF Code](#SFoF-Code)
+   1. [Cat_Split Code](#Cat_Split-Code)
+   1. [Cat_Merge Code](#Cat_Merge-Code)
 
-<a name="intro_anchor"></a>
 ## Introduction
 
-This section provides details for installing and running the FoF algorithm.
+This section provides details for installing and running the SFoF algorithm.
 
-Detailed information about class methods and functions can be found [here](http://htmlpreview.github.com/?https://github.com/sfarrens/fof_cluster_finder/blob/master/docs/html/index.html).
+Detailed information about class methods and functions can be found [here](http://sfarrens.github.io/sfof/).
 
-<a name="depend_anchor"></a>
 ## Dependencies
 
-The codes (main.cpp, cat\_split.cpp, cat\_merge.cpp) require the
+The codes (`main.cpp`, `cat_split.cpp`, `cat_merge.cp`) require the
 following packages:
 
-* <a href="http://www.cmake.org/" target="_blank">CMake</a> [Tested with v3.3.2]
+* [CMake](http://www.cmake.org/)
+* [Boost](http://www.boost.org/)
+* [CFITSIO](http://heasarc.gsfc.nasa.gov/fitsio/)
+* [OMP](http://openmp.org/wp/)
+* [C++0x/C++11](https://gcc.gnu.org/projects/cxx0x.html)
 
-* <a href="http://www.boost.org/" target="_blank">Boost</a> [Tested with v1.58]
+## Installation
 
-* <a href="http://heasarc.gsfc.nasa.gov/fitsio/" target="_blank">CFITSIO</a>
+### Docker Image
 
-* <a href="http://openmp.org/wp/" target="_blank">OMP</a> [Tested with GCC v4.9.2]
+If you have [Docker](https://www.docker.com/) installed, you can pull the latest build of the SFoF image from [Docker Hub](https://hub.docker.com/r/sfarrens/sfof).
 
-* <a href="https://gcc.gnu.org/projects/cxx0x.html" target="_blank">C++0x/C++11</a> [Tested with GCC v4.9.2]
+```bash
+$ docker pull sfarrens/sfof
+```
 
-<a name="compile_anchor"></a>
-## Compilation
+To run this image on data in the current directory, simply run:
 
-To compile the codes first run:
+```bash
+$ docker run -v ${PWD}:/workdir -it sfarrens/sfof /bin/bash -c "cd workdir && sfof"
+```
 
-> \>\> cmake CMakeLists.txt
+The reference to `${PWD}` can be replaced by the path to any directory on your system and options can be passed to `sfof` inside the double quotes.
 
-which will generate a makefile. Then run:
+### From Source
 
-> \>\> make
+To compile the codes from source, first clone the repository.
+
+```bash
+$ git clone https://github.com/sfarrens/sfof.git
+$ cd sfof
+```
+
+Then create a build directory.
+
+```bash
+$ mkdir build
+$ cd build
+```
+
+Then run CMake to generate a makefile.
+
+```bash
+$ cmake ..
+```
+
+Finally, run make to compile.
+
+```bash
+$ make
+```
 
 Upon successful compilation of the code three executables will be
-generated in the *fof\_cluster\_finder* subdirectory: Main, Cat\_Split
-and Cat\_Merge.
+generated in the `sfof` subdirectory: `sfof`, `cat_split`
+and `cat_merge`.
 
-<a name="cmake_anchor"></a>
-### CMake Issues
+You can install these to your `bin` directory by running:
 
-On some systems it may be neccesary to specify the paths to
+```bash
+$ mask install
+```
+
+> Note: On some systems it may be necessary to run `sudo make install`.
+
+### CMake Options
+
+On some systems it may be neccessary to specify the paths to
 packages. This can be done with the following options:
 
 * To specify the CFITSIO directory use the following option after the
-cmake command:
-> -DCFITSIO_ROOT_DIR
-`e.g cmake CMakeLists.txt -DCFITSIO_ROOT_DIR=/usr/cfitsio/`
+cmake command: `-DCFITSIO_ROOT_DIR` *e.g*
+
+  ```bash
+  cmake .. -DCFITSIO_ROOT_DIR=/usr/cfitsio/
+  ```
 
 * To specify the Boost directory use the following option after the
-cmake comamnd:
-> -DBOOST_ROOT
-`e.g cmake CMakeLists.txt -DCFITSIO_ROOT_DIR=/usr/boost/`
+cmake comamnd: `-DBOOST_ROOT` *e.g*
+  ```bash
+  cmake .. -DCFITSIO_ROOT_DIR=/usr/boost/
+  ```
 
 * The C and C++ compilers can also be specified using the following
-  options before the cmake command:
-> CC & CXX
-`e.g CC=gcc-4.9.0 CXX=g++-4.9.0 cmake CMakeLists.txt`
+  options before the cmake command: `CC & CXX` *e.g.*
+  ```bash
+  CC=gcc-9 CXX=g++-9 cmake ..
+  ```
 
-<a name="osx_anchor"></a>
-### Mac OSX Issues
+### macOS Issues
 
-For help with comilation on Mac OSX see [here](./mac_osx_install.md).
+For help with comilation on macOS see [here](./mac_osx_install.md).
 
-<a name="exe_anchor"></a>
 ## Execution
 
-<a name="main_anchor"></a>
-### Main Code
+### SFoF Code
 
-The friends-of-friends (FoF) algorithm can be run in two different
-modes (spectroscopic or photometric) depending on the type of input
-data.
+The Super Friends-of-Friends (SFoF) algorithm can be run in two different modes (spectroscopic or photometric) depending on the type of input data.
 
-<a name="main_input"></a>
 **Input Format**
 
 The expected input file formats \(ASCII or FITS\) for the
 corresponding modes are as follows:
 
-* `Spectroscopic Mode`:
+* **Spectroscopic Mode**:
   1. Galaxy ID
   2. Galaxy Right Ascension
   3. Galaxy Declination
   4. Galaxy Redshift
 
-* `Photometric Mode`:
+* **Photometric Mode**:
   1. Galaxy ID
   2. Galaxy Right Ascension
   3. Galaxy Declination
   4. Galaxy Photometric Redshift
   5. Galaxy Photometric Redshift Error
 
-<a name="main_output"></a>
 **Output Format**
 
 The code produces two output files. The first contains the properties
@@ -118,7 +152,7 @@ properties of the member galaxies that belong to each of these
 candidates according to the FoF. The formats for the output files are
 as follows:
 
-* `Cluster Prorperties`:
+* **Cluster Prorperties**:
   1. Cluster ID
   2. Cluster Right Ascension \[degrees\] (median of members)
   3. Cluster Right Ascension Error \[degrees\] (error on median)
@@ -131,7 +165,7 @@ as follows:
   10. Cluster radius \[arcmin\] (average distance of members from centre)
   11. Cluster area \[arcmin<sup>2</sup>\]
 
-* `Member Prorperties`:
+* **Member Prorperties**:
   1. Cluster ID
   2. Cluster N<sub>gal</sub>
   3. Cluster Redshift
@@ -142,34 +176,40 @@ as follows:
 
 **Run**
 
-The code options can be provided either in a configuration file (Note: the
-defult configuration file name is *param_file.ini*) or directly as
+The code options can be provided either in a configuration file (Note: the default configuration file name is `param_file.ini`) or directly as
 arguments.
 
-If a configuration file is available the code can be run simply as
-follows:
+If a configuration file is available in the same directory the code can be run simply as follows:
 
-> \>\> main
+```bash
+$ sfof
+```
 
 All configuration file options can be overridden by providing a command
-line argument. For example to ignore a file name specified in the
+line argument. For example, to override a file name specified in the
 configuration file the following option can be used:
 
-> \>\> main --input_file FILE_NAME
+```bash
+$ sfof --input_file FILE_NAME
+```
 
 All of the code options are listed below, but can be viewed by
 running:
 
-> \>\> main --help
+```bash
+$ sfof --help
+```
 
-The majority of the code options have defualt values that will be
+The majority of the code options have default values that will be
 applicable to most data sets. The only options that need to be
 specified for every run are the input file name and the linking
 parameter values. For example to run the code in photometric mode on a
-data set that is well sampled around z=0.5 and does not extend beyond
-z=3.0 the following command would be sufficient to run the code:
+data set that is well sampled around `z=0.5` and does not extend beyond
+`z=3.0` the following command would be sufficient to run the code:
 
-> \>\> main -i FILE_NAME --link_r 0.06 --link_z 1.1
+```bash
+$ sfof -i FILE_NAME --link_r 0.06 --link_z 1.1
+```
 
 See [examples](../examples/) for example data sets and
 configuration files to test the code.
@@ -238,21 +278,17 @@ options permitted are *ascii* or *fits*. The default value is *ascii*.
 
 ------------
 
-<a name="split_anchor"></a>
 ### Cat_Split Code
 
 This code divides galaxy catalogues into overlapping pieces to
-facilitate the running of the FoF code (Main). At present the code can
-only read ASCII files.
+facilitate the running of SFoF.
+
+> At present the code can only read ASCII files.
 
 **Input Format**
 
-The input ASCII file can contain any number of columns, but the code
-expects to find the right ascension and declination of the galaxies in columns
-2 and 3 respectively. Additionally, if the resulting pieces are to be
-used as inputs for the Main code then the the input should
-adhere to the same format as that for the Main code (see
-[above](#main_input)).
+The input ASCII file can contain any number of columns, but the code  expects to find the right ascension and declination of the galaxies in columns 2 and 3 respectively. Additionally, if the resulting pieces are to be used as inputs for the SFoF code then the the input should
+adhere to the same format (see [above](#SFoF-Code)).
 
 **Ouput Format**
 
@@ -270,8 +306,9 @@ To run the code the following properties need to be specified:
 For example, the following command will split the input file (100
 deg<sup>2</sup>) into 4 pieces with an overlap of 0.5 degrees between each piece:
 
-> \>\> cat_split --input_file FILE_NAME --ra_lower 30.0 --ra_upper 4.0
-> --dec_lower 10.0 --dec_upper 20.0 --ra_bins 2 --dec_bins 2
+```bash
+$ cat_split --input_file FILE_NAME --ra_lower 30.0 --ra_upper 4.0 --dec_lower 10.0 --dec_upper 20.0 --ra_bins 2 --dec_bins 2
+```
 
 **Code Options**
 
@@ -299,48 +336,45 @@ default is 0.5 degrees.
 
 * ` --n_dec_bins`: Number of bins in declination.
 
-* ` --n_procs`: Number of processes. Use this option instead of *n\_ra\_bins* and *n\_dec\_bins* to define the total number of bins.
+* ` --n_procs`: Number of processes. Use this option instead of `n_ra_bins` and `n_dec_bins` to define the total number of bins.
 
 ------------
 
-<a name="merge_anchor"></a>
 ### Cat_Merge Code
 
-This code merges together the FoF outputs from various pieces of a
+This code merges together the SFoF outputs from various pieces of a
 larger catalogue.
 
 **Input Format**
 
-The input file is simply a list of the Main code members output files.
+The input file is simply a list of the SFoF code members output files.
 
-`e.g.`
+*e.g.*
 
-`piece_00_members_0.046_0.9_phot.dat`
-
-`piece_01_members_0.046_0.9_phot.dat`
-
-`piece_02_members_0.046_0.9_phot.dat`
-
+`piece_00_members_0.046_0.9_phot.dat`  
+`piece_01_members_0.046_0.9_phot.dat`  
+`piece_02_members_0.046_0.9_phot.dat`  
 `piece_03_members_0.046_0.9_phot.dat`
 
 **Output Format**
 
-The output format is exactly the same as that of the Main code (see
-[above](#main_output)). If, however, the background data is not provided the
-signal-to-noise ratio for each cluster candidate will be set to 0.0.
+The output format is exactly the same as that of the SFoF code (see [above](#SFoF-Code)). If, however, the background data is not provided the signal-to-noise ratio for each cluster candidate will be set to `0.0`.
 
 **Run**
 
 To run simply specify the input file name and the desired output file
 name as follows:
 
-> \>\> cat_merge --input_file FILE_NAME --ouput_file MERGED_CLUSTERS
+```bash
+$ cat_merge --input_file FILE_NAME --ouput_file MERGED_CLUSTERS
+```
 
 In order to provide signal-to-noise ratio values for each of the
-clusters the *bg_data* option must also be used as follows:
+clusters the `bg_data` option must also be used as follows:
 
-> \>\> cat_merge --input_file FILE_NAME --ouput_file MERGED_CLUSTERS
-> --bg_data BG_DATA_FILE
+```bash
+$ cat_merge --input_file FILE_NAME --ouput_file MERGED_CLUSTERS --bg_data BG_DATA_FILE
+```
 
 **Code Options**
 
