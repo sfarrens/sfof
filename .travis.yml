@@ -68,5 +68,5 @@ script:
 
 after_success:
     - if [ $TRAVIS_OS_NAME = 'linux' ];
-      then coveralls --root .. --gcov gcov-9 -E tests -E CMakeFiles;
+      then coveralls --root .. --gcov gcov-9 --exclude build/CMakeFiles --exclude sfof/tests;
       fi
