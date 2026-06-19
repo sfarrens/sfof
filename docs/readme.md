@@ -383,14 +383,14 @@ To run simply specify the input file name and the desired output file
 name as follows:
 
 ```bash
-$ cat_merge --input_file FILE_NAME --ouput_file MERGED_CLUSTERS
+$ cat_merge --input_file FILE_NAME --output_file MERGED_CLUSTERS
 ```
 
 In order to provide signal-to-noise ratio values for each of the
 clusters the `bg_data` option must also be used as follows:
 
 ```bash
-$ cat_merge --input_file FILE_NAME --ouput_file MERGED_CLUSTERS --bg_data BG_DATA_FILE
+$ cat_merge --input_file FILE_NAME --output_file MERGED_CLUSTERS --bg_data BG_DATA_FILE
 ```
 
 **Code Options**
